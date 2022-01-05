@@ -36,6 +36,7 @@ public class GiftCardMainController {
 	@RequestMapping("/giftcard/inc/gnb.do")	
 	public String updateCodeOrderSeq(ModelMap model, HttpServletRequest request, HttpSession session, @RequestParam Map<String, String> params) throws Exception {
 		model.addAttribute("main", mainService.menu_category());
+		log.debug("잘올라가나 테스트 ");
 		return "/giftcard/inc/gnb";
 	}
 	
