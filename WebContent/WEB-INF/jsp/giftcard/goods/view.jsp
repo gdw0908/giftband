@@ -19,8 +19,8 @@
 <meta name="format-detection" content="telephone=no" />
 <meta content="minimum-scale=1.0, width=device-width, maximum-scale=1, user-scalable=yes" name="viewport" />
 <meta name="author" content="31system" />
-<meta name="description" content="안녕하세요  티켓모아 입니다." />
-<meta name="Keywords" content="티켓모아, 음향기기, 중고음향기기, 중고악기, 중고 쇼핑몰, 중고 악기 쇼핑몰, 중고 음향기기 쇼핑몰" />
+<meta name="description" content="안녕하세요  티켓크루 입니다." />
+<meta name="Keywords" content="티켓크루, 상품권, 백화점 상품권, 롯데 백화점, 롯데 상품권, 갤러리아 백화점, 갤러리아 상품권, 신세계 백화점, 신세계 상품권" />
 <title>상품상세보기</title>
 
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
@@ -97,7 +97,7 @@ function view(opt) {
 
 <body>
    <article class="menu_info_wrap">
-      <h3 class="menu_info">홈 > 카테고리 > 상세 페이지</h3>
+      <h3 class="menu_info">홈 > ${view.MAKERNM } > ${view.PRODUCTNM }</h3>
    </article>
 
    <div class="sub_wrap">
@@ -135,7 +135,6 @@ function view(opt) {
                   <strong>${view.PRODUCTNM } </strong>
                </h3>
                <article class="product_info">
-                  <p class="price">${suf:getThousand(view.USER_PRICE) }<b>원</b></p>
                   <ul class="info_list">
                      <li>
                         <a href="javascript:void();"> <span>브랜드</span> <span>${view.MAKERNM } </span></a>
@@ -278,7 +277,7 @@ function view(opt) {
              observer: true,
              observeParents: true,
              loopFillGroupWithBlank : true,
-             spaceBetween: 100,
+             spaceBetween: 35,
              touchRatio: 0,
              autoplay: {
                delay: 5000,
@@ -287,10 +286,10 @@ function view(opt) {
              breakpoints: {
                1200 : {slidesPerView: 4, touchRatio: 1},
                1020 : {slidesPerView: 3, touchRatio: 1},
-               840 : {slidesPerView: 2, touchRatio: 1},
-               700 : {slidesPerView: 2, touchRatio: 1},
+               840 : {slidesPerView: 2.5, touchRatio: 1},
+               700 : {slidesPerView: 2.5, touchRatio: 1},
                560 : {slidesPerView: 2, touchRatio: 1},
-               480 : {slidesPerView: 1, touchRatio: 1, spaceBetween: 5},
+               480 : {slidesPerView: 1.5, touchRatio: 1, spaceBetween: 5},
                360 : {slidesPerView: 1, touchRatio: 1, spaceBetween: 10},
                320 : {slidesPerView: 1, touchRatio: 1, spaceBetween: 8},
              }

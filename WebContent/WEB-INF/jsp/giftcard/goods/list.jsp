@@ -36,8 +36,6 @@
    </c:otherwise>
 </c:choose>
 <!-- //파라미터 -->
-<!DOCTYPE HTML>
-<html lang="ko">
 <head>
 <title>상품검색</title>
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
@@ -237,27 +235,9 @@ function directOrder(item_seq){
         </div>
       </div>
     
-    <div class="sub_wrap product_container">
-       <aside class="side_menu">
-           <h6>카테고리</h6>
-          <ul>
-          <c:forEach var="item" items="${data.category }" varStatus="status">
-             <li><a href="./list.do?menu=menu${status.count}">${item.makernm }</a></li>
-          </c:forEach>
-             <!-- <li><a href="./list.do?menu=menu1">롯데</a></li>
-             <li><a href="./list.do?menu=menu2">신세계</a></li>
-             <li><a href="./list.do?menu=menu3">갤러리아</a></li> -->
-          </ul>
-       </aside>
-       
+    <div class="sub_wrap product_container">       
         <div class="sub_contents">
          <div class="sc_top">
-                <ul class="sc_tab">
-                  <li><a <c:if test = "${empty param.focus}">class="on"</c:if> href="javascript:go_url('${paramset }show=${param.show }&rows=${param.rows }');">최근등록순</a></li>
-                  <li><a <c:if test = "${param.focus eq '1'}">class="on"</c:if> href="javascript:go_url('${paramset }sort=row&focus=1&show=${param.show }&rows=${param.rows }');">낮은가격</a></li>
-                  <li class="last"><a <c:if test = "${param.focus eq '2'}">class="on"</c:if> href="javascript:go_url('${paramset }sort=high&focus=2&show=${param.show }&rows=${param.rows }');">높은가격</a></li>
-                </ul>
-      
                 <div class="sc_type">
                   <span>
                   <c:choose>
@@ -278,6 +258,12 @@ function directOrder(item_seq){
                   </c:choose>
                   </span>
                 </div>
+                
+                <ul class="sc_tab">
+                  <li><a <c:if test = "${empty param.focus}">class="on"</c:if> href="javascript:go_url('${paramset }show=${param.show }&rows=${param.rows }');">최근등록순</a></li>
+                  <li><a <c:if test = "${param.focus eq '1'}">class="on"</c:if> href="javascript:go_url('${paramset }sort=row&focus=1&show=${param.show }&rows=${param.rows }');">낮은가격</a></li>
+                  <li class="last"><a <c:if test = "${param.focus eq '2'}">class="on"</c:if> href="javascript:go_url('${paramset }sort=high&focus=2&show=${param.show }&rows=${param.rows }');">높은가격</a></li>
+                </ul>
               </div>
         
             <!-- 방명록 스타일 시작 -->
@@ -291,21 +277,12 @@ function directOrder(item_seq){
                             <div class="item">
                                <a href="view.do?menu=${param.menu }&seq=${item.item_seq }" class="img_wrap">
                                    <img src="${item.thumb }" alt="${item.PRODUCTNM }">
-<%--                               <img src="/images/products/gal_1.jpg" alt="${item.part3_nm }"> --%>
                                </a>
-                               <div class="m_btn">
-                                  <a href="view.do?menu=${param.menu }&seq=${item.item_seq }" target="_blank">새창</a>
-                                  <%-- <a href="#" onclick="return addCart('${item.item_seq }')">장바구니</a> --%>
-                                  <a onclick="return addCart('${item.item_seq }')">장바구니</a>
-                                  <a href="#" onclick="return directOrder('${item.item_seq }')">바로구매</a>
-                               </div>
                             </div>
                             <div class="list_info">
-<%--                                <span class="tit">${item.part3_nm }</span> --%>
                                <span class="tit">${item.PRODUCTNM }</span>
                                <ul>
-<%--                                   <li>${item.part1_nm } / ${item.part2_nm }</li> --%>
-                                  <li>${suf:getThousand(item.USER_PRICE) }</li>
+                                  <li>${suf:getThousand(item.USER_PRICE) }<span>원</span></li>
                                </ul>
                             </div>
                          </li>
@@ -329,5 +306,3 @@ function directOrder(item_seq){
        <input type="hidden" name="qty" value="1"/>
     </form>
     </div>
-</body>
-</html>

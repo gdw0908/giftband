@@ -8,9 +8,8 @@
 <meta name="format-detection" content="telephone=no" />
 <meta content="minimum-scale=1.0, width=device-width, maximum-scale=1, user-scalable=yes" name="viewport" />
 <meta name="author" content="31system" />
-<meta name="description" content="안녕하세요  티켓모아 입니다." />
-<meta name="Keywords" content="티켓모아, 음향기기, 중고음향기기, 중고악기, 중고 쇼핑몰, 중고 악기 쇼핑몰, 중고 음향기기 쇼핑몰" />
-
+<meta name="description" content="안녕하세요  티켓크루 입니다." />
+<meta name="Keywords" content="티켓크루, 상품권, 백화점 상품권, 롯데 백화점, 롯데 상품권, 갤러리아 백화점, 갤러리아 상품권, 신세계 백화점, 신세계 상품권" />
 <title>로그인</title>
 
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
@@ -101,46 +100,30 @@ jQuery(document).ready(function(){
 
           <div class="login_wrap">
           	<h3 class="login_tit">로그인</h3>
-
+			<h4 class="login_subtit">다양한 혜택과 더욱 편리한 이용을 위해 로그인해 주세요.</h4>
             <form action="/giftcard/login/login.do" id="login_form" name="login_form" method="post" onsubmit = "return login_proc(this);">
-            <input type = "hidden" name = "member" value = "1"/>
-            <input type = "hidden" name = "mode" value = "proc"/>
+            	<input type = "hidden" name = "member" value = "1"/>
+           	 	<input type = "hidden" name = "mode" value = "proc"/>
             <fieldset>
             <legend>로그인</legend>
             <div class="login_con">
               <div class="login_box">
-                <div class="l_left">
-<!--                   <p> -->
-<!--                   	<input type="text" id="member_id" name="member_id" placeholder="아이디" class="inputs"> -->
-<!--                   </p> -->
-<!--                   <p class="last"> -->
-<!--                   	<input type="password" id="member_pw" name="member_pw" placeholder="패스워드"> -->
-<!--                   </p> -->
-						
+                <div class="l_left">						
           			<div class="input_div one">
-         				 <div class="i">
-           					 <i class="xi-user"></i>
-         				 </div>
-          				<div>
-           					 <h5>ID</h5>
-           					 <input type="text" class="input"  id="member_id" name="member_id">
-          				</div>
+           				<input type="text" class="input"  id="member_id" name="member_id" placeholder="아이디를 입력해주세요.">
         			</div>
         			<div class="input_div pass">
-          				<div class="i">
-            				<i class="xi-lock"></i>
-          				</div>
-          				<div>
-           					 <h5>Password</h5>
-            				<input type="password" class="input" id="member_pw" name="member_pw">
-          				</div>
+            			<input type="password" class="input" id="member_pw" name="member_pw" placeholder="비밀번호를 입력해주세요.">
         			</div>
               <div class="btn_lnk">
                 <ul>
-                  <li class="first"><label style="cursor: pointer;"><input type="checkbox" id="id_save" name="id_save" class="check"><span class="icon"></span> 아이디저장</label></li>
-                  <li><a href="/giftcard/join/join_2.do">회원가입</a></li>
-                  <li><a href="/giftcard/join/id_search.do">아이디 찾기</a></li>
-                  <li class="last"><a href="/giftcard/join/pw_search.do">비밀번호 찾기</a></li>
+                  <li class="first">
+                  	<label style="cursor: pointer;">
+                  	<input type="checkbox" id="id_save" name="id_save" class="check">
+                  	<span class="icon"></span> 아이디저장</label>
+                  </li>
+                  <li><a href="/giftcard/join/id_search.do">아이디/비밀번호 찾기</a></li>
+<!--                   <li class="last"><a href="/giftcard/join/pw_search.do">비밀번호 찾기</a></li> -->
                 </ul>
               </div>
                 <div class="l_btn">
@@ -148,12 +131,19 @@ jQuery(document).ready(function(){
                 </div>
               </div>
             </div>
-
             </fieldset>
             </form>
-
           </div>
 
+		<article class="join_banner">
+			<div class="text_wrap">
+				<h5>아직 회원이 아니신가요?</h5>
+				<p>회원가입하고 다양한 혜택과 첫구매 쿠폰을 받으세요.<a href="/giftcard/join/join_2.do">회원가입<img src="/images/common/join_arrow.png" alt="회원가입"></a></p>
+			</div>
+			<div class="img_wrap">
+				<img src="/images/common/login_img.png" />
+			</div>
+		</article>
         </div>
 <!--         <h4 id="tabNavTitle0102"> -->
 <!--         	<a href="#" onclick="shwoTabNav('01', 2, 2); return false;" onfocus="this.onclick();">개인회원</a> -->
@@ -189,33 +179,12 @@ jQuery(document).ready(function(){
           </div>
 
 		  <div class="b_gui">
-            <p class="gui_l"><span class="text">아직 티켓모아 회원이 아니세요?</span><span><a href="/giftcard/join/join_1.do"><img class="btn" src="/images/join/btn_join.gif" alt="회원가입"></a></span></p>
+            <p class="gui_l"><span class="text">아직 티켓크루 회원이 아니세요?</span><span><a href="/giftcard/join/join_1.do"><img class="btn" src="/images/join/btn_join.gif" alt="회원가입"></a></span></p>
           </div>
 
         </div>
       </div>
-      <script type="text/javascript">
-      //login focus
-      const inputs = document.querySelectorAll('.input');
-
-      function addcl() {
-        const parent = this.parentNode.parentNode;
-        parent.classList.add('focus');
-      }
-
-      function remcl() {
-        const parent = this.parentNode.parentNode;
-        if(this.value === '') {
-          parent.classList.remove('focus');
-        }
-      }
-
-      inputs.forEach(input => {
-        input.addEventListener('focus', addcl);
-        input.addEventListener('blur', remcl);
-      });
-      
-      
+      <script type="text/javascript">      
       function shwoTabNav(eName, totalNum, showNum) {
       	for(i=1; i<=totalNum; i++){
       		var zero = (i >= 10) ? "" : "0";

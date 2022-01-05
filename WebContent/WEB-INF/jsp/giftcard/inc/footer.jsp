@@ -21,7 +21,7 @@
 	</script>
 <footer id="footer">
   <div class="f_wrap">
-    <div class="f_logo"><img src="/images/logo/logo.svg" alt="티켓모아"></div>
+    <div class="f_logo"><img src="/images/logo/footer_logo.svg" alt="티켓크루"></div>
     <div class="copy">
       <div class="c_top">
 	  <ul>
@@ -33,9 +33,9 @@
 	  </ul>
 	  </div>
       <div class="c_bottom">
-	  	<p><strong>대표자</strong> : 박지선 ㅣ <strong>상호</strong> : (주)에이블시스템 ㅣ <strong>개인정보 관리책임자</strong> : 김경선 ㅣ <br>
-	  		<strong>사업자등록번호</strong> : 367-81-02079 <strong>사업자주소</strong> : 인천광역시 연수구 갯벌로 129, 203호(산업기술연구직접센터) ㅣ <br>
-	  	<p><strong>TEL</strong> : 1661-8431 ㅣ <strong>E-mail</strong> : sales@31pluspay.com<br><span>Copyrightⓒ31SYSTEM.All Rights Reserved.</span></p>
+	  	<p>대표자 : 박지선 ㅣ 상호: (주)에이블시스템 ㅣ개인정보 관리책임자 : 김경선<br>
+	  		사업자등록번호 : 367-81-02079 사업자주소 : 인천광역시 연수구 갯벌로 129, 203호(산업기술연구직접센터) <br>
+	  	<p>TEL : 1661-8431 ㅣ E-mail : sales@31pluspay.com<br><span>Copyrightⓒ31SYSTEM.All Rights Reserved.</span></p>
 	  </div>
     </div>
 	<p class="top"><a href="#" class="top_btn"><img src="/images/footer/f_top.png" alt="top"></a></p>

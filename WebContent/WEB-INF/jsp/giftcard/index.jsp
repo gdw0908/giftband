@@ -18,24 +18,23 @@
 	content="minimum-scale=1.0, width=device-width, maximum-scale=1, user-scalable=yes"
 	name="viewport" />
 <meta name="author" content="31system" />
-<meta name="description" content="안녕하세요  티켓모아 입니다." />
-<meta name="Keywords"
-	content="티켓모아, 음향기기, 중고음향기기, 중고악기, 중고 쇼핑몰, 중고 악기 쇼핑몰, 중고 음향기기 쇼핑몰" />
-<title>티켓모아</title>
+<meta name="description" content="안녕하세요  티켓크루 입니다." />
+<meta name="Keywords" content="티켓크루, 상품권, 백화점 상품권, 롯데 백화점, 롯데 상품권, 갤러리아 백화점, 갤러리아 상품권, 신세계 백화점, 신세계 상품권" />
+<title>티켓크루</title>
 
 <!-- og -->
 <meta property="og:type" content="website" />
-<meta property="og:site_name" content="티켓모아" />
-<meta property="og:title" content="티켓모아 입니다." />
-<meta property="og:description" content="안녕하세요 티켓모아 입니다." />
+<meta property="og:site_name" content="티켓크루" />
+<meta property="og:title" content="티켓크루 입니다." />
+<meta property="og:description" content="안녕하세요 티켓크루 입니다." />
 <meta property="og:url" content="#" />
 <meta property="og:image" content="./images/kakao_img.png" />
 <meta property="og:image:width" content="800" />
 <meta property="og:image:height" content="400" />
 
 <!-- twitter -->
-<meta name="twitter:title" content="티켓모아" />
-<meta name="twitter:description" content="안녕하세요 티켓모아 입니다." />
+<meta name="twitter:title" content="티켓크루" />
+<meta name="twitter:description" content="안녕하세요 티켓크루 입니다." />
 <meta name="twitter:url" content="#" />
 <meta name="twitter:image" content="./images/kakao_img.png" />
 
@@ -355,13 +354,13 @@
 		<div class="swiper mainSwiper">
 			<div class="swiper-wrapper">
 				<div class="swiper-slide">
-					<img src="../images/banner/banner3.png" alt="상품권싸게사자">
+					<img src="../images/banner/banner3.jpg" alt="첫구매할인이벤트">
 				</div>
 				<div class="swiper-slide">
-					<img src="../images/banner/banner2.png" alt="상품권 구매는 티켓모아">
+					<img src="../images/banner/banner2.jpg" alt="전국 주요 백화점 상품권 보유">
 				</div>
 				<div class="swiper-slide">
-					<img src="../images/banner/banner1.png" alt="할인이 쏟아진다">
+					<img src="../images/banner/banner1.jpg" alt="상품권 구입은 티켓크루">
 				</div>
 			</div>
 			<div class="swiper-pagination"></div>
@@ -429,14 +428,12 @@
 						<section>
 							<div class="category_wrap">
 								<h3>인기 상품</h3>
-								<p>카테고리</p>
 								<ul class="category_tab">
 									<c:forEach var="item" items="${list.category }"
 										varStatus="status">
-										<li id="tabNavTitle020${status.count}" class="on"><a
-											href="javascript:void();"
-											onclick="shwoTabNav2(${status.count}); return false;"
-											onfocus="this.onclick();">${item.makernm }</a></li>
+										<li id="tabNavTitle020${status.count}" class="on">
+											<a href="javascript:void();" onclick="shwoTabNav2(${status.count}); return false;" onfocus="this.onclick();">${item.makernm }</a>
+										</li>
 									</c:forEach>
 									<!-- <li id="tabNavTitle0201" class="on">
 										<a href="javascript:void();" onclick="shwoTabNav2(1); return false;" onfocus="this.onclick();">롯데</a>
@@ -462,12 +459,6 @@
 			</div>
 		</div>
 	</div>
-
-	<article class="mi_banner">
-		<div>
-			<img src="/images/banner/belt_banner.png" alt="베너">
-		</div>
-	</article>
 
 	<div class="con_bottom_bg">
 		<div class="c_wrap_2">
