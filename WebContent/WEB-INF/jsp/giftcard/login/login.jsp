@@ -81,25 +81,12 @@ jQuery(document).ready(function(){
 </head>
 
 <body>
-
-    <div class="title_rocation">
-<!--       <div class="tr_wrap"> -->
-<!-- 			<h3>로그인</h3> -->
-<!--       </div> -->
-    </div>
-
     <div class="j_wrap">
-
-<!--       <div class="j_visual"><img src="/images/join/jm_img1.gif" alt="국내최대 자동차 중고부품 쇼핑몰 PARTS MOA에 오신 것을 환영합니다"></div> -->
-
       <div id="tabNav_j1" class="join_tab login_tab">
-<!--         <h4 id="tabNavTitle0101" class="on"> -->
-<!--         	<a href="#" onclick="shwoTabNav('01', 2, 1); return false;" onfocus="this.onclick();">사업자회원</a> -->
-<!--         </h4> -->
         <div id="tabNav0101" style="display: block;">
 
           <div class="login_wrap">
-          	<h3 class="login_tit">로그인</h3>
+          	<h3 class="tit">로그인</h3>
 			<h4 class="login_subtit">다양한 혜택과 더욱 편리한 이용을 위해 로그인해 주세요.</h4>
             <form action="/giftcard/login/login.do" id="login_form" name="login_form" method="post" onsubmit = "return login_proc(this);">
             	<input type = "hidden" name = "member" value = "1"/>

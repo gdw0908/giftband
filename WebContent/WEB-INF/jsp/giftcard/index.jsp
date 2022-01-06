@@ -435,15 +435,6 @@
 											<a href="javascript:void();" onclick="shwoTabNav2(${status.count}); return false;" onfocus="this.onclick();">${item.makernm }</a>
 										</li>
 									</c:forEach>
-									<!-- <li id="tabNavTitle0201" class="on">
-										<a href="javascript:void();" onclick="shwoTabNav2(1); return false;" onfocus="this.onclick();">롯데</a>
-									</li>
-									<li id="tabNavTitle0202">
-										<a href="javascript:void();" onclick="shwoTabNav2(2); return false;" onfocus="this.onclick();">신세계</a>
-									</li>
-									<li id="tabNavTitle0203">
-										<a href="javascript:void();" onclick="shwoTabNav2(3); return false;" onfocus="this.onclick();">갤러리아</a>
-									</li> -->
 								</ul>
 							</div>
 							<div id="tabNav0201" class="animated"></div>

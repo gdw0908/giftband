@@ -65,7 +65,7 @@ body.active { overflow-y: hidden; }
 	width: 120px;
 }
 .mo_logo a img {
-	width: 100%;
+	width: 70%;
 }
 
 /* hamburger menu */
@@ -839,9 +839,13 @@ ul.pay_c_list {margin-top:40px;}
 ul.pay_c_list li {padding-left:8px; margin-bottom:15px; line-height:14px; background:url(/images/sub_2/table_list_1.gif) no-repeat left 4px;}
 ul.pay_c_list li.c1 {color:#e85946;}
 
-.product_btn {overflow:hidden; margin:10px 0 0 23px;}
+.product_btn {
+	display: flex;
+	align-items: center;
+	overflow:hidden; 
+}
 .product_btn label input {float:left; margin-top:3px;}
-.product_btn label span {float:left; margin:3px 0 0 18px; font-weight:bold;}
+.product_btn label span {float:left; font-weight:bold;}
 .product_btn a {float:left; margin-left:10px;}
 
 /* 장바구니 */
@@ -865,7 +869,6 @@ ul.sub_list_1 li {color:#e85946; background:url(/images/sub_2/table_list_1.gif) 
 .pricecheck .bottom p.pb_type span.pb_r {float:right;}
 .pricecheck .bottom p.pb_type span.pb_r b {font:normal 12px '돋움', 'dotum';}
 
-.pricecheck .p_check2 .bottom {padding:26px 31px 26px 0;}
 .pricecheck .p_check3 .bottom p b {color:#ff6c00;}
 
 /* footer */

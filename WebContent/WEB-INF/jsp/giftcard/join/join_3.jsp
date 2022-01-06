@@ -11,9 +11,8 @@
 	content="minimum-scale=1.0, width=device-width, maximum-scale=1, user-scalable=yes"
 	name="viewport" />
 <meta name="author" content="31system" />
-<meta name="description" content="안녕하세요  티켓모아 입니다." />
-<meta name="Keywords"
-	content="티켓모아, 음향기기, 중고음향기기, 중고악기, 중고 쇼핑몰, 중고 악기 쇼핑몰, 중고 음향기기 쇼핑몰" />
+<meta name="description" content="안녕하세요  티켓크루 입니다." />
+<meta name="Keywords" content="티켓크루, 상품권, 백화점 상품권, 롯데 백화점, 롯데 상품권, 갤러리아 백화점, 갤러리아 상품권, 신세계 백화점, 신세계 상품권" />
 <title>회원정보입력</title>
 
 <link rel="stylesheet"
@@ -101,22 +100,7 @@
 			jQuery("#member_pw").focus();
 			return false;
 		}
-		/*
-		else if(jQuery("#tel2").val() == "" || isNaN(jQuery("#tel2").val()))
-		{
-			alert("전화번호를 입력하지 않았거나 숫자만 입력가능합니다.");	
-			jQuery("#tel2").val("");
-			jQuery("#tel2").focus();
-			return false;
-		}
-		else if(jQuery("#tel3").val() == "" || isNaN(jQuery("#tel3").val()))
-		{
-			alert("전화번호를 입력하지 않았거나 숫자만 입력가능합니다.");	
-			jQuery("#tel3").val("");
-			jQuery("#tel3").focus();
-			return false;
-		}
-		 */
+
 		else if (jQuery("#cell1").val() == "" || isNaN(jQuery("#cell1").val())) {
 			alert("휴대폰번호를 입력하지 않았거나 숫자만 입력가능합니다.");
 			jQuery("#cell1").val("");
@@ -235,16 +219,14 @@
 		<div class="tr_wrap">
 			<h3 style="text-align: center;">회원가입</h3>
 			<ul class="join_process">
-				<li class="active"><span class="icon"><i
-						class="xi-check"></i></span>약관동의</li>
+				<li class="active"><span class="icon"><i>1</i></span>약관동의</li>
 				<li class="active"><span class="icon"><i>2</i></span>회원정보입력</li>
 				<li><span class="icon"><i>3</i></span>가입완료</li>
 			</ul>
 		</div>
 	</div>
-	<div class="j_wrap" style="max-width: 640px">
+	<div class="j_wrap j_wrap2" style="max-width: 640px">
 		<div id="tabNav_j1" class="join_tab" style="max-width: 640px">
-			<!--     <h4 id="tabNavTitle0101" class="on"><a href="#" >사업자회원</a></h4> -->
 			<div id="tabNav0101" style="display: block; padding: 30px 0 0 0;">
 				<form method="post" name="join_form" id="join_form"
 					action="/giftcard/join/join_4.do" onsubmit="return join_form_chk();">
@@ -254,10 +236,6 @@
 						name="group_seq" value="2" /> <input type="hidden"
 						name="member_type" value="1" />
 					<div class="j_write">
-						<h4>회원정보 입력</h4>
-						<p class="required">
-							<span>*</span>필수입력사항
-						</p>
 						<table class="join_style_1 join_3_table">
 							<tbody>
 								<tr>
@@ -293,12 +271,7 @@
 									<td class="fs_2"><input type="text" name="member_nm"
 										id="member_nm" class="input_j1" placeholder="이름을 입력해 주세요"></td>
 								</tr>
-								<!-- 
-     <tr>
-      <th scope="row" class="fv_1"><b>*</b>이름 (실명)</th>
-      <td class="fs_2"><input type = "text" name = "member_nm" id = "member_nm" value = ""></td>
-    </tr>
-    -->
+
 								<tr>
 									<th scope="row">전화번호</th>
 									<td><select id="tel1" name="tel1" class="select_j1">

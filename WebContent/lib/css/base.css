@@ -8,7 +8,7 @@ body {height:100%; font-family: 'S-Core'; font-size:12px; color:#1a1e26; }
   color: #fff;
 }
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 9px;
   height: 4px;
 }
 ::-webkit-scrollbar-track {
@@ -19,7 +19,7 @@ body {height:100%; font-family: 'S-Core'; font-size:12px; color:#1a1e26; }
 
 ::-webkit-scrollbar-thumb {
   /* background: linear-gradient(to top, #d71e26, #dc7526, #de8e27); */
-  background: var(--main-color);
+  background: #DEDEDE;
 }
 
 img {border:none; vertical-align:top;}
@@ -34,6 +34,10 @@ button, input[type="submit"], input[type="button"], input[type="number"] {
 	border: none;
 	cursor: pointer;
 	outline: none;
+}
+input::placeholder,
+::-webkit-input-placeholder {
+  color: #B4B4B4;
 }
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {

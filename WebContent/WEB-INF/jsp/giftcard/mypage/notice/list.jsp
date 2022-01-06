@@ -10,8 +10,8 @@
 <meta name="format-detection" content="telephone=no" />
 <meta content="minimum-scale=1.0, width=device-width, maximum-scale=1, user-scalable=yes" name="viewport" />
 <meta name="author" content="31system" />
-<meta name="description" content="안녕하세요  티켓모아 입니다." />
-<meta name="Keywords" content="티켓모아, 음향기기, 중고음향기기, 중고악기, 중고 쇼핑몰, 중고 악기 쇼핑몰, 중고 음향기기 쇼핑몰" />
+<meta name="description" content="안녕하세요  티켓크루 입니다." />
+<meta name="Keywords" content="티켓크루, 상품권, 백화점 상품권, 롯데 백화점, 롯데 상품권, 갤러리아 백화점, 갤러리아 상품권, 신세계 백화점, 신세계 상품권" />
 <title>공지사항</title>
 
 <script>
@@ -34,23 +34,28 @@ $(function() {
 </head>
 <body>
 	<div id="sub">
-        <div class="strapline">
-<!--           <h3>공지사항</h3> -->
-          <div class="state">
-<!--             <span>홈</span> &gt; <span>고객센터</span> &gt; <span><strong>공지사항</strong></span> -->
-          </div>
-        </div>
-
 		<div class="contents">
 		<div class="list_top">
-  			<p class="hit"><b>${page_info.totalcount}</b>개의 글이 등록되어 있습니다.</p>
-  			<p class="select_box">
-  				<select class="select_1" onchange="pageRows(this.value);">
-  					<option value="10" <c:if test="${params.rows eq '10' }">selected="selected"</c:if>>10건씩 보기</option>
-  					<option value="20" <c:if test="${params.rows eq '20' }">selected="selected"</c:if>>20건씩 보기</option>
-  					<option value="50" <c:if test="${params.rows eq '50' }">selected="selected"</c:if>>50건씩 보기</option>
-  				</select>
-  			</p>
+  			<p class="hit">총 게시물 <b>${page_info.totalcount}</b>건</p>
+  			
+  			<div class="top_search">
+ 				 <form action="${servletPath }" name="articleSearchForm" id="articleSearchForm" method="post" onsubmit="return goPage(1);">
+  					<input type="hidden" name="rows" value="${params.rows}"/>
+  					<input type="hidden" name="cpage" value="${params.cpage }" />
+  					<input type="hidden" name="mode" value="list" />
+  					<input type="hidden" name="article_seq" />  
+  					
+  					<select name="condition" class="select_1">
+  						<option value="TITLE" <c:if test="${params.condition eq 'TITLE' }">selected="selected"</c:if>>제목</option>
+  						<option value="REG_NM" <c:if test="${params.condition eq 'REG_NM' }">selected="selected"</c:if>>작성자</option>
+  						<option value="CONTS" <c:if test="${params.condition eq 'CONTS' }">selected="selected"</c:if>>내용</option>
+  					</select>
+  					
+  					<span class="bottom_search_add"><input type="text" class="input_2" name="keyword" value="${params.keyword}" title="검색바" />
+  						<span class="bottom_search_bt"><input type="button" class="search_vd" name="image" value="검색"></span>
+  					</span>
+  				</form>
+			</div>
 		</div>
 
 		<table class="list_style_1">
@@ -85,25 +90,8 @@ $(function() {
 			</tbody>
 		</table>
 
-
 			<jsp:include page="/giftcard/inc/paging.do" />
 
-			<div class="bottom_search">
- 				 <form action="${servletPath }" name="articleSearchForm" id="articleSearchForm" method="post" onsubmit="return goPage(1);">
-  					<input type="hidden" name="rows" value="${params.rows}"/>
-  					<input type="hidden" name="cpage" value="${params.cpage }" />
-  					<input type="hidden" name="mode" value="list" />
-  					<input type="hidden" name="article_seq" />  
-  					<select name="condition" class="select_1">
-  						<option value="TITLE" <c:if test="${params.condition eq 'TITLE' }">selected="selected"</c:if>>제목</option>
-  						<option value="REG_NM" <c:if test="${params.condition eq 'REG_NM' }">selected="selected"</c:if>>작성자</option>
-  						<option value="CONTS" <c:if test="${params.condition eq 'CONTS' }">selected="selected"</c:if>>내용</option>
-  					</select>
-  					<span class="bottom_search_add"><input type="text" class="input_2" name="keyword" value="${params.keyword}" title="검색바" />
-  						<span class="bottom_search_bt"><input type="button" class="search_vd" name="image" value="검색"></span>
-  					</span>
-  				</form>
-			</div>
 		</div>
       </div>
 	</body>

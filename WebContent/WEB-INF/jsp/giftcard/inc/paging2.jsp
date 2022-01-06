@@ -39,10 +39,10 @@
 
 <div class="paging">
 	<span id="pagingWrap"> 
-	<a href="${servlet_path }${paramset }rows=${rows }&cpage=1">처음</a>
+	<a href="${servlet_path }${paramset }rows=${rows }&cpage=1" class="prev">&lt;&lt;</a>
 	
 	<c:if test="${cpage > 1 }">
-		<a href="${servlet_path }${paramset }rows=${rows }&cpage=${prevblock }">이전</a>
+		<a href="${servlet_path }${paramset }rows=${rows }&cpage=${prevblock }" class="prev">&lt;</a>
 	</c:if>
 	
 	<c:forEach var="i" begin="${start }" end="${end}">
@@ -57,9 +57,9 @@
 	</c:forEach>
 	
 	<c:if test="${cpage < totalpage }">
-		<a href="${servlet_path }${paramset }rows=${rows }&cpage=${nextblock }">다음</a>
+		<a href="${servlet_path }${paramset }rows=${rows }&cpage=${nextblock }" class="next">&gt;</a>
 	</c:if>
 	
-	<a href="${servlet_path }${paramset }rows=${rows }&cpage=${totalpage }">끝</a>
+	<a href="${servlet_path }${paramset }rows=${rows }&cpage=${totalpage }" class="next">&gt;&gt;</a>
 	</span>
 </div>

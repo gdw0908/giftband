@@ -11,9 +11,8 @@
 	content="minimum-scale=1.0, width=device-width, maximum-scale=1, user-scalable=yes"
 	name="viewport" />
 <meta name="author" content="31system" />
-<meta name="description" content="안녕하세요  티켓모아 입니다." />
-<meta name="Keywords"
-	content="티켓모아, 음향기기, 중고음향기기, 중고악기, 중고 쇼핑몰, 중고 악기 쇼핑몰, 중고 음향기기 쇼핑몰" />
+<meta name="description" content="안녕하세요  티켓크루 입니다." />
+<meta name="Keywords" content="티켓크루, 상품권, 백화점 상품권, 롯데 백화점, 롯데 상품권, 갤러리아 백화점, 갤러리아 상품권, 신세계 백화점, 신세계 상품권" />
 <title>아이디찾기</title>
 
 <link rel="stylesheet"
@@ -86,41 +85,6 @@ function email_chk_submit(obj)
 	}
 }
 
-/* function busi_chk_submit(obj)
-{
-	if(jQuery("#busi_nm").val() == "")
-	{
-		alert("상호명을 입력하세요.");
-		jQuery("#busi_nm").val("");
-		jQuery("#busi_nm").focus();
-		return false;
-	}
-	else if(jQuery("#busi_no1").val() == "" || isNaN(jQuery("#busi_no1").val()))
-	{
-		alert("사업자등록번호를 입력하지 않았거나 숫자만 입력가능합니다.");	
-		jQuery("#busi_no1").val("");
-		jQuery("#busi_no1").focus();
-		return false;
-	}
-	else if(jQuery("#busi_no2").val() == "" || isNaN(jQuery("#busi_no2").val()))
-	{
-		alert("사업자등록번호를 입력하지 않았거나 숫자만 입력가능합니다.");	
-		jQuery("#busi_no2").val("");
-		jQuery("#busi_no2").focus();
-		return false;
-	}
-	else if(jQuery("#busi_no3").val() == "" || isNaN(jQuery("#busi_no3").val()))
-	{
-		alert("사업자등록번호를 입력하지 않았거나 숫자만 입력가능합니다.");	
-		jQuery("#busi_no3").val("");
-		jQuery("#busi_no3").focus();
-		return false;
-	}
-	else
-	{
-		return true;	
-	}
-} */
 
 function chk_email(value)
 {
@@ -135,19 +99,9 @@ function chk_email(value)
 	<div class="title_rocation"></div>
 	<div class="j_wrap">
 		<h3 class="tit">아이디찾기</h3>
+		<h4 class="login_subtit">티켓모아쇼핑몰 회원정보에 등록되어있는 정보 중 1가지를 택하여 입력해 주세요. 등록정보로 ID의 일부를 찾을 수 있습니다.</h4>
 		<div id="tabNav_j1" class="join_tab search_tab">
-			<!-- <ul class="tabs" data-tab="tab-1">
-				<li class="tab_link current" data-tab="tab-1">개인회원 아이디찾기</li>
-				<li class="tab_link" data-tab="tab-2">사업자회원 아이디찾기</li>
-			</ul> -->
 			<div id="tab-1" id="tabNav0101" class="tab-content current">
-				<div class="t_box1">
-					<p>
-						티켓모아쇼핑몰 회원정보에 등록되어있는 정보 중 1가지를 택하여 입력해 주세요. <strong>등록정보로
-							ID의 일부를 찾을 수 있습니다.<br> 이름은 띄어쓰기 없이 입력해 주세요.
-						</strong>
-					</p>
-				</div>
 				<div class="authentication auth_2">
 					<div class="phone phone_2">
 						<form name="phoneSearch" method="post"
@@ -156,38 +110,37 @@ function chk_email(value)
 							<input type="hidden" name="mode" value="search" /> <input
 								type="hidden" name="tab_val" value="2" />
 							<dl class="type_2">
-								<dt>휴대폰정보로 아이디찾기</dt>
+								<dt>휴대폰 번호로 찾기</dt>
 								<dd>
-									<span class="standard">이름</span><span> <input
-										type="text" id="member_nm" name="member_nm" class="input_1">
+									<span class="standard">이름</span>
+									<span>
+										<input type="text" id="member_nm" name="member_nm" class="input_1 ws_2"  placeholder= "띄어쓰기 없이 입력해주세요.">
 									</span>
 								</dd>
 								<dd>
-									<span class="standard">휴대폰</span> <span> <input
-										type="text" id="cell1" name="cell1" class="input_1 ws_1"
-										maxlength="3"> - <input type="text" id="cell2"
-										name="cell2" class="input_1 ws_1" maxlength="4"> - <input
-										type="text" id="cell3" name="cell3" class="input_1 ws_1"
-										maxlength="4">
+									<span class="standard">휴대폰</span>
+									<span>
+										<input type="text" id="cell1" name="cell1" class="input_1 ws_1" maxlength="3"> - 
+										<input type="text" id="cell2" name="cell2" class="input_1 ws_1" maxlength="4"> - 
+										<input type="text" id="cell3" name="cell3" class="input_1 ws_1" maxlength="4">
 									</span>
 								</dd>
 								<dd class="btn">
-									<input type="submit" value="아이디찾기" class="search_btn">
+									<input type="submit" value="조회" class="search_btn">
 								</dd>
 							</dl>
 						</form>
 					</div>
 					<div class="ipin">
-						<form name="emailSearch" method="post"
-							action="/giftcard/join/id_search_2.do"
-							onsubmit="return email_chk_submit(this);">
-							<input type="hidden" name="mode" value="search" /> <input
-								type="hidden" name="tab_val" value="2" />
+						<form name="emailSearch" method="post" action="/giftcard/join/id_search_2.do" onsubmit="return email_chk_submit(this);">
+							<input type="hidden" name="mode" value="search" />
+							<input type="hidden" name="tab_val" value="2" />
 							<dl class="type_2 type_2_2">
-								<dt>이메일정보로 아이디찾기</dt>
+								<dt>이메일 주소로 찾기</dt>
 								<dd>
-									<span class="standard">이름</span><span> <input
-										type="text" id="member_nm1" name="member_nm1" class="input_1">
+									<span class="standard">이름</span>
+									<span>
+										<input type="text" id="member_nm1" name="member_nm1" class="input_1 ws_2" placeholder= "띄어쓰기 없이 입력해주세요.">
 									</span>
 								</dd>
 								<dd>
@@ -196,73 +149,24 @@ function chk_email(value)
 									</span>
 								</dd>
 								<dd class="btn">
-									<input type="submit" value="아이디찾기" class="search_btn">
+									<input type="submit" value="조회" class="search_btn">
 								</dd>
 							</dl>
+							<p class="find_pw"><a href="/giftcard/join/pw_search.do" class="find_pw_link">비밀번호 찾기</a></p>
 						</form>
 					</div>
 				</div>
-				<div class="b_gui">
-					<p class="gui_l">
-						<span class="text">아직 티켓모아 회원이 아니세요?</span><span><a
-							href="/giftcard/join/join_2.do"><img class="btn"
-								src="/images/join/btn_join.gif" alt=""></a></span>
-					</p>
-					<p class="gui_r">
-						<span class="text">아직 티켓모아 회원이 아니세요?</span><span><a
-							href="/giftcard/join/pw_search.do"><img class="btn"
-								src="/images/join/btn_pw_search.gif" alt=""></a></span>
-					</p>
-				</div>
 			</div>
-			<!-- <div id="tab-2" id="tabNav0102" class="tab-content">
-				<div class="t_box1">
-					<p>
-						티켓모아쇼핑몰 회원정보에 등록되어있는 정보 중 1가지를 택하여 입력해 주세요. <strong>등록정보로
-							ID의 일부를 찾을 수 있습니다.<br> 이름, 상호명은 띄어쓰기 없이 입력해 주세요.
-						</strong>
-					</p>
-				</div>
-				<div class="licensee_2">
-					<form name="busisearch" method="post" action="/giftcard/join/id_search_2.do"
-						onsubmit="return busi_chk_submit(this);">
-						<input type="hidden" name="mode" value="search" /> <input
-							type="hidden" name="tab_val" value="1" />
-						<dl class="type_2">
-							<dt>사업자등록번호로 아이디찾기</dt>
-							<dd>
-								<span class="standard">상호명</span><span> <input
-									type="text" id="busi_nm" name="busi_nm" class="input_1 ws_2">
-								</span>
-							</dd>
-							<dd>
-								<span class="standard">사업자등록번호</span> <span> <input
-									type="text" id="busi_no1" name="busi_no1" class="input_1 ws_1"
-									maxlength="3"> - <input type="text" id="busi_no2"
-									name="busi_no2" class="input_1 ws_1" maxlength="2"> - <input
-									type="text" id="busi_no3" name="busi_no3" class="input_1 ws_1"
-									maxlength="5">
-								</span>
-							</dd>
-							<dd class="btn">
-								<input type="submit" value="아이디찾기" class="search_btn">
-							</dd>
-						</dl>
-					</form>
-				</div>
-				<div class="b_gui">
-					<p class="gui_l">
-						<span class="text">아직 티켓모아 회원이 아니세요?</span><span><a
-							href="/giftcard/join/join_2.do"><img class="btn"
-								src="/images/join/btn_join.gif" alt=""></a></span>
-					</p>
-					<p class="gui_r">
-						<span class="text">아직 티켓모아 회원이 아니세요?</span><span><a
-							href="/giftcard/join/pw_search.do"><img class="btn"
-								src="/images/join/btn_pw_search.gif" alt=""></a></span>
-					</p>
-				</div>
-			</div> -->
+			
+			<article class="join_banner">
+			<div class="text_wrap">
+				<h5>아직 회원이 아니신가요?</h5>
+				<p>회원가입하고 다양한 혜택과 첫구매 쿠폰을 받으세요.<a href="/giftcard/join/join_2.do">회원가입<img src="/images/common/join_arrow.png" alt="회원가입"></a></p>
+			</div>
+			<div class="img_wrap">
+				<img src="/images/common/login_img.png" />
+			</div>
+		</article>
 		</div>
 		<script type="text/javascript">
 	// tabs

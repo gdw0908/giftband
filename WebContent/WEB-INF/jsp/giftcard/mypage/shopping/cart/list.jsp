@@ -16,8 +16,7 @@
 	name="viewport" />
 <meta name="author" content="31system" />
 <meta name="description" content="안녕하세요  티켓모아 입니다." />
-<meta name="Keywords"
-	content="티켓모아, 음향기기, 중고음향기기, 중고악기, 중고 쇼핑몰, 중고 악기 쇼핑몰, 중고 음향기기 쇼핑몰" />
+<meta name="Keywords" content="티켓크루, 상품권, 백화점 상품권, 롯데 백화점, 롯데 상품권, 갤러리아 백화점, 갤러리아 상품권, 신세계 백화점, 신세계 상품권" />
 <title>장바구니</title>
 
 <link rel="stylesheet"
@@ -161,31 +160,25 @@
 	<div id="sub">
 		<div class="contents">
 			<div class="title_rocation">
-				<h4>장바구니</h4>
+				<div>
+					<h4>장바구니</h4>
+					<p>※장바구니에 담긴 상품은 7일동안 보관되며 자동으로 삭제됩니다.</p>
+				</div>
+				<span>주문하실 상품을 선택 해 주세요.</span>
 			</div>
-			<ul class="cart_list_1">
-				<li>장바구니에 담긴 상품은 7일동안 보관되며 자동으로 삭제됩니다.</li>
-				<li class="last"><strong>주문하실 상품을 선택 해 주세요.</strong></li>
-			</ul>
+
 			<form id="frm" name="frm" action="index.do" method="get">
 				<input type="hidden" name="mode" value="step2" />
 				<article class="table_container" style="margin-bottom: 60px;">
 					<table class="cart_style_1 cart_style_list">
 						<caption>장바구니 리스트</caption>
-						<colgroup>
-							<col width="8%">
-							<col width="42%">
-							<col width="15%">
-							<col width="17%">
-							<col width="17%">
-						</colgroup>
 						<thead>
 							<tr>
-								<th scope="col"><input type="checkbox" class="chk_all"></th>
-								<th scope="col">제품정보</th>
-								<th scope="col">수량</th>
-								<th scope="col">판매가격</th>
-								<th scope="col">배송비</th>
+								<th>선택</th>
+								<th>상품정보</th>
+								<th>수량</th>
+								<th>판매가격</th>
+								<th>배송비</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -194,7 +187,7 @@
 									<td class="b_none" colspan="6"
 										style="width: 100vw; height: 240px;">
 										<p class="none_img">
-											<img src="/images/sub_2/none_cart.gif" alt="상품없음이미지">
+											<img src="/images/sub_2/shopping_cart.png" alt="상품없음이미지">
 										</p>
 										<p class="none_text">상품이 존재하지 않습니다.</p>
 									</td>
@@ -202,10 +195,11 @@
 								<c:otherwise>
 									<c:forEach var="item" items="${data.list }" varStatus="status">
 										<tr>
-											<td class="b_none"><input type="checkbox" name="chk"
-												value="${item.cart_no }" item_seq="${item.item_seq }"
-												prod_price="${item.user_price }" qty="${item.qty }"
-												fee_amt="${item.fee_amt}">
+											<td>
+												<label style="cursor: pointer;">
+                  									<input type="checkbox" name="chk" value="${item.cart_no }" item_seq="${item.item_seq }" prod_price="${item.user_price }" qty="${item.qty }" fee_amt="${item.fee_amt}" class="check">
+                  									<span class="icon"></span>
+                  								</label>
 											</td>
 											<td class="cart_main">
 												<div class="product_box">
@@ -217,10 +211,8 @@
 													</div>
 													<div class="pb_r ws_1">
 														<p>
-															<a
-																href="/giftcard/goods/view.do?menu=menu2&seq=${item.item_seq }">
-																<span><strong>${item.MAKERNM }</strong></span> <span
-																class="pro_name"> <strong>${item.PRODUCTNM }</strong></span>
+															<a href="/giftcard/goods/view.do?menu=menu2&seq=${item.item_seq }">
+																<span class="pro_name">${item.PRODUCTNM }</span>
 															</a>
 														</p>
 													</div>
@@ -241,7 +233,7 @@
 													<b class="c1">${suf:getThousand(item.USER_PRICE * item.QTY) }원</b>
 												<p>
 											</td>
-											<td class="b_none"><c:choose>
+											<td><c:choose>
 													<c:when test="${item.fee_yn eq 'C' }">착불</c:when>
 													<c:when test="${item.fee_yn eq 'Y' }">
 														<select class="delivery_sel" name="cod_yn"
@@ -266,16 +258,18 @@
 			</form>
 
 			<div class="product_btn">
-				<label><input type="checkbox" class="chk_all"> <span>전체선택</span></label>
-				<a href="javascript:removeCart()"><img
-					src="/images/sub_2/cart_s_btn1.gif" alt="선택삭제"></a>
+				<label style="cursor: pointer;">
+                  	<input type="checkbox" name="chk" value="${item.cart_no }" item_seq="${item.item_seq }" prod_price="${item.user_price }" qty="${item.qty }" fee_amt="${item.fee_amt}" class="check chk_all">
+                  	<span class="icon"></span>전체선택
+               </label>
+				<a href="javascript:removeCart()">선택삭제</a>
 			</div>
 
 			<div class="pricecheck">
 				<div class="p_check1">
 					<div class="top">
-						<span class="pt_l"><strong>정상가격</strong></span> <span class="pt_r">선택상품
-							: <b id="select_cnt">0</b>개
+						<span class="pt_l">정상가격</span> <span class="pt_r">선택상품
+							: 0개
 						</span>
 					</div>
 					<div class="bottom">
@@ -290,9 +284,7 @@
 				</div>
 				<div class="p_check2">
 					<div class="top">
-						<span class="pt_l"> <strong>할인금액</strong>
-						</span> <span class="pt_r"> <a href=""><img
-								src="/images/sub_2/guide_btn1.gif" alt="?"></a>
+						<span class="pt_l">할인금액
 						</span>
 					</div>
 					<div class="bottom">
@@ -304,7 +296,7 @@
 
 				<div class="p_check3">
 					<div class="top">
-						<span class="pt_l"><strong>총 구매금액</strong></span>
+						<span class="pt_l">총 구매금액</span>
 					</div>
 					<div class="bottom">
 						<p class="equal">

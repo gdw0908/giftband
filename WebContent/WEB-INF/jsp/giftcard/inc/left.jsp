@@ -13,7 +13,8 @@
 	</ul>
 </article>
 <div class="left_box">
-<h2 class="menu_tit">고객센터</h2>
+<h3>고객센터</h3>
+<h2 class="menu_tit"></h2>
 <!-- All Menu S -->
 <jsp:include page="/giftcard/inc/all_menu_box.do"/>
 <!-- All Menu E -->
@@ -23,7 +24,7 @@
       <li class="left_depth2"><a class="left_menu_a" href="/giftcard/mypage/notice/index.do" menu_level="2"><span>공지사항</span></a></li>
       <li class="left_depth2"><a class="left_menu_a" href="/giftcard/mypage/forces/index.do" menu_level="2"><span>문의하기</span></a></li>
       <li class="left_depth2">
-      <a href="#" class="left_menu_a" menu_level="2"><span class="plus">나의쇼핑</span><i class="xi-angle-down"></i></a>
+      <a href="#" class="left_menu_a" menu_level="2"><span class="plus">나의쇼핑</span></a>
       <ul class="left_menu_ul">
         <li class="left_depth3"><a href="/giftcard/mypage/shopping/cart/index.do" class="left_menu_b" menu_level="3">장바구니</a></li>
         <li class="left_depth3"><a href="/giftcard/mypage/shopping/state/index.do?mode=list1" class="left_menu_b" menu_level="3">주문/배송조회</a></li>
@@ -32,7 +33,7 @@
       </ul>
       </li>
       <li class="left_depth2">
-      <a href="#" class="left_menu_a" menu_level="2"><span class="plus">회원정보</span><i class="xi-angle-down"></i></a>
+      <a href="#" class="left_menu_a" menu_level="2"><span class="plus">회원정보</span></a>
       <ul class="left_menu_ul">
       <c:if test = "${sessionScope.member.group_seq eq '2' or sessionScope.member.group_seq eq '9' }">
 	    <li class="left_depth3"><a href="/giftcard/mypage/member/index.do?mode=<c:choose><c:when test = "${not empty sessionData.busi_no }">busi</c:when><c:otherwise>join</c:otherwise></c:choose>" class="left_menu_b" menu_level="3">회원정보 변경</a></li>
@@ -48,7 +49,7 @@
       <!-- <li class="left_depth2"><a class="left_menu_a" href="/mypage/event/event_list.do" menu_level="2"><span>이벤트</span></a></li> -->
 <!--       <li class="left_depth2"><a class="left_menu_a" href="/mypage/special_contract/special_contract.do" menu_level="2"><span>부품사용특약</span><i class="xi-angle-right"></i></a></li> -->
       <li class="left_depth2">
-      <a href="#" class="left_menu_a" menu_level="2"><span class="plus">이용약관</span><i class="xi-angle-down"></i></a>
+      <a href="#" class="left_menu_a" menu_level="2"><span class="plus">이용약관</span></a>
       <ul class="left_menu_ul">
         <li class="left_depth3"><a href="/giftcard/mypage/annc/annc1.do" class="left_menu_b" menu_level="3">서비스이용약관</a></li>
         <li class="left_depth3"><a href="/giftcard/mypage/annc/annc2.do" class="left_menu_b" menu_level="3">전자금융거래약관</a></li>
@@ -103,24 +104,6 @@ $( document ).ready(function() {
 		$('.menu_tit').text($(this).text());
 		$('.change_state').text($(this).text());
 	});
-	
-// 	var url = window.location.pathname,
-//     	   urlRegExp = new RegExp(url.replace(/\/$/, '') + "$");
-// 	$('.left_menu_a').each(function () {
-//   		if (urlRegExp.test(this.href.replace(/\/$/, ''))) {
-//     		$(this).parents().addClass('select');
-// 			$('.menu_tit').text($(this).text());
-// 			$('.change_status').text($(this).text());
-//   		} 
-// 	});
-	
-// 	$('.left_depth3 > a').each(function () {
-//   		if (urlRegExp.test(this.href.replace(/\/$/, ''))) {
-// 			$('.menu_tit').text($(this).text());
-// 			$('.change_status').text($(this).text());
-// 			return false;
-//   		} 
-// 	});
 	
 	
 	//전체 카테고리
