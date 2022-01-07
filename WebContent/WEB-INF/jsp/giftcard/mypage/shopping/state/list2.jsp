@@ -15,9 +15,8 @@
 	content="minimum-scale=1.0, width=device-width, maximum-scale=1, user-scalable=yes"
 	name="viewport" />
 <meta name="author" content="31system" />
-<meta name="description" content="안녕하세요  티켓모아 입니다." />
-<meta name="Keywords"
-	content="티켓모아, 음향기기, 중고음향기기, 중고악기, 중고 쇼핑몰, 중고 악기 쇼핑몰, 중고 음향기기 쇼핑몰" />
+<meta name="description" content="안녕하세요  티켓크루 입니다." />
+<meta name="Keywords" content="티켓크루, 상품권, 백화점 상품권, 롯데 백화점, 롯데 상품권, 갤러리아 백화점, 갤러리아 상품권, 신세계 백화점, 신세계 상품권" />
 <title>주문/반품/교환/조회</title>
 
 <link rel="stylesheet"
@@ -275,17 +274,13 @@
 		<div class="contents">
 
 			<div class="period_line">
-				<form id="searchFrm" name="searchFrm" action="index.do?mode=list2"
-					method="post">
-
-					<p class="title">기간별조회</p>
-
+				<form id="searchFrm" name="searchFrm" action="index.do?mode=list2" method="post">
 					<ul>
 						<li><a class="first" href="#" onclick="week();">1주일</a></li>
 						<li><a href="#" onclick="day15();">15일</a></li>
 						<li><a href="#" onclick="month1();">1개월</a></li>
 						<li><a href="#" onclick="month3();">3개월</a></li>
-						<li class="cut"><a class="first" href="#" onclick="bmonth();">전월</a></li>
+						<li><a class="first" href="#" onclick="bmonth();">전월</a></li>
 						<li><a href="#" onclick="cmonth();">당월</a></li>
 					</ul>
 
@@ -293,7 +288,7 @@
 						<input type="text" id="sdate" name="sdate" value="${param.sdate }">
 						~ <input type="text" id="edate" name="edate"
 							value="${param.edate }"> <a href="javascript:goSubmit();"
-							class="lockup_btn">조회하기</a>
+							class="lockup_btn">조회</a>
 					</div>
 				</form>
 			</div>
@@ -321,7 +316,7 @@
 							<c:when test="${fn:length(data.list) == 0}">
 								<td class="b_none none_td" colspan="4">
 									<p class="none_img">
-										<img src="/images/sub_2/none_cart.gif" alt="상품없음이미지">
+										<img src="/images/sub_2/shopping_cart.png" alt="상품없음이미지">
 									</p>
 									<p class="none_text">상품이 존재하지 않습니다.</p>
 								</td>

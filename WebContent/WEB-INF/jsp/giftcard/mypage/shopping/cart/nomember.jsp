@@ -22,8 +22,8 @@
 <meta name="format-detection" content="telephone=no" />
 <meta content="minimum-scale=1.0, width=device-width, maximum-scale=1, user-scalable=yes" name="viewport" />
 <meta name="author" content="31system" />
-<meta name="description" content="안녕하세요  티켓모아 입니다." />
-<meta name="Keywords" content="티켓모아, 음향기기, 중고음향기기, 중고악기, 중고 쇼핑몰, 중고 악기 쇼핑몰, 중고 음향기기 쇼핑몰" />
+<meta name="description" content="안녕하세요  티켓크루 입니다." />
+<meta name="Keywords" content="티켓크루, 상품권, 백화점 상품권, 롯데 백화점, 롯데 상품권, 갤러리아 백화점, 갤러리아 상품권, 신세계 백화점, 신세계 상품권" />
 <title>주문/결제</title>
 
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
@@ -445,34 +445,20 @@ function goStep3() {
 <body>
 <!-- <form name="frmAGS_pay" method="post" action="/giftcard/mypage/shopping/cart/non_member.do?mode=pay_ing" style="width: 100%;"> -->
 <form name="frm"  id="frm" method="post" action="/giftcard/mypage/shopping/cart/non_member.do?mode=pay_ing" style="width: 100%;">
-	<div class="title_rocation">
-      <div class="tr_wrap">
-        <h3>주문/결제</h3>
-      </div>
-    </div>
-
     <div class="j_wrap">
-    
-    <h5 class="no_mem_type">1. 주문제품</h5>
+        <h3 class="non_mem_tit">주문/결제</h3>
+    	<h5 class="no_mem_type">1. 주문제품</h5>
 
-          <table class="cart_style_1">
-          <caption>
-          장바구니 리스트
-          </caption>
-          <colgroup>
-          <col width="">
-          <col width="7%">
-          <col width="15%">
-          <col width="20%">
-          <col width="16%">
-          </colgroup>
+		<article class="table_container" style="margin-bottom: 60px;">
+          <table class="cart_style_1 cart_view">
+          <caption> 장바구니 리스트</caption>
           <thead>
           <tr>
-            <th scope="col">제품정보</th>
-            <th scope="col">수량</th>
-            <th scope="col">가격</th>
-            <th scope="col">배송비</th>
-            <th scope="col">합계</th>
+            <th>제품정보</th>
+            <th>수량</th>
+            <th>가격</th>
+            <th>배송비</th>
+            <th>합계</th>
           </tr>
           </thead>
           <tbody>
@@ -481,28 +467,14 @@ function goStep3() {
 			<c:set var="prod_price" value="${prod_price + user_price_l }"/>
 			<c:set var="discount_price_l" value="0"/>
 			<c:set var="fee_price_l" value="0"/>
-      		<%-- <c:if test="${item.discount_rate > 0}">
-        		<c:set var="user_price" value="${user_price + (item.user_price * item.qty) }"/>
-         		<c:set var="discount_price" value="${discount_price + ((item.user_price * item.qty) - (item.sale_price * item.qty)) }"/>
-				<c:set var="user_price_l" value="${item.user_price * item.qty }"/>
-				<c:set var="discount_price_l" value="${(item.user_price * item.qty) - (item.sale_price * item.qty) }"/>
-           	</c:if>
-			<c:if test="${item.discount_rate == 0 || empty item.discount_rate}">
-        		<c:set var="user_price" value="${user_price + (item.user_price * item.qty) }"/>
-				<c:set var="user_price_l" value="${item.user_price * item.qty }"/>
-           	</c:if>
-       		<c:if test="${item.cod_yn eq 'Y' }">
-            	<c:set var="fee_price" value="${fee_price + item.fee_amt }"/>
-            	<c:set var="fee_price_l" value="${item.fee_amt }"/>
-            </c:if> --%>
           <tr>
             <td class="cart_main">
               <div class="product_box">
                 <div class="pb_l"> <a href="#"><img src="${item.thumb }" alt=""></a> </div>
                 <div class="pb_r ws_2">
                   <p>
-					<a href="#"> <span><strong>${item.MAKERNM }</strong></span>
-						<span><strong>${item.PRODUCTNM } </strong></span> <%-- <span>${item.grade }등급 / ${item.com_nm }</span> --%>
+					<a href="#">
+						<span>${item.PRODUCTNM }</span> 
 					</a>
                   </p>
                 </div>
@@ -513,17 +485,6 @@ function goStep3() {
             	${suf:getThousand(item.user_price) } 원 
               	<c:if test="${item.qty>1 }"> x ${item.qty}</c:if>
             </td>
-<!--             <td> -->
-<!--               <p class="first"> -->
-<%--             	<c:if test="${item.discount_rate > 0}"> --%>
-<%-- 	              ${suf:getThousand(item.user_price - item.sale_price) } --%>
-<%--             	</c:if> --%>
-<%-- 				<c:if test="${item.discount_rate == 0 || empty item.discount_rate}"> --%>
-<!-- 	              0 -->
-<%--             	</c:if> 원  --%>
-<%--               	<c:if test="${item.qty>1 }"> x ${item.qty}</c:if> --%>
-<!--               </p> -->
-<!--             </td> -->
             <td>
             	<c:if test="${fee_price_l > 0  }">${fee_price_l} 원<br></c:if> 
             	 <c:choose>
@@ -540,17 +501,18 @@ function goStep3() {
 	              	<c:otherwise>무료</c:otherwise>
 				</c:choose>
             </td>
-            <td class="b_none">${suf:getThousand(user_price_l)} 원</td>
+            <td>${suf:getThousand(user_price_l)} 원</td>
           </tr>
           </c:forEach>
           </tbody>
           </table>
+		</article>
           
           <ul class="sub_list_1">
-            <li><strong>티켓모아</strong>는 통신판매중개자이며 통신판매의 당사자가 아닙니다. 따라서 <strong>티켓모아</strong>는 상품ㆍ거래정보 및 거래에 대하여 책임을 지지 않습니다.</li>
+            <li>티켓크루는 통신판매중개자이며 통신판매의 당사자가 아닙니다. 따라서 티켓크루는 상품ㆍ거래정보 및 거래에 대하여 책임을 지지 않습니다.</li>
           </ul>
           
-          <h5 class="no_mem_type">2. 주문회원 정보<span>( <i>필수입력사항입니다.)</i></span></h5>
+          <h5 class="no_mem_type">2. 주문회원 정보</h5>
           
           <div class="sub_table_1">
             <table>
@@ -584,13 +546,13 @@ function goStep3() {
             </tr>
             <tr>
               <th scope="row"><span>주문비밀번호 확인</span></th>
-              <td><input type="password" id="passwd_confirm" name="passwd_confirm" class="input_2 ws_3"> <span class="c1"><strong>&nbsp;&nbsp;※ 주의! : 주문·배송조회 등에 필요하므로 반드시 주문 비밀번호를 기억해 두시기 바랍니다.</strong></span></td>
+              <td><input type="password" id="passwd_confirm" name="passwd_confirm" class="input_2 ws_3"> <span class="c1">&nbsp;&nbsp;※ 주의! : 주문·배송조회 등에 필요하므로 반드시 주문 비밀번호를 기억해 두시기 바랍니다.</span></td>
             </tr>
             </tbody>
             </table>
           </div>
           
-          <h5 class="no_mem_type">3. 배송지정보<span>( <i>필수입력사항입니다.)</i></span></h5>
+          <h5 class="no_mem_type">3. 배송지정보</h5>
           
           <div class="sub_table_1">
             <table>
@@ -643,7 +605,7 @@ function goStep3() {
               <p><span>배송시요청사항</span></p>
               </th>
               <td>
-                <div class="color_2"><strong>주의!</strong> : 판매자와 사전에 협의되지 않은 선택정보 변경 기재는 반영되지 않을 수 있습니다.</div>
+                <div class="color_2">주의! : 판매자와 사전에 협의되지 않은 선택정보 변경 기재는 반영되지 않을 수 있습니다.</div>
                 <c:forEach var="item" items="${data.list }" varStatus="status">
                 <div class="middle">
                   <p class="color_1">상품명 : ${item.MAKERNM } / ${item.PRODUCTNM } </p>
@@ -662,8 +624,8 @@ function goStep3() {
           <div class="pricecheck">
             <div class="p_check1">
               <div class="top">
-                <span class="pt_l"><strong>정상가격</strong></span>
-                <span class="pt_r">선택상품 : <b>${fn:length(data.list) }</b>개</span>
+                <span class="pt_l">정상가격</span>
+                <span class="pt_r">선택상품 : ${fn:length(data.list) }개</span>
               </div>
               <div class="bottom">
                 <p><b>${suf:getThousand(prod_price) }</b>원</p>
@@ -672,8 +634,7 @@ function goStep3() {
             </div>
             <div class="p_check2">
               <div class="top">
-                <span class="pt_l"><strong>할인금액</strong></span>
-                <span class="pt_r"><a href="#"><img src="/images/sub_2/guide_btn1.gif" alt="?"></a></span>
+                <span class="pt_l">할인금액</span>
               </div>
               <div class="bottom">
                 <p class="minus"><b>${suf:getThousand(discount_price) }</b>원</p>
@@ -682,7 +643,7 @@ function goStep3() {
 
             <div class="p_check3">
               <div class="top">
-                <span class="pt_l"><strong>총 구매금액</strong></span>
+                <span class="pt_l">총 구매금액</span>
               </div>
               <div class="bottom">
               	<c:set var="actual_price" value="${prod_price - discount_price + fee_price}" scope="request"/>
@@ -694,7 +655,7 @@ function goStep3() {
           
           <div class="pay_btn"> 
 <!--           <a href="/html/join/no_member_3.html"><img src="/images/sub_2/btn_pay_2.gif" alt="결제하기"></a>  -->
-	          <a href="/giftcard/mypage/shopping/cart/index.do" class="clear_btn">장바구니</a>
+	          <a href="/giftcard/mypage/shopping/cart/index.do" class="clear_btn" style="margin-bottom: 0;">장바구니</a>
 	          <a href="#" onclick="javascript:goStep3()" style="color: #fff;">결제하기</a> 
           </div>
 

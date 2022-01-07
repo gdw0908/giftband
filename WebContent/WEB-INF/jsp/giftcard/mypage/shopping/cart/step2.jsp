@@ -24,9 +24,8 @@
 	content="minimum-scale=1.0, width=device-width, maximum-scale=1, user-scalable=yes"
 	name="viewport" />
 <meta name="author" content="31system" />
-<meta name="description" content="안녕하세요  티켓모아 입니다." />
-<meta name="Keywords"
-	content="티켓모아, 음향기기, 중고음향기기, 중고악기, 중고 쇼핑몰, 중고 악기 쇼핑몰, 중고 음향기기 쇼핑몰" />
+<meta name="description" content="안녕하세요  티켓크루 입니다." />
+<meta name="Keywords" content="티켓크루, 상품권, 백화점 상품권, 롯데 백화점, 롯데 상품권, 갤러리아 백화점, 갤러리아 상품권, 신세계 백화점, 신세계 상품권" />
 <title>나의쇼핑</title>
 
 <!-- <script language=javascript
@@ -471,117 +470,70 @@ function goStep3() {
 					<h4>주문/결제</h4>
 				</div>
 				<p class="pay_type">1. 주문제품</p>
-				<table class="cart_style_1">
-					<caption>장바구니 리스트</caption>
-					<colgroup>
-						<col width="">
-						<col width="10%">
-						<col width="20%">
-						<col width="20%">
-						<col width="20%">
-					</colgroup>
-					<thead>
-						<tr>
-							<th scope="col">제품정보</th>
-							<th scope="col">수량</th>
-							<th scope="col">가격</th>
-							<th scope="col">배송비</th>
-							<th scope="col">합계</th>
-						</tr>
-					</thead>
-					<tbody>
-						<c:forEach var="item" items="${data.list }" varStatus="status">
-							<c:set var="user_price_l" value="${item.user_price * item.qty }"/>
-							<c:set var="prod_price" value="${prod_price + user_price_l }"/>							
-							<c:set var="discount_price_l" value="0" />
-							<c:set var="fee_price_l" value="0" />
-							<%-- <c:choose>
-					       		<c:when test="${(sessionScope.member.group_seq eq '3' or sessionScope.member.group_seq eq '9') && item.supplier_pricing_yn eq 'Y'}">
-					       			<c:set var="user_price" value="${user_price + (item.user_price * item.qty) }"/>
-									<c:set var="user_price_l" value="${item.user_price * item.qty }"/>
-									<c:set var="discount_price" value="${discount_price + ((item.user_price * item.qty) - (item.supplier_price * item.qty)) }"/>
-									<c:set var="discount_price_l" value="${(item.user_price * item.qty) - (item.supplier_price * item.qty) }"/>
-					       		</c:when>
-					       		<c:otherwise>
-					       			<c:if test="${item.discount_rate > 0}">
-						        		<c:set var="user_price" value="${user_price + (item.user_price * item.qty) }"/>
-					          			<c:set var="discount_price" value="${discount_price + ((item.user_price * item.qty) - (item.sale_price * item.qty)) }"/>
-										<c:set var="user_price_l" value="${item.user_price * item.qty }"/>
-										<c:set var="discount_price_l" value="${(item.user_price * item.qty) - (item.sale_price * item.qty) }"/>
-					            	</c:if>
-									<c:if test="${item.discount_rate == 0 || empty item.discount_rate}">
-						        		<c:set var="user_price" value="${user_price + (item.user_price * item.qty) }"/>
-										<c:set var="user_price_l" value="${item.user_price * item.qty }"/>
-					            	</c:if>
-					       		</c:otherwise>
-				       		</c:choose> 
-				       		<c:if test="${item.cod_yn eq 'Y' }">
-				            	<c:set var="fee_price" value="${fee_price + item.fee_amt }"/>
-				            	<c:set var="fee_price_l" value="${item.fee_amt }"/>
-				            </c:if> --%>
+				<article class="table_container" style="margin-bottom: 60px;">
+					<table class="cart_style_1 cart_view">
+						<caption>장바구니 리스트</caption>
+						<thead>
 							<tr>
-								<td class="cart_main">
-									<div class="product_box">
-										<div class="pb_l">
-											<a href="#"><img src="${item.thumb }" alt=""></a>
-										</div>
-										<div class="pb_r ws_2">
-											<p>
-												<a href="#"> <span><strong>${item.MAKERNM }</strong></span>
-													<span><strong>${item.PRODUCTNM } </strong></span> <%-- <span>${item.grade }등급 / ${item.com_nm }</span> --%>
-												</a>
-											</p>
-										</div>
-									</div>
-								</td>
-								<td>${item.qty }개</td>
-								<td>${suf:getThousand(item.USER_PRICE) } 원 <c:if
-										test="${item.qty>1 }"> x ${item.qty}</c:if>
-								</td>
-								<!--             <td> -->
-								<!--             	<p class="first"> -->
-								<%--               	<c:choose> --%>
-								<%--               		<c:when test="${(sessionScope.member.group_seq eq '3' or sessionScope.member.group_seq eq '9') && item.supplier_pricing_yn eq 'Y'}"> --%>
-								<%--               			${suf:getThousand(item.user_price - item.supplier_price) } --%>
-								<%--               		</c:when> --%>
-								<%--               		<c:otherwise> --%>
-								<%--               			<c:if test="${item.discount_rate > 0}"> --%>
-								<%-- 			              ${suf:getThousand(item.user_price - item.sale_price) } --%>
-								<%-- 		            	</c:if> --%>
-								<%-- 						<c:if test="${item.discount_rate == 0 || empty item.discount_rate}"> --%>
-								<!-- 			              0 -->
-								<%-- 		            	</c:if> --%>
-								<%--               		</c:otherwise> --%>
-								<%--               	</c:choose> 원  --%>
-								<%--               	<c:if test="${item.qty>1 && discount_price_l>0}"> x ${item.qty}</c:if> --%>
-								<!--               	</p> -->
-								<!--             </td> -->
-								<td id="fee_price"><c:if test="${fee_price_l > 0  }">${fee_price_l} 원<br>
-									</c:if> <c:choose>
-										<c:when test="${item.fee_yn eq 'C' }">
-						              		착불
-						              	</c:when>
-										<c:when test="${item.fee_yn eq 'Y' }">
-											<select class="deliver_sel" name="cod_yn" onchange="changeCod('${item.cart_no }', this.value)">
-												<option value="Y"
-													<c:if test="${item.cod_yn eq 'Y'}">selected="selected"</c:if>>선결제</option>
-												<option value="N"
-													<c:if test="${item.cod_yn eq 'N'}">selected="selected"</c:if>>착불</option>
-											</select>
-											<br />
-						              		(${suf:getThousand(item.fee_amt) } 원)
-						              	</c:when>
-										<c:otherwise>무료</c:otherwise>
-									</c:choose></td>
-								<td class="b_none">${suf:getThousand(user_price_l)} 원</td>
-
+								<th>제품정보</th>
+								<th>수량</th>
+								<th>가격</th>
+								<th>배송비</th>
+								<th>합계</th>
 							</tr>
-						</c:forEach>
-					</tbody>
-				</table>
+						</thead>
+						<tbody>
+							<c:forEach var="item" items="${data.list }" varStatus="status">
+								<c:set var="user_price_l" value="${item.user_price * item.qty }"/>
+								<c:set var="prod_price" value="${prod_price + user_price_l }"/>							
+								<c:set var="discount_price_l" value="0" />
+								<c:set var="fee_price_l" value="0" />
+								<tr>
+									<td class="cart_main">
+										<div class="product_box">
+											<div class="pb_l">
+												<a href="#"><img src="${item.thumb }" alt="${item.PRODUCTNM }"></a>
+											</div>
+											<div class="pb_r ws_2">
+												<p>
+													<a href="#">
+														<span>${item.PRODUCTNM }</span>
+													</a>
+												</p>
+											</div>
+										</div>
+									</td>
+									<td>${item.qty }개</td>
+									<td>${suf:getThousand(item.USER_PRICE) } 원 <c:if
+										test="${item.qty>1 }"> x ${item.qty}</c:if>
+									</td>
+									<td id="fee_price"><c:if test="${fee_price_l > 0  }">${fee_price_l} 원<br>
+										</c:if> <c:choose>
+											<c:when test="${item.fee_yn eq 'C' }">
+						              			착불
+						              		</c:when>
+											<c:when test="${item.fee_yn eq 'Y' }">
+												<select class="deliver_sel" name="cod_yn" onchange="changeCod('${item.cart_no }', this.value)">
+													<option value="Y"
+														<c:if test="${item.cod_yn eq 'Y'}">selected="selected"</c:if>>선결제</option>
+															<option value="N"
+														<c:if test="${item.cod_yn eq 'N'}">selected="selected"</c:if>>착불</option>
+												</select>
+												<br />
+						              			(${suf:getThousand(item.fee_amt) } 원)
+						              		</c:when>
+											<c:otherwise>무료</c:otherwise>
+										</c:choose>
+									</td>
+									<td>${suf:getThousand(user_price_l)} 원</td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+				</article>
 				<ul class="sub_list_1">
-					<li><strong>티켓모아</strong>는 통신판매중개자이며 통신판매의 당사자가 아닙니다. 따라서
-						<strong>티켓모아</strong>는 상품ㆍ거래정보 및 거래에 대하여 책임을 지지 않습니다.</li>
+					<li><strong>티켓크루</strong>는 통신판매중개자이며 통신판매의 당사자가 아닙니다. 따라서
+						<strong>티켓크루</strong>는 상품ㆍ거래정보 및 거래에 대하여 책임을 지지 않습니다.</li>
 				</ul>
 				<p class="pay_type">2. 주문회원 정보</p>
 				<div class="sub_table_1">
@@ -721,8 +673,8 @@ function goStep3() {
 				<div class="pricecheck">
 					<div class="p_check1">
 						<div class="top">
-							<span class="pt_l"><strong>정상가격</strong></span> <span
-								class="pt_r">선택상품 : <b>${fn:length(data.list) }</b>개
+							<span class="pt_l">정상가격</span> <span
+								class="pt_r">선택상품 : ${fn:length(data.list) }개
 							</span>
 						</div>
 						<div class="bottom">
@@ -736,9 +688,7 @@ function goStep3() {
 					</div>
 					<div class="p_check2">
 						<div class="top">
-							<span class="pt_l"><strong>할인금액</strong></span> <span
-								class="pt_r"><a href="#"><img
-									src="/images/sub_2/guide_btn1.gif" alt="?"></a></span>
+							<span class="pt_l">할인금액</span>
 						</div>
 						<div class="bottom">
 							<p class="minus">
@@ -749,7 +699,7 @@ function goStep3() {
 
 					<div class="p_check3">
 						<div class="top">
-							<span class="pt_l"><strong>총 구매금액</strong></span>
+							<span class="pt_l">총 구매금액</span>
 						</div>
 						<div class="bottom">
 							<c:set var="actual_price"
@@ -762,9 +712,8 @@ function goStep3() {
 					</div>
 				</div>
 				<div class="pay_btn">
-				<a href="/giftcard/mypage/shopping/cart/index.do" class="clear_btn">장바구니</a>
+				<a href="/giftcard/mypage/shopping/cart/index.do" class="clear_btn" style="margin-bottom: 0; ">장바구니</a>
 				<a href="javascript:goStep3()">결제하기</a>
-				<!-- <a href="#" onclick="return Pay(frmAGS_pay)">결제하기</a> --> 
 				</div>
 
 				<div id="mask"></div>
@@ -776,7 +725,6 @@ function goStep3() {
 								<h3>
 									<img src="/images/sub_2/h3_img_4_pop.gif" alt="배송주소록">
 								</h3>
-								<!-- div class="state"> <span>홈</span> &gt; <span>고객센터</span> &gt; <span><strong>나의쇼핑</strong></span> </div-->
 								<p class="pop_close">
 									<a class="close" href="#"><img
 										src="/images/header/popup_close.png" alt="닫기"></a>

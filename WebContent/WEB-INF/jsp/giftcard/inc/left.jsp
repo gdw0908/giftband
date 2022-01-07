@@ -45,9 +45,6 @@
         </c:if>
       </ul>
       </li>
-      <!-- li class="left_depth2"><a class="left_menu_a" href="/mypage/late/index.do" menu_level="2"><span>구매후기</span></a></li -->
-      <!-- <li class="left_depth2"><a class="left_menu_a" href="/mypage/event/event_list.do" menu_level="2"><span>이벤트</span></a></li> -->
-<!--       <li class="left_depth2"><a class="left_menu_a" href="/mypage/special_contract/special_contract.do" menu_level="2"><span>부품사용특약</span><i class="xi-angle-right"></i></a></li> -->
       <li class="left_depth2">
       <a href="#" class="left_menu_a" menu_level="2"><span class="plus">이용약관</span></a>
       <ul class="left_menu_ul">
@@ -57,10 +54,8 @@
 		<li class="left_depth3"><a href="/giftcard/mypage/annc/annc4.do" class="left_menu_b" menu_level="3">이메일수집</a></li>
       </ul>
       </li>
-      <!-- <li class="left_depth2"><a class="left_menu_a" href="#" menu_level="2"><span>사이트맵</span></a></li> -->
     </ul>
   </div>
-<!--   <p class="left_banner"><a href="#"><img src="/images/sub_2/left_banner.gif" alt="고객센터 1544-6444 FAX / 031.961.4699  평일 08:30 ~ 19:00 토,일,공휴일 휴무"></a></p> -->
 </div>
 
 <script type="text/javascript">
@@ -82,12 +77,10 @@ $( document ).ready(function() {
 	if(fullO.size() > 0){
 		fullO.closest("li").addClass("select");
 		fullO.closest("li.left_depth2").addClass("select");
-// 		fullO.closest("ul.left_menu_ul").show();
 		$('.menu_tit').text(tit);
 		$('.change_state').text(tit);
 	}else{
 		O.closest("li").addClass("select");
-// 		O.closest("li.left_depth2").addClass("select");
 		O.closest("ul.left_menu_ul").show();
 		$('.menu_tit').text(tit);
 		$('.change_state').text(tit);
@@ -100,9 +93,7 @@ $( document ).ready(function() {
 		$('.left_menu_ul').slideUp();
 		$(this).next().slideToggle(300);
 		$(this).parent().siblings().removeClass('select');
-		$(this).parent().toggleClass('select');
-		$('.menu_tit').text($(this).text());
-		$('.change_state').text($(this).text());
+		$(this).parent().addClass('select');
 	});
 	
 	

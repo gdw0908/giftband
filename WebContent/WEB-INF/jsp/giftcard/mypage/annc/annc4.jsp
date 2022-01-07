@@ -10,8 +10,8 @@
 <meta name="format-detection" content="telephone=no" />
 <meta content="minimum-scale=1.0, width=device-width, maximum-scale=1, user-scalable=yes" name="viewport" />
 <meta name="author" content="31system" />
-<meta name="description" content="안녕하세요  티켓모아 입니다." />
-<meta name="Keywords" content="티켓모아, 음향기기, 중고음향기기, 중고악기, 중고 쇼핑몰, 중고 악기 쇼핑몰, 중고 음향기기 쇼핑몰" />
+<meta name="description" content="안녕하세요  티켓크루입니다." />
+<meta name="Keywords" content="티켓크루, 상품권, 백화점 상품권, 롯데 백화점, 롯데 상품권, 갤러리아 백화점, 갤러리아 상품권, 신세계 백화점, 신세계 상품권" />
 
 <title>이메일수집</title>
 <script>
@@ -33,10 +33,10 @@ $(function() {
 </head>
 <div id="sub">
   <div class="contents">
-  	<h2>이메일수집</h2>
-    <div class="section" style="padding:15px 0 0 0;">
-      <p class="first"><strong>안녕하세요. &lt;티켓모아&gt;입니다.</strong></p>
-      <p>2021년 10월 15일부터 티켓모아 쇼핑몰 사이트에 게시된 전자우편(e-mail)주소를 전자우편 수집 프로그램이나 그 밖의 기술적 장치를 이용하여 무단으로 수집하는 것을 거부하며, 이를 위반 시 정보통신망이용 촉진 및 정보보호 등에 관한 법률(＇이하＇ 정보통신망법)에 의해 형사 처벌됨을 유념하시기 바랍니다.</p>
+  	<h2 class="annc_tit">이메일수집</h2>
+    <div class="section">
+      <p class="first">안녕하세요. &lt;티켓크루&gt; 입니다.</p>
+      <p>2021년 10월 15일부터 티켓크루 쇼핑몰 사이트에 게시된 전자우편(e-mail)주소를 전자우편 수집 프로그램이나 그 밖의 기술적 장치를 이용하여 무단으로 수집하는 것을 거부하며, 이를 위반 시 정보통신망이용 촉진 및 정보보호 등에 관한 법률(＇이하＇ 정보통신망법)에 의해 형사 처벌됨을 유념하시기 바랍니다.</p>
       <p>* 정보통신망법 제50조의 2 (전자우편주소의 무단 수집행위 등 금지)</p>
       <ol>
         <li>① 누구든지 전자우편주소의 수집을 거부하는 의사가 명시된 인터넷 홈페이지에서 자동으로 전자우편주소를 수집하는 프로그램 그 밖의 기술적 장치를 이용하여 전자우편주소를 수집하여서는 아니 된다.</li>

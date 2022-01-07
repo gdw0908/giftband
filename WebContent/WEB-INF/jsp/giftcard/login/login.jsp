@@ -102,21 +102,21 @@ jQuery(document).ready(function(){
         			<div class="input_div pass">
             			<input type="password" class="input" id="member_pw" name="member_pw" placeholder="비밀번호를 입력해주세요.">
         			</div>
-              <div class="btn_lnk">
-                <ul>
-                  <li class="first">
-                  	<label style="cursor: pointer;">
-                  	<input type="checkbox" id="id_save" name="id_save" class="check">
-                  	<span class="icon"></span> 아이디저장</label>
-                  </li>
-                  <li><a href="/giftcard/join/id_search.do">아이디/비밀번호 찾기</a></li>
-<!--                   <li class="last"><a href="/giftcard/join/pw_search.do">비밀번호 찾기</a></li> -->
-                </ul>
-              </div>
-                <div class="l_btn">
-                	<button type="submit" class="login_btn">로그인</button>
-                </div>
-              </div>
+              		<div class="btn_lnk">
+               			 <ul>
+                  			<li class="first">
+                  				<label style="cursor: pointer;">
+                  					<input type="checkbox" id="id_save" name="id_save" class="check">
+                  					<span class="icon"></span> 아이디저장
+                  				</label>
+                  			</li>
+                  			<li><a href="/giftcard/join/id_search.do">아이디/비밀번호 찾기</a></li>
+                		</ul>
+              		</div>
+                	<div class="l_btn">
+                		<button type="submit" class="login_btn">로그인</button>
+                	</div>
+              	</div>
             </div>
             </fieldset>
             </form>

@@ -13,9 +13,8 @@
 	content="minimum-scale=1.0, width=device-width, maximum-scale=1, user-scalable=yes"
 	name="viewport" />
 <meta name="author" content="31system" />
-<meta name="description" content="안녕하세요  티켓모아 입니다." />
-<meta name="Keywords"
-	content="티켓모아, 음향기기, 중고음향기기, 중고악기, 중고 쇼핑몰, 중고 악기 쇼핑몰, 중고 음향기기 쇼핑몰" />
+<meta name="description" content="안녕하세요  티켓크루 입니다." />
+<meta name="Keywords" content="티켓크루, 상품권, 백화점 상품권, 롯데 백화점, 롯데 상품권, 갤러리아 백화점, 갤러리아 상품권, 신세계 백화점, 신세계 상품권" />
 
 <title>나의 배송지관리</title>
 <script type="text/javascript" src="/lib/js/common.js"></script>
@@ -128,19 +127,13 @@
 			<div class="contents">
 
 				<div class="t_box1">
-					<p>
-						<strong>새로운 배송주소를 등록하시려면 주소록 추가하기를 눌러주세요.</strong> <a href="#"
-							class="add_btn1">주소록 추가하기</a>
-					</p>
+					<p>새로운 배송주소를 등록하시려면 주소록 추가하기를 눌러주세요. <a href="#" class="add_btn1">주소록 추가하기</a></p>
 				</div>
 
 				<div class="hs_line">
-					<h4 class="hs_1" style="margin: 0;">
-						배송지 등록 <span>[ <span class="s_icon">표시된 항목은 필수사항입니다.
-								]</span></span>
-					</h4>
+					<h4 class="hs_1" style="margin: 0;">배송지 등록</h4>
 					<p>
-						총 <b>${myaddress.total}</b> 개의 주소가 등록되어 있습니다
+						총 ${myaddress.total} 개의 주소가 등록되어 있습니다
 					</p>
 				</div>
 				<form name="myAddressForm" id="myAddressForm" method="post"

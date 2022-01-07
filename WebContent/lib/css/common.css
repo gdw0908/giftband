@@ -803,31 +803,31 @@ status_23  거래완료
 
 /* status */
 
-.status_back {height:18px; background:url(/images/sub_2/stage_back.png) no-repeat; text-indent:-9999px;}
-.status_99 {background-position:-19px 0px;}
-.status_2 {background-position:-30px -30px;}
-.status_1 {background-position:-19px -60px;}
-.status_3 {background-position:-19px -90px;}
-.status_4 {background-position:-19px -120px;}
-.status_5 {background-position:-19px -150px;}
-.status_6 {background-position:-19px -180px;}
-.status_7 {background-position:-19px -210px;}
-.status_8 {background-position:-19px -240px;}
-.status_9 {background-position:-19px -270px;}
-.status_10 {background-position:-19px -300px;}
-.status_11 {background-position:-19px -330px;}
-.status_12 {background-position:-19px -360px;}
-.status_13 {background-position:-19px -390px;}
-.status_14 {background-position:-19px -420px;}
-.status_15 {background-position:-19px -450px;}
-.status_16 {background-position:-19px -480px;}
-.status_17 {background-position:-19px -510px;}
-.status_18 {background-position:-19px -540px;}
-.status_19 {background-position:-19px -570px;}
-.status_20 {background-position:-19px -600px;}
-.status_21 {background-position:-19px -630px;}
-.status_22 {background-position:-19px -660px;}
-.status_23 {background-position:-19px -690px;}
+.status_back {height:18px; background:url(/images/sub_2/status_bg.png) no-repeat; text-indent:-9999px;}
+.status_99 {background-position:0px -10px;}
+.status_1 {background-position: 0px -50px;}
+.status_2 {background-position: 0px -90px;}
+.status_3 {background-position: 0px -130px;}
+.status_4 {background-position: 0px -164px;}
+.status_5 {background-position: 0px -204px;}
+.status_6 {background-position: 0px -242px;}
+.status_7 {background-position: 0px -282px;}
+.status_8 {background-position: 0px -320px;}
+.status_9 {background-position: 0px -360px;}
+.status_10 {background-position: 0px -398px;}
+.status_11 {background-position: 0px -438px;}
+.status_12 {background-position: 0px -476px;}
+.status_13 {background-position: 0px -516px;}
+.status_14 {background-position: 0px -554px;}
+.status_15 {background-position: 0px -594px;}
+.status_16 {background-position: 0px -632px;}
+.status_17 {background-position: 0px -671px;}
+.status_18 {background-position: 0px -710px;}
+.status_19 {background-position: 0px -750px;}
+.status_20 {background-position: 0px -790px;}
+.status_21 {background-position: 0px -830px;}
+.status_22 {background-position: 0px -870px;}
+.status_23 {background-position: 0px -910px;}
 
 /* 주문조회 */
 
@@ -857,19 +857,64 @@ ul.cart_list_1 li strong {color:#555;}
 
 /* 주문/결제 */
 
-h5.no_mem_type {margin:28px 0 8px 0; font-size:16px; color:#353535;}
+h5.no_mem_type {margin:28px 0 8px 0; font-size:14px; }
 h5.no_mem_type span {font-size:12px; font-weight:normal;}
 h5.no_mem_type span i {font-size: 13px; background:url(/images/sub_2/table_list_1.gif) no-repeat left 4px; padding-left:8px; font-style:normal;}
 
 ul.sub_list_1 {margin-top:20px;}
 ul.sub_list_1 li {color:#e85946; background:url(/images/sub_2/table_list_1.gif) no-repeat left 4px; padding-left:8px;}
 
-.pricecheck .bottom p.pb_type {overflow:hidden; margin-top:10px; font-weight:normal;}
-.pricecheck .bottom p.pb_type span.pb_l {float:left; margin:0 0 0 15px;}
-.pricecheck .bottom p.pb_type span.pb_r {float:right;}
-.pricecheck .bottom p.pb_type span.pb_r b {font:normal 12px '돋움', 'dotum';}
+.non_mem_tit { font-size: 20px; font-weight: 600;}
 
-.pricecheck .p_check3 .bottom p b {color:#ff6c00;}
+.pricecheck {
+	display: flex;
+	overflow:hidden; 
+	margin-top:20px; 
+	border-top: 1px solid var(--main-text);
+	border-bottom: 1px solid #E9E9E9;
+}
+.pricecheck .p_check1,
+.pricecheck .p_check2 {
+	position: relative;
+}
+.pricecheck .p_check1::after { content: "-"; }
+.pricecheck .p_check2::after { content: "="; }
+.pricecheck .p_check1::after,
+.pricecheck .p_check2::after {
+	display: block;
+	position: absolute;
+	top: 60%;
+	right: -10px;
+	width: 20px;
+	height: 20px;
+	line-height: 20px;
+	text-align: center;
+	background: #fff;
+	border-radius: 50%;
+	border: 1px solid #E9E9E9;
+	z-index: 1;
+}
+.pricecheck .p_check1 {width: calc(100% / 3); border-right:1px solid #E9E9E9;}
+.pricecheck .p_check2 {width: calc(100% / 3); border-right:1px solid #E9E9E9;}
+.pricecheck .p_check3 {width: calc(100% / 3);}
+.pricecheck .top {
+	overflow:hidden; 
+	padding:14px 20px; 
+	border-bottom:1px solid #E9E9E9;
+	box-sizing: border-box;
+}
+.pricecheck .top span.pt_l {float:left; font-weight: 400; font-size:14px; }
+.pricecheck .top span.pt_r {float:right; font-size: 12px; color: #c9c9c9; }
+.pricecheck .top span.pt_r b {color:#f05d00;}
+
+.pricecheck .bottom { padding: 20px; background: #fbfbfb; box-sizing: border-box; }
+.pricecheck .bottom p { font-size: 14px; font-weight: 300;}
+.pricecheck .bottom p b { font-size: 18px; font-weight: 600; margin-right: 3px; }
+
+.pricecheck .p_check3 .bottom p b { font-size: 18px; font-weight: 600; color: var(--sub-color); }
+
+.pricecheck .p_check_bottom {clear:both; padding:12px 15px; border-top:1px solid #b9b9b9; color:#353532;}
+.pricecheck .p_check_bottom span {margin-right:20px;}
 
 /* footer */
 

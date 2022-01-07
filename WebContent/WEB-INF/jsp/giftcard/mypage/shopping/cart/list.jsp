@@ -15,7 +15,7 @@
 	content="minimum-scale=1.0, width=device-width, maximum-scale=1, user-scalable=yes"
 	name="viewport" />
 <meta name="author" content="31system" />
-<meta name="description" content="안녕하세요  티켓모아 입니다." />
+<meta name="description" content="안녕하세요  티켓크루 입니다." />
 <meta name="Keywords" content="티켓크루, 상품권, 백화점 상품권, 롯데 백화점, 롯데 상품권, 갤러리아 백화점, 갤러리아 상품권, 신세계 백화점, 신세계 상품권" />
 <title>장바구니</title>
 
@@ -212,7 +212,7 @@
 													<div class="pb_r ws_1">
 														<p>
 															<a href="/giftcard/goods/view.do?menu=menu2&seq=${item.item_seq }">
-																<span class="pro_name">${item.PRODUCTNM }</span>
+																<span>${item.PRODUCTNM }</span>
 															</a>
 														</p>
 													</div>
@@ -230,7 +230,7 @@
 											</td>
 											<td class="price_calc">
 												<p>
-													<b class="c1">${suf:getThousand(item.USER_PRICE * item.QTY) }원</b>
+													<b class="c1">${suf:getThousand(item.USER_PRICE * item.QTY) }</b>원
 												<p>
 											</td>
 											<td><c:choose>
@@ -276,10 +276,6 @@
 						<p>
 							<b id="user_price">0</b>원
 						</p>
-						<!-- <p class="pb_type">
-							<span class="pb_l">선결제배송비</span>
-							<span class="pb_r"><b id="fee_price">0</b>원</span>
-						</p> -->
 					</div>
 				</div>
 				<div class="p_check2">

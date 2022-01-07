@@ -10,90 +10,27 @@
 <meta content="minimum-scale=1.0, width=device-width, maximum-scale=1, user-scalable=yes" name="viewport" />
 <meta name="author" content="31system" />
 <meta name="description" content="안녕하세요  티켓모아 입니다." />
-<meta name="Keywords" content="티켓모아, 음향기기, 중고음향기기, 중고악기, 중고 쇼핑몰, 중고 악기 쇼핑몰, 중고 음향기기 쇼핑몰" />
+<meta name="Keywords" content="티켓크루, 상품권, 백화점 상품권, 롯데 백화점, 롯데 상품권, 갤러리아 백화점, 갤러리아 상품권, 신세계 백화점, 신세계 상품권" />
 <title>로그인</title>
 
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
 <link rel="stylesheet" href="/lib/css/join.css" type="text/css">
 <script type="text/javascript" src="/lib/js/jquery.cookie.js"></script>
 <script type="text/javascript" src="/lib/js/common.js"></script>
-<script type = "text/javascript">
-
-function login_proc(obj)
-{
-	if(obj.member_id.value == "")
-	{
-		alert("아이디를 입력하세요.");
-		obj.member_id.focus();
-		return false;
-	}
-	else if(obj.member_pw.value == "")
-	{
-		alert(" 패스워드를 입력하세요.");
-		obj.member_pw.focus();
-		return false;
-	}
-	else
-	{
-		if(obj.id_save.checked){
-			$.cookie("save_id", obj.member_id.value, { path: '/', expires: 365 });
-		}else{
-			$.cookie("save_id", "", { path: '/', expires: -1 });
-		}
-		
-		$("#login_form [name='returnURL']").val(document.referrer);
-		
-		return true;	
-	}
-}
-
-function agree(){
-	if(!$("#use_chk").prop("checked")){
-		alert("서비스 이용약관에 동의해 주시기 바랍니다.");
-		return;
-	}
-	if(!$("#ps_chk").prop("checked")){
-		alert("개인정보 수집 및 이용안내에 동의해 주시기 바랍니다.");
-		return;
-	}
-	
-	$("#agree").submit();
-}
-
-jQuery(document).ready(function(){
-	
-	if(!!$.cookie("save_id")){
-		jQuery("#member_id").val($.cookie("save_id"));
-		jQuery("#id_save").attr("checked", true);
-	}
-	
-	$("#chk_all").on("change", function(){
-		if($(this).prop("checked")){
-			$("#use_chk").prop("checked", true);
-			$("#ps_chk").prop("checked", true);
-		}
-	});
-})
-
-</script>
 </head>
 
 <body>
 <div class="title_rocation">
-<!--   <div class="tr_wrap"> -->
-<!--     <h3><img src="/images/login/login_title.gif" alt="로그인"></h3> -->
-<!--   </div> -->
 </div>
 <div class="j_wrap">
-  <h3 class="login_tit">로그인</h3>
   <div id="tabNav_j1" class="join_tab login_tab">
-<!--     <h4 id="tabNavTitle0101" class="on"><a href="#" onclick="shwoTabNav('01', 2, 1); return false;" onfocus="this.onclick();"> 회원 로그인</a></h4> -->	
 	<ul class="tabs">
 		<li class="tab_link current" data-tab="tab-1">회원 로그인</li>
 		<li class="tab_link" data-tab="tab-2">비회원 로그인</li>
 	</ul>
     <div id="tab-1" id="tabNav0101"  class="tab-content current">
       <div class="login_wrap">
+      	<h3 class="tit">로그인</h3>
         <form action="/giftcard/login/login.do" id="login_form" name="login_form" method="post" onsubmit = "return login_proc(this);">
           <input type = "hidden" name = "member" value = "1"/>
           <input type = "hidden" name = "mode" value = "proc"/>
@@ -103,57 +40,30 @@ jQuery(document).ready(function(){
             <div class="login_con">
               <div class="login_box">
                 <div class="l_left">
-<!--                   <p> -->
-<!--                     <input type="text" id="member_id" name="member_id" placeholder="아이디"> -->
-<!--                   </p> -->
-<!--                   <p class="last"> -->
-<!--                     <input type="password" id="member_pw" name="member_pw" placeholder="패스워드"> -->
-<!--                   </p> -->
-					<div class="input_div one">
-         				 <div class="i">
-           					 <i class="xi-user"></i>
-         				 </div>
-          				<div>
-           					 <h5>ID</h5>
-           					 <input type="text" class="input"  id="member_id" name="member_id">
-          				</div>
+          			<div class="input_div one">
+           				<input type="text" class="input"  id="member_id" name="member_id" placeholder="아이디를 입력해주세요.">
         			</div>
         			<div class="input_div pass">
-          				<div class="i">
-            				<i class="xi-lock"></i>
-          				</div>
-          				<div>
-           					 <h5>Password</h5>
-            				<input type="password" class="input" id="member_pw" name="member_pw">
-          				</div>
+            			<input type="password" class="input" id="member_pw" name="member_pw" placeholder="비밀번호를 입력해주세요.">
         			</div>
                 </div>
-                
                 <div class="btn_lnk">
-                	<ul>
-                  		<li class="first"><label style="cursor: pointer;"><input type="checkbox" id="id_save" name="id_save" class="check"><span class="icon"></span> 아이디저장</label></li>
-                  		<li><a href="/giftcard/join/join_2.do">회원가입</a></li>
-                  		<li><a href="/giftcard/join/id_search.do">아이디 찾기</a></li>
-                  		<li class="last"><a href="/giftcard/join/pw_search.do">비밀번호 찾기</a></li>
+               		<ul>
+                  		<li class="first">
+                  			<label style="cursor: pointer;">
+                  				<input type="checkbox" id="id_save" name="id_save" class="check">
+                  				<span class="icon"></span> 아이디저장
+                  			</label>
+                  		</li>
+                  		<li><a href="/giftcard/join/id_search.do">아이디/비밀번호 찾기</a></li>
                 	</ul>
               	</div>
-              
+                
                 <div class="l_btn">
-                  	<button type="submit" class="login_btn">로그인</button>
-                </div>
+                	<button type="submit" class="login_btn">로그인</button>
+               	</div>
+        
               </div>
-<!--               <div class="btn_lnk"> -->
-<!--                 <ul> -->
-<!--                   <li class="first"> -->
-<!--                     <label> -->
-<!--                       <input type="checkbox" id="id_save" name="id_save" class="check"> -->
-<!--                       아이디저장</label> -->
-<!--                   </li> -->
-<!--                   <li><a href="/join/join_1.do">회원가입</a></li> -->
-<!--                   <li><a href="/join/id_search.do">아이디 찾기</a></li> -->
-<!--                   <li class="last"><a href="/join/pw_search.do">비밀번호 찾기</a></li> -->
-<!--                 </ul> -->
-<!--               </div> -->
             </div>
           </fieldset>
         </form>
@@ -434,9 +344,10 @@ jQuery(document).ready(function(){
                 <p><strong>부칙</strong> : 이 약관은 2015년 4월 15일부터 시행합니다.</p>
               </div>
               <p class="agreement">
-                <label>
-                  <input type="checkbox" id="use_chk" name="use_chk" value="Y">
-                  이용약관에 동의합니다.</label>
+              	<label style="cursor: pointer;">
+                	<input type="checkbox" id="use_chk" name="use_chk" class="check" value="Y">
+                		<span class="icon"></span>이용약관에 동의합니다.
+          		</label>
               </p>
             </div>
             <div class="t_r">
@@ -509,20 +420,22 @@ jQuery(document).ready(function(){
                 </ol>
               </div>
               <p class="agreement">
-                <label>
-                  <input type="checkbox" id="ps_chk" name="ps_chk" class="check" value="Y">
-                  개인정보 수집 및 이용에 동의합니다.</label>
+              	<label style="cursor: pointer;">
+                	<input type="checkbox" id="ps_chk" name="ps_chk" class="check" value="Y">
+                		<span class="icon"></span>개인정보 수집 및 이용에 동의합니다.
+          		</label>
               </p>
             </div>
           </div>
           <div class="all_agreement">
-            <label><strong>서비스 이용약관, 개인정보 수집 및 이용에 모두 동의합니다</strong>
-              <input type="checkbox" id="chk_all" class="check" value="Y">
-            </label>
+          	<label style="cursor: pointer;">
+                <input type="checkbox" id="chk_all" name="id_save" class="check" value="Y">
+                	<span class="icon"></span>서비스 이용약관, 개인정보 수집 및 이용에 모두 동의합니다.
+          	</label>
           </div>
           <div class="j_btn1">
-          	<a href="javascript:history.back();">동의안함</a> 
-         	 <a href="javascript:agree();">다음단계</a>
+          	<button type="button" onclick="javascript:history.back();">동의안함</button> 
+         	 <button type="submit" onclick="agree()" class="next">다음단계</button>
          </div>
         </div>
         <div class="b_gui">
@@ -530,27 +443,73 @@ jQuery(document).ready(function(){
         </div>
       </form>
     </div>
+    
+    <article class="join_banner">
+			<div class="text_wrap">
+				<h5>아직 회원이 아니신가요?</h5>
+				<p>회원가입하고 다양한 혜택과 첫구매 쿠폰을 받으세요.<a href="/giftcard/join/join_2.do">회원가입<img src="/images/common/join_arrow.png" alt="회원가입"></a></p>
+			</div>
+			<div class="img_wrap">
+				<img src="/images/common/login_img.png" />
+			</div>
+		</article>
   </div>
+
   <script type="text/javascript">
-//login focus
-  const inputs = document.querySelectorAll('.input');
+  function login_proc(obj) {
+		if(obj.member_id.value == "")
+		{
+			alert("아이디를 입력하세요.");
+			obj.member_id.focus();
+			return false;
+		}
+		else if(obj.member_pw.value == "")
+		{
+			alert(" 패스워드를 입력하세요.");
+			obj.member_pw.focus();
+			return false;
+		}
+		else
+		{
+			if(obj.id_save.checked){
+				$.cookie("save_id", obj.member_id.value, { path: '/', expires: 365 });
+			}else{
+				$.cookie("save_id", "", { path: '/', expires: -1 });
+			}
+			
+			$("#login_form [name='returnURL']").val(document.referrer);
+			
+			return true;	
+		}
+	}
 
-  function addcl() {
-    const parent = this.parentNode.parentNode;
-    parent.classList.add('focus');
-  }
+	function agree(){
+		if(!$("#use_chk").prop("checked")){
+			alert("서비스 이용약관에 동의해 주시기 바랍니다.");
+			return;
+		}
+		if(!$("#ps_chk").prop("checked")){
+			alert("개인정보 수집 및 이용안내에 동의해 주시기 바랍니다.");
+			return;
+		}
+		
+		$("#agree").submit();
+	}
 
-  function remcl() {
-    const parent = this.parentNode.parentNode;
-    if(this.value === '') {
-      parent.classList.remove('focus');
-    }
-  }
-
-  inputs.forEach(input => {
-    input.addEventListener('focus', addcl);
-    input.addEventListener('blur', remcl);
-  });
+	jQuery(document).ready(function(){
+		
+		if(!!$.cookie("save_id")){
+			jQuery("#member_id").val($.cookie("save_id"));
+			jQuery("#id_save").attr("checked", true);
+		}
+		
+		$("#chk_all").on("change", function(){
+			if($(this).prop("checked")){
+				$("#use_chk").prop("checked", true);
+				$("#ps_chk").prop("checked", true);
+			}
+		});
+	})
   
   //login tabs
   $(function() {
@@ -564,21 +523,7 @@ jQuery(document).ready(function(){
 	    $('#' + tab_id).addClass('current');
 	  });
 	});
-//       function shwoTabNav(eName, totalNum, showNum) {
-//       	for(i=1; i<=totalNum; i++){
-//       		var zero = (i >= 10) ? "" : "0";
-//       		var e = document.getElementById("tabNav" + eName + zero + i);
-//       		var eTitle = document.getElementById("tabNavTitle" + eName + zero + i);
-//       		e.style.display = "none";
-//       		eTitle.className = "";
-//       	}
 
-//       	var zero = (showNum >= 10) ? "" : "0";
-//       	var e = document.getElementById("tabNav" + eName + zero + showNum);
-//       	var eTitle = document.getElementById("tabNavTitle" + eName + zero + showNum);
-//       	e.style.display = "block";
-//       	eTitle.className = "on";
-//       }
       <c:if test="${param.mode == 'guest'}">      
       shwoTabNav('01', 2, 2);
       </c:if>

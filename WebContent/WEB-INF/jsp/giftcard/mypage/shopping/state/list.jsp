@@ -12,14 +12,13 @@
 <meta name="format-detection" content="telephone=no" />
 <meta content="minimum-scale=1.0, width=device-width, maximum-scale=1, user-scalable=yes" name="viewport" />
 <meta name="author" content="31system" />
-<meta name="description" content="안녕하세요  티켓모아 입니다." />
-<meta name="Keywords" content="티켓모아, 음향기기, 중고음향기기, 중고악기, 중고 쇼핑몰, 중고 악기 쇼핑몰, 중고 음향기기 쇼핑몰" />
+<meta name="description" content="안녕하세요  티켓크루 입니다." />
+<meta name="Keywords" content="티켓크루, 상품권, 백화점 상품권, 롯데 백화점, 롯데 상품권, 갤러리아 백화점, 갤러리아 상품권, 신세계 백화점, 신세계 상품권" />
 <title>주문/배송조회</title>
 
 <script type="text/javascript" src="/lib/js/jquery.ui.datepicker-ko.js"></script>
 <script type="text/javascript" src="/lib/js/jquery.cookie.js"></script>
 <script type="text/javascript" src="/lib/js/jquery.lck.util.js"></script>
-<!-- <script type="text/javascript" src="/lib/js/common.js"></script> -->
 <script type="text/javascript">
 $(function(){
 	
@@ -208,13 +207,12 @@ function goSubmit(){
 	<div class="contents">
 		<div class="period_line">
         	<form id="searchFrm" name="searchFrm" action="index.do?mode=list1" method="post">
-            	<p class="title">기간별조회</p>
             	<ul>
               		<li><a class="first" href="#" onclick="week();">1주일</a></li>
               		<li><a href="#"onclick="day15();">15일</a></li>
               		<li><a href="#"onclick="month1();">1개월</a></li>
               		<li><a href="#"onclick="month3();">3개월</a></li>
-             	 	<li class="cut"><a class="first" href="#"onclick="bmonth();">전월</a></li>
+             	 	<li><a class="first" href="#"onclick="bmonth();">전월</a></li>
               		<li><a href="#"onclick="cmonth();">당월</a></li>
             	</ul>
 
@@ -222,26 +220,19 @@ function goSubmit(){
               		<input type="text" id="sdate" name="sdate" value ="${param.sdate }">
               			~
               		<input type="text" id="edate" name="edate" value ="${param.edate }">
-              		<a href="javascript:goSubmit();" class="lockup_btn">조회하기</a>
+              		<a href="javascript:goSubmit();" class="lockup_btn">조회</a>
             	</div>
 		  	</form>
           </div>
 
 		<article class="table_container">
 			<table class="cart_style_1 t_top_style_1">
-				<colgroup>
-          			<col width="18%">
-          			<col width="30">
-          			<col width="18%">
-          			<col width="18%">
-          		</colgroup>
-
           		<thead>
           			<tr>
-            			<th scope="col">주문번호/날짜</th>
-            			<th scope="col">&nbsp;</th>
-            			<th scope="col">상태</th>
-            			<th scope="col">확인</th>
+            			<th style="width: 150px;">주문번호/날짜</th>
+            			<th>주문상품</th>
+            			<th style="width: 150px;">상태</th>
+            			<th>확인</th>
           			</tr>
           		</thead>
 
@@ -249,7 +240,9 @@ function goSubmit(){
           			<c:choose>
       					<c:when test = "${fn:length(data.list) == 0}">
       	 					<td class="b_none" colspan="4">
-								<p class="none_img"><img src="/images/sub_2/none_cart.gif" alt="상품없음이미지"></p>
+								<p class="none_img">
+									<img src="/images/sub_2/shopping_cart.png" alt="상품없음이미지">
+								</p>
 								<p class="none_text">상품이 존재하지 않습니다.</p>
 							</td>
       					</c:when>
@@ -270,14 +263,13 @@ function goSubmit(){
 	                						<div class="pb_r_2">
 		                  						<p>
 		                  							<a href="/giftcard/goods/view.do?menu=menu${fn:substring(item.part1, 8, 9) }&seq=${item.item_seq }">
-		                  								<span><strong>${item.MAKERNM }</strong></span>
-	    	              								<span><strong>${item.productnm }</strong></span>
+	    	              								<span>${item.productnm }</span>
 	        	          							</a>
 	            	     						 </p>
 	                	  						 <p class="last">
-		                	 						<b class="c1">${suf:getThousand(item.amt) } 원(수량:${item.qty })</b>
+		                	 						<b class="c1">${suf:getThousand(item.amt) }</b>원 (수량:${item.qty })
 		                 							<c:if test="${item.cod_yn eq 'Y' }">
-			                 							<b class="c1">배송비 ${suf:getThousand(item.fee_amt) } 원</b>
+			                 							<b class="c1">배송비 ${suf:getThousand(item.fee_amt) }</b>원
 		                 							</c:if>
 	<!--                   <a href="#"><img src="/images/sub_2/cart_btn2.gif" alt="상세내역"></a> -->
 	                  							</p>
@@ -290,26 +282,24 @@ function goSubmit(){
 	              							<p class="btn_m2"><a href="#" onclick="track('${item.cart_no}')">배송추적</a></p>
 	              						</c:if>
 	            					</td>
-	            					<td class="b_none">
+	            					<td>
 	            						<c:if test="${item.status eq '99' }">
-	             						<%-- <p class="btn_m1"><a href="#" onclick="order_cancel('${item.cart_no}');">주문취소</a></p> --%>
-	            	 						<p class="btn_m1"><a href="#" onclick="alert('관계자에게 문의해주세요.');">주문취소</a></p>
+	            	 						<p class="btn_m1"><a href="#" class="order_btn" onclick="alert('관계자에게 문의해주세요.');">주문취소</a></p>
 	            						</c:if>
 	            						<c:if test="${item.status eq '1' }">
-	             						<%-- <p class="btn_m1"><a href="#" onclick="cancel_popup('${item.cart_no}');">취소신청</a></p> --%>
-	             							<p class="btn_m1"><a href="#" onclick="alert('결제완료 상태에서 결제취소가 어렵습니다.\n관계자에게 문의해주세요.');">취소신청</a></p>
+	             							<p class="btn_m1"><a href="#" class="order_btn" onclick="alert('결제완료 상태에서 결제취소가 어렵습니다.\n관계자에게 문의해주세요.');">취소신청</a></p>
 	            						</c:if>
 		            					<c:if test="${item.status eq '8' || item.status eq '18'}">
-		              						<p class="btn_m1"><a href="#">수취확인</a></p>
+		              						<p class="btn_m1"><a href="#" class="order_btn">수취확인</a></p>
 	    	        					</c:if>
 	        	    					<c:if test="${item.status eq '8' || item.status eq '18' }">
-	            	 						<p class="btn_m1"><a href="#" onclick="return_popup('${item.cart_no}');">반품신청</a></p>
+	            	 						<p class="btn_m1"><a href="#" class="order_btn" onclick="return_popup('${item.cart_no}');">반품신청</a></p>
 	            						</c:if>
 	            						<c:if test="${item.status eq '8' }">
-	             							<p class="btn_m1"><a href="#" onclick="exchange_popup('${item.cart_no}');">교환신청</a></p>
+	             							<p class="btn_m1"><a href="#" class="order_btn" onclick="exchange_popup('${item.cart_no}');">교환신청</a></p>
 	            						</c:if>
 	            						<c:if test="${item.status eq '12' }">
-	             							<p class="btn_m1"><a href="#" onclick="refunds_popup('${item.cart_no}');">환불신청</a></p>
+	             							<p class="btn_m1"><a href="#" class="order_btn" onclick="refunds_popup('${item.cart_no}');">환불신청</a></p>
 	            						</c:if>
 	            					</td>
 	          					</tr>

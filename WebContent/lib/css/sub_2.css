@@ -147,7 +147,6 @@
 .sub_wrap { max-width:1400px; width: 100%; margin:0 auto;}
 #sub .sub_tit {
 	font-size: 20px;
-	padding: 0 20px;
 	box-sizing: border-box;
 }
 
@@ -221,11 +220,18 @@
 .pricecheck .top span.pt_r {float:right; font-size: 12px; color: #c9c9c9; }
 .pricecheck .top span.pt_r b {color:#f05d00;}
 
-.pricecheck .bottom { padding: 20px; background: #fbfbfb; box-sizing: border-box; }
+.pricecheck .bottom { 
+	display: flex;
+	align-items: center;
+	gap: 20px;
+	padding: 20px;
+	background: #fbfbfb; 
+	box-sizing: border-box; 
+}
 .pricecheck .bottom p { font-size: 14px; font-weight: 300;}
 .pricecheck .bottom p b { font-size: 18px; font-weight: 600; margin-right: 3px; }
 
-.pricecheck .p_check3 .bottom p b {color:#ff6c00;}
+.pricecheck .p_check3 .bottom p b { font-size: 18px; font-weight: 600; color: var(--sub-color); }
 
 .pricecheck .p_check_bottom {clear:both; padding:12px 15px; border-top:1px solid #b9b9b9; color:#353532;}
 .pricecheck .p_check_bottom span {margin-right:20px;}
@@ -318,7 +324,11 @@ p.pay_type span i {background:url(/images/sub_2/table_list_1.gif) no-repeat left
 .hs_line p {float:right; margin-top:7px;}
 .hs_line p b {color:#f33c51}
 
-h4.hs_1 {padding-left:10px; margin:28px 0 11px 0; font:bold 18px 'Nanum Gothic'; background:url(/images/sub_2/s_icon_1.gif) no-repeat left 6px;}
+h4.hs_1 {
+	font-size: 14px;
+	font-weight: 500;
+	margin: 30px 0 10px 0;
+}
 h4.hs_1 span {font:normal 12px '돋움';}
 h4.hs_1 span span.s_icon {padding-left:8px; background:url(/images/sub_2/table_list_1.gif) no-repeat left 4px;}
 h4.hs_1 span b.star {color:#f25757;}
@@ -342,8 +352,8 @@ h4.hs_1 span b.star {color:#f25757;}
 /* 나의 배송지관리 */
 
 .t_box1 {
-	padding-bottom: 20px;
-	margin-top: 80px; 
+	padding-bottom: 10px;
+/* 	margin-top: 80px;  */
 	border-bottom: 1px solid var(--border-color);
 }
 .t_box1 p {
@@ -470,27 +480,45 @@ iframe.i_hide {visibility:hidden; position:absolute; overflow:hidden; width:0; h
 
 /* 주문/배송조회 */
 
-.period_line {overflow:hidden; padding:20px 0;}
+.period_line {
+	display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 20px;
+	overflow:hidden; 
+	padding:20px 0;
+}
 .period_line p.title {float:left; margin:10px 10px 0 0; font-size:16px; font-weight:bold;}
 .period_line ul {float:left;}
 .period_line ul li {float:left;}
-.period_line ul li.cut {margin-left:5px;}
+.period_line ul li {
+	position: relative;
+	height: 30px;	
+}
+.period_line ul li::after {
+	content: '';
+	display: block;
+	position: absolute;
+	top: 50%;
+	right: 0;
+	width: 1px;
+	height: 14px;
+	background: #DBDBDB;
+	transform: translateY(-50%);
+}
 .period_line ul li a {
 	display:block; 
-	 font-size:14px; 
-	 font-weight:bold;
+	font-size:14px; 
+	line-height: 30px;
+	font-weight: 300;
 	text-align:center; 
-	width:64px; 
-	padding:11px 0 10px 0; 
-	background: #f5f5f5;
-	 border-top:1px solid #c2c2c2; border-right:1px solid #c2c2c2; 
-	 border-bottom:1px solid #c2c2c2; 
-	 transition: background-color .3s ease;
+	color: #808080;
+/* 	width:64px;  */
+	padding: 0 10px;  
+	 box-sizing: border-box;
 }
-.period_line ul li a:hover {
-	background: #f1f1f1;
-}
-.period_line ul li a.first {border-left:1px solid #c2c2c2;}
+
+.period_line ul li:last-child::after { display: none; } 
 
 .period_line .inquiry_top {
 	float:right;
@@ -499,15 +527,29 @@ iframe.i_hide {visibility:hidden; position:absolute; overflow:hidden; width:0; h
 	flex-wrap: wrap;
 	gap: 5px;
 }
-.period_line .inquiry_top input {width:88px; height:16px; padding:11px 0 10px 35px; background:url(/images/sub_2/calendar.gif) no-repeat 5px 6px; border:1px solid #c1c1c1; letter-spacing:-1px; font-size:14px; font-family:verdana;}
-.period_line .inquiry_top .lockup_btn {
-	padding: 10px;
-	color: #fff;
-	background: var(--main-color);
-	box-sizing: border-box;
-	transition: background .3s ease;
+.period_line .inquiry_top input {
+	width: 110px; 
+	height: 30px; 
+	font-size:12px;
+	text-align: center;
+	padding-left: 20px;
+	background:url(/images/common/calendar.png) no-repeat 10px 8px;
+	border:1px solid #D8D8D8; 
+	border-radius: 5px;
+	box-sizing: border-box; 
 }
-.period_line .inquiry_top .lockup_btn:hover { background: var(--hover-color); }
+.period_line .inquiry_top .lockup_btn {
+	width: 50px;
+	height: 30px;
+	font-size: 12px;
+	font-weight: 400;
+	text-align: center;
+	line-height: 30px;
+	background: #F8F8F8;
+	border: 1px solid #D8D8D8;
+	border-radius: 5px;
+	box-sizing: border-box;
+}
 
 p.important {padding:5px 0 10px 22px; background:url(../../images/sub_2/important.gif) no-repeat left 4px;}
 p.important b {color:red;}
@@ -591,16 +633,46 @@ p.ev_img {padding-bottom:10px;}
 p.ev_img img {width:100%;}
 
 /* 쇼핑몰 이용약관 */
-
-.section {padding:5px 0 0 0; line-height:20px;}
-.section h5 {padding:0 0 0 11px; margin-top:23px; background:url(/images/sub_2/s_icon_1.gif) no-repeat left 4px; font-size:16px;}
-.section h6 {font-size:12px; margin:15px 0 0 15px;}
+.annc_tit {
+	font-size: 20px;
+	font-weight: 600;
+	margin-bottom: 20px;
+}
+.section {
+	padding: 20px; 
+	line-height:20px;
+	background: #FBFBFB;
+	box-sizing: border-box;
+}
+.section h5 {
+	position: relative;
+	font-size:16px;
+	font-weight: 500;
+	padding:0 0 0 26px; 
+	margin-top: 30px;
+}
+.section h5::before {
+	content: '';
+	display: block;
+	position: absolute;
+	left: 14px;
+	top: 1px;
+	height: 16px;
+	width: 7px;
+	background: var(--sub-color);
+}
+.section h5:first-child { margin-top: 0; }
+.section h6 {font-size:14px; font-weight: 500;  margin:15px 0 0 15px;}
 .section > p,
 .section > ol,
 .section > ol > li,
-.section > ol > li > ol > li {
+.section > ol > li > ol > li,
+.section > dl > dt  {
+	font-size: 14px;
+	font-weight: 300;
 	text-align: justify;
 	word-break: break-word;
+	line-height: 1.4;
 }
 .section > p { margin:13px 0 0 15px; }
 .section > ol {padding:5px 0 0 15px;}
@@ -615,7 +687,7 @@ p.ev_img img {width:100%;}
 .section > dl > dd > ul {padding:0 0 0 15px;}
 .section > dl > dd > ul > li {margin-top:7px;}
 
-.section span.c1 {color:#f05d00;}
+.section span.c1 {color: var(--sub-color);}
 
 /* 부품사용특약 */
 
@@ -640,6 +712,11 @@ p.ev_img img {width:100%;}
 	}
 	
 	#sub .sub_tit { margin-top: 30px; }
+	
+	.pricecheck { flex-direction: column; }
+	.pricecheck .p_check1 {width: 100%; }
+	.pricecheck .p_check2 {width: 100%; }
+	.pricecheck .p_check3 {width: 100%;}
 	
 	.period_line ul { margin-bottom: 20px; }
 	.period_line .inquiry_top { float: left; }
