@@ -14,13 +14,16 @@
 
 h1{ color: #c3ccda; font-size: 12px; padding-left: 20px; box-sizing: border-box;}
 .login_tit {
+	width: 150px;
 	padding: 0;
 	margin-bottom: 40px;
 }
-.login_tit img { width: 200px; }
+.login_tit img { 
+	width: 100%;
+	object-fit: contain;
+}
 h1 > span{font-weight: bold; padding-left: 13px;}
 h1 > span > span{font-weight: normal; color: #91a0b7;}
-h1 img { width: 100px; }
 .admin_profile{
 	display: flex; 
 	justify-content: space-between; 
@@ -161,7 +164,7 @@ h1 img { width: 100px; }
 .menuwrap  > ul > li > ul > li > ul > li > ul > li > div{overflow: hidden;height: 24px;}
 .menuwrap  > ul > li > ul > li > ul > li > ul > li > div > span.name4{display: block; float: left; background: url("/images/admin/left/leftbt_32.png") no-repeat 53px 7px; padding-left: 52px; height: 14px; padding-top: 7px;}
 .menuwrap  > ul > li > ul > li > ul > li > ul > li > div > span.on{display: block; float: left; background: url("/images/admin/left/leftbt_21.png") no-repeat 51px 9px; padding-left: 52px; height: 14px; padding-top: 7px;}
-.menuwrap  > ul > li > ul > li > ul > li > ul > li > div > span.name4 > a{background: url(../.."/images/admin/left/leftbt_14.png") no-repeat 13px 3px; padding-left: 29px; padding-top: 4px;}
+.menuwrap  > ul > li > ul > li > ul > li > ul > li > div > span.name4 > a{background: url("../../images/admin/left/leftbt_14.png") no-repeat 13px 3px; padding-left: 29px; padding-top: 4px;}
 .menuwrap  > ul > li > ul > li > ul > li > ul > li > div > span.nameplus4{display: block; float: right; text-indent: -999998px; width: 13px; height: 13px; margin: 5px 11px 0px 0px;}
 .menuwrap  > ul > li > ul > li > ul > li > ul > li > div > span.nameplus4 > a{display: block;  width: 13px; height: 13px; }
 .menuwrap  > ul > li > ul > li > ul > li > ul > li > div > span.nameplus4 > a.on{background: url("/images/admin/left/left_20.png") no-repeat 0px 0px;}
@@ -619,14 +622,14 @@ span.on > span > input{background: url("/images/admin/contents/bt_all_s_center_o
 	padding: 20px 60px;
 	margin-top: 20px;
 	color: #fff;
-	background: #8D95AC;
+	background: var(--main-color);
 	border: none;
 	border-radius: 8px;
 	box-sizing: border-box;
 	cursor: pointer;
 	transition: background-color .3s ease-in-out;
 }
-.login_btn input:hover { background: #8089A2; }
+.login_btn input:hover { background: var(--hover-color); }
 .footlogin{width: 100%; height: 45px; text-align: center;  background-color: #4c4c4c; color: #dedede; line-height: 43px;}
 
 

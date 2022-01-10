@@ -40,51 +40,13 @@ app.controller("loginCtrl", function($scope, ajaxService) {
 	}
 });
 </script>
-<!-- <![endif]-->
 
-<!--[if gte IE 8]>
-<script type="text/javascript" src="/lib/js/angular.min.js"></script>
-<script type="text/javascript" src="/lib/js/services/myCommon.js"></script>
-<script type="text/javascript">
-var app = angular.module("MyApp", ['myCommon']);
-app.controller("loginCtrl", function($scope, ajaxService) {
-	$("#member_id").focus();
-	$scope.form={};
-	if(!!$.cookie("admin_save_id")){
-		$scope.form.member_id = $.cookie("admin_save_id");
-		$scope.form.id_save=true;
-	}
-	
-	$scope.login = function(){
-    	ajaxService.getJSON("/admin/login.do?mode=proc", $scope.form, function(data){
-    		if(data.rst == "1"){
-    			if($scope.form.id_save){
-	    			$.cookie("admin_save_id", $scope.form.member_id, { path: '/admin', expires: 365 });
-    			}else{
-	    			$.cookie("admin_save_id", "", { path: '/admin', expires: -1 });
-    			}
-    			location.href="/admin/index.jsp";
-    		}else{
-    			alert(data.msg);
-    		}
-    	});
-	}
-});
-</script>
-<![endif]-->
-
-
-<!--[if lte IE 7]>
-<script type="text/javascript">
-	alert("익스플로러 7버전 이하는 지원하지 않습니다.");
-</script>
-<![endif]-->
 </head>
 <body data-ng-controller="loginCtrl" class="loginbody">
   <div id="login_wrap">
     <div class="loginbox"> 
 	  <div class="memberlogin">
-	      <h1 class="login_tit"><img src="/images/admin/header/logo.svg"></h1>	  
+	      <h1 class="login_tit"><img src="/images/logo/logo.svg"></h1>	  
 		  <form id="frm" name="frm" ng-submit="login()" method="post">
 		      <fieldset>
 		        <legend>로그인</legend>
