@@ -1,0 +1,27 @@
+* { font-family: "S-Core", sans-serif; }
+
+@font-face {
+  font-family: 'S-Core';
+  font-weight:300;
+  src: url('../font/S-CoreDream-3Light.woff') format('woff');
+}
+@font-face {
+	font-family: 'S-Core';
+	font-weight:400;
+	src: url('../font/S-CoreDream-4Regular.woff') format('woff');
+}
+@font-face {
+	font-family: 'S-Core';
+	font-weight:500;
+	src: url('../font/S-CoreDream-5Medium.woff') format('woff');
+}
+@font-face {
+	font-family: 'S-Core';
+	font-weight:600;
+	src: url('../font/S-CoreDream-6Bold.woff') format('woff');
+}
+@font-face {
+	font-family: 'S-Core';
+	font-weight:700;
+	src: url('../font/S-CoreDream-7ExtraBold.woff') format('woff');
+}
