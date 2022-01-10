@@ -85,38 +85,6 @@
 <script type="text/javascript" src="/lib/js/common.js"></script>
 <script type = "text/javascript">
 
-
-// function openPop()
-// {
-// 	if(document.getElementById("auth_member_nm_input").value == "")
-// 	{
-// 		alert("이름을 입력하세요.");
-// 		document.getElementById("auth_member_nm_input").value = "";
-// 		document.getElementById("auth_member_nm_input").focus();
-// 		return;
-// 	}
-// 	else if(document.getElementById("member_id").value == "")
-// 	{
-// 		alert("아이디를 입력하세요.");
-// 		document.getElementById("member_id").value = "";
-// 		document.getElementById("member_id").focus();
-// 		return;
-// 	}
-// 	else
-// 	{
-// 		if(document.pw_search_method.CheckUser[0].checked == true)
-// 		{
-// 			checkReadName();
-// 		}
-// 		else
-// 		{
-// 			iPinPop();
-// 		}
-		
-// 	}
-	
-// }
-
 function checkReadName()
 {
 	window.open('', 'popupChk', 'width=500, height=550, top=100, left=100, fullscreen=no, menubar=no, status=no, toolbar=no, titlebar=yes, location=no, scrollbar=no');
@@ -173,17 +141,6 @@ function search_email_form_fnc()
 		document.getElementById("email").value = "";
 		return false;
 	}
-	else
-	{
-		if(confirm("개인회원은 개인탭에서 기업회원은 기업탭에서 검색 을 하셔야 정확하게 비밀번호를 찾으 실수 있습니다. 진행하시겠습니까?"))
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-	}
 }
 
 </script>
@@ -202,7 +159,7 @@ function search_email_form_fnc()
         <div class="ipin ipin_3">
         <form name = "search_email_form" id = "search_email_form" method = "post" action = "/giftcard/join/pw_search_2.do" onsubmit = "return search_email_form_fnc();">
             <input type = "hidden" name = "mode" id = "mode" value = "pw_search"/>
-          <dl class="type_2 type_2_2">
+          <dl class="type_2 type_2_2 pw_form_wrap">
           <dt>이메일 본인인증</dt>
             <dd><span class="standard">이름</span><span>
               <input type="text" id="email_member_nm" name="member_nm" class="input_1 ws_2" placeholder="띄어쓰기 없이 입력해주세요.">
@@ -228,7 +185,6 @@ function search_email_form_fnc()
         <div class="pw_s_btn">
           <input type = "submit" value="이메일로 비밀번호 발급받기">
         </div>
-      </form>
       <div class="b_gui_2">
         <p><strong>위의 방법으로도 찾지 못했다면, 티켓크루쇼핑몰 고객센터로 문의주십시오</strong><br>
           고객센터 전화문의 : 11661-8431 (상담가능시간: 평일 오전 9시~오후 6시)</p>

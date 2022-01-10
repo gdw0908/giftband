@@ -99,7 +99,7 @@ function chk_email(value)
 	<div class="title_rocation"></div>
 	<div class="j_wrap">
 		<h3 class="tit">아이디찾기</h3>
-		<h4 class="login_subtit">티켓모아쇼핑몰 회원정보에 등록되어있는 정보 중 1가지를 택하여 입력해 주세요. 등록정보로 ID의 일부를 찾을 수 있습니다.</h4>
+		<h4 class="login_subtit">티켓크루쇼핑몰 회원정보에 등록되어있는 정보 중 1가지를 택하여 입력해 주세요. 등록정보로 ID의 일부를 찾을 수 있습니다.</h4>
 		<div id="tabNav_j1" class="join_tab search_tab">
 			<div id="tab-1" id="tabNav0101" class="tab-content current">
 				<div class="authentication auth_2">

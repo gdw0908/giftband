@@ -115,7 +115,7 @@ function go_update(seq)
 
 				<div class="t_box1">
 					<p>새로운 배송주소를 등록하시려면 주소록 추가하기를 눌러주세요.
-						<a href="javascript:;" class="add_btn1" onclick="go_myAddressForm();">주소록 추가하기 ></a>
+						<a href="javascript:;" class="add_btn1" onclick="go_myAddressForm();">주소록 추가하기</a>
 					</p>
 				</div>
 

@@ -110,7 +110,6 @@ function view(opt) {
                      <div class="item">
                         <div style='position: absolute; width: 100%; height: 100%;'>
                             <img src='/upload/board/${item.yyyy }/${item.mm }/${item.uuid }' style="width: 100%; height: 100%; object-fit: contain;">
-                           <!-- <img src='/images/products/gal_1.jpg' style="width: 100%; height: 100%; object-fit: contain;"> -->
                         </div>
                      </div>
                   </c:forEach>
@@ -170,8 +169,13 @@ function view(opt) {
                      </li>
                      <li>
                         <a href="javascript:cntCalc();">
-                           <span>구매수량</span>
-                           <input type="number" class="count_input" name="count" id="count" value="1" onblur="cntCalc()" onkeyup="cntCalc()">
+                           	<span>구매수량</span>
+                        	<div class="number_box">                        	
+                           		<span class="minus">-</span>
+						   		<input type="text" value="1" name="count" class="count" id="count" onblur="cntCalc()" onkeyup="cntCalc()"/>
+						   		<span class="plus">+</span>
+                        	</div>
+<!--                            <input type="number" class="count_input" name="count" id="count" value="1" onblur="cntCalc()" onkeyup="cntCalc()"> -->
                         </a>
                      </li>
                   </ul>
@@ -257,6 +261,7 @@ function view(opt) {
 
    <script type="text/javascript">
       $(function() {
+    	  
          $('ul.tabs li').click(function() {
            let tab_id = $(this).attr('data-tab');
            
@@ -267,8 +272,8 @@ function view(opt) {
            $('#' + tab_id).addClass('current');
          });
          
+//          $("#count").spinner();
          
-         $("#count").spinner();
          
        // slide
            var other_slide = new Swiper('.other_slide', {
@@ -306,11 +311,31 @@ function view(opt) {
                var userPrice = Number('${view.USER_PRICE}');
                var toPrice =Number($("#count").val())*userPrice;
                $(".to_price").html(String(toPrice).replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+               return; 
             }else{
                $("#count").val(''); 
                $(".to_price").html('0');               
             }            
          }
+         
+         // 구매수량 plus & minus
+         $('.minus').click(function () {
+				var $input = $(this).parent().find('.count');
+				var count = parseInt($input.val()) - 1;
+				count = count < 1 ? 1 : count;
+				$input.val(count);
+				$input.change();
+				cntCalc();
+				return false;
+			});
+			$('.plus').click(function () {
+				var $input = $(this).parent().find('.count');
+				$input.val(parseInt($input.val()) + 1);
+				$input.change();
+				cntCalc();
+				return false;
+			});
+      
          
           //장바구니 추가
           function addCart(item_seq){

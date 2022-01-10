@@ -18,7 +18,7 @@
 	<div class="contents">
 		<article class="notice_view_wrap">
 			<ul class="notice_info">
-				<li>${view.title}</li>
+				<li class="notice_tit">${view.title}</li>
 				<li class="right_con">
 					<ul>
 						<li><span class="first">작성일</span>${view.reg_dt}</li>

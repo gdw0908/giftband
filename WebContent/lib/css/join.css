@@ -102,8 +102,17 @@
 
 .authentication {overflow:hidden; padding:83px 0 99px 0; border-bottom:1px solid #d0d0d0;}
 .authentication dl dt { margin-bottom:15px; font-size:16px; font-weight: 500; }
-.authentication dl dd {line-height:20px; margin-bottom:10px;}
+.authentication dl dd {
+	display: flex;
+	align-items: center;
+	line-height:20px;
+	margin-bottom:10px;
+}
 
+.pw_form_wrap {
+	width: 100%;
+	max-width: 336px;
+}
 
 p.warning {margin:19px 0 0 0; line-height:20px;}
 p.warning_2 { font-weight: 400; padding-bottom:10px; color: #CC4C3B; font-size:14px; border-bottom:1px solid #d0d0d0;}
@@ -364,6 +373,10 @@ p.agreement {margin-top:12px;}
 	border-bottom:none; 
 	box-sizing: border-box;
 }
+.auth_2 .phone,
+.auth_2 .ipin {
+	max-width: 336px;
+}
 .auth_2 .ipin form { position: relative;  }
 .find_pw {
 	position: absolute;
@@ -378,24 +391,12 @@ p.agreement {margin-top:12px;}
 	border-bottom: 1px solid #202020;
 }
 
-.search_tab h4#tabNavTitle0101 a {z-index:4; background:url(/images/join/se_tab1_off.png) no-repeat;}
-.search_tab h4#tabNavTitle0101.on a {background:url(/images/join/se_tab1_on.png) no-repeat;}
-.search_tab h4#tabNavTitle0102 a {background:url(/images/join/se_tab2_off.png) no-repeat;}
-.search_tab h4#tabNavTitle0102.on a {background:url(/images/join/se_tab2_on.png) no-repeat;}
-
-dl.type_2 dd {
-	display: flex;
-	align-items: center;
-	row-gap: 10px;
-	overflow:hidden;
-	box-sizing: border-box;
-}
 dl.type_2 dd span { width: 100%; }
 dl.type_2 dd span.standard {
-	width: 50px;  
+	width: 62px;  
 	font-weight: 400; 
 	font-size:14px; 
-	margin-right: 20px;
+	margin-right: 3px;
 	color: #b4b4b4; 
 }
 dl.type_2 dd select.select_1 {width:73px;}
@@ -405,7 +406,7 @@ dl.type_2 dd input {
 	font-size: 14px;
 	font-weight: 300;
 	color: #202020;
-	padding: 10px 15px;
+	padding: 10px 13px;
 	border: 1px solid #dbdbdb;
 	border-radius: 5px;
 	box-sizing: border-box;
@@ -433,7 +434,7 @@ dl.type_2 dd.btn {  margin-bottom:0;}
 }
 .b_gui p { width: 50%; padding:21px 0 18px 26px; box-sizing: border-box; }
 .b_gui p.gui_r {border-left:1px solid #d0d0d0;}
-.b_gui span.text {padding-left:10px; margin-right:15px; background:url(/images/join/b_gui_icon.gif) no-repeat left 4px; font-size:14px; line-height:18px;}
+.b_gui span.text { margin-right:10px; font-size:14px; line-height:18px;}
 
 .licensee_2 {padding:83px 0 65px 0;}
 .licensee_2 dl.type_2 {width:367px; margin:0 auto;}
@@ -465,14 +466,16 @@ dl.type_2 dd.btn {  margin-bottom:0;}
 	align-items: center;
 	flex-direction: column;
 }
-.licensee_3 dl.type_2 dt { font-size: 20px; font-weight: 500;  padding-left:15px; margin-bottom:25px; letter-spacing:-1px;}
+.licensee_3 dl.type_2 dt { font-size: 24px; font-weight: 500; text-align: center; margin-bottom: 60px; letter-spacing:-1px;}
 .licensee_3 dl.type_2 dd { margin-bottom:15px;}
 .licensee_3 dl.type_2 dd span {font-size:14px; }
 .licensee_3 dl.type_2 dd span.standard {margin-top:0;}
 .licensee_3 dl.type_2 dd.btn_2 {
 	display: flex;
+	justify-content: center;
 	flex-wrap: wrap;
 	column-gap: 10px; 
+	width: 100%;
 	margin-top:40px; 
 	margin-bottom:0;
 }
@@ -946,7 +949,11 @@ i {
 }
 
 @media screen and (max-width: 360px) {
-	dl.type_2 dd { flex-direction: column; align-items: flex-start; }
+	.authentication dl dd {
+    	flex-direction: column;
+    	align-items: flex-start;
+    	row-gap: 5px;
+	}
 	dl.type_2 dd.btn { padding-left: 0; }
 	.j_btn1 a { font-size: 16px; padding: 20px 38px;} 
 	.join_process li { font-size: 14px; }

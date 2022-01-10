@@ -38,10 +38,8 @@
 <meta name="twitter:url" content="#" />
 <meta name="twitter:image" content="./images/kakao_img.png" />
 
-<link rel="stylesheet"
-	href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
-<link rel="stylesheet"
-	href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+<link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
 
 <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
 <script type="text/javascript" src="/lib/js/common.js"></script>
