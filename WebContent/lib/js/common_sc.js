@@ -43,11 +43,11 @@ function addCart(item_seq){
 					return alert("장바구니에 추가되었습니다.");
 					
 				}
-			} else {
-				alert("장바구니 추가 오류입니다.");		
-			}
+		  } else {
+			  return alert("품절된 상품입니다.");		
+		  }
 		});     
    } else {
-	   return;
+	   return alert("품절된 상품입니다.");
    }
 }

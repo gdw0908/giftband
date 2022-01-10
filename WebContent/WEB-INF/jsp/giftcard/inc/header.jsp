@@ -133,7 +133,7 @@ $( document ).ready(function() {
   	   <li class="all_menu" id="allmenu_open"><i class="xi-bars"></i>전체 카테고리</li>
   	   <li class="cart_item">
   	   	<a href="/giftcard/mypage/shopping/cart/index.do" class="cart">
-<%--   	   		<span class="cart_count">${fn:length(cartCnt.list) }</span> --%>
+   	   		<span class="cart_count">${fn:length(cartCnt.list) }</span>
   	   		<i ><img src="/images/common/cart_icon.png"></i>
   	   		장바구니</a>
   	   	</li>
