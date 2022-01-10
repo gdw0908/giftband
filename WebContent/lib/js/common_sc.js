@@ -48,6 +48,6 @@ function addCart(item_seq){
 		  }
 		});     
    } else {
-	   return alert("품절된 상품입니다.");
+	   return;
    }
 }
