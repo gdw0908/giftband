@@ -173,17 +173,6 @@ function search_email_form_fnc()
 		document.getElementById("email").value = "";
 		return false;
 	}
-	else
-	{
-		if(confirm("개인회원은 개인탭에서 기업회원은 기업탭에서 검색 을 하셔야 정확하게 비밀번호를 찾으 실수 있습니다. 진행하시겠습니까?"))
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-	}
 }
 
 </script>
@@ -196,11 +185,11 @@ function search_email_form_fnc()
   <div id="tabNav_j1" class="join_tab pw_search_tab">
     <div id="tab-1" id="tabNav0101" class="tab-content current">
       <div class="t_box1">
-        <p><span>개인회원</span>이신경우 : ① 휴대폰 또는 아이핀 또는 이메일 인증정보 기재&nbsp;&nbsp;&nbsp;② 본인인증 완료 후 비밀번호 재발급</p>
+        <p><span>개인회원</span>이신경우 : ① 이메일 인증정보 기재&nbsp;&nbsp;&nbsp;② 본인인증 완료 후 비밀번호 재설정</p>
       </div>
       <div class="authentication auth_2">
         <div class="ipin ipin_3">
-        <form name = "search_email_form" id = "search_email_form" method = "post" action = "/giftcard/join/pw_search_2.do" onsubmit = "return search_email_form_fnc();">
+        <form name = "search_email_form" id = "search_email_form" method = "post" action = "/giftcard/join/pw_search_1.do" onsubmit = "return search_email_form_fnc();">
             <input type = "hidden" name = "mode" id = "mode" value = "pw_search"/>
           <dl class="type_2 type_2_2">
           <dt>이메일 본인인증</dt>
