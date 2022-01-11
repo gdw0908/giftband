@@ -118,7 +118,10 @@
 			jQuery("#cell3").val("");
 			jQuery("#cell3").focus();
 			return false;
-		} else if (jQuery("#email1").val() == "") {
+		} else if (jQuery("#check_member_cell").val() == "") { //중복체크 추가
+            alert("휴대폰번호 중복확인을 진행해주세요.");
+            return false;
+	    } else if (jQuery("#email1").val() == "") {
 			alert("이메일을 입력하세요.");
 			jQuery("#email1").val("");
 			jQuery("#email1").focus();
@@ -187,6 +190,49 @@
 		}
 
 	}
+	
+	/* 휴대폰 번호 중복체크 추가 */
+	function chk_member_cellChk() {
+      if (jQuery("#cell1").val() == "") {
+         alert("휴대폰번호를 입력하세요.");
+         jQuery("#cell1").val("");
+         jQuery("#cell1").focus();
+         return;
+      } else if(jQuery("#cell2").val() == ""){
+         alert("휴대폰번호를 입력하세요.");
+         jQuery("#cell2").val("");
+         jQuery("#cell2").focus();
+         return;         
+      } else if(jQuery("#cell3").val() == ""){
+         alert("휴대폰번호를 입력하세요.");
+         jQuery("#cell3").val("");
+         jQuery("#cell3").focus();
+         return;         
+      } else {
+         getJSON("/json/list/member.getMemberCellCheck.do", {
+            "cell1" : jQuery("#cell1").val(),
+            "cell2" : jQuery("#cell2").val(),
+            "cell3" : jQuery("#cell3").val()
+         }, function(data) {
+            $("body").data("chk_member_cell", data);
+            var chk_member_cell = $("body").data("chk_member_cell");
+
+            $.each(chk_member_cell, function() {
+               var data = this["cell1"] + this["cell2"] + this["cell3"] ;
+            });
+            
+            if (data.length <= 0) {
+               jQuery("#check_member_cell").html("사용 가능한 번호입니다.");
+               return; 
+            } else {
+               jQuery("#check_member_cell").html("이미 가입 되어있는 번호 입니다.");
+               jQuery("#cell2").val("");
+               jQuery("#cell3").val("");
+               return;
+            }
+         });
+      }
+   }
 
 	function open_zipcode() {
 		var param = "";
@@ -300,14 +346,20 @@
 										maxlength="4"></td>
 								</tr>
 								<tr>
-									<th scope="row"><b>*</b> 휴대폰번호</th>
-									<td><select type="text" id="cell1" name="cell1" class="select_j1">
-											<option value="010">010</option>
-											<option value="011">011</option>
-										</select> - <input type="text" id="cell2" name="cell2" class="input_j1 ws_4"
-										maxlength="4"> - <input type="text" id="cell3"
-										name="cell3" class="input_j1 ws_4" maxlength="4"></td>
-								</tr>
+		                           <th scope="row"><b>*</b> 휴대폰번호</th>
+		                           <td>
+		                           		<p>
+		                           			<select type="text" id="cell1" name="cell1" class="select_j1">
+				                                 <option value="010">010</option>
+				                                 <option value="011">011</option>
+		                              		</select> - 
+			                                <input type="text" id="cell2" name="cell2" class="input_j1 ws_4" maxlength="4"> - 
+			                                <input type="text" id="cell3" name="cell3" class="input_j1 ws_4" maxlength="4">
+		                              		<a href="javascript:;" onclick="chk_member_cellChk();" class="overlap_btn" style="color: #fff;">휴대폰 중복확인</a>
+		                              	</p>
+		                              <div id="check_member_cell"></div>
+		                           </td>
+		                        </tr>
 								<tr>
 									<th scope="row" class="fs_1">알림 설정</th>
 									<td><label> <input type="checkbox" id="sms_yn"
