@@ -189,7 +189,7 @@ function search_email_form_fnc()
       </div>
       <div class="authentication auth_2">
         <div class="ipin ipin_3">
-        <form name = "search_email_form" id = "search_email_form" method = "post" action = "/giftcard/join/pw_search_1.do" onsubmit = "return search_email_form_fnc();">
+        <form name = "search_email_form" id = "search_email_form" method = "post" action = "/giftcard/join/pw_search_2.do" onsubmit = "return search_email_form_fnc();">
             <input type = "hidden" name = "mode" id = "mode" value = "pw_search"/>
           <dl class="type_2 type_2_2">
           <dt>이메일 본인인증</dt>
