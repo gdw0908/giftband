@@ -118,9 +118,10 @@
 			jQuery("#cell3").val("");
 			jQuery("#cell3").focus();
 			return false;
-		} else if (jQuery("#check_member_cell").val() == "") { //중복체크 추가
-            alert("휴대폰번호 중복확인을 진행해주세요.");
+		} else if (jQuery("#check_member_cell").html() == "") { //중복체크 추가
+			alert("휴대폰번호 중복확인을 진행해주세요.");
             return false;
+            
 	    } else if (jQuery("#email1").val() == "") {
 			alert("이메일을 입력하세요.");
 			jQuery("#email1").val("");
