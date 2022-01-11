@@ -39,20 +39,6 @@ function search_pw_form_fnc() {
 		jQuery("#member_pw").focus();
 		return false;
 	} 
-	
-	getJSON("/json/list/member.passwordInit.do", {
-        "member_pw" : jQuery("#member_pw").val(),
-        "member_seq" : jQuery("#member_seq").val()
-     }, function(data) {
-        $("body").data("member_pw", data);
-        var member_pw = $("body").data("member_pw");
-
-        //$.each(chk_member_cell, function() {
-        //   var data = this["cell1"] + this["cell2"] + this["cell3"] ;
-        //});
-        
-     });
-	
 }
 
 </script>
@@ -67,7 +53,7 @@ function search_pw_form_fnc() {
 	        <div class="ipin ipin_3">
 	          <form name = "search_pw_form" id = "search_pw_form" method = "post" 
 	          	action = "/giftcard/join/pw_search_2_2.do" onsubmit = "return search_pw_form_fnc();">
-	            <input type = "hidden" name = "mode" id = "mode" value = "pw_search"/>
+	            <input type = "hidden" name = "mode" id = "mode" value = "pw_searchUp"/>
 	            <input type = "hidden" name = "member_seq" value="${article.member_seq }">
 	            <dl class="type_2 type_2_2">
 	              <dt>비밀번호 재설정</dt>
