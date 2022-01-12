@@ -348,17 +348,6 @@
 		AND
 			EMAIL = #{email}
         </if>
-        
-          <if test="!(com_nm == null or com_nm == '')" >
-		AND
-			BUSI_NM = #{busi_nm}
-        </if>
-        
-        <if test="!(busi_no == null or busi_no == '')" >
-		AND
-			BUSI_NO = #{busi_no}
-        </if>
-        
 	</select>
 	
 	<select id="joined" parameterType="Map" resultType="mcmap">
