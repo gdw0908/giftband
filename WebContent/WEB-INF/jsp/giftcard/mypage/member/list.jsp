@@ -190,43 +190,32 @@
 
 					<div class="user_info_box">
 						<table class="user_table_1">
-							<colgroup>
-								<col width="20%">
-								<col width="">
-							</colgroup>
 							<tbody>
-
 								<tr>
-									<th scope="row"><b>*</b> 아이디</th>
+									<th scope="row">아이디</th>
 									<td class="fs_style_1">${userData.member_id }</td>
 								</tr>
-
 								<tr>
-									<th scope="row"><b>*</b> 기존 비밀번호</th>
-									<td><input type="password" id="member_pw_df" value=""
-										name="member_pw_df" class="input_3 ws_1"
-										placeholder="현재 비밀번호를 입력해 주세요"></td>
+									<th scope="row"> 기존 비밀번호</th>
+									<td>
+										<input type="password" id="member_pw_df" value="" name="member_pw_df" class="input_3 ws_1" placeholder="현재 비밀번호를 입력해 주세요"></td>
 								</tr>
-
 								<tr>
 									<th scope="row">새 비밀번호</th>
-									<td><input type="password" id="member_pw" name="member_pw"
-										class="input_3 ws_1" placeholder="새 비밀번호를 입력해 주세요"> <span
-										class="c1">※ 6~15글자 이내, 영문 대/소문자, 숫자 및 특수문자 사용가능</span></td>
+									<td>
+										<input type="password" id="member_pw" name="member_pw" class="input_3 ws_1" placeholder="새 비밀번호를 입력해 주세요">
+										<span class="c1">※ 6~15글자 이내, 영문 대/소문자, 숫자 및 특수문자 사용가능</span></td>
 								</tr>
-
 								<tr>
 									<th scope="row">새 비밀번호확인</th>
-									<td><input type="password" id="member_pw_check"
-										name="member_pw_check" class="input_3 ws_1"
-										placeholder="새 비밀번호를 다시한번 입력해 주세요"></td>
+									<td>
+										<input type="password" id="member_pw_check" name="member_pw_check" class="input_3 ws_1" placeholder="새 비밀번호를 다시한번 입력해 주세요">
+									</td>
 								</tr>
-
 								<tr>
 									<th scope="row">이름 (실명)</th>
 									<td class="fs_style_1">${userData.member_nm }</td>
 								</tr>
-
 								<tr>
 									<th scope="row">전화번호</th>
 									<td><select id="tel" name="tel" class="select_u1">
@@ -273,34 +262,30 @@
 										type="text" id="tel2" name="tel2" class="input_3 ws_2"
 										value="${tel2 }" maxlength="4"></td>
 								</tr>
-
 								<tr>
-									<th scope="row"><b>*</b> 휴대폰번호</th>
-									<td><input type="text" id="cell" name="cell"
-										class="input_3 ws_2" value="${cell }" maxlength="3"> -
-										<input type="text" id="cell1" name="cell1"
-										class="input_3 ws_2" value="${cell1 }" maxlength="4">
-										- <input type="text" id="cell2" name="cell2"
-										class="input_3 ws_2" value="${cell2 }" maxlength="4">
+									<th scope="row">휴대폰번호</th>
+									<td>
+										<input type="text" id="cell" name="cell" class="input_3 ws_2" value="${cell }" maxlength="3"> -
+										<input type="text" id="cell1" name="cell1" class="input_3 ws_2" value="${cell1 }" maxlength="4">- 
+										<input type="text" id="cell2" name="cell2" class="input_3 ws_2" value="${cell2 }" maxlength="4">
 									</td>
 								</tr>
-
 								<tr>
 									<th scope="row" class="fs_1">알림 설정</th>
-									<td><label><input type="checkbox" id="sms_yn"
-											name="sms_yn" class="check" value="Y"
-											<c:if test = "${userData.sms_yn eq 'Y' }">checked</c:if>>
-											휴대폰 알림문자를 받겠습니다.</label></td>
+									<td>
+										<label>
+											<input type="checkbox" id="sms_yn" name="sms_yn" class="check" value="Y"
+												<c:if test = "${userData.sms_yn eq 'Y' }">checked</c:if>>
+												휴대폰 알림문자를 받겠습니다.
+										</label>
+									</td>
 								</tr>
-
 								<tr>
-									<th scope="row"><b>*</b> 이메일</th>
-									<td><input type="text" id="email" name="email"
-										class="input_3" value="${email }"> @ <input
-										type="text" id="email1" name="email1" class="input_3"
-										value="${email1 }"> <select id="choice_email"
-										name="choice_email" class="select_1"
-										onchange="inputEmail2(this.value);">
+									<th scope="row">이메일</th>
+									<td>
+										<input type="text" id="email" name="email" class="input_3" value="${email }"> @ 
+										<input type="text" id="email1" name="email1" class="input_3" value="${email1 }">
+										<select id="choice_email" name="choice_email" class="select_1" onchange="inputEmail2(this.value);">
 											<option value=""
 												<c:if test = "${email1 ne 'hanmail.net' || email1 ne 'naver.com' || email1 ne 'daum.net' || email1 ne 'nate.com' || email1 ne 'gmail.com' || email1 ne 'korea.com' || email1 ne 'dreamwiz.com' || email1 ne 'hotmail.com' || email1 ne 'yahoo.co.kr' || email1 ne 'sportal.or.kr'}">selected</c:if>>직접입력</option>
 											<option value="hanmail.net"
@@ -323,44 +308,41 @@
 												<c:if test = "${email1 eq 'yahoo.co.kr'  }">selected</c:if>>yahoo.co.kr</option>
 											<option value="sportal.or.kr"
 												<c:if test = "${email1 eq 'sportal.or.kr'  }">selected</c:if>>sportal.or.kr</option>
-									</select></td>
+										</select>
+									</td>
 								</tr>
-
 								<tr>
 									<th scope="row" class="fs_1">광고성 메일 수신</th>
-									<td><label><input type="radio" id="email_yn"
-											name="email_yn" value="Y" class="check"
-											<c:if test = "${userData.email_yn eq 'Y' }">checked</c:if>>
-											수신함</label> <label style="margin-left: 15px;"><input
-											type="radio" id="email_yn" name="email_yn" value="N"
-											class="check"
-											<c:if test = "${userData.email_yn eq 'N' }">checked</c:if>>
-											수신안함</label> <span class="c2">※ 주요 공지사항 및 알림 등은 설정에 관계 없이
-											발송됩니다.</span></td>
+									<td>
+										<label>
+											<input type="radio" id="email_yn" name="email_yn" value="Y" class="check"
+												<c:if test = "${userData.email_yn eq 'Y' }">checked</c:if>>
+												수신함
+										</label>
+										<label style="margin-left: 15px;">
+											<input type="radio" id="email_yn" name="email_yn" value="N" class="check"
+												<c:if test = "${userData.email_yn eq 'N' }">checked</c:if>>
+												수신안함
+										</label>
+										<span class="c2">※ 주요 공지사항 및 알림 등은 설정에 관계 없이 발송됩니다.</span>
+									</td>
 								</tr>
-
 								<tr>
-									<th scope="row"><b>*</b> 주소</th>
+									<th scope="row">주소</th>
 									<td class="adress">
 										<p>
-											<input type="text" id="zip_cd" name="zip_cd"
-												class="input_3 ws_2" readonly value="${zip_code1 }">
-											- <input type="text" id="zip_cd1" name="zip_cd1"
-												class="input_3 ws_2" readonly
-												value="<c:if test="${!(zip_code2 == null or zip_code2 == '' or zip_code2 == 'null')}">${zip_code2 }</c:if>">
+											<input type="text" id="zip_cd" name="zip_cd" class="input_3 ws_2" readonly value="${zip_code1 }">- 
+											<input type="text" id="zip_cd1" name="zip_cd1" class="input_3 ws_2" readonly value="<c:if test="${!(zip_code2 == null or zip_code2 == '' or zip_code2 == 'null')}">${zip_code2 }</c:if>">
 											<a href="javascript:open_zipcode();" class="address_btn">주소검색</a>
 										</p>
 										<p>
-											<input type="text" id="addr1" name="addr1"
-												class="input_3 ws_3" value="${userData.addr1 }" readonly>
+											<input type="text" id="addr1" name="addr1" class="input_3 ws_3" value="${userData.addr1 }" readonly>
 										</p>
 										<p class="last">
-											<input type="text" id="addr2" name="addr2"
-												class="input_3 ws_3" value="${userData.addr2 }">
+											<input type="text" id="addr2" name="addr2" class="input_3 ws_3" value="${userData.addr2 }">
 										</p>
 									</td>
 								</tr>
-
 							</tbody>
 						</table>
 					</div>

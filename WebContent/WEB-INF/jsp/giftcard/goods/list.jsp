@@ -163,36 +163,6 @@ function inquery_y(){
    alert("협의가 필요한 물품입니다.\n고객센터로 문의 바랍니다.");
 }
 
-/* //장바구니 추가
-function addCart(item_seq){
-
-   if(confirm("선택한 제품을 장바구니에 추가하시겠습니까?")){
-      var seq =  $("input[name='item_seq']").val(item_seq);
-      
-      
-      $.getJSON("/giftcard/mypage/shopping/cart/index.do?mode=add_cartAjax", {
-         seq : item_seq,
-         qty : '1'
-         
-      }, function(data) {
-            if (data.rst == "1") {
-            if(confirm("장바구니로 이동하시겠습니까?")){
-               location.href = "/giftcard/mypage/shopping/cart/index.do?mode=add_cart&seq=${param.seq }&qty=1";
-               alert("장바구니에 추가되었습니다.");
-            } else {
-               location.reload();               //새로고침
-               return alert("장바구니에 추가되었습니다.");
-               
-            }
-         } else {
-            alert("장바구니 추가 오류입니다.");         
-         }
-      });     
-   } else {
-      return;
-   }
-   
-} */
 
 function directOrder(item_seq){
    $("#cartFrm>[name='mode']").val("direct_order");
@@ -211,12 +181,6 @@ function directOrder(item_seq){
         <h3 class="menu_info">홈 > 카테고리 > 상품 페이지</h3>
    </article>
    <div class="container">
-    <div class="gnb_wrap">
-        <!-- gnb메뉴 -->
-<%--       <page:applyDecorator name="gnb" /> --%>
-        <!-- //gnb메뉴 -->
-    </div>
-
     <div class="sub_line_bg">
       <div class="sub_line">
         <div class="sl_wrap">
@@ -239,24 +203,7 @@ function directOrder(item_seq){
         <div class="sub_contents">
          <div class="sc_top">
                 <div class="sc_type">
-                  <span>
-                  <c:choose>
-                     <c:when test="${param.show == '2' }">
-                     <select id="rows" name="rows" class="select_1" onchange = "list(this.value);">
-                     <option value = "12" <c:if test = "${param.rows eq '12'}">selected</c:if>>12개</option>
-                     <option value = "24" <c:if test = "${param.rows eq '24'}">selected</c:if>>24개</option>
-                     <option value = "48" <c:if test = "${param.rows eq '48'}">selected</c:if>>48개</option>
-                     </select>
-                     </c:when>
-                     <c:otherwise>
-                     <select id="rows" name="rows" class="select_1" onchange = "list(this.value);">
-                     <option value = "10" <c:if test = "${param.rows eq '10'}">selected</c:if>>10개</option>
-                     <option value = "30" <c:if test = "${param.rows eq '30'}">selected</c:if>>30개</option>
-                     <option value = "50" <c:if test = "${param.rows eq '50'}">selected</c:if>>50개</option>
-                     </select>
-                     </c:otherwise>
-                  </c:choose>
-                  </span>
+                  <p class="total_item_count">총 상품 <span>${suf:getThousand(data.pagination.totalcount) }</span>개</p>
                 </div>
                 
                 <ul class="sc_tab">
@@ -305,4 +252,5 @@ function directOrder(item_seq){
        <input type="hidden" name="seq" value=""/>
        <input type="hidden" name="qty" value="1"/>
     </form>
+    </div>
     </div>

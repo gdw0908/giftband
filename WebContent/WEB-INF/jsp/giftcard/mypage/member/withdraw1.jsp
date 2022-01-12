@@ -5,9 +5,15 @@
 <!DOCTYPE HTML>
 <html lang="ko">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta content="minimum-scale=1.0, width=device-width, maximum-scale=1, user-scalable=yes" name="viewport" />
+<meta name="author" content="31system" />
+<meta name="description" content="안녕하세요  티켓크루 입니다." />
+<meta name="Keywords" content="티켓크루, 상품권, 백화점 상품권, 롯데 백화점, 롯데 상품권, 갤러리아 백화점, 갤러리아 상품권, 신세계 백화점, 신세계 상품권" />
 <title>회원탈퇴</title>
+
 <link rel="stylesheet" href="/lib/css/sub_2.css" type="text/css">
 <script type="text/javascript">
 	function withdrawFormChk() {
@@ -31,7 +37,7 @@
 
 					<div class="t_box2">
 						<p class="last">
-							티켓모아 <strong>회원탈퇴 시 비밀번호 인증</strong>이 필요합니다. 가입하신 비밀번호를 다시한번
+							티켓크루회원탈퇴 시 비밀번호 인증이 필요합니다. 가입하신 비밀번호를 다시한번
 							입력하시기 바랍니다.
 						</p>
 					</div>

@@ -14,23 +14,6 @@
 <meta name="Keywords" content="티켓크루, 상품권, 백화점 상품권, 롯데 백화점, 롯데 상품권, 갤러리아 백화점, 갤러리아 상품권, 신세계 백화점, 신세계 상품권" />
 <title>공지사항</title>
 
-<script>
-$(function() {
-	$("#allmenu_open").click(function() {
-		$('i.xi-bars').toggleClass('xi-close');	
-	});
-	
-	// 햄버거 메뉴
-	$(document).ready(function(){
-		$('.ham_wrap').click(function(){
-			$(this).toggleClass('open');
-			$('.mo_menu_wrap').toggleClass('active');
-			$('.mo_bg').toggleClass('active');
-		});
-	});
-});
-</script>
-
 </head>
 <body>
 	<div id="sub">
@@ -51,8 +34,11 @@ $(function() {
   						<option value="CONTS" <c:if test="${params.condition eq 'CONTS' }">selected="selected"</c:if>>내용</option>
   					</select>
   					
-  					<span class="bottom_search_add"><input type="text" class="input_2" name="keyword" value="${params.keyword}" title="검색바" />
-  						<span class="bottom_search_bt"><input type="button" class="search_vd" name="image" value="검색"></span>
+  					<span class="bottom_search_add">
+  						<input type="text" class="input_2" name="keyword" value="${params.keyword}" title="검색바" />
+  						<span class="bottom_search_bt">
+  							<input type="button" class="search_vd" name="search" value="검색">
+  						</span>
   					</span>
   				</form>
 			</div>
@@ -94,5 +80,7 @@ $(function() {
 
 		</div>
       </div>
+      
+      <script src="lib/js/common.js"></script>
 	</body>
 </html>

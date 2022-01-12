@@ -161,7 +161,7 @@
 .sc_top ul.sc_tab li.first a {padding:0 17px 0 0;}
 .sc_top ul.sc_tab li.last::after { display: none; }
 .sc_top ul.sc_tab li a {
-	font-size:12px; 
+	font-size:14px; 
 	font-weight: 300; 
 	letter-spacing:-1px;
 	color: #808080;
@@ -169,6 +169,14 @@
 .sc_top ul.sc_tab li a.on {color: var(--main-text);}
 
 .sc_top .sc_type {margin-top:18px;}
+.sc_top .sc_type .total_item_count {
+	font-size: 16px;
+	font-weight: 300;
+}
+.sc_top .sc_type .total_item_count span {
+	font-size: 18px;
+	font-weight: 500;
+}
 .sc_top .sc_type span {margin-left:1px;}
 .sc_top .sc_type select {width:71px;}
 

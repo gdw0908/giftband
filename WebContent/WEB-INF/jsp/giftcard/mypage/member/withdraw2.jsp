@@ -5,8 +5,13 @@
 <!DOCTYPE HTML>
 <html lang="ko">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta content="minimum-scale=1.0, width=device-width, maximum-scale=1, user-scalable=yes" name="viewport" />
+<meta name="author" content="31system" />
+<meta name="description" content="안녕하세요  티켓크루 입니다." />
+<meta name="Keywords" content="티켓크루, 상품권, 백화점 상품권, 롯데 백화점, 롯데 상품권, 갤러리아 백화점, 갤러리아 상품권, 신세계 백화점, 신세계 상품권" />
 <title>회원탈퇴</title>
 <link rel="stylesheet" href="/lib/css/sub_2.css" type="text/css">
 <script type = "text/javascript">
@@ -25,26 +30,27 @@ function withdrawFormAgreeChk()
 <body>
 <div class="wrap" style="width: 100%;">
       <div id="sub">
-        <div class="strapline">
-          <h3>회원탈퇴</h3>
-          <div class="state"> <span>홈</span> &gt; <span>고객센터</span> &gt; <span><strong>회원정보</strong></span> </div>
-        </div>
         <div class="contents">
           <div class="secession_con">
 
-            <p class="sece_t_text">※ 티켓모아쇼핑몰의 회원탈퇴를 하시는 여러분께 알려드리는 사항입니다.</p>
+            <p class="sece_t_text">※ 티켓크루쇼핑몰의 회원탈퇴를 하시는 여러분께 알려드리는 사항입니다.</p>
 
             <div class="t_box2">
-              <p><strong>기존 아이디로 재가입이 불가능 합니다. </strong></p>
-              <p><strong>회원 탈퇴 신청 아이디는 즉시 탈퇴 처리되며, 이후 영구적으로 사용이 중지되므로 새로운 아이디로만 재가입이 가능 합니다.</strong></p>
-              <p class="last"><strong>사이트 이용중 게시하신 게시물은 삭제되지 않습니다. 또한, 탈퇴 아이디로 등록하신 게시물은 삭제 및 수정이 불가능 합니다.</strong></p>
+              <p>기존 아이디로 재가입이 불가능 합니다.</p>
+              <p>회원 탈퇴 신청 아이디는 즉시 탈퇴 처리되며, 이후 영구적으로 사용이 중지되므로 새로운 아이디로만 재가입이 가능 합니다.</p>
+              <p class="last">사이트 이용중 게시하신 게시물은 삭제되지 않습니다. 또한, 탈퇴 아이디로 등록하신 게시물은 삭제 및 수정이 불가능 합니다.</p>
             </div>
 			<form name = "withdrawFormAgree" id = "withdrawFormAgree" method = "post" action = "${servletPath }" onsubmit = "return withdrawFormAgreeChk();">
 			<input type = "hidden" name = "mode" value = "withdraw2">
-            <div class="secession_checkbox"><label><input type="checkbox" id="agree" name="agree" class="check">위 사항에 모두 확인하였으며 티켓모아쇼핑몰의 회원탈퇴를 신청합니다.</label></div>
+            <div class="secession_checkbox">
+            	<label>
+            		<input type="checkbox" id="agree" name="agree" class="check">위 사항에 모두 확인하였으며 티켓크루쇼핑몰의 회원탈퇴를 신청합니다.
+            	</label>
+            </div>
+            
             <div class="secession_btn_2">
-              <a href="/"><img src="/images/sub_2/btn_secession_2.gif" alt=""></a>
-              <input type = "image" src = "/images/sub_2/btn_secession_3.gif">
+              <a href="/">취소하기</a>
+              <input type = "submit" value="확인">
             </div>
 			</form>
           </div>

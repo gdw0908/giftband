@@ -144,12 +144,14 @@ p.hit span a.h_btn img {margin:-2px 0 0 4px;}
 	display: inline-block;
 	font-size: 14px;
 	font-weight: 300;
-	padding: 14px;
+	padding: 15px 46px;
 	margin-right: 10px;
 	background: #F8F8F8;
 	box-sizing: border-box;
 }
 .view_prev_next ul li {
+	display: flex;
+	align-items: center;
 	font-size: 14px;
 	border: 1px solid #d4d4d4;
 }
@@ -164,7 +166,13 @@ p.hit span a.h_btn img {margin:-2px 0 0 4px;}
 	box-sizing: border-box;
 }
 .view_prev_next ul li > a {
+	display: block;
+	max-width: 140px;
 	padding: 10px 0;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	box-sizing: border-box;
 }
 
 .notice_view_wrap .btn_box {
@@ -945,14 +953,26 @@ td.cart_main .product_box {
 .details_style_2 td {padding:8px 0 7px 0; border-bottom:1px solid #dfdfdf; line-height:20px;}
 
 /* 회원정보변경 */
-.user_info_box {border:1px solid #575757;}
+.user_info_box {border:1px solid #d9d9d9;}
 
-.user_table_1 {width:100%;}
-.user_table_1 th {text-align:left; padding:13px 0 12px 16px; background:#fafafa; border-bottom:1px solid #e3e3e3; font-size:14px;}
-.user_table_1 th.fs_1 {font-size:12px;}
+.user_table_1 {width:100%; }
+.user_table_1 tr:last-child th,
+.user_table_1 tr:last-child td {
+	border-bottom: none;
+}
+.user_table_1 th { 
+	width: 150px;
+	font-size:14px;
+	font-weight: 400; 
+	text-align:left; 
+	padding:13px 0 12px 16px; 
+	background:#fafafa; 
+	border-bottom:1px solid #d9d9d9; 
+}
+.user_table_1 th.fs_1 {font-size:14px;}
 .user_table_1 th b {color:#f25757;}
-.user_table_1 td {padding:10px 18px 9px 16px; border-bottom:1px solid #e3e3e3;}
-.user_table_1 td.fs_style_1 {font-size:16px; font-weight:bold;}
+.user_table_1 td {padding:10px 18px 9px 16px; border-bottom:1px solid #d9d9d9;}
+.user_table_1 td.fs_style_1 {font-size:14px; font-weight: 500;}
 .user_table_1 td.adress p {
 	display: flex;
     align-items: center;
@@ -1239,6 +1259,7 @@ p.color_1 {padding:15px 0 8px 0; color:#5686bd; background:url(/images/sub_2/pay
     	font-size: 10px;
    		 padding: 6px;
 	}
+	.view_prev_next ul li span { margin-right: 10px; }
 	
 	
 	.list_item_wrap .item_wrap {

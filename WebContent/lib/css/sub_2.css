@@ -582,20 +582,42 @@ h4.hs_1 span.c1 {margin-left:10px; color:#f25757;}
 h4.hs_1 span.cut_1 {padding-left:12px; margin-left:8px; background:url(/images/sub_2/state_2_cut.gif) no-repeat left 2px;}
 
 /* 회원탈퇴 */
-
 .secession_con {padding-top:50px;}
 
-.t_box2 {padding:20px 0 18px 22px; border-top:1px solid #d0d0d0; border-right:1px solid #d0d0d0; border-left:1px solid #d0d0d0; border-bottom:3px solid #b7c8cd;}
-.t_box2 p {padding-left:15px; margin-bottom:12px; font-size:14px; line-height:20px; background:url(/images/join/b_icon_type1.gif) no-repeat left 8px; letter-spacing:-1px; color:#454545;}
+.t_box2 {
+	padding:20px 0 18px 20px; 
+	border:1px solid #d4d4d4; 
+}
+.t_box2 p {
+	padding:0 15px; 
+	margin-bottom:12px; 
+	font-size:14px; 
+	line-height:20px; 
+	background:url(/images/join/b_icon_type1.gif) no-repeat left 8px; 
+	letter-spacing:-1px; 
+	color:#454545;
+}
 .t_box2 p.last {margin-bottom:0;}
 
-.t_box3 {padding:20px 0 18px 22px; border-top:1px solid #d0d0d0; border-right:1px solid #d0d0d0; border-left:1px solid #d0d0d0; border-bottom:3px solid #b7c8cd;}
-.t_box3 p {text-align:center; margin-bottom:12px; font-size:16px; font-weight:bold; line-height:20px; color:#454545;}
+.t_box3 {
+	padding: 20px; 
+	border:1px solid #d4d4d4; 
+	box-sizing: border-box;
+}
+.t_box3 p {text-align:center; margin-bottom:12px; font-size:14px; font-weight: 400; line-height:20px; color:#454545;}
 .t_box3 p.last {margin-bottom:0;}
 .t_box3 p b {color:#ff1f10;}
 
 .secession_input {text-align:center; margin-top:95px;}
-.secession_input input {width:415px; padding:13px 0 13px 15px; border:1px solid #c5c5c5; font-size:16px; font-weight:bold;}
+.secession_input input {
+	width: 100%;
+	max-width:415px; 
+	font-size:14px; 
+	font-weight: 400;
+	padding:13px 0 13px 15px; 
+	border:1px solid #dbdbdb; 
+	box-sizing: border-box;
+}
 .secession_btn {text-align:center; margin-top:16px;}
 .secession_btn input {
 	padding: 15px 40px;
@@ -609,11 +631,38 @@ h4.hs_1 span.cut_1 {padding-left:12px; margin-left:8px; background:url(/images/s
 .secession_btn input:hover { background: var(--hover-color); }
 
 p.sece_t_text {margin-bottom:10px;}
-.secession_checkbox {text-align:center; padding:17px 0 15px 0; margin-top:30px; border:1px solid #bcbcbc; color:#ff2112; font-size:14px; font-weight:bold;}
+.secession_checkbox {text-align:center; padding: 15px 10px; margin-top:30px; border:1px solid #d4d4d4; box-sizing: border-box; }
 .secession_checkbox input {margin:-2px 20px 0 0;}
 
-.secession_btn_2 {text-align:center; margin-top:35px;}
-.secession_btn_2 a {margin-right:7px;}
+.secession_btn_2 {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align:center; 
+	gap: 10px 28px;
+	margin-top:35px; 
+}
+.secession_btn_2 a,
+.secession_btn_2 input {
+	display: block;
+	width: 190px;
+	height: 50px;
+	font-size: 16px;
+	font-weight: 500;
+	text-align: center;
+	line-height: 50px;
+	color: #fff;
+	background: var(--main-color);
+	border-radius: 9px;	
+	transition: .3s ease-in-out;
+}
+.secession_btn_2 a {
+	background: #fff;
+	color: var(--main-text);
+	border: 1px solid #E2E2E2;
+}
+.secession_btn_2 a:hover { border: 1px solid var(--main-color); }
+.secession_btn_2 input:hover { background: var(--hover-color); }
 
 /* event */
 

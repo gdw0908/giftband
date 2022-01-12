@@ -204,8 +204,7 @@
 											<td class="cart_main">
 												<div class="product_box">
 													<div class="pb_l">
-														<a
-															href="/giftcard/goods/view.do?menu=menu2&seq=${item.item_seq }">
+														<a href="/giftcard/goods/view.do?menu=menu2&seq=${item.item_seq }">
 															<img src="${item.thumb }" alt="">
 														</a>
 													</div>
@@ -220,12 +219,12 @@
 											</td>
 											<td>
 												<p class="first">
-													<input type="text" name="qty" class="cart_type_1"
-														value="${item.qty }" min="0" autocomplete="off">
+													<input type="text" name="qty" class="cart_type_1" value="${item.qty }" min="0" autocomplete="off">
 												</p>
 												<p>
-													<a href="javascript:changeQty('${status.index }')"><img
-														src="/images/sub_2/cart_btn1.gif" alt="변경"></a>
+													<a href="javascript:changeQty('${status.index }')">
+														<img src="/images/sub_2/cart_btn1.gif" alt="변경">
+													</a>
 												</p>
 											</td>
 											<td class="price_calc">
