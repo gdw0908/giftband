@@ -15,31 +15,6 @@
 #sub {width: 100%; }
 #sub2 {float:left; max-width:1400px; width: 100%; }
 
-/* left_menu */
-.top_info_state {
-	position: absolute;
-	top: 60px;
-	left: 0;
-	width: 100%;
-	background: #F1F1F1;
-}
-.top_info_state ul {
-	display: flex;
-	align-items: center;
-	gap: 12px;
-	max-width: 1400px;
-	padding: 10px 20px;
-	margin: auto;
-	box-sizing: border-box;
-}
-.top_info_state ul li {
-	font-size: 12px;
-	font-weight: 300;
-	color: #A8A8A8;
-}
-.top_info_state ul li span {
-	margin-left: 12px;
-}
 .left_box {
 	position:relative; 
 	width: 100%; 

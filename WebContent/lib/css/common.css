@@ -360,8 +360,33 @@ body.active { overflow-y: hidden; }
 .guide_box {float:right; margin-top:8px;}
 .guide_box p {text-align:right; margin-top:12px;}
 
-/* main_visual_wrap */
+/* top_info_state */
+.top_info_state {
+	position: absolute;
+	top: 60px;
+	left: 0;
+	width: 100%;
+	background: #F1F1F1;
+}
+.top_info_state ul {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	max-width: 1400px;
+	padding: 10px 20px;
+	margin: auto;
+	box-sizing: border-box;
+}
+.top_info_state ul li {
+	font-size: 12px;
+	font-weight: 300;
+	color: #A8A8A8;
+}
+.top_info_state ul li span {
+	margin-left: 12px;
+}
 
+/* main_visual_wrap */
 .main_visual_wrap {
 	position:relative; 
 	z-index:2000;
@@ -927,7 +952,7 @@ ul.sub_list_1 li {color:#e85946; background:url(/images/sub_2/table_list_1.gif) 
 #footer {
 	width: 100%;
 	padding: 20px 0;
-	border-top:1px solid #b2b2b2;
+	border-top:1px solid #E8E8E8;
 }
 #footer .f_wrap {
 	position:relative; 

@@ -177,8 +177,12 @@ function directOrder(item_seq){
 </head>
 
 <body>
-   <article class="menu_info_wrap">
-        <h3 class="menu_info">홈 > 카테고리 > 상품 페이지</h3>
+   <article class="top_info_state">
+        <ul>
+        	<li>홈 <span>></span>
+        	<li>카테고리 <span>></span>
+        	<li>상품페이지<span>></span>
+        </ul>
    </article>
    <div class="container">
     <div class="sub_line_bg">

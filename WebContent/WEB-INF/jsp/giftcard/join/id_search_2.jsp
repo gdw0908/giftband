@@ -48,7 +48,7 @@
       </c:if>
       <div class="b_gui">
         <p class="gui_l"><span class="text">아직 티켓크루 회원이 아니세요?</span><span><a href="/giftcard/join/join_2.do"><img class="btn" src="/images/join/btn_join.gif" alt="회원가입"></a></span></p>
-        <p class="gui_r"><span class="text">아직 티켓크루 회원이 아니세요?</span><span><a href="/giftcard/join/pw_search.do"><img class="btn" src="/images/join/btn_pw_search.gif" alt="비밀번호 찾기"></a></span></p>
+        <p class="gui_r"><span class="text">비밀번호를 찾으시나요?</span><span><a href="/giftcard/join/pw_search.do"><img class="btn" src="/images/join/btn_pw_search.gif" alt="비밀번호 찾기"></a></span></p>
       </div>
     </div>
   </div>

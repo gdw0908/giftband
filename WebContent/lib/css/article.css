@@ -616,15 +616,15 @@ td.cart_main .product_box {
 .cart_style_2 table {width:100%;}
 .cart_style_2 table th {padding:13px 0 12px 0; background:#fafafa;}
 .cart_style_2 table tr.border { border-bottom:1px solid #e3e3e3; }
-.cart_style_2 table td { padding:10px 0 10px 13px; border-bottom:1px solid #e3e3e3;}
+.cart_style_2 table td { padding:10px; border-bottom:1px solid #e3e3e3;}
 .cart_style_2 table td.last {border-bottom:none;}
 .cart_style_2 table td b.b_num {
 	font-size: 16px;
 	font-weight: 600;
 }
 .no_mem_t1 { margin-top: 5px; }
-/* t_top_style_1 */
 
+/* t_top_style_1 */
 .t_top_style_1 td.mid {vertical-align:middle;}
 .t_top_style_1 td.tt_type1 {padding:15px;}
 .t_top_style_1 td p {overflow:hidden; }
