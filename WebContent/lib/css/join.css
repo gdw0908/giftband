@@ -108,6 +108,15 @@
 	line-height:20px;
 	margin-bottom:10px;
 }
+.authentication dl dd.new_pw_wrap {
+	flex-direction: column;
+}
+.authentication dl dd.new_pw_wrap .c1 { margin-bottom: 20px; }
+.new_wrap {
+	display: flex;
+	align-items: center;
+	width: 100%;
+}
 
 .pw_form_wrap {
 	width: 100%;
@@ -399,6 +408,7 @@ dl.type_2 dd span.standard {
 	margin-right: 3px;
 	color: #b4b4b4; 
 }
+dl.type_2 dd span.standard.new_standard { width: 100px; }
 dl.type_2 dd select.select_1 {width:73px;}
 dl.type_2 dd input {
 	width: 100%;
@@ -423,7 +433,7 @@ dl.type_2 .btn .search_btn {
 }
 dl.type_2 .btn .search_btn:hover { background: var(--hover-color); }
 dl.type_2 dd input.ws_1 {width:63px;}
-dl.type_2 dd input.ws_2 {width: 274px;}
+/* dl.type_2 dd input.ws_2 {width: 274px;} */
 dl.type_2 dd.btn {  margin-bottom:0;}
 
 .b_gui {

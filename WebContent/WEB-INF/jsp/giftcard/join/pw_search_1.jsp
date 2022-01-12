@@ -57,11 +57,16 @@ function search_pw_form_fnc() {
                 <input type = "hidden" name = "member_seq" id = "member_seq" value = "${member_seq}"/>
 	            <dl class="type_2 type_2_2">
 	              <dt>비밀번호 재설정</dt>
-	              <dd><span class="standard">새 비밀번호</span><span>
-	                <input type="password" id="member_pw" name="member_pw" class="input_1 ws_2" placeholder="새 비밀번호를 입력해 주세요">
-	                <span class="c1">※ 6~15글자 이내, 영문 대/소문자, 숫자 및 특수문자 사용가능</span>
-	                </span></dd>
-	              <dd><span class="standard">새 비밀번호 확인</span><span>
+	              <dd class="new_pw_wrap">
+	              	<div class="new_wrap">
+	              	<span class="standard new_standard">새 비밀번호</span>
+	              	<span class="flex">
+						<input type="password" id="member_pw" name="member_pw" class="input_1 ws_2" placeholder="새 비밀번호를 입력해 주세요">
+	                </span>	              	
+	              	</div>
+	               		<span class="c1">※ 6~15글자 이내, 영문 대/소문자, 숫자 및 특수문자 사용가능</span>
+	              </dd>
+	              <dd><span class="standard new_standard">새 비밀번호 확인</span><span>
 	                <input type="password" id="member_pw_chk" name="member_pw_chk" class="input_1 ws_2" placeholder="새 비밀번호를 다시한번 입력해 주세요">
 	                </span></dd>
 	              <dd class="btn">
