@@ -153,7 +153,7 @@ function search_email_form_fnc()
   <div id="tabNav_j1" class="join_tab pw_search_tab">
     <div id="tab-1" id="tabNav0101" class="tab-content current">
       <div class="t_box1">
-        <p><span>개인회원</span>이신경우 : ① 휴대폰 또는 아이핀 또는 이메일 인증정보 기재&nbsp;&nbsp;&nbsp;② 본인인증 완료 후 비밀번호 재발급</p>
+        <p><span>개인회원</span>이신경우 : ① 이메일 인증정보 기재&nbsp;&nbsp;&nbsp;② 본인인증 완료 후 비밀번호 재설정</p>
       </div>
       <div class="authentication auth_2">
         <div class="ipin ipin_3">

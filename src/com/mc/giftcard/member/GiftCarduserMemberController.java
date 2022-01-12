@@ -77,62 +77,58 @@ public class GiftCarduserMemberController {
 		return "/giftcard/join/id_search_2";
 	}
 	
+	
+	//비밀번호 찾기
 	@RequestMapping(params="mode=pw_search", method=RequestMethod.POST) 
 	public String pw_search(ModelMap model, @RequestParam Map<String, String> params, @CookieValue("JSESSIONID") String cookie, HttpServletRequest request, HttpSession session) throws Exception{
-		
-		if(!StringUtil.isEmptyByParam((String)params.get("auth_member_nm")))
-		{
-			if(!params.get("auth_member_nm").equals(params.get("auth_member_nm_1")))
-			{
-				request.setAttribute("message", "인증받은 이름과 입력하신 이름이 일치하지 않습니다.");
-				request.setAttribute("redirect", "/giftcard/join/pw_search.do");
-				return "message";
-			}
-		}
-		
-		if(!StringUtil.isEmptyByParam(params, "busi_no1")) params.put("busi_no",params.get("busi_no1") + "-" + params.get("busi_no2") + "-" + params.get("busi_no3"));
 		
 		MCMap article = (MCMap) MemberDAO.findPwPasswdList(params);
 		
 		if(article != null) // 회원정보가 있으면
 		{
-			String initPw = StringUtil.createPasword(5);
-
 			params.put("session_member_seq", "");
 			params.put("session_member_nm", "");
 			params.put("ip", request.getRemoteHost());
-			params.put("member_pw", Encryption.stringEncryption(initPw, ""));
 			params.put("member_seq",(String) article.get("member_seq"));
+			model.addAttribute("member_seq", (String) article.get("member_seq"));
 			
-			MemberDAO.passwordInit(params);
-
-			//SMS 발송 로직 필요
-			if(!StringUtil.isEmptyByParam(article, "cell")) //개인은 핸드폰 번호가 있고 기업은 핸드폰번호가 없음
-			{
-				
-				//params.put("tran_phone", (String)article.get("cell"));
-				params.put("tran_phone", (String)article.get("cell"));
-				params.put("tran_callback","1566-6444");
-				params.put("tran_msg", "초기화된 비밀번호는 " + initPw + " 입니다.\n 반드시 회원정보 수정에서 비밀번호를 수정해주세요.");
-				sms.write(params);
-			}
-			else
-			{
-				//이메일 발송 로직 필요
-				params.put("from_email","partsmoa@insun.com");		//보내는사람 이메일주소
-				params.put("from_nm","Parts Moa");					//보내는사람 이름
-				params.put("title","초기화된 비밀번호 입니다.");		//제목
-				params.put("conts","초기화된 비밀번호는 " + initPw + " 입니다.\n 반드시 회원정보 수정에서 비밀번호를 수정해주세요.");			//내용
-				params.put("to_email", (String)article.get("email"));		//받는사람 이메일
-				log.info("============================= Mail Send Start ==============================");
-				mailService.sendUser(params);
-				log.info("============================= Mail Send End ==============================");
-			}
+			return "/giftcard/join/pw_search_1";
+		} else {
+			request.setAttribute("article", article);
+			request.setAttribute("params", params);
+			return "/giftcard/join/pw_search_2";
+			
 		}
 		
-		request.setAttribute("article", article);
-		request.setAttribute("params", params);
-		return "/giftcard/join/pw_search_2";
+	}
+	
+	//비밀번호 업데이트 추가
+	@RequestMapping(params="mode=pw_update", method=RequestMethod.POST) 
+	public String pw_update(ModelMap model, @RequestParam Map<String, String> params, @CookieValue("JSESSIONID") String cookie, HttpServletRequest request, HttpSession session) throws Exception{
+		
+		params.put("session_member_seq", "");
+	    params.put("session_member_nm", "");
+	    params.put("ip", request.getRemoteHost());
+	    
+	    //비밀번호 암호화
+	    params.put("member_pw", Encryption.stringEncryption(StringUtil.clearXSS(params.get("member_pw"), "").replaceAll("'", "").replaceAll(";", "").replaceAll("-", ""), ""));
+		
+		int result = MemberDAO.passwordInit(params);
+		
+		if(result == 1) {
+			request.setAttribute("servletPath", request.getServletPath());
+			request.setAttribute("requestURI", request.getRequestURI());
+			request.setAttribute("requestURL", request.getRequestURL());
+			
+			request.setAttribute("message", "비밀번호 변경이 완료 되었습니다.");
+			request.setAttribute("redirect", "/giftcard/login/login.do");
+			return "message";
+			
+		} else {
+			request.setAttribute("message", "비밀번호 변경 오류입니다.");
+			return "message";
+			
+		}
 	}
 	
 	@RequestMapping(params="mode=minsert", method=RequestMethod.POST) 

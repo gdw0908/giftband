@@ -21,15 +21,10 @@
       <div class="pw_last">
           <div class="licensee_3">
             <dl class="type_2">
-            <dt>성공적으로 비밀번호가 발급되었습니다.</dt>
-            <dd><span class="standard">아이디</span><span>: PARTSMOA</span></dd>
-            <dd>
-            <span class="standard">비밀번호확인</span>
-            <span>: 회원정보 이메일 (PART****@insun.co.kr)</span>
-            </dd>
+            <dt>성공적으로 비밀번호가 변경되었습니다.</dt>
             <dd class="btn_2">
-			<a href="#"><img class="btn" src="/images/join/join4_btn_1.gif" alt=""></a>
-			<a href="#"><img class="btn" src="/images/join/join4_btn_2.gif" alt=""></a>
+			<a href="/giftcard/index.do"><img class="btn" src="/images/join/join4_btn_1.gif" alt=""></a>
+			<a href="/giftcard/login/login.do"><img class="btn" src="/images/join/join4_btn_2.gif" alt=""></a>
 			</dd>
             </dl>
 
