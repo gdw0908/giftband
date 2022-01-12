@@ -290,6 +290,15 @@
            WHERE  DEL_YN='N'
            AND  CELL = #{cell1} || '-' || #{cell2} || '-' || #{cell3}
     </select>
+    
+    <!-- 이메일 중복확인 추가 -->
+	<select id="getMemberEmailCheck" parameterType="Map" resultType="mcmap">
+           SELECT 
+			    EMAIL
+			FROM MC_MEMBER
+			WHERE DEL_YN = 'N'
+			AND EMAIL = #{email1} || '@' || #{email2}
+    </select>
 	
 	<insert id="insertMemberData" parameterType="Map">
 		INSERT INTO MC_MEMBER(
