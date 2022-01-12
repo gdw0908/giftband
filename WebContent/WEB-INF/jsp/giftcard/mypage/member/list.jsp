@@ -18,6 +18,7 @@
 
 <title>회원정보수정</title>
 <link rel="stylesheet" href="/lib/css/sub_2.css" type="text/css">
+<link rel="stylesheet" href="/lib/css/join.css" type="text/css">
 <script type="text/javascript" src="/lib/js/common.js"></script>
 <script type="text/javascript">
 	function inputEmail2(value) {
@@ -147,7 +148,11 @@
 			jQuery("#cell2").focus();
 			return false;
 
-		} else if (jQuery("#email").val() == "") {
+		} else if (jQuery("#check_member_cell").html() == "") { //중복체크 추가
+        	alert("휴대폰번호 중복확인을 진행해주세요.");
+	       	return false;
+		        	
+	    } else if (jQuery("#email").val() == "") {
 			alert("이메일을 입력하세요.");
 			jQuery("#email").val("");
 			jQuery("#email").focus();
@@ -166,6 +171,21 @@
 			jQuery("#addr1").val("");
 			return false;
 
+		} else if (jQuery("#check_member_email").html() == "") { //중복체크 추가
+	          alert("이메일 중복확인을 진행해주세요.");
+	          return false;
+	          
+	    } else if (jQuery("#check_member_cell").html() == "이미 등록 되어있는 번호입니다."
+	    		|| jQuery("#check_member_email").html() == "이미 등록 되어있는 이메일입니다.") { //중복체크 추가
+	          if(confirm("이미 가입 되어있는 휴대폰번호 및 이메일입니다. 그대로 진행하시겠습니까?")){
+		        	return true;
+		        	
+		          } else{
+		        	alert("휴대폰번호 및 이메일을 변경해주세요.");
+			       	return false;
+			       	
+		          }
+			        	
 		} else {
 			if (confirm("수정 하시겠습니까?")) {
 				return true;
@@ -174,6 +194,80 @@
 			}
 		}
 	}
+	
+	/* 휴대폰 번호 중복체크 추가 */
+	function chk_member_cellChk() {
+      if (jQuery("#cell").val() == "") {
+         alert("휴대폰번호를 입력하세요.");
+         jQuery("#cell").val("");
+         jQuery("#cell").focus();
+         return;
+      } else if(jQuery("#cell1").val() == ""){
+         alert("휴대폰번호를 입력하세요.");
+         jQuery("#cell1").val("");
+         jQuery("#cell1").focus();
+         return;         
+      } else if(jQuery("#cell3").val() == ""){
+         alert("휴대폰번호를 입력하세요.");
+         jQuery("#cell2").val("");
+         jQuery("#cell2").focus();
+         return;         
+      } else {
+         getJSON("/json/list/member.getMemberCellCheck.do", {
+            "cell1" : jQuery("#cell").val(),
+            "cell2" : jQuery("#cell1").val(),
+            "cell3" : jQuery("#cell2").val()
+         }, function(data) {
+            $("body").data("chk_member_cell", data);
+            var chk_member_cell = $("body").data("chk_member_cell");
+
+            $.each(chk_member_cell, function() {
+               var data = this["cell"] + this["cell1"] + this["cell2"] ;
+            });
+            
+            if (data.length <= 0) {
+               jQuery("#check_member_cell").css('color', 'blue').html("사용 가능한 번호입니다.");
+               return; 
+            } else {
+               jQuery("#check_member_cell").css('color', 'blue').html("이미 등록 되어있는 번호입니다.");
+               return;
+            }
+         });
+      }
+    }
+	
+	/* 이메일 중복체크 추가 */
+	function chk_member_emailChk() {
+      if (jQuery("#email").val() == "") {
+         alert("이메일을 입력하세요.");
+         jQuery("#email").val("");
+         jQuery("#email").focus();
+         return;
+      } else {
+    	  
+    	  getJSON("/json/list/member.getMemberEmailCheck.do", {
+          		"email1" : jQuery("#email").val(),
+           		"email2" : jQuery("#email1").val()
+           		
+          }, function(data) {
+        	$.each(chk_member_emailChk, function() {
+                var data = this["email"] + this["email1"];
+            });
+            
+            console.log("########");
+            console.log("data >" + data);
+            console.log("data.length >" + data.length);
+            
+            if (data.length <= 0) {
+               jQuery("#check_member_email").css("color", "blue").html("사용 가능한 이메일입니다.");
+               return; 
+            } else {
+               jQuery("#check_member_email").css("color", "blue").html("이미 등록 되어있는 이메일입니다.");
+               return;
+            }
+         });
+      }
+   }
 </script>
 </head>
 
@@ -265,9 +359,16 @@
 								<tr>
 									<th scope="row">휴대폰번호</th>
 									<td>
-										<input type="text" id="cell" name="cell" class="input_3 ws_2" value="${cell }" maxlength="3"> -
-										<input type="text" id="cell1" name="cell1" class="input_3 ws_2" value="${cell1 }" maxlength="4">- 
-										<input type="text" id="cell2" name="cell2" class="input_3 ws_2" value="${cell2 }" maxlength="4">
+										<p>
+											<select type="text" id="cell" name="cell" class="select_u1" value="${cell }" maxlength="3">
+												<option value="010">010</option>
+			                                 	<option value="011">011</option>
+											</select> -
+											<input type="text" id="cell1" name="cell1" class="input_3 ws_2" value="${cell1 }" maxlength="4">- 
+											<input type="text" id="cell2" name="cell2" class="input_3 ws_2" value="${cell2 }" maxlength="4">
+											<a href="javascript:;" onclick="chk_member_cellChk();" class="overlap_btn" style="color: #fff;">휴대폰 중복확인</a>
+										</p>
+										<div id="check_member_cell"></div>
 									</td>
 								</tr>
 								<tr>
@@ -283,32 +384,36 @@
 								<tr>
 									<th scope="row">이메일</th>
 									<td>
-										<input type="text" id="email" name="email" class="input_3" value="${email }"> @ 
-										<input type="text" id="email1" name="email1" class="input_3" value="${email1 }">
-										<select id="choice_email" name="choice_email" class="select_1" onchange="inputEmail2(this.value);">
-											<option value=""
-												<c:if test = "${email1 ne 'hanmail.net' || email1 ne 'naver.com' || email1 ne 'daum.net' || email1 ne 'nate.com' || email1 ne 'gmail.com' || email1 ne 'korea.com' || email1 ne 'dreamwiz.com' || email1 ne 'hotmail.com' || email1 ne 'yahoo.co.kr' || email1 ne 'sportal.or.kr'}">selected</c:if>>직접입력</option>
-											<option value="hanmail.net"
-												<c:if test = "${email1 eq 'hanmail.net' }">selected</c:if>>hanmail.net</option>
-											<option value="naver.com"
-												<c:if test = "${email1 eq 'naver.com'  }">selected</c:if>>naver.com</option>
-											<option value="daum.net"
-												<c:if test = "${email1 eq 'daum.net'  }">selected</c:if>>daum.net</option>
-											<option value="nate.com"
-												<c:if test = "${email1 eq 'nate.com'  }">selected</c:if>>nate.com</option>
-											<option value="gmail.com"
-												<c:if test = "${email1 eq 'gmail.com'  }">selected</c:if>>gmail.com</option>
-											<option value="korea.com"
-												<c:if test = "${email1 eq 'korea.com'  }">selected</c:if>>korea.com</option>
-											<option value="dreamwiz.com"
-												<c:if test = "${email1 eq 'dreamwiz.com'  }">selected</c:if>>dreamwiz.com</option>
-											<option value="hotmail.com"
-												<c:if test = "${email1 eq 'hotmail.com'  }">selected</c:if>>hotmail.com</option>
-											<option value="yahoo.co.kr"
-												<c:if test = "${email1 eq 'yahoo.co.kr'  }">selected</c:if>>yahoo.co.kr</option>
-											<option value="sportal.or.kr"
-												<c:if test = "${email1 eq 'sportal.or.kr'  }">selected</c:if>>sportal.or.kr</option>
-										</select>
+										<p>
+											<input type="text" id="email" name="email" class="input_3" value="${email }"> @ 
+											<input type="text" id="email1" name="email1" class="input_3" value="${email1 }">
+											<select id="choice_email" name="choice_email" class="select_1" onchange="inputEmail2(this.value);">
+												<option value=""
+													<c:if test = "${email1 ne 'hanmail.net' || email1 ne 'naver.com' || email1 ne 'daum.net' || email1 ne 'nate.com' || email1 ne 'gmail.com' || email1 ne 'korea.com' || email1 ne 'dreamwiz.com' || email1 ne 'hotmail.com' || email1 ne 'yahoo.co.kr' || email1 ne 'sportal.or.kr'}">selected</c:if>>직접입력</option>
+												<option value="hanmail.net"
+													<c:if test = "${email1 eq 'hanmail.net' }">selected</c:if>>hanmail.net</option>
+												<option value="naver.com"
+													<c:if test = "${email1 eq 'naver.com'  }">selected</c:if>>naver.com</option>
+												<option value="daum.net"
+													<c:if test = "${email1 eq 'daum.net'  }">selected</c:if>>daum.net</option>
+												<option value="nate.com"
+													<c:if test = "${email1 eq 'nate.com'  }">selected</c:if>>nate.com</option>
+												<option value="gmail.com"
+													<c:if test = "${email1 eq 'gmail.com'  }">selected</c:if>>gmail.com</option>
+												<option value="korea.com"
+													<c:if test = "${email1 eq 'korea.com'  }">selected</c:if>>korea.com</option>
+												<option value="dreamwiz.com"
+													<c:if test = "${email1 eq 'dreamwiz.com'  }">selected</c:if>>dreamwiz.com</option>
+												<option value="hotmail.com"
+													<c:if test = "${email1 eq 'hotmail.com'  }">selected</c:if>>hotmail.com</option>
+												<option value="yahoo.co.kr"
+													<c:if test = "${email1 eq 'yahoo.co.kr'  }">selected</c:if>>yahoo.co.kr</option>
+												<option value="sportal.or.kr"
+													<c:if test = "${email1 eq 'sportal.or.kr'  }">selected</c:if>>sportal.or.kr</option>
+											</select>
+											<a href="javascript:;" onclick="chk_member_emailChk();" class="overlap_btn" style="color: #fff;">이메일 중복확인</a>
+										</p>
+										<div id="check_member_email"></div>
 									</td>
 								</tr>
 								<tr>
