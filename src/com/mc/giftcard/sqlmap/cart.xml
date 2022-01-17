@@ -268,6 +268,8 @@
 			<if test="paytyp != 'virtual'" >
 			PAY_DT = sysdate,
 			</if>
+			BANK_SEQ = #{bankCd},
+			ACCOUNTNO = #{account},
 			M_COMMISSION = TRUNC((${amt} + DECODE(COD_YN, 'Y', FEE_AMT, 0)) * ${commission} / 100)
 		WHERE CART_NO = #{cart_no}		
 	</update>
