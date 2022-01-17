@@ -44,9 +44,13 @@
 	function setAddr(roadAddrPart1, addrDetail, zipNo, jibunAddr) {
 		var zip = zipNo.split("-");
 		jQuery("#zip_cd").val(zip[0]);
-		jQuery("#zip_cd1").val(zip[1]);
 		jQuery("#addr1").val(jibunAddr);
 		jQuery("#addr2").val(addrDetail);
+		
+		console.log("#######");
+		console.log(zip);
+		console.log(zip[0]);
+		console.log(zip[1]);
 
 	}
 
@@ -436,8 +440,8 @@
 									<th scope="row">주소</th>
 									<td class="adress">
 										<p>
-											<input type="text" id="zip_cd" name="zip_cd" class="input_3 ws_2" readonly value="${zip_code1 }">- 
-											<input type="text" id="zip_cd1" name="zip_cd1" class="input_3 ws_2" readonly value="<c:if test="${!(zip_code2 == null or zip_code2 == '' or zip_code2 == 'null')}">${zip_code2 }</c:if>">
+											<input type="text" id="zip_cd" name="zip_cd" class="input_3 ws_2" readonly value="${zip_code1 }">
+											<input type="hidden" id="zip_cd1" name="zip_cd1" class="input_3 ws_2" readonly value="<c:if test="${!(zip_code2 == null or zip_code2 == '' or zip_code2 == 'null')}">${zip_code2 }</c:if>">
 											<a href="javascript:open_zipcode();" class="address_btn">주소검색</a>
 										</p>
 										<p>

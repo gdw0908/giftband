@@ -159,8 +159,8 @@
 									<td>
 										<div class="input_box_1">
 											<input type="text" id="zip_cd1" name="zip_cd1"
-												class="input_2 ws_1" value="${zip_cd1 }" readonly> -
-											<input type="text" id="zip_cd2" name="zip_cd2"
+												class="input_2 ws_1" value="${zip_cd1 }" readonly>
+											<input type="hidden" id="zip_cd2" name="zip_cd2"
 												class="input_2 ws_1" value="${zip_cd2 }" readonly> <a
 												href="#" onclick="open_zipcode();" class="address_btn">주소찾기</a>
 											<label> <input type="checkbox" id="default_yn"

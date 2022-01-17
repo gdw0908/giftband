@@ -691,7 +691,7 @@ public class GiftCardMypageController extends MCController {
 		params.put("tel", params.get("tel") + "-" + params.get("tel1") + "-" + params.get("tel2"));
 		params.put("cell", params.get("cell") + "-" + params.get("cell1") + "-" + params.get("cell2"));
 		params.put("email", params.get("email") + "@" + params.get("email1"));
-		params.put("zip_cd", params.get("zip_cd") + "-" + params.get("zip_cd1"));
+		params.put("zip_cd", params.get("zip_cd"));
 		
 		params.put("member_pw_df", encryption.stringEncryption((String)params.get("member_pw_df"),"MD5"));
 		if(!StringUtil.isEmptyByParam(params, "member_pw")) params.put("member_pw", encryption.stringEncryption((String)params.get("member_pw"),"MD5"));
@@ -886,10 +886,6 @@ public class GiftCardMypageController extends MCController {
 			request.setAttribute("cell2", cell[2]);
 			
 			request.setAttribute("zip_cd1", zip_code[0]);
-			if(zip_code.length > 1){
-				request.setAttribute("zip_cd2", zip_code[1]);
-			}
-			
 			request.setAttribute("myaddress", myaddress);
 			request.setAttribute("mode", "myaddressupdate");
 			
@@ -926,7 +922,7 @@ public class GiftCardMypageController extends MCController {
 		params.put("order_seq", "1");
 		params.put("tel", params.get("tel") + "-" + params.get("tel1") + "-" + params.get("tel2"));
 		params.put("cell", params.get("cell") + "-" + params.get("cell1") + "-" + params.get("cell2"));
-		params.put("zip_cd", params.get("zip_cd1") + "-" + params.get("zip_cd2"));
+		params.put("zip_cd", params.get("zip_cd1"));
 		
 		if(!StringUtil.isEmptyByParam(params, "default_yn"))
 		{
@@ -958,7 +954,7 @@ public class GiftCardMypageController extends MCController {
 		
 		params.put("tel", params.get("tel") + "-" + params.get("tel1") + "-" + params.get("tel2"));
 		params.put("cell", params.get("cell") + "-" + params.get("cell1") + "-" + params.get("cell2"));
-		params.put("zip_cd", params.get("zip_cd1") + "-" + params.get("zip_cd2"));
+		params.put("zip_cd", params.get("zip_cd1"));
 		
 		if(!StringUtil.isEmptyByParam(params, "default_yn"))
 		{
