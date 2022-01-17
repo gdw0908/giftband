@@ -61,9 +61,12 @@ public class GiftCardMemberController {
 	public Map write(ModelMap model, HttpServletRequest request, HttpSession session, @RequestParam Map<String, Object> jsonObject) throws Exception{
 		Map params = (JSONObject) JSONValue.parse((String)jsonObject.get("jData"));	//JSON으로 보내준 데이터를 사용
 		MCMap member = (MCMap) session.getAttribute("member");
-		params.put("session_member_id", (String) member.get("member_id"));
-		params.put("session_member_seq", (String) member.get("member_seq"));
-		params.put("session_member_nm", (String) member.get("member_nm"));
+		//params.put("session_member_id", (String) member.get("member_id"));
+		//params.put("session_member_seq", (String) member.get("member_seq"));
+		//params.put("session_member_nm", (String) member.get("member_nm"));
+		params.put("session_member_id", "");
+		params.put("session_member_seq", "");
+		params.put("session_member_nm", "");
 		params.put("ip", request.getRemoteHost());
 		return memberService.write(params);
 	}
@@ -74,9 +77,12 @@ public class GiftCardMemberController {
 	public Map modify(ModelMap model, HttpServletRequest request, HttpSession session, @RequestParam Map<String, Object> jsonObject) throws Exception{
 		Map params = (JSONObject) JSONValue.parse((String)jsonObject.get("jData"));	//JSON으로 보내준 데이터를 사용
 		MCMap member = (MCMap) session.getAttribute("member");
-		params.put("session_member_id", (String) member.get("member_id"));
-		params.put("session_member_seq", (String) member.get("member_seq"));
-		params.put("session_member_nm", (String) member.get("member_nm"));
+		//params.put("session_member_id", (String) member.get("member_id"));
+		//params.put("session_member_seq", (String) member.get("member_seq"));
+		//params.put("session_member_nm", (String) member.get("member_nm"));
+		params.put("session_member_id", "");
+		params.put("session_member_seq", "");
+		params.put("session_member_nm", "");
 		params.put("ip", request.getRemoteHost());
 		return memberService.modify(params);
 	}

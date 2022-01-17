@@ -33,8 +33,8 @@ public class GiftCardMemberService {
 	
 	public Map write(Map params) throws Exception {
 		Map rstMap = new HashMap();
-		if(!StringUtil.isEmpty((String)params.get("zip1")) && !StringUtil.isEmpty((String)params.get("zip2"))){
-			params.put("zip_cd", params.get("zip1")+"-"+params.get("zip2"));
+		if(!StringUtil.isEmpty((String)params.get("zip1"))){
+			params.put("zip_cd", params.get("zip1"));
 		}
 		if(!StringUtil.isEmpty((String)params.get("tel1")) && !StringUtil.isEmpty((String)params.get("tel2")) && !StringUtil.isEmpty((String)params.get("tel3"))){
 			params.put("tel", params.get("tel1")+"-"+params.get("tel2")+"-"+params.get("tel3"));
@@ -63,8 +63,8 @@ public class GiftCardMemberService {
 				m.put("session_member_seq", params.get("session_member_seq"));
 				m.put("session_member_nm", params.get("session_member_nm"));
 				m.put("ip", params.get("ip"));
-				if(!"".equals(m.get("zip1")) && !"".equals(m.get("zip2"))){
-					m.put("zip_cd", m.get("zip1")+"-"+m.get("zip2"));
+				if(!"".equals(m.get("zip1"))){
+					m.put("zip_cd", m.get("zip1"));
 				}
 				if(!"".equals(m.get("tel1")) && !"".equals(m.get("tel2")) && !"".equals(m.get("tel3"))){
 					m.put("tel", m.get("tel1")+"-"+m.get("tel2")+"-"+m.get("tel3"));
@@ -82,8 +82,8 @@ public class GiftCardMemberService {
 	
 	public Map modify(Map params) throws Exception {
 		Map rstMap = new HashMap();
-		if(!StringUtil.isEmpty((String)params.get("zip1")) && !StringUtil.isEmpty((String)params.get("zip1"))){
-			params.put("zip_cd", params.get("zip1")+"-"+params.get("zip2"));
+		if(!StringUtil.isEmpty((String)params.get("zip1"))){
+			params.put("zip_cd", params.get("zip1"));
 		}
 		if(!StringUtil.isEmpty((String)params.get("tel1")) && !StringUtil.isEmpty((String)params.get("tel2")) && !StringUtil.isEmpty((String)params.get("tel3"))){
 			params.put("tel", params.get("tel1")+"-"+params.get("tel2")+"-"+params.get("tel3"));
@@ -116,8 +116,8 @@ public class GiftCardMemberService {
 				m.put("session_member_seq", params.get("session_member_seq"));
 				m.put("session_member_nm", params.get("session_member_nm"));
 				m.put("ip", params.get("ip"));
-				if(!"".equals(m.get("zip1")) && !"".equals(m.get("zip2"))){
-					m.put("zip_cd", m.get("zip1")+"-"+m.get("zip2"));
+				if(!"".equals(m.get("zip1"))){
+					m.put("zip_cd", m.get("zip1"));
 				}
 				if(!"".equals(m.get("tel1")) && !"".equals(m.get("tel2")) && !"".equals(m.get("tel3"))){
 					m.put("tel", m.get("tel1")+"-"+m.get("tel2")+"-"+m.get("tel3"));

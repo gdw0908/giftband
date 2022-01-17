@@ -129,7 +129,6 @@ app.controller("writeCtrl", function($scope, $window, $routeParams, ajaxService,
 		var zip = zipNo.split("-");
 		$scope.$apply(function(){
 			$scope.form.zip1 = zip[0];
-			$scope.form.zip2 = zip[1];
 			$scope.form.addr1 = jibunAddr;
 			$scope.form.addr2 = addrDetail;
 		});
@@ -243,7 +242,6 @@ app.controller("modifyCtrl", function($scope, $window, $routeParams, ajaxService
 		var zip = zipNo.split("-");
 		$scope.$apply(function(){
 			$scope.form.zip1 = zip[0];
-			$scope.form.zip2 = zip[1];
 			$scope.form.addr1 = jibunAddr;
 			$scope.form.addr2 = addrDetail;
 		});
@@ -364,7 +362,6 @@ app.controller('basongjiCtrl', function($scope, $window, ajaxService, dialogServ
 		var zip = zipNo.split("-");
 		$scope.$apply(function(){
 			$scope.data.zip1 = zip[0];
-			$scope.data.zip2 = zip[1];
 			$scope.data.addr1 = jibunAddr;
 			$scope.data.addr2 = addrDetail;
 		});

@@ -93,7 +93,7 @@
         <tr>
           <th>주소</th>
           <td colspan="3">
-            <input type="text" class="input_1" style="width:80px" data-ng-model="form.zip1" required data-ng-pattern="/[0-9]{3}/"/>-<input type="text" class="input_1" style="width:80px" data-ng-model="form.zip2" data-ng-pattern="/[0-9]{3}/" required/>
+            <input type="text" class="input_1" style="width:80px" data-ng-model="form.zip1" required data-ng-pattern="/[0-9]{5}/" required/>
             <span class="bt_alls"><span><input type="button" value="주소검색" class="btalls" data-ng-click="main.openAddr()" required/></span></span> 
             <input type="text" class="input_1" style="width:85%; margin-top:3px;" data-ng-model="form.addr1" required/>
             <input type="text" class="input_1" style="width:85%; margin-top:3px;" data-ng-model="form.addr2"/>
