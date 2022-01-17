@@ -608,8 +608,8 @@ function goStep3() {
 							<tr>
 								<td>
 									<div class="input_box_1">
-										<input type="text" id="zip1" name="zip1" class="input_2 ws_1" maxlength="3"> - 
-										<input type="text" id="zip2" name="zip2" class="input_2 ws_1" maxlength="3">
+										<input type="text" id="zip1" name="zip1" class="input_2 ws_1" maxlength="3">
+										<input type="hidden" id="zip2" name="zip2" class="input_2 ws_1" maxlength="3">
 										<a href="javascript:openAddr();" class="address_btn">주소찾기</a>
 										<label>
 											<input type="checkbox" name="default_yn" value="Y" class="check">주소록에 기본배송지로 저장

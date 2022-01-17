@@ -571,7 +571,7 @@ public class GiftCardCartController {
 			params.put("orderno", params.get("OrdNo"));//주문번호
 			params.put("userid", params.get("UserId"));//회원아이디
 			params.put("email", params.get("UserEmail"));//이메일
-			params.put("zipcd", params.get("zip1")+"-"+params.get("zip2"));//우편번호
+			params.put("zipcd", params.get("zip1"));//우편번호
 			params.put("receiver", params.get("receiver"));//수취인
 			params.put("cell", params.get("cell1")+"-"+params.get("cell2")+"-"+params.get("cell3"));//받는이 휴대폰
 			params.put("tel", params.get("tel1")+"-"+params.get("tel2")+"-"+params.get("tel3"));//받는이 휴대폰
