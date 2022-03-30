@@ -18,23 +18,23 @@
 	content="minimum-scale=1.0, width=device-width, maximum-scale=1, user-scalable=yes"
 	name="viewport" />
 <meta name="author" content="31system" />
-<meta name="description" content="안녕하세요  티켓크루 입니다." />
-<meta name="Keywords" content="티켓크루, 상품권, 백화점 상품권, 롯데 백화점, 롯데 상품권, 갤러리아 백화점, 갤러리아 상품권, 신세계 백화점, 신세계 상품권" />
-<title>티켓크루</title>
+<meta name="description" content="안녕하세요  기프트밴드 입니다." />
+<meta name="Keywords" content="기프트밴드, 기프트콘, 기프트콘쇼핑" />
+<title>기프트밴드</title>
 
 <!-- og -->
 <meta property="og:type" content="website" />
-<meta property="og:site_name" content="티켓크루" />
-<meta property="og:title" content="티켓크루 입니다." />
-<meta property="og:description" content="안녕하세요 티켓크루 입니다." />
+<meta property="og:site_name" content="기프트밴드" />
+<meta property="og:title" content="기프트밴드 입니다." />
+<meta property="og:description" content="안녕하세요 기프트밴드 입니다." />
 <meta property="og:url" content="#" />
 <meta property="og:image" content="./images/kakao_img.png" />
 <meta property="og:image:width" content="800" />
 <meta property="og:image:height" content="400" />
 
 <!-- twitter -->
-<meta name="twitter:title" content="티켓크루" />
-<meta name="twitter:description" content="안녕하세요 티켓크루 입니다." />
+<meta name="twitter:title" content="기프트밴드" />
+<meta name="twitter:description" content="안녕하세요 기프트밴드 입니다." />
 <meta name="twitter:url" content="#" />
 <meta name="twitter:image" content="./images/kakao_img.png" />
 
