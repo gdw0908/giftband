@@ -11,13 +11,14 @@
 <meta name="format-detection" content="telephone=no" />
 <meta content="minimum-scale=1.0, width=device-width, maximum-scale=1, user-scalable=yes" name="viewport" />
 <meta name="author" content="31system" />
-<meta name="description" content="안녕하세요  티켓크루입니다." />
-<meta name="Keywords" content="티켓크루, 상품권, 백화점 상품권, 롯데 백화점, 롯데 상품권, 갤러리아 백화점, 갤러리아 상품권, 신세계 백화점, 신세계 상품권" />
+<meta name="description" content="안녕하세요  기프트밴드입니다." />
+<meta name="Keywords" content="기프트밴드, 상품권, 백화점 상품권, 롯데 백화점, 롯데 상품권, 갤러리아 백화점, 갤러리아 상품권, 신세계 백화점, 신세계 상품권" />
 
 <title>아이디찾기</title>
 
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
 <link rel="stylesheet" href="/lib/css/join.css" type="text/css">
+
 </head>
 
 <body>
@@ -47,7 +48,7 @@
         </div>
       </c:if>
       <div class="b_gui">
-        <p class="gui_l"><span class="text">아직 티켓크루 회원이 아니세요?</span><span><a href="/giftcard/join/join_2.do"><img class="btn" src="/images/join/btn_join.gif" alt="회원가입"></a></span></p>
+        <p class="gui_l"><span class="text">아직 기프트밴드 회원이 아니세요?</span><span><a href="/giftcard/join/join_2.do"><img class="btn" src="/images/join/btn_join.gif" alt="회원가입"></a></span></p>
         <p class="gui_r"><span class="text">비밀번호를 찾으시나요?</span><span><a href="/giftcard/join/pw_search.do"><img class="btn" src="/images/join/btn_pw_search.gif" alt="비밀번호 찾기"></a></span></p>
       </div>
     </div>

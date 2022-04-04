@@ -38,10 +38,12 @@ $(function(){
 <div class="wrap">
 	<page:applyDecorator name="header" />
   <div id="container">
+  	<c:if test="${((pageContext.request.requestURI) != '/company.do' && (pageContext.request.requestURI) != '/event.do')}" >
+		<page:applyDecorator name="sub2.left" />  
+  	</c:if>
+	
     <div class="c_wrap">
-    <c:if test="${((pageContext.request.requestURI) != '/company.do' && (pageContext.request.requestURI) != '/event.do')}" >
-		<page:applyDecorator name="sub2.left" />
-	</c:if>
+    
 		<decorator:body />
     </div>
   </div>

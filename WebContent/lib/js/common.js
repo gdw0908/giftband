@@ -8,14 +8,4 @@ $(function() {
 			$('body').toggleClass('active');
 		});
 	});
-	
-	//전체 카테고리
-	$("#allmenu_open").click(function() {
-		$("#all_menu").slideToggle(250);
-		$('i.xi-bars').toggleClass('xi-close');
-	});
-	$("#allmenu_close").click(function() {
-		$("#all_menu").slideToggle(250);
-	});
-
 });

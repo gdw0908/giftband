@@ -15,7 +15,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=8" />
-<title>티켓크루 관리시스템</title>
+<title>기프트밴드 관리시스템</title>
 
 <link rel="shortcut icon" href="/images/favicon/favicon.ico">
 <link href="/lib/css/cmsbase.css" rel="stylesheet" type="text/css" />

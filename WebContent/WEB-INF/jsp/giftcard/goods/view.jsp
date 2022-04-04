@@ -19,8 +19,8 @@
 <meta name="format-detection" content="telephone=no" />
 <meta content="minimum-scale=1.0, width=device-width, maximum-scale=1, user-scalable=yes" name="viewport" />
 <meta name="author" content="31system" />
-<meta name="description" content="안녕하세요  티켓크루 입니다." />
-<meta name="Keywords" content="티켓크루, 상품권, 백화점 상품권, 롯데 백화점, 롯데 상품권, 갤러리아 백화점, 갤러리아 상품권, 신세계 백화점, 신세계 상품권" />
+<meta name="description" content="안녕하세요  기프트밴드 입니다." />
+<meta name="Keywords" content="기프트밴드, 상품권, 백화점 상품권, 롯데 백화점, 롯데 상품권, 갤러리아 백화점, 갤러리아 상품권, 신세계 백화점, 신세계 상품권" />
 <title>상품상세보기</title>
 
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
@@ -136,60 +136,24 @@ function view(opt) {
                <article class="product_info">
                   <ul class="info_list">
                      <li>
-                        <a href="javascript:void();"> <span>브랜드</span> <span>${view.MAKERNM } </span></a>
+                        <a href="javascript:void();"> <span>정상가</span> <span><img src="/images/common/dollar.png" style="margin-right: 5px;"> ${suf:getThousand(view.FEE_AMOUNT) }원 </span></a>
                      </li>
                      <li>
-                        <a href="javascript:void();" class="deliver_hover">
-                           <span>배송비<i class="xi-help-o"></i></span> 
-                           <div class="delivery_info">
-                              <p>도서산간배송비 추가</p>
-                              <span>제주: 10,000원</span>
-                              <span>도서산간지역: 20,000원</span>
-                           </div>
-                           <c:choose>
-                              <c:when test="${view.FEE_YN == 'Y' }">
-                                 <span>${suf:getThousand(view.FEE_AMOUNT) }원</span>
-                              </c:when>
-                              <c:otherwise>
-                                 <span>무료</span>
-                              </c:otherwise>
-                           </c:choose>
-                        </a>
-                     </li>
-
-                     <li>
-                        <a href="javascript:void();">
-                           <span>수령방법</span>
-                           <select name="" id="">
-                              <option value="0">선택</option>
-                              <option value="1">직접 수령</option>
-                              <option value="2">배송 수령</option>
-                           </select>
-                        </a>
+                        <a href="javascript:void();"> <span>판매가</span> <span><img src="/images/common/dollar.png" style="margin-right: 5px;" > ${suf:getThousand(view.FEE_AMOUNT) }원 </span></a>
                      </li>
                      <li>
-                        <a href="javascript:cntCalc();">
-                           	<span>구매수량</span>
-                        	<div class="number_box">                        	
-                           		<span class="minus">-</span>
-						   		<input type="text" value="1" name="count" class="count" id="count" onblur="cntCalc()" onkeyup="cntCalc()"/>
-						   		<span class="plus">+</span>
-                        	</div>
-<!--                            <input type="number" class="count_input" name="count" id="count" value="1" onblur="cntCalc()" onkeyup="cntCalc()"> -->
-                        </a>
+                        <a href="javascript:void();"> <span>교환처</span> <span>편의점 모바일 상품권</span></a>
+                     </li>
+                     <li>
+                        <a href="javascript:void();"> <span>유효기간</span> <span>30일</span></a>
                      </li>
                   </ul>
                </article>
 
-               <div class="total_price">
-                  <p>
-                     총 상품금액<span class="to_price">${suf:getThousand(view.USER_PRICE) }</span><span class="unit">원</span>
-                  </p>
-               </div>
                <div class="d_info_btn">
                   <%-- <a class="cart_btn" href="/giftcard/mypage/shopping/cart/index.do?mode=add_cart&seq=${param.seq }&qty=1">장바구니담기</a> --%>
-                  <a class="cart_btn" onclick="return addCart('${param.seq }')">장바구니 담기</a>
-                  <a class="buy_btn" href="/giftcard/mypage/shopping/cart/index.do?mode=direct_order&seq=${param.seq }&qty=1">구매하기</a>
+                  <a class="buy_btn" href="/giftcard/mypage/shopping/cart/index.do?mode=direct_order&seq=${param.seq }&qty=1">바로 구매하기</a>
+                  <a class="cart_btn" onclick="return addCart('${param.seq }')">장바구니</a>
                </div>
             </div>
          </div>
@@ -214,44 +178,12 @@ function view(opt) {
             <div class="wrap">
                <ul class="tabs">
                   <li class="tab-link current" data-tab="tab-1">상품설명</li>
-                  <li class="tab-link" data-tab="tab-2">반품/교환/환불정보</li>
                </ul>
 
                <section id="tab-1" class="tab-content current">
                   <h3 class="tit">상품상세 설명</h3>
                   <div class="content">
                      ${view.conts } 
-                  </div>
-               </section>
-
-               <section id="tab-2" class="tab-content">
-                  <div class="guide_content">
-                     <h3>1. 배송</h3>
-                     <ul>
-                        <li>택배 집하시간은 4시까지이며, 익일배송을 원칙으로 처리하여 드립니다.</li>
-                        <li>기타 궁금하신 사항은 1661-8431 고객센터로 문의주시면 언제든지 상세히 답변 드리도록
-                           하겠습니다.
-                        </li>
-                     </ul>
-                  </div>
-                  <div class="guide_content">
-                     <h3>2. 배송비</h3>
-                     <ul>
-                        <li>모든 배송비는 착불을 기본으로 합니다.</li>
-                        <li>도서산간배송비 추가</li>
-                        <li>- 제주: 10,000원</li>
-                        <li>- 도서산간지역: 20,000원</li>
-                     </ul>
-                  </div>
-                  <div class="guide_content">
-                     <h3>3. 교환 및 반품안내</h3>
-                     <ul>
-                        <li>상품을 배송 받은 날부터 7일 이내 교환은 언제든지 가능합니다.</li>
-                        <li>단, 고객님의 과실 혹은 단순 변심으로 인해 교환이 불가능할 수 있습니다.</li>
-                        <li>상품 특성상 포장을 개봉하시거나 상품을 사용하신 후에는 반품이 불가하오니 이점 유의하시기 바랍니다.</li>
-                        <li>단, 제품하자 시에는 1661-8431 고객센터로 문의 주시면 처리절차에 대해 친절하게 안내해
-                           드리겠습니다.</li>
-                     </ul>
                   </div>
                </section>
             </div>

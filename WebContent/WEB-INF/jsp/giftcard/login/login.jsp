@@ -78,16 +78,19 @@ jQuery(document).ready(function(){
 })
 
 </script>
+
+<style>
+.bg_color { background: #F9F9F9; }
+</style>
 </head>
 
 <body>
     <div class="j_wrap">
       <div id="tabNav_j1" class="join_tab login_tab">
-        <div id="tabNav0101" style="display: block;">
+        <div id="tabNav0101" style="display: block; background: #F9F9F9;">
 
           <div class="login_wrap">
           	<h3 class="tit">로그인</h3>
-			<h4 class="login_subtit">다양한 혜택과 더욱 편리한 이용을 위해 로그인해 주세요.</h4>
             <form action="/giftcard/login/login.do" id="login_form" name="login_form" method="post" onsubmit = "return login_proc(this);">
             	<input type = "hidden" name = "member" value = "1"/>
            	 	<input type = "hidden" name = "mode" value = "proc"/>
@@ -95,13 +98,15 @@ jQuery(document).ready(function(){
             <legend>로그인</legend>
             <div class="login_con">
               <div class="login_box">
-                <div class="l_left">						
-          			<div class="input_div one">
-           				<input type="text" class="input"  id="member_id" name="member_id" placeholder="아이디를 입력해주세요.">
-        			</div>
-        			<div class="input_div pass">
-            			<input type="password" class="input" id="member_pw" name="member_pw" placeholder="비밀번호를 입력해주세요.">
-        			</div>
+                <div class="l_left">	
+                	<div style="box-shadow: 0 2px 4px rgba(0,0,0,0.08)">
+          				<div class="input_div one">
+           					<input type="text" class="input"  id="member_id" name="member_id" placeholder="아이디">
+        				</div>
+        				<div class="input_div pass">
+            				<input type="password" class="input" id="member_pw" name="member_pw" placeholder="비밀번호">
+        				</div>	
+                	</div>					
               		<div class="btn_lnk">
                			 <ul>
                   			<li class="first">
@@ -110,27 +115,21 @@ jQuery(document).ready(function(){
                   					<span class="icon"></span> 아이디저장
                   				</label>
                   			</li>
-                  			<li><a href="/giftcard/join/id_search.do">아이디/비밀번호 찾기</a></li>
                 		</ul>
               		</div>
                 	<div class="l_btn">
                 		<button type="submit" class="login_btn">로그인</button>
                 	</div>
+                	
+                	<ul class="join_link">
+                		<li><a href="/giftcard/join/join_2.do">회원가입</a></li>
+                		<li><a href="/giftcard/join/id_search.do">아이디 | 비밀번호 찾기</a></li>
+                	</ul>
               	</div>
             </div>
             </fieldset>
             </form>
           </div>
-
-		<article class="join_banner">
-			<div class="text_wrap">
-				<h5>아직 회원이 아니신가요?</h5>
-				<p>회원가입하고 다양한 혜택과 첫구매 쿠폰을 받으세요.<a href="/giftcard/join/join_2.do">회원가입<img src="/images/common/join_arrow.png" alt="회원가입"></a></p>
-			</div>
-			<div class="img_wrap">
-				<img src="/images/common/login_img.png" />
-			</div>
-		</article>
         </div>
 <!--         <h4 id="tabNavTitle0102"> -->
 <!--         	<a href="#" onclick="shwoTabNav('01', 2, 2); return false;" onfocus="this.onclick();">개인회원</a> -->

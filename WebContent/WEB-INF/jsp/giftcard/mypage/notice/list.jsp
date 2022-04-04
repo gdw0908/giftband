@@ -12,14 +12,14 @@
 <meta name="author" content="31system" />
 <meta name="description" content="안녕하세요  티켓크루 입니다." />
 <meta name="Keywords" content="티켓크루, 상품권, 백화점 상품권, 롯데 백화점, 롯데 상품권, 갤러리아 백화점, 갤러리아 상품권, 신세계 백화점, 신세계 상품권" />
-<title>공지사항</title>
 
+<title>공지사항</title>
 </head>
 <body>
 	<div id="sub">
 		<div class="contents">
 		<div class="list_top">
-  			<p class="hit">총 게시물 <b>${page_info.totalcount}</b>건</p>
+  			<p class="hit">총 <b>${page_info.totalcount}</b>개의 게시물</p>
   			
   			<div class="top_search">
  				 <form action="${servletPath }" name="articleSearchForm" id="articleSearchForm" method="post" onsubmit="return goPage(1);">
@@ -28,17 +28,15 @@
   					<input type="hidden" name="mode" value="list" />
   					<input type="hidden" name="article_seq" />  
   					
-  					<select name="condition" class="select_1">
+  					<select name="condition" class="select_1" style="display: none">
   						<option value="TITLE" <c:if test="${params.condition eq 'TITLE' }">selected="selected"</c:if>>제목</option>
   						<option value="REG_NM" <c:if test="${params.condition eq 'REG_NM' }">selected="selected"</c:if>>작성자</option>
   						<option value="CONTS" <c:if test="${params.condition eq 'CONTS' }">selected="selected"</c:if>>내용</option>
   					</select>
   					
-  					<span class="bottom_search_add">
-  						<input type="text" class="input_2" name="keyword" value="${params.keyword}" title="검색바" />
-  						<span class="bottom_search_bt">
-  							<input type="button" class="search_vd" name="search" value="검색">
-  						</span>
+  					<span class="bottom_search_add search_wrap">
+  						<input type="text" class="input_2" name="keyword" value="${params.keyword}" title="검색바" placeholder="제목을 입력해주세요" />
+  						<img src="/images/common/search_icon.svg" alt="검색">
   					</span>
   				</form>
 			</div>
@@ -81,6 +79,19 @@
 		</div>
       </div>
       
-      <script src="lib/js/common.js"></script>
+      <script>
+      $(function() {
+    		// 햄버거 메뉴
+    		$(document).ready(function(){
+    			$('.ham_wrap').click(function(){
+    				$(this).toggleClass('open');
+    				$('.mo_menu_wrap').toggleClass('active');
+    				$('.mo_bg').toggleClass('active');
+    				$('body').toggleClass('active');
+    			});
+    		});
+    	});
+      </script>
+      
 	</body>
 </html>

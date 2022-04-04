@@ -12,7 +12,10 @@
    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
    <meta name="format-detection" content="telephone=no" />
    <meta content="minimum-scale=1.0, width=device-width, maximum-scale=1, user-scalable=yes" name="viewport" />
-</head>
+   <title>상품검색</title>
+   
+   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+
 <!-- 파라미터 -->
 <c:set var="paramset" value=""/>
 <c:forEach var="item" items="${pageContext.request.parameterNames}">
@@ -36,13 +39,8 @@
    </c:otherwise>
 </c:choose>
 <!-- //파라미터 -->
-<head>
-<title>상품검색</title>
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
-<link rel="stylesheet" href="/lib/css/sub.css" type="text/css">
-<script type="text/javascript" src="/lib/js/common.js"></script>
-<script type="text/javascript" src="/lib/js/common_sc.js"></script>
 <script type="text/javascript">
+
 $(document).ready(function(){
    $(window).scrollTop($("#content_view").offset().top);
    
@@ -59,8 +57,6 @@ $("#submenu_open").toggle(function(){
 <c:if test="${param.menu eq 'menu5' || param.menu eq 'menu6'}">
 $("#submenu_open").attr("src","/images/sub/sub_menu_close.gif");
 </c:if>
-});
- 
  
 function changeMenu(){
    var upcodenoNumber = '';
@@ -163,6 +159,13 @@ function inquery_y(){
    alert("협의가 필요한 물품입니다.\n고객센터로 문의 바랍니다.");
 }
 
+function addCart(item_seq) {
+	$("#cartFrm>[name='mode']").val("add_cart");
+	$("#cartFrm>[name='seq']").val(item_seq);
+	$("#cartFrm").submit();
+	return false;
+} 
+
 
 function directOrder(item_seq){
    $("#cartFrm>[name='mode']").val("direct_order");
@@ -188,18 +191,18 @@ function directOrder(item_seq){
     <div class="sub_line_bg">
       <div class="sub_line">
         <div class="sl_wrap">
-          <div class="sl_l" id="content_view">
-             <c:choose>
-                <c:when test="${param.menu eq 'menu1' }"><h3>롯데</h3></c:when>
-                <c:when test="${param.menu eq 'menu2' }"><h3>신세계</h3></c:when>
-                <c:when test="${param.menu eq 'menu3' }"><h3>갤러리아</h3></c:when>                
-             </c:choose>
-            <c:if test = "${not empty param.menu}">
-            <span>${param.cname }</span>
-            </c:if>
-             <!-- &gt; <span><strong>총 부품 : <b>${suf:getThousand(data.pagination.totalcount) }</b> 개</strong></span>  -->
-<!--             </p> -->
-          </div>
+<!--           <div class="sl_l" id="content_view"> -->
+<%--              <c:choose> --%>
+<%--                 <c:when test="${param.menu eq 'menu1' }"><h3>롯데</h3></c:when> --%>
+<%--                 <c:when test="${param.menu eq 'menu2' }"><h3>신세계</h3></c:when> --%>
+<%--                 <c:when test="${param.menu eq 'menu3' }"><h3>갤러리아</h3></c:when>                 --%>
+<%--              </c:choose> --%>
+<%--             <c:if test = "${not empty param.menu}"> --%>
+<%--             <span>${param.cname }</span> --%>
+<%--             </c:if> --%>
+<!--              &gt; <span><strong>총 부품 : <b>${suf:getThousand(data.pagination.totalcount) }</b> 개</strong></span>  -->
+<!-- <!--             </p> --> 
+<!--           </div> -->
         </div>
       </div>
     
@@ -215,26 +218,26 @@ function directOrder(item_seq){
                   <li><a <c:if test = "${param.focus eq '1'}">class="on"</c:if> href="javascript:go_url('${paramset }sort=row&focus=1&show=${param.show }&rows=${param.rows }');">낮은가격</a></li>
                   <li class="last"><a <c:if test = "${param.focus eq '2'}">class="on"</c:if> href="javascript:go_url('${paramset }sort=high&focus=2&show=${param.show }&rows=${param.rows }');">높은가격</a></li>
                 </ul>
-              </div>
+            </div>
         
             <!-- 방명록 스타일 시작 -->
               <div class="sub_list">
               
                    <div class="list_item_wrap">
-                      <ul class="item_wrap">
+                      <ul class="item_wrap" style="height: 100%; background: none; ">
                        <c:if test="${empty data.list }"><li>조회 건수가 없습니다.</li></c:if>
                             <c:forEach var="item" items="${data.list }">
                          <li class="item_list">
                             <div class="item">
-                               <a href="view.do?menu=${param.menu }&seq=${item.item_seq }" class="img_wrap">
+                               	<a href="javascript:void();" onclick="return addCart('${mdpart.item_seq }')" class="cart_box">
+                               		<img src="/images/common/cart_icon.svg" alt="장바구니">
+                               	</a>
+                               <a href="javascript:void();" class="img_wrap">
                                    <img src="${item.thumb }" alt="${item.PRODUCTNM }">
+                                   <span class="price">${suf:getThousand(item.USER_PRICE) }</span>
+                                   <span class="product_name">${item.PRODUCTNM }</span>
                                </a>
-                            </div>
-                            <div class="list_info">
-                               <span class="tit">${item.PRODUCTNM }</span>
-                               <ul>
-                                  <li>${suf:getThousand(item.USER_PRICE) }<span>원</span></li>
-                               </ul>
+                               <a class="purchase_btn"  href="view.do?menu=${param.menu }&seq=${item.item_seq }">바로 구매하기</a>
                             </div>
                          </li>
                          </c:forEach>
@@ -258,3 +261,4 @@ function directOrder(item_seq){
     </form>
     </div>
     </div>
+</body>

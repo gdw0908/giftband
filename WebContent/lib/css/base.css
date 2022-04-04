@@ -1,8 +1,14 @@
 @charset "utf-8";
-@import url('./font.css');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Roboto:wght@400;700&family=Yeseva+One&display=swap');
+/* @import url('./font.css'); */
 
 body, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, form, fieldset, p, button, select, input, textarea, th, td {margin:0; padding:0;}
-body {height:100%; font-family: 'S-Core'; font-size:12px; color:#1a1e26; }
+body {
+	height:100%; 
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size:12px; 
+	color: #161616; 
+}
 ::selection {
   background: var(--main-color);
   color: #fff;
@@ -37,6 +43,7 @@ button, input[type="submit"], input[type="button"], input[type="number"] {
 }
 input::placeholder,
 ::-webkit-input-placeholder {
+  font-size: 14px;
   color: #B4B4B4;
 }
 input[type="number"]::-webkit-outer-spin-button,
@@ -63,7 +70,7 @@ select {
   cursor: pointer;
   background-color:#fff;
   padding: 5px 10px;
-  border: 1px solid #bfbfbf;
+  border: 1px solid #E5E5E5;
   box-sizing: border-box;
 }
 select:focus { outline: none; }
@@ -90,10 +97,13 @@ a:active {color:#1a1e26 ;}
 a:hover {color:#2c2c2c; }
 
 :root {
-	--main-color: #303030;
+	--font-roboto: 'Roboto', sans-serif;
+	--font-yeseva:  'Yeseva One', cursive;
+	--font-noto: 'Spoqa Han Sans Neo', 'sans-serif';
+	--main-color: #E56D00;
 	--sub-color: #00ABF7;
-	--hover-color: #232222;
+	--hover-color: #E67209;
 	--light-gray: #E4E7EB;
-	--main-text: #1A1E26;
+	--main-text: #161616;
 	--border-color: #707070;
 }

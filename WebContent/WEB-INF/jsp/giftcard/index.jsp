@@ -329,12 +329,12 @@
 		f.submit();
 	}
 
-	/* function addCart(item_seq) {
+	 function addCart(item_seq) {
 		$("#cartFrm>[name='mode']").val("add_cart");
 		$("#cartFrm>[name='seq']").val(item_seq);
 		$("#cartFrm").submit();
 		return false;
-	} */
+	} 
 
 	function directOrder(item_seq) {
 		$("#cartFrm>[name='mode']").val("direct_order");
@@ -349,19 +349,15 @@
 
 <body>
 	<main class="container">
-		<div class="swiper mainSwiper">
-			<div class="swiper-wrapper">
-				<div class="swiper-slide">
-					<img src="../images/banner/banner3.jpg" alt="첫구매할인이벤트">
-				</div>
-				<div class="swiper-slide">
-					<img src="../images/banner/banner2.jpg" alt="전국 주요 백화점 상품권 보유">
-				</div>
-				<div class="swiper-slide">
-					<img src="../images/banner/banner1.jpg" alt="상품권 구입은 티켓크루">
-				</div>
-			</div>
-			<div class="swiper-pagination"></div>
+		<div class="main_banner">
+			<article class="tit_wrap">
+				<h2 class="banner_tit">Sensational gift trends</h2>
+				<p class="banner_sub_tit">요즘 센스있는 선물, 기프티콘 어때요?</p>
+				<button type="button">
+					<a href="/giftcard/goods/list.do?menu=menu">전체 상품 보기</a>
+				</button>
+			</article>
+<!-- 			<img src="/images/banner/main_banner.jpg" /> -->
 		</div>
 	</main>
 
@@ -414,9 +410,92 @@
 		</div>
 	</c:if>
 	<!-- //side_banner -->
-
+	
 	<div class="con_middle_bg">
+		<div class="c_wrap_2">
+			<div class="md">
+				<h3>고객님을 위한 <span>추천상품</span></h3>
+				<div class="md_list">
+					<ul>
+						<c:forEach var="mdpart" items="${list.mdpart }" varStatus="status">
+							<li>
+								<div class="md_top">
+									<div class="item_wrap">
+										<p class="mt_img">
+											<a href="/giftcard/goods/view.do?seq=${mdpart.item_seq }"><img src="${mdpart.THUMB }"></a>
+										</p>
+										<p class="mb_3 price">
+											<span class="c1">${suf:getThousand(mdpart.USER_PRICE) }원</span>
+											<span>${mdpart.PRODUCTNM }</span>
+										</p>			
+									</div>
+									<p class="mt_btn">
+										 <a href="/giftcard/mypage/shopping/cart/index.do?mode=direct_order&seq=${mdpart.item_seq }&qty=1">바로구매</a>
+										 <a href="javascript:void();" onclick="return addCart('${mdpart.item_seq }')"><img src="/images/common/product_cart.svg" alt="장바구니">장바구니</a>
+									</p>
+								</div>
+								<div class="md_bottom">
+<!-- 									<p class="mb_1"> -->
+<%-- 										<strong>제품명</strong> : ${mdpart.PRODUCTNM } --%>
+<!-- 									</p> -->
+<!-- 									<p class="mb_1"> -->
+<%-- 										<strong>브랜드</strong> : ${mdpart.MAKERNM } --%>
+<!-- 									</p> -->
+								</div>
+							</li>
+						</c:forEach>
+					</ul>
+				</div>
+			</div>
+			<!-- //md -->
+		</div>
+	</div>
+	
+	<!-- 브랜드별 베스트 상품 리스트  -->
+	<article class="best_container">
+		<div class="list_wrap">
+			<h3>브랜드별 <span>BEST</span></h3>
+			<ul class="best_list">
+				<li>
+					<!-- 장바구니 아이콘 클릭시 장바구니로 이동 -->
+					<a href="javascript:void();" class="cart_icon">
+						<img src="/images/common/product_cart.svg" alt="장바구니">
+					</a>
+					<!-- 바로구매 버튼 누르면 바로구매 -->
+					<button type="button" class="purchase_btn">바로구매</button>
+					<div class="item_info">
+						<img src="/images/common/test_img.png" />
+						<span class="price">100,000</span>
+						<span class="product_name">갤러리아 상품권 10만원권</span>
+					</div>
+				</li>
+				<li>
+					<a href="javascript:void();" class="cart_icon">
+						<img src="/images/common/product_cart.svg" alt="장바구니">
+					</a>
+					<button type="button" class="purchase_btn">바로구매</button>
+					<div class="item_info">
+						<img src="/images/common/test_img.png" />
+						<span class="price">100,000</span>
+						<span class="product_name">갤러리아 상품권 10만원권</span>
+					</div>
+				</li>
+				<li>
+					<a href="javascript:void();" class="cart_icon">
+						<img src="/images/common/product_cart.svg" alt="장바구니">
+					</a>
+					<button type="button" class="purchase_btn">바로구매</button>
+					<div class="item_info">
+						<img src="/images/common/test_img.png" />
+						<span class="price">100,000</span>
+						<span class="product_name">갤러리아 상품권 10만원권</span>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</article>
 
+	<div class="con_bottom_bg">
 		<div class="c_wrap_3">
 			<!-- brand -->
 			<div class="brand_box">
@@ -425,7 +504,7 @@
 					<article id="tabNav2" class="brand_tab">
 						<section>
 							<div class="category_wrap">
-								<h3>인기 상품</h3>
+								<h3>전체 상품</h3>
 								<ul class="category_tab">
 									<c:forEach var="item" items="${list.category }"
 										varStatus="status">
@@ -449,49 +528,7 @@
 		</div>
 	</div>
 
-	<div class="con_bottom_bg">
-		<div class="c_wrap_2">
-			<!-- md -->
-			<div class="md">
-				<!--img src="/images/container/md_back.gif" alt=""-->
-				<h3>추천 상품</h3>
-				<div class="md_list">
-					<ul>
-						<c:forEach var="mdpart" items="${list.mdpart }" varStatus="status">
-							<li>
-								<div class="md_top">
-									<p class="mt_img">
-										<a href="/giftcard/goods/view.do?seq=${mdpart.item_seq }"><img
-											src="${mdpart.THUMB }" alt=""></a>
-									</p>
-									<p class="mt_btn">
-										<a href="/giftcard/goods/view.do?seq=${mdpart.item_seq }"
-											target="_blank">새창</a> <a href="#"
-											onclick="return addCart('${mdpart.item_seq }')">장바구니</a> <a
-											href="/giftcard/mypage/shopping/cart/index.do?mode=direct_order&seq=${mdpart.item_seq }&qty=1">바로구매</a>
-									</p>
-								</div>
-								<div class="md_bottom">
-									<p class="mb_1">
-										<strong>제품명</strong> : ${mdpart.PRODUCTNM }
-									</p>
-									<p class="mb_1">
-										<strong>브랜드</strong> : ${mdpart.MAKERNM }
-									</p>
-									<p class="mb_3">
-										<strong>판매가격 : </strong> <span class="c1">${suf:getThousand(mdpart.USER_PRICE) }
-											원</span>
-									</p>
-								</div>
-							</li>
-						</c:forEach>
-					</ul>
-				</div>
-			</div>
-			<!-- //md -->
-		</div>
-
-	</div>
+	
 	<form id="cartFrm" name="cartFrm" method="post"
 		action="/giftcard/mypage/shopping/cart/index.do">
 		<input type="hidden" name="mode" value="" /> <input type="hidden"

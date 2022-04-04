@@ -23,7 +23,7 @@
 <meta content="minimum-scale=1.0, width=device-width, maximum-scale=1, user-scalable=yes" name="viewport" />
 <meta name="author" content="31system" />
 <meta name="description" content="안녕하세요  티켓크루 입니다." />
-<meta name="Keywords" content="티켓크루, 상품권, 백화점 상품권, 롯데 백화점, 롯데 상품권, 갤러리아 백화점, 갤러리아 상품권, 신세계 백화점, 신세계 상품권" />
+<meta name="Keywords" content="기프트밴드 상품권, 백화점 상품권, 롯데 백화점, 롯데 상품권, 갤러리아 백화점, 갤러리아 상품권, 신세계 백화점, 신세계 상품권" />
 <title>주문/결제</title>
 
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
@@ -441,12 +441,13 @@ function goStep3() {
 	}
 }
 </script>
+
 </head>
 <body>
 <!-- <form name="frmAGS_pay" method="post" action="/giftcard/mypage/shopping/cart/non_member.do?mode=pay_ing" style="width: 100%;"> -->
 <form name="frm"  id="frm" method="post" action="/giftcard/mypage/shopping/cart/non_member.do?mode=pay_ing" style="width: 100%;">
     <div class="j_wrap">
-        <h3 class="non_mem_tit">주문/결제</h3>
+        <h3 class="non_mem_tit" style="margin-top: 60px;">주문/결제</h3>
     	<h5 class="no_mem_type">1. 주문제품</h5>
 
 		<article class="table_container" style="margin-bottom: 60px;">
@@ -507,11 +508,7 @@ function goStep3() {
           </tbody>
           </table>
 		</article>
-          
-          <ul class="sub_list_1">
-            <li>티켓크루는 통신판매중개자이며 통신판매의 당사자가 아닙니다. 따라서 티켓크루는 상품ㆍ거래정보 및 거래에 대하여 책임을 지지 않습니다.</li>
-          </ul>
-          
+     
           <h5 class="no_mem_type">2. 주문회원 정보</h5>
           
           <div class="sub_table_1">

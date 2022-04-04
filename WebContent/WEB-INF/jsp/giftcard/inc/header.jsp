@@ -82,14 +82,16 @@ $( document ).ready(function() {
 
 <div id="header">
 
-	<div class="mo_logo"><a href="/giftcard/index.do"><img src="/images/logo/logo.svg" alt="티켓크루"></a></div>
+	<article class="mo_menu_container">
+		<div class="mo_logo"><a href="/giftcard/index.do"><img src="/images/logo/logo.svg" alt="기프트밴드"></a></div>
 	
-	<!--  hamburger menu  -->
-	<div class="ham_wrap">
-		<a href="#"></a>
-		<a href="#"></a>
-		<a href="#"></a>
-	</div>
+		<!--  hamburger menu  -->
+		<div class="ham_wrap">
+			<a href="#"></a>
+			<a href="#"></a>
+			<a href="#"></a>
+		</div>
+	</article>
 	
 	<!--  mobail menu -->
 	<div class="mo_menu_wrap">
@@ -125,20 +127,11 @@ $( document ).ready(function() {
 		</nav>
 	</div>
 	
-    <div class="util_nav">
-     <ul>
-  	   <li class="all_menu" id="allmenu_open"><i class="xi-bars"></i>전체 카테고리</li>
-  	   <li class="cart_item">
-  	   	<a href="/giftcard/mypage/shopping/cart/index.do" class="cart">
-   	   		<span class="cart_count">${fn:length(cartCnt.list) }</span>
-  	   		<i ><img src="/images/common/cart_icon.png"></i>장바구니
-  	   		</a>
-  	   	</li>
-     </ul>
+	<h1 class="top_logo"><a href="/giftcard/index.do"><img src="/images/logo/logo.svg" alt="기프트밴드"></a></h1>
+	
      <jsp:include page="/giftcard/inc/all_menu_box.do" />
-     
-     <h1 class="top_logo"><a href="/giftcard/index.do"><img src="/images/logo/logo.svg" alt="티켓크루"></a></h1>
-     
+	
+    <div class="util_nav">
      <ul>
        <li>
          <div class="search_box">
@@ -148,23 +141,25 @@ $( document ).ready(function() {
       		  <div class="search_top ui-widget">
        		    <span class="search">
        		      <input type="text" id="search_all_text" autocomplete="off" name="search_all_text" value = "${param.search_all_text }" class="main_search" title="partsmoa 통합검색">
-       		      <i class="xi-search" ></i>
+       		      <i><img src="/images/common/search_icon.svg"></i>
        		    </span>
       		  </div>
             </fieldset>
       	  </form>
         </div>
        </li>
-        <c:if test="${empty sessionScope.member }">
-        	<li class="last"><a href="/giftcard/join/join_2.do">가입하기</a></li>
-        </c:if>
         <c:if test="${!empty sessionScope.member }">
         	<c:if test = "${sessionScope.member.group_seq eq '2' or sessionScope.member.group_seq eq '9' }">
 				<!-- <li class="last"><a href="/mypage/member/index.do?mode=<c:choose><c:when test = "${sessionCom_nm ne '0'}">busi</c:when><c:otherwise>join</c:otherwise></c:choose>">회원정보</a></li> -->
 				<li class="last"><a href="/giftcard/mypage/member/index.do?mode=join">회원정보</a></li>
 			</c:if>
 		</c:if>
-		
+		<li class="cart_item">
+  	   	<a href="/giftcard/mypage/shopping/cart/index.do" class="cart">
+<%--    	   		<span class="cart_count">${fn:length(cartCnt.list) }</span> --%>
+  	   		<i ><img src="/images/common/cart_icon.svg"></i>
+  	   		</a>
+  	   	</li>
         <li>
         	<c:choose>
           		<c:when test="${empty sessionScope.member }">
@@ -175,8 +170,11 @@ $( document ).ready(function() {
           		</c:otherwise>
           	</c:choose>
         </li>
+        <c:if test="${!empty sessionScope.member }">
+        	<li class="last"><a href="/giftcard/mypage/member/index.do?mode=join">회원정보</a></li>
+        </c:if>
 
-        <li class="first c1"><a href="/giftcard/mypage/notice/index.do" onclick="window.external.AddFavorite('<spring:eval expression="@config['home.url']" />', 'DBSOUND')">고객센터</a></li>
+<%--         <li class="first c1"><a href="/giftcard/mypage/notice/index.do" onclick="window.external.AddFavorite('<spring:eval expression="@config['home.url']" />', 'DBSOUND')">고객센터</a></li> --%>
       </ul>
     </div>
 

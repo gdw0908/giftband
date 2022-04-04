@@ -4,7 +4,7 @@
 	display: flex;
 	justify-content: space-between;
 	flex-direction: column;
-	max-width:1400px; 
+	max-width:1200px; 
 	width: 100%; 
 	padding: 0 20px;
 	margin:0 auto;
@@ -13,14 +13,15 @@
 #container .c_wrap:after {display:block; clear:both; content:"";}
 
 #sub {width: 100%; }
-#sub2 {float:left; max-width:1400px; width: 100%; }
+#sub2 {float:left; max-width:1200px; width: 100%; }
 
 .left_box {
 	position:relative; 
 	width: 100%; 
 	padding-bottom: 40px;
-	margin-top: 36px;
+/* 	margin-top: 36px; */
 	box-sizing: border-box;
+	overflow: hidden;
 }
 .left_box > h2 {
 	font-size: 36px;
@@ -119,13 +120,14 @@
 .strapline h3 span.text {font-size:14px; font-weight:normal; font-family:'Nanum Gothic'; color:#757575; font-weight:bold;}
 .strapline .state {float:right; margin-top:11px; padding-right: 20px; }
 
-.sub_wrap { max-width:1400px; width: 100%; margin:0 auto;}
+.sub_wrap { max-width:1200px; width: 100%; margin:0 auto;}
 #sub .sub_tit {
 	font-size: 20px;
+	margin-top: 60px;
 	box-sizing: border-box;
 }
 
-.contents {padding:0 0 70px 0; margin-top: 30px; box-sizing: border-box; }
+.contents {padding:0 0 70px 0; margin-top: 55px; box-sizing: border-box; }
 .companywrap {padding:101px 0 70px 0px; }
 .company{text-align: center; font-family: 'NanumBarunGothic';}
 .company_box1{}
@@ -206,7 +208,7 @@
 .pricecheck .bottom p { font-size: 14px; font-weight: 300;}
 .pricecheck .bottom p b { font-size: 18px; font-weight: 600; margin-right: 3px; }
 
-.pricecheck .p_check3 .bottom p b { font-size: 18px; font-weight: 600; color: var(--sub-color); }
+.pricecheck .p_check3 .bottom p b { font-size: 18px; font-weight: 600; color: var(--main-color); }
 
 .pricecheck .p_check_bottom {clear:both; padding:12px 15px; border-top:1px solid #b9b9b9; color:#353532;}
 .pricecheck .p_check_bottom span {margin-right:20px;}
@@ -219,11 +221,13 @@
 	display: inline-block;
 	font-size: 16px;
 	font-weight: 500;
-	padding: 22px 70px;
+	width: 100%;
+	max-width: 336px;
+	height: 52px;
+	line-height: 52px;
 	color: #fff;
 	background: var(--main-color);
 	box-sizing: border-box;
-	border-radius: 10px;
 	transition: background-color .3s ease;
 }
 .cart_btn a:hover {
@@ -311,12 +315,13 @@ h4.hs_1 span b.star {color:#f25757;}
 .btn_bottom_1 {text-align:center; margin-top:37px;}
 .btn_bottom_1 input,
 .btn_bottom_1 a {
-	font-size: 14px;
+	width: 220px;
+	height: 52px;
+	font-size: 16px;
 	padding: 15px 40px;
 	color: #fff;
 	background: var(--main-color);
 	box-sizing: border-box;
-	border-radius: 5px;
 }
 .btn_bottom_1 a {
 	color: var(--main-color);
@@ -666,26 +671,15 @@ p.ev_img img {width:100%;}
 .section {
 	padding: 20px; 
 	line-height:20px;
-	background: #FBFBFB;
+	border-top: 1px solid #F0F0F0;
 	box-sizing: border-box;
 }
 .section h5 {
-	position: relative;
 	font-size:16px;
 	font-weight: 500;
-	padding:0 0 0 12px; 
 	margin-top: 30px;
 }
-.section h5::before {
-	content: '';
-	display: block;
-	position: absolute;
-	left: 0;
-	top: 1px;
-	height: 16px;
-	width: 7px;
-	background: var(--sub-color);
-}
+
 .section h5:first-child { margin-top: 0; }
 .section h6 {font-size:14px; font-weight: 500;  margin:15px 0 0 0px;}
 .section > p,
@@ -712,7 +706,7 @@ p.ev_img img {width:100%;}
 .section > dl > dd > ul {padding:0 0 0 15px;}
 .section > dl > dd > ul > li {margin-top:7px;}
 
-.section span.c1 {color: var(--sub-color);}
+.section span.c1 {color: var(--main-color);}
 
 /* 부품사용특약 */
 

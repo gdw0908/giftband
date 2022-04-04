@@ -11,8 +11,8 @@
 	content="minimum-scale=1.0, width=device-width, maximum-scale=1, user-scalable=yes"
 	name="viewport" />
 <meta name="author" content="31system" />
-<meta name="description" content="안녕하세요  티켓크루 입니다." />
-<meta name="Keywords" content="티켓크루, 상품권, 백화점 상품권, 롯데 백화점, 롯데 상품권, 갤러리아 백화점, 갤러리아 상품권, 신세계 백화점, 신세계 상품권" />
+<meta name="description" content="안녕하세요  기프트밴드 입니다." />
+<meta name="Keywords" content="기프트밴드, 상품권, 백화점 상품권, 롯데 백화점, 롯데 상품권, 갤러리아 백화점, 갤러리아 상품권, 신세계 백화점, 신세계 상품권" />
 <title>아이디찾기</title>
 
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
@@ -92,13 +92,14 @@ function chk_email(value)
 	return pattern.test(value);
 }
 </script>
+
 </head>
 
 <body>
 	<div class="title_rocation"></div>
 	<div class="j_wrap">
-		<h3 class="tit">아이디찾기</h3>
-		<h4 class="login_subtit">티켓크루쇼핑몰 회원정보에 등록되어있는 정보 중 1가지를 택하여 입력해 주세요. 등록정보로 ID의 일부를 찾을 수 있습니다.</h4>
+		<h3 class="tit" style="margin-top: 70px;">아이디찾기</h3>
+		<h4 class="login_subtit">회원 아이디를 잊으셨나요?<br>회원 이름과 회원가입 시 등록한 휴대폰 번호를 입력해 주세요.</h4>
 		<div id="tabNav_j1" class="join_tab search_tab">
 			<div id="tab-1" id="tabNav0101" class="tab-content current">
 				<div class="authentication auth_2">
@@ -156,16 +157,6 @@ function chk_email(value)
 					</div>
 				</div>
 			</div>
-			
-			<article class="join_banner">
-			<div class="text_wrap">
-				<h5>아직 회원이 아니신가요?</h5>
-				<p>회원가입하고 다양한 혜택과 첫구매 쿠폰을 받으세요.<a href="/giftcard/join/join_2.do">회원가입<img src="/images/common/join_arrow.png" alt="회원가입"></a></p>
-			</div>
-			<div class="img_wrap">
-				<img src="/images/common/login_img.png" />
-			</div>
-		</article>
 		</div>
 		<script type="text/javascript">
 	// tabs

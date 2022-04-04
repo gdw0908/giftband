@@ -302,7 +302,7 @@
 									<th scope="row">새 비밀번호</th>
 									<td>
 										<input type="password" id="member_pw" name="member_pw" class="input_3 ws_1" placeholder="새 비밀번호를 입력해 주세요">
-										<span class="c1">※ 6~15글자 이내, 영문 대/소문자, 숫자 및 특수문자 사용가능</span></td>
+										<span class="info_text"> 6~15글자 이내, 영문 대/소문자, 숫자 및 특수문자 사용가능</span></td>
 								</tr>
 								<tr>
 									<th scope="row">새 비밀번호확인</th>
@@ -316,7 +316,8 @@
 								</tr>
 								<tr>
 									<th scope="row">전화번호</th>
-									<td><select id="tel" name="tel" class="select_u1">
+									<td>
+										<select id="tel" name="tel" class="select_u1">
 											<option value="02"
 												<c:if test = "${tel eq '02'}">selected</c:if>>02</option>
 											<option value="051"
@@ -355,7 +356,7 @@
 												<c:if test = "${tel eq '070'}">selected</c:if>>070</option>
 											<option value="080"
 												<c:if test = "${tel eq '080'}">selected</c:if>>080</option>
-									</select> - <input type="text" id="tel1" name="tel1" value="${tel1 }"
+										</select> - <input type="text" id="tel1" name="tel1" value="${tel1 }"
 										class="input_3 ws_2" maxlength="4"> - <input
 										type="text" id="tel2" name="tel2" class="input_3 ws_2"
 										value="${tel2 }" maxlength="4"></td>
@@ -363,15 +364,18 @@
 								<tr>
 									<th scope="row">휴대폰번호</th>
 									<td>
-										<p>
-											<select type="text" id="cell" name="cell" class="select_u1" value="${cell }" maxlength="3">
-												<option value="010">010</option>
-			                                 	<option value="011">011</option>
-											</select> -
-											<input type="text" id="cell1" name="cell1" class="input_3 ws_2" value="${cell1 }" maxlength="4">- 
-											<input type="text" id="cell2" name="cell2" class="input_3 ws_2" value="${cell2 }" maxlength="4">
-											<a href="javascript:;" onclick="chk_member_cellChk();" class="overlap_btn" style="color: #fff;">휴대폰 중복확인</a>
-										</p>
+										<div class="flex_box">
+											<p>
+												<select id="cell" name="cell" class="select_u1" value="${cell }" maxlength="3">
+													<option value="010">010</option>
+			                                 		<option value="011">011</option>
+												</select> -
+												<input type="text" id="cell1" name="cell1" class="input_3 ws_2" value="${cell1 }" maxlength="4">- 
+												<input type="text" id="cell2" name="cell2" class="input_3 ws_2" value="${cell2 }" maxlength="4">
+											</p>
+										<a href="javascript:;" onclick="chk_member_cellChk();" class="overlap_btn" style="color: #fff;">휴대폰 중복확인</a>
+										
+										</div>
 										<div id="check_member_cell"></div>
 									</td>
 								</tr>
@@ -388,35 +392,37 @@
 								<tr>
 									<th scope="row">이메일</th>
 									<td>
-										<p>
-											<input type="text" id="email" name="email" class="input_3" value="${email }"> @ 
-											<input type="text" id="email1" name="email1" class="input_3" value="${email1 }">
-											<select id="choice_email" name="choice_email" class="select_1" onchange="inputEmail2(this.value);">
-												<option value=""
-													<c:if test = "${email1 ne 'hanmail.net' || email1 ne 'naver.com' || email1 ne 'daum.net' || email1 ne 'nate.com' || email1 ne 'gmail.com' || email1 ne 'korea.com' || email1 ne 'dreamwiz.com' || email1 ne 'hotmail.com' || email1 ne 'yahoo.co.kr' || email1 ne 'sportal.or.kr'}">selected</c:if>>직접입력</option>
-												<option value="hanmail.net"
-													<c:if test = "${email1 eq 'hanmail.net' }">selected</c:if>>hanmail.net</option>
-												<option value="naver.com"
-													<c:if test = "${email1 eq 'naver.com'  }">selected</c:if>>naver.com</option>
-												<option value="daum.net"
-													<c:if test = "${email1 eq 'daum.net'  }">selected</c:if>>daum.net</option>
-												<option value="nate.com"
-													<c:if test = "${email1 eq 'nate.com'  }">selected</c:if>>nate.com</option>
-												<option value="gmail.com"
-													<c:if test = "${email1 eq 'gmail.com'  }">selected</c:if>>gmail.com</option>
-												<option value="korea.com"
-													<c:if test = "${email1 eq 'korea.com'  }">selected</c:if>>korea.com</option>
-												<option value="dreamwiz.com"
-													<c:if test = "${email1 eq 'dreamwiz.com'  }">selected</c:if>>dreamwiz.com</option>
-												<option value="hotmail.com"
-													<c:if test = "${email1 eq 'hotmail.com'  }">selected</c:if>>hotmail.com</option>
-												<option value="yahoo.co.kr"
-													<c:if test = "${email1 eq 'yahoo.co.kr'  }">selected</c:if>>yahoo.co.kr</option>
-												<option value="sportal.or.kr"
-													<c:if test = "${email1 eq 'sportal.or.kr'  }">selected</c:if>>sportal.or.kr</option>
-											</select>
-											<a href="javascript:;" onclick="chk_member_emailChk();" class="overlap_btn" style="color: #fff;">이메일 중복확인</a>
-										</p>
+										<div class="flex_box">
+											<p>
+												<input type="text" id="email" name="email" class="input_3" value="${email }"> @ 
+												<input type="text" id="email1" name="email1" class="input_3" value="${email1 }">
+												<select id="choice_email" name="choice_email" class="select_1" onchange="inputEmail2(this.value);">
+													<option value=""
+														<c:if test = "${email1 ne 'hanmail.net' || email1 ne 'naver.com' || email1 ne 'daum.net' || email1 ne 'nate.com' || email1 ne 'gmail.com' || email1 ne 'korea.com' || email1 ne 'dreamwiz.com' || email1 ne 'hotmail.com' || email1 ne 'yahoo.co.kr' || email1 ne 'sportal.or.kr'}">selected</c:if>>직접입력</option>
+													<option value="hanmail.net"
+														<c:if test = "${email1 eq 'hanmail.net' }">selected</c:if>>hanmail.net</option>
+													<option value="naver.com"
+														<c:if test = "${email1 eq 'naver.com'  }">selected</c:if>>naver.com</option>
+													<option value="daum.net"
+														<c:if test = "${email1 eq 'daum.net'  }">selected</c:if>>daum.net</option>
+													<option value="nate.com"
+														<c:if test = "${email1 eq 'nate.com'  }">selected</c:if>>nate.com</option>
+													<option value="gmail.com"
+														<c:if test = "${email1 eq 'gmail.com'  }">selected</c:if>>gmail.com</option>
+													<option value="korea.com"
+														<c:if test = "${email1 eq 'korea.com'  }">selected</c:if>>korea.com</option>
+													<option value="dreamwiz.com"
+														<c:if test = "${email1 eq 'dreamwiz.com'  }">selected</c:if>>dreamwiz.com</option>
+													<option value="hotmail.com"
+														<c:if test = "${email1 eq 'hotmail.com'  }">selected</c:if>>hotmail.com</option>
+													<option value="yahoo.co.kr"
+														<c:if test = "${email1 eq 'yahoo.co.kr'  }">selected</c:if>>yahoo.co.kr</option>
+													<option value="sportal.or.kr"
+														<c:if test = "${email1 eq 'sportal.or.kr'  }">selected</c:if>>sportal.or.kr</option>
+													</select>
+												</p>
+												<a href="javascript:;" onclick="chk_member_emailChk();" class="overlap_btn" style="color: #fff;">이메일 중복확인</a>
+											</div>
 										<div id="check_member_email"></div>
 									</td>
 								</tr>

@@ -315,22 +315,23 @@
       jQuery("#move_form").submit();
    }
 </script>
+
 </head>
 
 <body>
    <div class="title_rocation">
       <div class="tr_wrap">
-         <h3 style="text-align: center;">회원가입</h3>
-         <ul class="join_process">
-            <li class="active"><span class="icon"><i
-                  class="xi-check"></i></span>약관동의</li>
-            <li class="active"><span class="icon"><i>2</i></span>회원정보입력</li>
-            <li><span class="icon"><i>3</i></span>가입완료</li>
-         </ul>
-      </div>
+    	<h3 style="text-align: center;">기프트밴드 <span>회원가입</span></h3>
+    	<p>가입하시는 분의 성함 및 정보를 입력해주세요.</p>
+    	<ul class="join_process">
+      		<li><span class="icon"><img src="/images/common/join_icon1.png" alt="약관동의" ></span>약관동의</li>
+      		<li class="active"><span class="icon"><img src="/images/common/join_icon2.png" alt="정보입력" ></span>회원정보입력</li>
+      		<li><span class="icon"><img src="/images/common/join_icon3.png" alt="가입완료" ></span>가입완료</li>
+    	</ul>
+  	  </div>
    </div>
-   <div class="j_wrap" style="max-width: 740px">
-      <div id="tabNav_j1" class="join_tab" style="max-width: 740px">
+   <div class="j_wrap">
+      <div id="tabNav_j1" class="join_tab">
          <!--     <h4 id="tabNavTitle0101" class="on"><a href="#" >사업자회원</a></h4> -->
          <div id="tabNav0101" style="display: block; padding: 30px 0 0 0;">
             <form method="post" name="join_form" id="join_form"
@@ -341,42 +342,37 @@
                   name="group_seq" value="2" /> <input type="hidden"
                   name="member_type" value="1" />
                <div class="j_write">
-                  <h4>회원정보 입력</h4>
-                  <p class="required">
-                     <span>*</span>필수입력사항
-                  </p>
                   <table class="join_style_1 join_3_table">
                      <tbody>
                         <tr>
-                           <th scope="row"><b>*</b> 아이디</th>
+                           <th scope="row">아이디</th>
                            <td>
                               <p class="id_wrap">
-                                 <input type="text" id="member_id" name="member_id"
-                                    class="input_j1 ws_1" placeholder="아이디를 입력해 주세요."> <a
-                                    href="javascript:;" onclick="chk_member_id();"
-                                    class="overlap_btn" style="color: #fff;">중복확인</a>
+                                 <input type="text" id="member_id" name="member_id" class="input_j1 ws_1" placeholder="아이디를 입력해 주세요.">
+                                 <button type="button" onclick="chk_member_id();" class="overlap_btn" style="color: #fff;">중복확인</button>
+                              	<span class="info_text"> 6 ~15자의 영문과 숫자만 사용 가능합니다.</span>
                               </p>
                               <div id="check_member_id"></div>
-                              <p class="c1">※ 6~15자의 영문과 숫자만 사용 가능합니다.</p> <input
-                              type="hidden" name="member_id_chk" id="member_id_chk" value="" />
+                              <input  type="hidden" name="member_id_chk" id="member_id_chk" value="" />
                            </td>
                         </tr>
                         <tr>
-                           <th scope="row"><b>*</b> 비밀번호</th>
+                           <th scope="row">비밀번호</th>
                            <td><input type="password" id="member_pw" name="member_pw"
                               class="input_j1 ws_2" placeholder="비밀번호를 입력해 주세요"></td>
                         </tr>
                         <tr>
-                           <th scope="row"><b>*</b> 비밀번호확인</th>
-                           <td><p>
+                           <th scope="row">비밀번호확인</th>
+                           <td>
+                           	  <p>
                                  <input type="password" id="member_pw_chk"
                                     name="member_pw_chk" class="input_j1 ws_2"
                                     placeholder="비밀번호를 다시한번 입력해 주세요">
+                                    <span class="info_text">6~15글자 이내, 영문 대/소문자, 숫자 및 특수문자 사용가능</span>
                               </p>
-                              <p class="c1">※ 6~15글자 이내, 영문 대/소문자, 숫자 및 특수문자 사용가능</p></td>
                         </tr>
                         <tr>
-                           <th scope="row" class="fv_1">이름 (실명)</th>
+                           <th scope="row" class="fv_1">이름</th>
                            <td class="fs_2"><input type="text" name="member_nm"
                               id="member_nm" class="input_j1" placeholder="이름을 입력해 주세요"></td>
                         </tr>
@@ -414,48 +410,49 @@
                            </td>
                         </tr>
                         <tr>
-                           <th scope="row"><b>*</b> 휴대폰번호</th>
+                           <th scope="row">휴대폰번호</th>
                            <td>
-                           		<p>
-                           			<select type="text" id="cell1" name="cell1" class="select_j1">
-		                                 <option value="010">010</option>
-		                                 <option value="011">011</option>
-                              		</select> - 
-	                                <input type="text" id="cell2" name="cell2" class="input_j1 ws_4" maxlength="4"> - 
-	                                <input type="text" id="cell3" name="cell3" class="input_j1 ws_4" maxlength="4">
-                              		<a href="javascript:;" onclick="chk_member_cellChk();" class="overlap_btn" style="color: #fff;">휴대폰 중복확인</a>
-                              	</p>
-                              <div id="check_member_cell"></div>
+                           	    <div class="flex_box">
+                           			<p >
+                           				<select  id="cell1" name="cell1" class="select_j1">
+		                                	 <option value="010">010</option>
+		                                 	<option value="011">011</option>
+                              			</select> - 
+	                                	<input type="text" id="cell2" name="cell2" class="input_j1 ws_4" maxlength="4"> - 
+	                                	<input type="text" id="cell3" name="cell3" class="input_j1 ws_4" maxlength="4">
+                              		</p>
+                              	<button type="button" onclick="chk_member_cellChk();" class="overlap_btn" style="color: #fff;">휴대폰 중복확인</button>
+                           	    </div>
+                              <div id="check_member_cell" style="margin-bottom: 6px;"></div>
+                              <label>
+                              	<input type="checkbox" id="sms_yn"  name="sms_yn" class="check" value="Y"> 
+                              	휴대폰 알림문자를 받겠습니다.
+                           </label>
                            </td>
                         </tr>
                         <tr>
-                           <th scope="row" class="fs_1">알림 설정</th>
-                           <td><label> <input type="checkbox" id="sms_yn"
-                                 name="sms_yn" class="check" value="Y"> 휴대폰 알림문자를 받겠습니다.
-                           </label></td>
-                        </tr>
-                        <tr>
-                           <th scope="row"><b>*</b> 이메일</th>
+                           <th scope="row">이메일</th>
                            <td>
-	                           <p>
-	                           	<input type="text" id="email1" name="email1"
-	                              class="input_j1 ws_5"> @ <input type="text"
-	                              id="email2" name="email2" class="input_j1 ws_5"> 
-	                              <select id="" name="" class="select_j2" onchange="inputEmail2(this.value);">
-	                                 <option value="hanmail.net">hanmail.net</option>
-	                                 <option value="naver.com">naver.com</option>
-	                                 <option value="daum.net">daum.net</option>
-	                                 <option value="nate.com">nate.com</option>
-	                                 <option value="gmail.com">gmail.com</option>
-	                                 <option value="korea.com">korea.com</option>
-	                                 <option value="dreamwiz.com">dreamwiz.com</option>
-	                                 <option value="hotmail.com">hotmail.com</option>
-	                                 <option value="yahoo.co.kr">yahoo.co.kr</option>
-	                                 <option value="sportal.or.kr">sportal.or.kr</option>
-	                                 <option value="" selected>직접입력</option>
-	                              </select>
-	                              <a href="javascript:;" onclick="chk_member_emailChk();" class="overlap_btn" style="color: #fff;">이메일 중복확인</a>
-	                            </p>
+                           		<div class="flex_box">
+	                           		<p>
+	                           			<input type="text" id="email1" name="email1" class="input_j1 ws_5"> @ 
+	                           			<input type="text"  id="email2" name="email2" class="input_j1 ws_5"> 
+	                              		<select id="" name="" class="select_j2" onchange="inputEmail2(this.value);">
+	                                		 <option value="hanmail.net">hanmail.net</option>
+	                                 		<option value="naver.com">naver.com</option>
+	                                 		<option value="daum.net">daum.net</option>
+	                                 		<option value="nate.com">nate.com</option>
+	                                 		<option value="gmail.com">gmail.com</option>
+	                                 		<option value="korea.com">korea.com</option>
+	                                 		<option value="dreamwiz.com">dreamwiz.com</option>
+	                                 		<option value="hotmail.com">hotmail.com</option>
+	                                 		<option value="yahoo.co.kr">yahoo.co.kr</option>
+	                                 		<option value="sportal.or.kr">sportal.or.kr</option>
+	                                 		<option value="" selected>직접입력</option>
+	                              		</select>
+	                            	</p>
+	                             	<button type="button" onclick="chk_member_emailChk();" class="overlap_btn" style="color: #fff; width: 200px">이메일 중복확인</button>
+                           		</div>
                               <div id="check_member_email"></div>
                             </td>
                         </tr>
@@ -471,12 +468,12 @@
                                  </label>
                               </p>
                               <p class="c2">
-						                                 ※ 주요 공지사항 및 알림 등은 설정에 관계 없이 발송되며,<br> 설정변경은 고객센터>회원정보 에서 변경 가능합니다.
+								※ 주요 공지사항 및 알림 등은 설정에 관계 없이 발송되며,<br> 설정변경은 고객센터>회원정보 에서 변경 가능합니다.
                               </p>
                            </td>
                         </tr>
                         <tr>
-                           <th scope="row"><b>*</b> 주소</th>
+                           <th scope="row">주소</th>
                            <td>
                               <p class="flex">
                                  <input type="text" id="zip_cd1" name="zip_cd1"
@@ -500,7 +497,8 @@
                   </table>
                </div>
                <div class="j_btn1">
-                  <input type="submit" value="가입하기" class="next_btn">
+               	  <input type="button" value="이전" class="prev_btn btn" onclick = "location.replace('/giftcard/join/join_2.do');">
+                  <input type="submit" value="다음" class="next_btn btn">
                </div>
             </form>
          </div>

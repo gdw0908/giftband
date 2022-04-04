@@ -76,8 +76,8 @@
 <meta name="format-detection" content="telephone=no" />
 <meta content="minimum-scale=1.0, width=device-width, maximum-scale=1, user-scalable=yes" name="viewport" />
 <meta name="author" content="31system" />
-<meta name="description" content="안녕하세요  티켓크루 입니다." />
-<meta name="Keywords" content="티켓크루, 상품권, 백화점 상품권, 롯데 백화점, 롯데 상품권, 갤러리아 백화점, 갤러리아 상품권, 신세계 백화점, 신세계 상품권" />
+<meta name="description" content="안녕하세요  기프트밴드 입니다." />
+<meta name="Keywords" content="기프트밴드, 상품권, 백화점 상품권, 롯데 백화점, 롯데 상품권, 갤러리아 백화점, 갤러리아 상품권, 신세계 백화점, 신세계 상품권" />
 <title>비밀번호찾기</title>
 
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
@@ -144,17 +144,15 @@ function search_email_form_fnc()
 }
 
 </script>
+
 </head>
 
 <body>
 <div class="j_wrap">
-   <h3 class="tit">비밀번호 찾기</h3>
-   <h4 class="login_subtit">회원님이 가입하신 이메일 주소를 통해 비밀번호를 찾을 수 있습니다.</h4>
+   <h3 class="tit" style="margin-top: 70px;">비밀번호 찾기</h3>
+   <h4 class="login_subtit">비밀번호를 잊으셨나요?<br> 가입하신 성함과 아이디를 입력해 주세요.</h4>
   <div id="tabNav_j1" class="join_tab pw_search_tab">
     <div id="tab-1" id="tabNav0101" class="tab-content current">
-      <div class="t_box1">
-        <p><span>개인회원</span>이신경우 : ① 이메일 인증정보 기재&nbsp;&nbsp;&nbsp;② 본인인증 완료 후 비밀번호 재설정</p>
-      </div>
       <div class="authentication auth_2">
         <div class="ipin ipin_3">
         <form name = "search_email_form" id = "search_email_form" method = "post" action = "/giftcard/join/pw_search_2.do" onsubmit = "return search_email_form_fnc();">
@@ -177,18 +175,10 @@ function search_email_form_fnc()
           </form>
         </div>
       </div>
-      <div class="b_gui_2">
-        <p><strong>위의 방법으로도 비밀번호를 찾지 못했다면, 티켓크루 쇼핑몰 고객센터로 문의주십시오.</strong><br>
-          고객센터 전화문의 : 1566-6444 (상담가능시간: 평일 오전 9시~오후 6시)</p>
-      </div>
     </div>
         <div class="pw_s_btn">
           <input type = "submit" value="이메일로 비밀번호 발급받기">
         </div>
-      <div class="b_gui_2">
-        <p><strong>위의 방법으로도 찾지 못했다면, 티켓크루쇼핑몰 고객센터로 문의주십시오</strong><br>
-          고객센터 전화문의 : 11661-8431 (상담가능시간: 평일 오전 9시~오후 6시)</p>
-      </div>
     </div>
   </div>
   <script type="text/javascript">

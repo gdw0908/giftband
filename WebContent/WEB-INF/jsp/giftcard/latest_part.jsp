@@ -24,23 +24,23 @@
                         	<c:forEach var="item" items="${data.list }">
                             <li>
                             	<div class="md_top">
-                              		<p class="mt_img"><a href="/giftcard/goods/view.do?seq=${item.item_seq }"><img src="${item.thumb }" alt=""></a></p>
-                              		<p class="mt_btn">
-                                		<a href="/giftcard/goods/view.do?seq=${item.item_seq }" target="_blank">새창</a>
-                                		<a href="#" onclick="return addCart('${item.item_seq }')">장바구니</a>
-                                		<c:choose><c:when test="${item.inquiry_yn eq 'Y' }"><a href="javascript:inquery_y();">바로구매</a>
-                                			</c:when><c:otherwise><a href="#" onclick="return directOrder('${item.item_seq }')">바로구매</a>
-                                		</c:otherwise></c:choose>
-                               		</p>
+                            		<a href="javascript:void();" class="product_cart" onclick="return addCart('${item.item_seq }')"><img src="/images/common/product_cart.svg"></a>
+                              		<p class="product_wrap">
+                              			<a href="/giftcard/goods/view.do?seq=${item.item_seq }">
+                              				<img src="${item.thumb }" alt="">
+                              				<span>${suf:getThousand(item.USER_PRICE) }</span>
+                              				<span>${item.PRODUCTNM }</span>
+                              			</a>
+                              		</p>
                             	</div>
-                            	<div class="md_bottom">
-                              		<p class="mb_1"><strong>제품명</strong> : ${item.PRODUCTNM }</p>
-                              		<p class="mb_1"><strong>브랜드</strong> : ${item.MAKERNM } </p>
-                              		<p class="mb_2">
-                              		<p class="mb_3"><strong>판매가격  : </strong> 
-									<span class="c1">${suf:getThousand(item.USER_PRICE) } 원</span>
-	                				</p>
-                            	</div>
+<!--                             	<div class="md_bottom"> -->
+<%--                               		<p class="mb_1"><strong>제품명</strong> : ${item.PRODUCTNM }</p> --%>
+<%--                               		<p class="mb_1"><strong>브랜드</strong> : ${item.MAKERNM } </p> --%>
+<!--                               		<p class="mb_2"> -->
+<!--                               		<p class="mb_3"><strong>판매가격  : </strong>  -->
+<%-- 									<span class="c1">${suf:getThousand(item.USER_PRICE) } 원</span> --%>
+<!-- 	                				</p> -->
+<!--                             	</div> -->
                             </li>
                            </c:forEach>
                 	</ul>
@@ -49,8 +49,8 @@
             <!-- //brand roll_1 -->
 			</ul>
 		</div>
-		 <p class="roll_prev"><a href="javascript:lastest_part('${prev }', '${param.tab }')"><img src="/images/common/left_arrow.png" alt="이전"></a></p>
-         <p class="roll_next"><a href="javascript:lastest_part('${next }', '${param.tab }')"><img src="/images/common/right_arrow.png" alt="다음"></a></p>
+<%-- 		 <p class="roll_prev"><a href="javascript:lastest_part('${prev }', '${param.tab }')"><img src="/images/common/left_arrow.png" alt="이전"></a></p> --%>
+<%--          <p class="roll_next"><a href="javascript:lastest_part('${next }', '${param.tab }')"><img src="/images/common/right_arrow.png" alt="다음"></a></p> --%>
 	</div>
 </div>
 <!-- brand list -->

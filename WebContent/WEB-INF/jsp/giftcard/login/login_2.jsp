@@ -10,13 +10,14 @@
 <meta content="minimum-scale=1.0, width=device-width, maximum-scale=1, user-scalable=yes" name="viewport" />
 <meta name="author" content="31system" />
 <meta name="description" content="안녕하세요  티켓모아 입니다." />
-<meta name="Keywords" content="티켓크루, 상품권, 백화점 상품권, 롯데 백화점, 롯데 상품권, 갤러리아 백화점, 갤러리아 상품권, 신세계 백화점, 신세계 상품권" />
+<meta name="Keywords" content="기프트밴드, 상품권, 백화점 상품권, 롯데 백화점, 롯데 상품권, 갤러리아 백화점, 갤러리아 상품권, 신세계 백화점, 신세계 상품권" />
 <title>로그인</title>
 
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
 <link rel="stylesheet" href="/lib/css/join.css" type="text/css">
 <script type="text/javascript" src="/lib/js/jquery.cookie.js"></script>
 <script type="text/javascript" src="/lib/js/common.js"></script>
+
 </head>
 
 <body>
@@ -73,10 +74,6 @@
     <div id="tab-2" id="tabNav0102"  class="tab-content">
       <form id = "agree" name = "agree" method = "post" action = "${fn:replace(header.referer, 'index.do', 'non_member.do')}">
         <input type="hidden" name="agree" value="Y"/>
-        <div class="t_box1">
-          <p> 비회원으로 구매서비스 이용하시려면 <strong class="c1">아래 약관에 동의하신 후 [다음 단계로 이동]</strong> 버튼을 클릭해 주십시오.<br>
-            <strong>비회원 구매시 입력했던 구매자명과 전화번호로 다시 로그인 하시면 구매정보를 조회하실 수 있습니다.</strong> </p>
-        </div>
         <div class="nomem_box">
           <p class="warning_2"><strong>※ 회원가입을 위해 티켓모아 서비스 이용 약관 및 개인정보 수집 및 이용 안내 동의가 필요합니다</strong></p>
           <div class="terms">
@@ -438,21 +435,8 @@
          	 <button type="submit" onclick="agree()" class="next">다음단계</button>
          </div>
         </div>
-        <div class="b_gui">
-          <p class="gui_l"><span class="text">아직 티켓모아 회원이 아니세요?</span><span><a href="/join/join_1.do"><img class="btn" src="/images/join/btn_join.gif" alt="회원가입"></a></span></p>
-        </div>
       </form>
     </div>
-    
-    <article class="join_banner">
-			<div class="text_wrap">
-				<h5>아직 회원이 아니신가요?</h5>
-				<p>회원가입하고 다양한 혜택과 첫구매 쿠폰을 받으세요.<a href="/giftcard/join/join_2.do">회원가입<img src="/images/common/join_arrow.png" alt="회원가입"></a></p>
-			</div>
-			<div class="img_wrap">
-				<img src="/images/common/login_img.png" />
-			</div>
-		</article>
   </div>
 
   <script type="text/javascript">

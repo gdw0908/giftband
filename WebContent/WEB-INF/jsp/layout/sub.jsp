@@ -30,7 +30,7 @@ $(function(){
 <body>
 <div class="wrap">
 	<page:applyDecorator name="header" />
-	<div id="container">
+	<div id="container" class="bg_color">
 		<decorator:body />
 	</div>
 	<page:applyDecorator name="footer" />
