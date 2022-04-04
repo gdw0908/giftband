@@ -672,7 +672,9 @@ ul.roll_img img {width:784px; height:355px;}
 	font-weight: 400;
 	padding-right: 54px;
 	box-sizing: border-box;
+	transition: color .3s ease-in-out;
 }
+.menu_list a:hover { color: var(--main-color); }
 .menu_list:last-child a { padding-right: 0; }
 /* .viewcate h3:last-child { border-bottom: 1px solid var(--border-color); } */
 .viewcate h3 a {
@@ -1133,7 +1135,7 @@ ul.sub_list_1 li {color:#e85946; background:url(/images/sub_2/table_list_1.gif) 
 	#footer .f_wrap { flex-direction: column; }
 }
 
-@media screen and (max-width: 560px) { .cart { display: none; } }
+@media screen and (max-width: 560px) { #header { padding: 0; } .cart { display: none; } }
 @media screen and (max-width: 480px) { 
 	.search_top input.main_search { width: 100%; }
 	
