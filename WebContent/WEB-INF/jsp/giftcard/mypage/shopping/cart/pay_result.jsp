@@ -116,8 +116,8 @@ if (!(rAGS_HASHDATA.equals(AGS_HASHDATA))) errResMsg = "결재금액 변조 발�
 <meta name="format-detection" content="telephone=no" />
 <meta content="minimum-scale=1.0, width=device-width, maximum-scale=1, user-scalable=yes" name="viewport" />
 <meta name="author" content="31system" />
-<meta name="description" content="안녕하세요  티켓크루 입니다." />
-<meta name="Keywords" content="티켓크루, 상품권, 백화점 상품권, 롯데 백화점, 롯데 상품권, 갤러리아 백화점, 갤러리아 상품권, 신세계 백화점, 신세계 상품권" />
+<meta name="description" content="안녕하세요  기프트밴드 입니다." />
+<meta name="Keywords" content="기프트밴드, 상품권, 백화점 상품권, 롯데 백화점, 롯데 상품권, 갤러리아 백화점, 갤러리아 상품권, 신세계 백화점, 신세계 상품권" />
 <title>주문완료</title>
 
 <script type="text/javascript" src="/lib/js/jquery.lck.util.js"></script>
@@ -168,7 +168,7 @@ function show_receipt()
           <div class="title_rocation">
             <h4>주문완료</h4>
           </div>
-          <h5 class="pay_tit">티켓크루를 이용해 주셔서 감사합니다</h5>
+          <h5 class="pay_tit">기프트밴드를 이용해 주셔서 감사합니다</h5>
           <h6 class="pay_sub_tit">주문하신 내역은 나의 쇼핑정보에서 다시 확인이 가능합니다</h6>
           <p class="pay_history">결제내역</p>
 
