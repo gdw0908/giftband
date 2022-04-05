@@ -1031,6 +1031,12 @@ i {
 /* 	.j_btn1 a, .j_btn1 .next_btn { font-size: 15px; } */
 }
 
+@media screen and (max-width: 480px) {
+	.join_3_table .id_wrap { row-gap: 5px; }
+	.join_style_1 td input.ws_5 { margin-bottom: 5px; }
+	.join_style_1 td input.ws_4 { margin-top: 5px; }
+}
+
 @media screen and (max-width: 360px) {
 	.authentication dl dd {
     	flex-direction: column;

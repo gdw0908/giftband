@@ -262,11 +262,8 @@
 	            LEFT OUTER JOIN NSH_ATTACH b ON b.TABLE_NM='GC_GOODS' AND a.ITEM_SEQ = b.TABLE_SEQ AND b.ORDER_SEQ=1
 	            JOIN V_IS_CARMAKER d
 	            ON a.CARMAKERSEQ=d.CARMAKERSEQ
-	            WHERE
-	            	a.RECOMMYN = 'Y'
-	             AND
-	            	a.STOCK_NUM > 0
-	            	
+	            WHERE	a.RECOMMYN = 'Y'	
+	            AND 		a.DEL_YN = 'N'            	
 	            ORDER BY DBMS_RANDOM.RANDOM()
 	            )
      	WHERE
@@ -323,38 +320,33 @@
 	</select>
 	
 	<select id="newPartsList" parameterType="String" resultType="mcmap">
-    	SELECT
+    	<![CDATA[
+		SELECT
 			*
 		FROM
 			(
-				SELECT 
-        			A.ITEM_SEQ AS ITEM_SEQ,
-          			A.PART1 AS PART1,
-                A.PRODUCTNM AS PRODUCTNM,
-          			A.CARYYYY AS CARYYYY,
-          			A.GRADE AS GREADE,
-          			C.CARMODELNM AS CARMODELNM,
-          			A.SALE_PRICE AS SALE_PRICE,
-          			A.USER_PRICE AS USER_PRICE,
-          			A.GRADE AS GRADE,
-          			A.INQUIRY_YN
-				FROM
-					NSH_GOODS A
-          LEFT OUTER JOIN V_IS_CARMODEL C ON A.CARMODELSEQ = C.CARMODELSEQ
-          LEFT OUTER JOIN NSH_ATTACH b ON b.TABLE_NM='NSH_GOODS' AND a.ITEM_SEQ = b.TABLE_SEQ AND b.ORDER_SEQ=1
-        WHERE 
-          A.DEL_YN = 'N'
-          AND A.STOCK_NUM > 0
-				  AND A.APPROVAL = 'Y'
-				  AND b.UUID IS NOT NULL
-				  AND nvl(A.USER_PRICE, 0) > 0
-				ORDER BY
-					A.ITEM_SEQ DESC
-			)
-		<![CDATA[
-		WHERE 
-			ROWNUM <= 5
-		]]>
+				SELECT
+	                ROW_NUMBER() OVER(ORDER BY a.ITEM_SEQ DESC) RN,
+	                a.ITEM_SEQ, a.PRODUCTNM AS PRODUCTNM, a.USER_PRICE, 
+	                a.FEE_YN, a.BESTYN, a.EVENTYN, a.NEWYN, a.PUBLICYN, a.RECOMMYN, a.SALEYN, a.PLANYN,
+	                a.CARMAKERSEQ, a.CARMODELSEQ,
+	                a.REG_DT,
+	                (SELECT MAKERNM FROM V_IS_CARMAKER WHERE a.CARMAKERSEQ=CARMAKERSEQ) AS MAKERNM,
+	                (SELECT CARMODELNM FROM V_IS_CARMODEL WHERE a.CARMODELSEQ=CARMODELSEQ) AS CARMODELNM,
+	                DECODE(a.APPROVAL, 'Y', '승인', '비승인') as APPROVAL,
+	                ('/upload/board/'||b.YYYY||'/'||b.MM||'/'||b.UUID||'_thumb') AS THUMB,
+	                b.ATTACH_NM
+	            FROM GC_GOODS a 
+	            LEFT OUTER JOIN NSH_ATTACH b ON b.TABLE_NM='GC_GOODS' AND a.ITEM_SEQ = b.TABLE_SEQ AND b.ORDER_SEQ=1
+	            JOIN V_IS_CARMAKER d
+	            ON a.CARMAKERSEQ=d.CARMAKERSEQ
+	            WHERE	a.BESTYN = 'Y'	
+	            AND 		a.DEL_YN = 'N'            	
+	            ORDER BY DBMS_RANDOM.RANDOM()
+	            )
+     	WHERE
+     		ROWNUM <= 3
+			]]>
 	</select>
 	
 	

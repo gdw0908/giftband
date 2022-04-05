@@ -505,7 +505,7 @@ ul.lately_list li a span.text {color:#454545; letter-spacing:-1px;}
 .best_container .best_list li {
 	position: relative;
 	width: calc((100% / 3) - 40px);
-	height: 254px;
+	height: 264px;
 	background: #fff;
 	cursor: pointer;
 }
@@ -558,12 +558,13 @@ ul.lately_list li a span.text {color:#454545; letter-spacing:-1px;}
 	font-family: var(--font-roboto);
 	font-size: 36px;
 	font-weight: 700;
-	padding: 30px 0 4px 0;
+	padding: 20px 0 4px 0;
 	box-sizing: border-box;
 }
 .best_container .best_list .item_info .product_name {
 	font-size: 16px;
 	font-weight: 400;
+	text-align: center;
 }
 .best_container .best_list .cart_icon {
 	position: absolute;
