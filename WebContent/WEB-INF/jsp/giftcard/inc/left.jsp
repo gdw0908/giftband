@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
 <c:set var="requestURI" value="${pageContext.request.requestURI }"/>
 
-<div class="left_box">
+<div class="top_box">
 	<article class="title_wrap">
 		<h2 class="menu_tit"></h2>
 		<img src="/images/common/title_bg_img.png" >

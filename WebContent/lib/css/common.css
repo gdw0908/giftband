@@ -387,8 +387,8 @@ body.active { overflow-y: hidden; }
 .guide_box p {text-align:right; margin-top:12px;}
 
 /* title_wrap */
-.left_box { height: 162px; background: var(--main-color); }
-.left_box .title_wrap {
+.top_box { height: 162px; background: var(--main-color); }
+.top_box .title_wrap {
 	position: relative;
 	max-width: 1200px;
 	width: 100%;
@@ -396,12 +396,12 @@ body.active { overflow-y: hidden; }
 	margin: auto;
 	box-sizing: border-box;
 }
-.left_box .title_wrap img {
+.top_box .title_wrap img {
 	position: absolute;
 	top: -50px;
 	right: 20px;
 }
-.left_box .title_wrap .menu_tit {
+.top_box .title_wrap .menu_tit {
 	line-height: 162px;
 	font-size: 35px;
 	font-weight: 700;

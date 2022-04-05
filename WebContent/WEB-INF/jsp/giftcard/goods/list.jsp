@@ -12,7 +12,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
    <meta name="format-detection" content="telephone=no" />
    <meta content="minimum-scale=1.0, width=device-width, maximum-scale=1, user-scalable=yes" name="viewport" />
-   <title>상품검색</title>
+   <title>상품상세</title>
    
    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
 
@@ -180,13 +180,12 @@ function directOrder(item_seq){
 </head>
 
 <body>
-   <article class="top_info_state">
-        <ul>
-        	<li>홈 <span>></span>
-        	<li>카테고리 <span>></span>
-        	<li>상품페이지<span>></span>
-        </ul>
-   </article>
+<div class="top_box">
+	<article class="title_wrap">
+		<h2 class="menu_tit">상품상세</h2>
+		<img src="/images/common/title_bg_img.png" >
+	</article>
+</div>
    <div class="container">
     <div class="sub_line_bg">
       <div class="sub_line">
