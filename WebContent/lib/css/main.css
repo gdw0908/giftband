@@ -406,6 +406,8 @@ ul.lately_list li a span.text {color:#454545; letter-spacing:-1px;}
 	color: #979C96;
 }
 .brand_tab .category_tab li a {
+	display: block;
+	width: 100%;
 	box-sizing: border-box;
 	transition: color .3s ease;
 }
