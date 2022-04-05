@@ -72,7 +72,7 @@ function go_update()
     <div class="tab_menu">
       <ul class="tab">
         <!-- <li><a href="javascript:;" onclick = "goBody('/admin/goods/inventory/inventory_cate.do?codeno=0509');">공통코드</a></li> -->
-        <li><a href="javascript:;" onclick = "goBody('/giftcard/admin/goods/inventory/inventory_cate2.do');">유통사</a></li>
+        <li><a href="javascript:;" onclick = "goBody('/giftcard/admin/goods/inventory/inventory_cate2.do');">카테고리</a></li>
         <li class="on"><a href="javascript:;" onclick = "goBody('/giftcard/admin/goods/inventory/inventory_cate3.do');">상품권</a></li>
         <!-- <li><a href="javascript:;" onclick = "goBody('/admin/goods/inventory/inventory_cate4.do');">차량모델명</a></li>
         <li><a href="javascript:;" onclick = "goBody('/admin/goods/inventory/inventory_cate5.do');">부품정보</a></li> -->
@@ -86,8 +86,8 @@ function go_update()
 		<input type = "hidden" name = "rows" value = "${params.rows }"/>
 		<input type = "hidden" name = "searchChk" value = "1"/>
 	        <div class="r_btn">
-	          <select title="유통사선택" name="condition" id="condition" class="cho2">
-	            <option value = "">유통사선택</option>
+	          <select title="카테고리선택" name="condition" id="condition" class="cho2">
+	            <option value = "">카테고리선택</option>
 	            <c:forEach items="${comInfo }" var="comInfoList">
 	            <option value = "${comInfoList.carmakerseq }" <c:if test = "${params.condition eq comInfoList.carmakerseq }">selected</c:if>>${comInfoList.makernm }</option>	
 	            </c:forEach>
@@ -109,13 +109,13 @@ function go_update()
                </colgroup>
                 <tr>
                  <th>번호</th>
-                 <th>유통사명</th>
+                 <th>카테고리명</th>
                  <th>상품권금액</th>
                </tr>
                 <c:forEach items="${list }" var="carNameList">
                 
                 <tr>
-                 <td>${carNameList.carmodelseq }</<td>
+                 <td>${carNameList.rn }</<td>
               	 <td><a href = "javascript:;" onclick = "goBody('${servletPath}?seq=${carNameList.carmodelseq }&keyword=${params.keyword }&cpage=${params.cpage }&rows=${params.rows }');">${carNameList.makernm }</a></<td>
                  <td><a href = "javascript:;" onclick = "goBody('${servletPath}?seq=${carNameList.carmodelseq }&keyword=${params.keyword }&cpage=${params.cpage }&rows=${params.rows }');">${carNameList.carmodelnm }</a></td>
                </tr>
@@ -133,7 +133,7 @@ function go_update()
                <col width="*" />
              </colgroup>
              <tr>
-               <th>유통사</th>
+               <th>카테고리</th>
                <td>${view.makernm }</td>
                <th>상품권금액</th>
                <td>${view.carmodelnm }</td>
@@ -158,9 +158,9 @@ function go_update()
 		        </div>
 		    </div>
          </div>
-         <!-- 유통사 등록 팝업 (등록)-->
+         <!-- 카테고리 등록 팝업 (등록)-->
          
-		     <div id="dialog" title="유통사등록" >
+		     <div id="dialog" title="카테고리등록" >
 		      <form id = "cateCarName_insert" name = "cateCarName_insert" method = "post" action = "${servletPath }">
 		     	<input type = "hidden" name = "method" value = "insert"/>
 		     	<input type = "hidden" name = "cpage" value = "${params.cpage }"/>
@@ -175,9 +175,9 @@ function go_update()
 	               <col width="*" />
 	             </colgroup>
 	            <tr>
-	              <th>유통사</th>
+	              <th>카테고리</th>
 	              <td>
-	               <select title="유통사선택" name="condition_insert" id="condition_insert" class="cho2">
+	               <select title="카테고리선택" name="condition_insert" id="condition_insert" class="cho2">
 		            <c:forEach items="${comInfo }" var="comInfoList">
 		            <option value = "${comInfoList.carmakerseq }">${comInfoList.makernm }</option>	
 		            </c:forEach>
@@ -208,9 +208,9 @@ function go_update()
 		     </div>
 	    
 	     
-	     <!-- 유통사 등록 팝업 (수정)-->
+	     <!-- 카테고리 등록 팝업 (수정)-->
 	    
-	 	     <div id="dialog2" title="유통사등록" >
+	 	     <div id="dialog2" title="카테고리등록" >
 	 	     	 <form name = "carNameModify" method = "post" action = "${servletPath }">
 			     	<input type = "hidden" name = "carmodelseq" value = "${view.carmodelseq}"/>
 		     		<input type = "hidden" name = "method" value = "update"/>
@@ -227,10 +227,10 @@ function go_update()
 			               <col width="*" />
 			             </colgroup>
 			            <tr>
-			              <th>유통사</th>
+			              <th>카테고리</th>
 			              <td>
-			                 <select title="유통사선택" name="condition" id="condition" class="cho2">
-					            <option value = "">유통사선택</option>
+			                 <select title="카테고리선택" name="condition" id="condition" class="cho2">
+					            <option value = "">카테고리선택</option>
 					            <c:forEach items="${comInfo }" var="comInfoList">
 					            <option value = "${comInfoList.carmakerseq }" <c:if test = "${comInfoList.carmakerseq eq view.carmakerseq }">selected</c:if>>${comInfoList.makernm }</option>	
 					            </c:forEach>

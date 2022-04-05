@@ -63,6 +63,7 @@
               <p style="font-size:11px; padding:5px 0 0 0px;">*판매가격과 세일가격은 숫자만 입력 가능합니다.</p>
             </td>
           </tr>
+          <!-- 
           <tr>
             <th>배송료</th>
             <td colspan="3">
@@ -79,19 +80,20 @@
           <tr>
             <th>재고관리</th>
             <td colspan="3">
-               <!-- <label>
+               <label>
                 재고연동여부
                 <select title="재고연동여부선택" data-ng-model="form.stock_yn" data-ng-init="form.stock_yn='Y'">
                  <option value="Y">연동함</option>
                  <option value="N">연동안함</option>
                </select>
               </label>
-              <label style="margin-left:25px;"> -->
+              <label style="margin-left:25px;"> 
               <label>
                  재고수량<input type="text" class="input_1" style="margin-left:5px;" data-ng-model="form.stock_num" data-ng-pattern="/^[0-9]+$/" data-ng-init="form.stock_num='1'" required="required"/>개
                </label>
             </td>
           </tr>
+          -->
           <tr>
             <th>검색태그</th>
             <td colspan="3">
@@ -108,13 +110,16 @@
               <label><input type="checkbox" data-ng-model="form.eventyn" data-ng-true-value="Y" data-ng-false-value="N" data-ng-init="form.eventyn='N'"/>이벤트</label>
               <label><input type="checkbox" data-ng-model="form.newyn" data-ng-true-value="Y" data-ng-false-value="N" data-ng-init="form.newyn='N'"/>신상품</label>
               <label><input type="checkbox" data-ng-model="form.publicyn" data-ng-true-value="Y" data-ng-false-value="N" data-ng-init="form.publicyn='N'"/>인기</label> -->
-              <!-- <label><input type="checkbox" data-ng-model="form.recommyn" data-ng-true-value="Y" data-ng-false-value="N" data-ng-init="form.recommyn='N'"/>추천</label>
+              <label><input type="checkbox" data-ng-model="form.bestyn" data-ng-true-value="Y" data-ng-false-value="N" data-ng-init="form.bestyn='N'"/>베스트</label>
+              <label><input type="checkbox" data-ng-model="form.recommyn" data-ng-true-value="Y" data-ng-false-value="N" data-ng-init="form.recommyn='N'"/>추천</label>
+              <!-- 
               <label><input type="checkbox" data-ng-model="form.saleyn" data-ng-true-value="Y" data-ng-false-value="N" data-ng-init="form.saleyn='N'"/>세일</label>
               <label><input type="checkbox" data-ng-model="form.planyn" data-ng-true-value="Y" data-ng-false-value="N" data-ng-init="form.planyn='N'"/>기획</label>
               <p style="font-size:11px; padding:10px 0 0 0px;">- 베스트 : 상품이 실제로 많이 팔리는 제품이 아니라 관리자가 임의로 지정한 것임</p>
               <p style="font-size:11px; padding:5px 0 0 0px;">- 이벤트 : 이벤트 매장에 노출</p>
               <p style="font-size:11px; padding:5px 0 0 0px;">- 신상품 : 신상품 매장에 및 탭에 노출</p>
               <p style="font-size:11px; padding:5px 0 0 0px;">- 인기 : 인기 상품 매장에 노출</p> -->
+              <p style="font-size:11px; padding:10px 0 0 0px;">- 베스트 : 상품이 실제로 많이 팔리는 제품이 아니라 관리자가 임의로 지정한 것임</p>
               <p style="font-size:11px; padding:5px 0 0 0px;">- 추천 : 추천상품매장에 노출</p>
               <!-- <p style="font-size:11px; padding:5px 0 0 0px;">- 세일 : 세일상품 매장및 탭에 노출 체크 박스 체크시 특별세일, 세일기간 선택 활성화</p>
               <p style="font-size:11px; padding:5px 0 0 0px;">- 기획 : 기획 상품 매장 및 탭에 노출</p> -->

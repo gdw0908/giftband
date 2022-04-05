@@ -57,13 +57,13 @@ public class GiftCardMainService {
 		params.put("client_yn", "Y");//사용자 페이지
 		Map rstMap = new HashMap();
 		
-		if("1".equals(params.get("tab"))){//롯데
+		if("1".equals(params.get("tab"))){//상품권
 			params.put("carmakerseq", "1");
-		}else if("2".equals(params.get("tab"))){//신세계
+		}else if("2".equals(params.get("tab"))){//디지털상품권
 			params.put("carmakerseq", "2");
-		}else if("3".equals(params.get("tab"))){//갤러리아
+		}/*else if("3".equals(params.get("tab"))){//갤러리아
 			params.put("carmakerseq", "3");
-		}
+		}*/
 		
 		rstMap.put("list", partDAO.list(params));
 		rstMap.put("pagination", partDAO.pagination(params));

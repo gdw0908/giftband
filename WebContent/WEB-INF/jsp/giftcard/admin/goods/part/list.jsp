@@ -20,8 +20,8 @@
           <th>상세검색</th>
           <td colspan="3">
 	          <div class="seldiv" style="margin-top:10px;">
-	                <select title="유통사선택" data-ng-model="param.carmakerseq" data-ng-options="item.carmakerseq as item.makernm for item in carmaker" data-ng-change="changeCarmaker()">
-		          		<option value="">유통사</option>
+	                <select title="카테고리선택" data-ng-model="param.carmakerseq" data-ng-options="item.carmakerseq as item.makernm for item in carmaker" data-ng-change="changeCarmaker()">
+		          		<option value="">카테고리</option>
 		            </select>
 		          	<select title="상품권선택" data-ng-model="param.carmodelseq" data-ng-options="item.carmodelseq as item.carmodelnm for item in carmodel" data-ng-change="changeCarmodel()">
 		          		<option value="">상품권</option>
@@ -98,7 +98,7 @@
           <th>상품사진</th>
           <th>상품명</th>
           <th>상품권가격</th>
-          <th>유통사</th>
+          <th>카테고리</th>
           <th>등록일</th>
           <th>승인여부</th>
         </tr>

@@ -19,19 +19,19 @@ function go_insert()
 {
 	if(jQuery("input[name='makernm']").val() == "")
 	{
-		alert("유통사를 입력하세요.");
+		alert("카테고리를 입력하세요.");
 		jQuery("input[name=makernm]").focus();
 		return;
 	}
 	else
 	{
-		if(confirm("유통사를 등록하시겠습니까?")) jQuery("form[name='cateProduce_insert']").submit();
+		if(confirm("카테고리를 등록하시겠습니까?")) jQuery("form[name='cateProduce_insert']").submit();
 	}
 }
 
 function go_update()
 {
-	if(confirm("유통사를 수정하시겠습니까?")) jQuery("form[name='cateProduce_modify']").submit();
+	if(confirm("카테고리를 수정하시겠습니까?")) jQuery("form[name='cateProduce_modify']").submit();
 }
 
 function goPage(cpage){
@@ -45,7 +45,7 @@ function goPage(cpage){
 function  go_delete()
 {
 	var carmakerseq = '${article.carmakerseq}';
-	if(confirm("유통사를 삭제하시겠습니까?")) location.replace("${servletPath}?method=delete&cpage=${params.cpage}&rows=${params.rows}&carmakerseq=" + carmakerseq);
+	if(confirm("카테고리를 삭제하시겠습니까?")) location.replace("${servletPath}?method=delete&cpage=${params.cpage}&rows=${params.rows}&carmakerseq=" + carmakerseq);
 	
 }
 
@@ -62,7 +62,7 @@ function  go_delete()
     <div class="tab_menu">
       <ul class="tab">
         <!-- <li ><a href="javascript:;" onclick = "goBody('/admin/goods/inventory/inventory_cate.do?codeno=0509');">공통코드</a></li> -->
-        <li class="on"><a href="javascript:;" onclick = "goBody('/giftcard/admin/goods/inventory/inventory_cate2.do');">유통사</a></li>
+        <li class="on"><a href="javascript:;" onclick = "goBody('/giftcard/admin/goods/inventory/inventory_cate2.do');">카테고리</a></li>
         <li><a href="javascript:;" onclick = "goBody('/giftcard/admin/goods/inventory/inventory_cate3.do');">상품권</a></li>
         <!-- <li><a href="javascript:;" onclick = "goBody('/admin/goods/inventory/inventory_cate4.do');">차량모델명</a></li>
         <li><a href="javascript:;" onclick = "goBody('/admin/goods/inventory/inventory_cate5.do');">부품정보</a></li> -->
@@ -75,7 +75,7 @@ function  go_delete()
 	        <input type="hidden" name="cpage" value="${params.cpage }" />
 			<input type="hidden" name="method" value="list" />
 			<input type = "hidden" name = "rows" value = "${params.rows }"/>
-	        	<span style="font-weight: bold;">유통사</span>
+	        	<span style="font-weight: bold;">카테고리</span>
 	          	<input  name = "keyword" type="text" class="input_1" value="${params.keyword }"/>
 	          	<span><input type = "image" src = "/images/admin/contents/s_btn_search.gif"/></span>
 	        </form>
@@ -90,7 +90,7 @@ function  go_delete()
                </colgroup>
                <tr>
                  <th>번호</th>
-                 <th>유통사명</th>
+                 <th>카테고리명</th>
                </tr>
                 <c:forEach items="${list }" var="produceList">
                <tr>
@@ -113,7 +113,7 @@ function  go_delete()
                <col width="*" />
              </colgroup>
              <tr>
-               <th>유통사</th>
+               <th>카테고리</th>
                <td>${article.makernm }</td>
                <th>사용여부</th>
                <td>${article.useyn }</td>
@@ -144,8 +144,8 @@ function  go_delete()
 		        </div>
 		    </div>
          </div>
-         <!-- 유통사 등록 팝업 (신규등록)-->
-	     <div id="dialog" title="유통사등록" >
+         <!-- 카테고리 등록 팝업 (신규등록)-->
+	     <div id="dialog" title="카테고리등록" >
 	     <form id = "cateProduce_insert" name = "cateProduce_insert" method = "post" action = "${servletPath }">
 	     	<input type = "hidden" name = "ordernum" value = "${lastest.ordernum + 1 }"/>
 	     	<input type = "hidden" name = "method" value = "insert"/>
@@ -162,7 +162,7 @@ function  go_delete()
 	               <col width="*" />
 	             </colgroup>
 	            <tr>
-	              <th>유통사</th>
+	              <th>카테고리</th>
 	              <td>
 	                <input type="text" name="makernm" id="makernm" class="input_1"/>
 	              </td>
@@ -192,8 +192,8 @@ function  go_delete()
 			  </form>
 	     	</div>
 	     
-	     <!-- 유통사 등록 팝업 (수정)-->
-	     <div id="dialog2" title="유통사수정" >
+	     <!-- 카테고리 등록 팝업 (수정)-->
+	     <div id="dialog2" title="카테고리수정" >
 	     	<form id = "cateProduce_modify" name = "cateProduce_modify" method = "post" action = "${servletPath }">
 	     		<input type = "hidden" name = "carmakerseq" value = "${article.carmakerseq}"/>
 	     		<input type = "hidden" name = "method" value = "update"/>
@@ -210,7 +210,7 @@ function  go_delete()
 		               <col width="*" />
 		             </colgroup>
 		            <tr>
-		              <th>유통사</th>
+		              <th>카테고리</th>
 		              <td>
 		                <input type="text" name="makernm" id="makernm" class="input_1" value = "${article.makernm }"/>
 		              </td>

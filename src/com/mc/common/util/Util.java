@@ -9,9 +9,12 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.StringTokenizer;
 import java.util.Vector;
+
+import com.mc.common.util.AuthConsts;
 
 public class Util {
 	
@@ -880,4 +883,18 @@ public class Util {
 		  return rtnStr;
 	  }
 	
+		/**
+		 * 해당지사의 auth코드 체크
+		 * @return
+		 */
+		public static boolean isAuthChk(String auth_key) {
+			boolean isAuthChk = false;
+			for (Map<String, Object> map : AuthConsts.auth_list) {
+				String authorization = (String)map.get("Authorization");
+				if(authorization.equals(auth_key)) {
+					isAuthChk = true;		    	
+			    }
+			}
+			return isAuthChk;
+		}
 }

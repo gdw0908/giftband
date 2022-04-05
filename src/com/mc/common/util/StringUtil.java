@@ -406,7 +406,72 @@ public class StringUtil {
     }
     
     
-    
+    /**
+	* 객체 형태 Object가 null이면  String으로 형변형하여 리턴한다.
+	* <p>
+	* @param    obj  변환할 객체
+	* @return   	변환된 문자열 
+	*/
+	public static String nvl(Object obj){
+		String str="";
+		
+		if (obj == null)
+			str = "";
+		else{
+			try{				
+				str = (String)obj;	
+			}catch(Exception e){
+				try{
+					str = obj.toString();				
+				}catch(Exception ex){
+					str = "";
+				}
+			}
+		}
+		
+		if(str.equals("null") || (str.length() == 0))
+			str = "";
+		
+		return str;
+	}
+	/**
+	* 객체 형태 Object가 null이면 String으로 형변형하여 리턴한다.
+	* <p>
+	* @param    obj  변환할 객체
+	* @return   	변환된 문자열 
+	*/
+	public static String nvl(Object obj, String nullvalue) {
+		String str="";
+		
+		if (obj == null)
+			str = nullvalue;
+		
+		else{
+			try{				
+				str = (String)obj;	
+			}catch(Exception e){
+				try{
+					str = obj.toString();				
+				}catch(Exception ex){
+					str = nullvalue;
+				}
+			}
+		}
+		
+		return str;
+	}
+	/**
+	 * 숫자형태 널이면 대체 숫자 리턴
+	 * @param val
+	 * @param nullvalue
+	 * @return
+	 */
+	public static int nvl(Integer val, int nullvalue) {
+		if(val == null)
+			return nullvalue;
+		else
+			return val.intValue();
+	}
     
 
 //    public static String emptyToSomething(String sStr, String sSomething) {

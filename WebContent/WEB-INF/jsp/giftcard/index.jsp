@@ -456,6 +456,7 @@
 		<div class="list_wrap">
 			<h3>브랜드별 <span>BEST</span></h3>
 			<ul class="best_list">
+			<c:forEach var="bestItem" items="${list.newPartsList }" varStatus="status">
 				<li>
 					<!-- 장바구니 아이콘 클릭시 장바구니로 이동 -->
 					<a href="javascript:void();" class="cart_icon">
@@ -464,33 +465,12 @@
 					<!-- 바로구매 버튼 누르면 바로구매 -->
 					<button type="button" class="purchase_btn">바로구매</button>
 					<div class="item_info">
-						<img src="/images/common/test_img.png" />
-						<span class="price">100,000</span>
-						<span class="product_name">갤러리아 상품권 10만원권</span>
+						<img src="${bestItem.THUMB }" />
+						<span class="price">${suf:getThousand(bestItem.USER_PRICE) }원</span>
+						<span class="product_name">${bestItem.PRODUCTNM }</span>
 					</div>
 				</li>
-				<li>
-					<a href="javascript:void();" class="cart_icon">
-						<img src="/images/common/product_cart.svg" alt="장바구니">
-					</a>
-					<button type="button" class="purchase_btn">바로구매</button>
-					<div class="item_info">
-						<img src="/images/common/test_img.png" />
-						<span class="price">100,000</span>
-						<span class="product_name">갤러리아 상품권 10만원권</span>
-					</div>
-				</li>
-				<li>
-					<a href="javascript:void();" class="cart_icon">
-						<img src="/images/common/product_cart.svg" alt="장바구니">
-					</a>
-					<button type="button" class="purchase_btn">바로구매</button>
-					<div class="item_info">
-						<img src="/images/common/test_img.png" />
-						<span class="price">100,000</span>
-						<span class="product_name">갤러리아 상품권 10만원권</span>
-					</div>
-				</li>
+			</c:forEach>
 			</ul>
 		</div>
 	</article>
