@@ -97,4 +97,7 @@ public class GiftCardCartDAO extends EgovAbstractMapper {
 	public List completePayList(Map params) {
 		return list("cart.completePayList", params);
 	}
+	public List bankList(Map params) {
+		return list("cart.bankList", params);
+	}
 }

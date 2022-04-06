@@ -168,6 +168,10 @@ function setAddr(roadAddrPart1, addrDetail, zipNo, jibunAddr) {
 }
 
 function Check_Common(form){
+	if(!midChk){
+		alert("올바른 추천인 ID를 입력해주세요.");	
+		return false;
+	}
 	if(form.zip1.value == "" || isNaN(form.zip1.value)){
 		alert("우편번호를 정확히 입력해주세요");
 		form.zip1.focus();
@@ -454,6 +458,34 @@ function goStep3() {
 		$("#frm").submit();
 	}
 }
+var midChk=false;
+function goMidChk(){
+	if($("#mid").val() == ""){
+		alert("추천인ID를 입력해주세요.");
+		return;
+	}
+	$.ajax({
+		url : "http://localhost:8072/credit/pay/midChk", 
+		type: "POST", 
+		data : {mid : $("#mid").val()}, 
+		dataType : "json", 
+		async: false, 
+		cache : false, 
+		success : function(data){
+			if(data.result == "0000"){
+				midChk=true;
+				alert("추천인 조회 완료.");
+			}else{
+				midChk=false;
+				alert("추천인 조회에 실패하였습니다.\n올바른 추천인 ID를 입력해주세요");
+			}
+		},
+		error : function(data){
+			midChk=false;
+			alert("추천인 조회에 실패하였습니다.\n올바른 추천인 ID를 입력해주세요");
+		}
+	});
+}
 </script>
 </head>
 <body>
@@ -575,7 +607,7 @@ function goStep3() {
 				<!--div class="table_text_1">수정내용을 회원정보에 저장합니다. <a href="#"><img src="/images/sub_2/pay_s_btn3.gif" alt="회원정보 저장"></a></div-->
 
 				<p class="pay_type">
-					1. 결제정보입력 <span>( <span style="color:red;">*</span><i>필수입력사항입니다.)</i></span>
+					1. 결제정보입력 <span>(  <span style="color:red;">*</span><i>필수입력사항입니다.)</i></span>
 				</p>
 
 				<div class="sub_table_1">
@@ -626,28 +658,30 @@ function goStep3() {
 								</td>
 							</tr -->
 							<tr>
-								<th scope="row"><span>추천인ID</span></th>
+								<th scope="row"><span style="color:red;">*</span>추천인ID</th>
 								<td class="flex">
 									<input type="text" id="mid" name="mid" class="input_2 ws_3">
-									<button class="check_btn">추천인체크</button>
+									<button class="check_btn" onclick="goMidChk()" >추천인체크</button>
 								</td>		
 							</tr>
 							<tr>
-								<th scope="row"><span>수취인 이름(입금자명)</span></th>
+								<th scope="row"><span style="color:red;">*</span>수취인 이름(입금자명)</th>
 								<td><input type="text" id="receiver" name="receiver" class="input_2 ws_3"></td>
 							</tr>
 							<tr>
-								<th scope="row"><span>수취인 계좌정보</span></th>
+								<th scope="row"><span style="color:red;">*</span>수취인 계좌정보</th>
 								<td>
 									<select id="bankCd" name="bankCd" class="select_1">
 										<option value="">선택</option>
-										
+										<c:forEach var="item" items="${data.bankList}" varStatus="status">
+											<option value="${item.code }">${item.code_nm }</option>
+										</c:forEach>
 									</select>
 									<input type="text" id="account" name="account" class="input_2 ws_3" maxlength="20">
 								</td>
 							</tr>
 							<tr>
-								<th scope="row"><span>수취인 휴대폰</span></th>
+								<th scope="row"><span style="color:red;">*</span>수취인 휴대폰</th>
 								<td>
 								<input type="text" id="cell1" name="cell1" class="input_2 ws_1" maxlength="3"> 
 								- <input	type="text" id="cell2" name="cell2" class="input_2 ws_1"	maxlength="4"> 
@@ -663,7 +697,7 @@ function goStep3() {
 									name="tel3" class="input_2 ws_1" maxlength="4"></td>
 							</tr -->
 							<tr>
-								<th scope="row"><span>수취인 생년월일</span></th>
+								<th scope="row"><span style="color:red;">*</span>수취인 생년월일</th>
 								<td>
 									<input type="text" id="identity" name="identity" class="input_2 ws_3" maxlength="6" placeholder="생년월일 6자리">
 								</td>

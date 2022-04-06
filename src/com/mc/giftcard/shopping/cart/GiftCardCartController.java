@@ -535,20 +535,22 @@ public class GiftCardCartController {
 	@RequestMapping(params="mode=pay_ing")
 	@Transactional(rollbackFor = { Exception.class })
 	public String pay_int(ModelMap model, HttpServletRequest request, HttpSession session, @RequestParam Map params, @PathVariable("index") String index, @RequestParam(value="cart_no", required=true, defaultValue="") String[] cart_no, @RequestParam(value="message", required=false, defaultValue="[]") String[] message) throws Exception{
-		/*
-		 * if(StringUtil.isEmpty(request.getParameter("devTest")) ) {
-		 * 
-		 * request.setAttribute("message", "현재 결제 개발중입니다. 다음으로 그냥 넘어감");
-		 * request.setAttribute("redirect",
-		 * "/giftcard/mypage/shopping/cart/"+index+".do?mode=pay_result");
-		 * 
-		 * return "message"; }else if(request.getParameter("devTest").equals("T") ) {
-		 * request.setAttribute("message", "현재 결제 개발중입니다. 다음으로 그냥 넘어감");
-		 * request.setAttribute("redirect",
-		 * "/giftcard/mypage/shopping/cart/"+index+".do?mode=pay_result");
-		 * 
-		 * return "message"; }
-		 */
+		
+		  if(StringUtil.isEmpty(request.getParameter("devTest")) ) {
+		  
+		  request.setAttribute("message", "현재 결제 개발중입니다. 다음으로 그냥 넘어감");
+		  request.setAttribute("redirect",
+		  "/giftcard/mypage/shopping/cart/"+index+".do?mode=pay_result");
+		  
+		  return "message"; 
+		 } else if(request.getParameter("devTest").equals("T") ) {
+			  request.setAttribute("message", "현재 결제 개발중입니다. 다음으로 그냥 넘어감");
+			  request.setAttribute("redirect",
+			  "/giftcard/mypage/shopping/cart/"+index+".do?mode=pay_result");
+			  
+			 return "message"; 
+		 }
+		 
 		
 		request.setCharacterEncoding("UTF-8");
 		/*공통사용*/

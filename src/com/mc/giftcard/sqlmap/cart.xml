@@ -369,4 +369,10 @@
             AND a.CART_NO = #{cart_no}
 	</select>
 	
+	<select id="bankList" parameterType="Map" resultType="mcmap">
+		SELECT CODE, CODE_NM 
+		FROM MC_COMMON_CODE
+		WHERE CODE_GROUP_SEQ = 47
+		ORDER BY ORDER_SEQ  ASC
+	</select>
 </mapper>
