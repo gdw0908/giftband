@@ -203,7 +203,6 @@ function show_receipt()
             			<th>수량</th>
             			<th>가격</th>
             			<th>할인</th>
-            			<th>배송비</th>
             			<th>합계</th>
             			<th>주문번호</th>
           			</tr>
@@ -214,7 +213,6 @@ function show_receipt()
 						<c:set var="discount_price_l" value="0"/>
 						<c:set var="fee_price_l" value="0"/>
           				<c:set var="user_price" value="${user_price + (item.user_price * item.qty) }"/>
-						<c:set var="user_price_l" value="${item.user_price * item.qty }"/>
        					<c:if test="${item.cod_yn eq 'Y' }">
             				<c:set var="fee_price" value="${fee_price + item.fee_amt }"/>
             				<c:set var="fee_price_l" value="${item.fee_amt }"/>
@@ -323,10 +321,6 @@ function show_receipt()
 
               <div class="sub_table_1">
                 <table>
-                	<colgroup>
-                		<col width="20%">
-                		<col width="">
-                	</colgroup>
                 	<tbody>
                 		<tr>
                   			<th scope="row">주문자</th>
@@ -354,68 +348,9 @@ function show_receipt()
                 	</tbody>
                 </table>
               </div>
-
             </div>
-
-            <div class="info_r">
-              <p class="pay_type">배송정보 내역</p>
-
-              <div class="sub_table_1">
-                <table>
-                	<colgroup>
-                	<col width="20%">
-                	<col width="">
-                	</colgroup>
-                	<tbody>
-                		<tr>
-                  			<th scope="row">수취인</th>
-                  			<td>${data.resultInfo.receiver }</td>
-                		</tr>
-                		<tr>
-                  			<th scope="row">배송지 주소</th>
-                  			<td>
-                    			<p>(${data.resultInfo.re_zipcd }) ${data.resultInfo.re_addr1 }</p>
-                    			<p>${data.resultInfo.re_addr2 }</p>
-                  			</td>
-                		</tr>
-                		<tr>
-                  			<th scope="row">수취인 휴대폰</th>
-                  			<td>${data.resultInfo.re_cell }</td>
-                		</tr>
-                		<tr>
-                  			<th scope="row">수취인 연락처</th>
-                  			<td>${data.resultInfo.re_tel }</td>
-                		</tr>
-                	</tbody>
-                </table>
-              </div>
-            </div>
-
           </div>
 
-          <p class="pay_type">배송시 요청사항</p>
-
-          <div class="sub_table_1">
-            <table>
-            <colgroup>
-            <col width="20%">
-            <col width="">
-            </colgroup>
-            <tbody>
-            <tr>
-              <th scope="row">배송시요청사항</th>
-              <td class="request_type">
-				<c:forEach var="item" items="${data.list }" varStatus="status">
-                <div class="request_top">
-                  <p class="request_c1">상품명 : ${item.PRODUCTNM } / (${item.MAKERNM })</p>
-                  <p>요청사항 :  ${item.message }</p>
-                </div>
-				</c:forEach>
-              </td>
-            </tr>
-            </tbody>
-            </table>
-          </div>
           <script type="text/javascript">
           $(document).ready(function(){
         	  $('td .request_top:last').css('background', 'none');
