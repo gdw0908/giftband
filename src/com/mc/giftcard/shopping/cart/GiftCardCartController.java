@@ -1,6 +1,9 @@
 package com.mc.giftcard.shopping.cart;
 
+import java.nio.charset.Charset;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,6 +14,10 @@ import org.apache.log4j.Logger;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.ModelMap;
@@ -19,9 +26,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.client.RestTemplate;
 
-import aegis.pgclient.PgClientBean40;
-
+import com.mc.common.util.HttpApiUtil;
 import com.mc.common.util.StringUtil;
 import com.mc.web.Globals;
 import com.mc.web.MCMap;
@@ -48,6 +55,12 @@ public class GiftCardCartController {
 	@Autowired
 	private GiftCardCartService cartService;
 
+    @Autowired
+    private HttpApiUtil httpApiUtil;   
+    
+	@Value("#{config['vpay.url.midChk']}")
+    String vpay_url_midChk;
+    
 	@RequestMapping(params = "!mode")
 	public String index(ModelMap model, HttpServletRequest request, HttpServletResponse response, HttpSession session,
 			@CookieValue(value = "cart_list", required = false, defaultValue = "") String cookie,
@@ -537,17 +550,14 @@ public class GiftCardCartController {
 	public String pay_int(ModelMap model, HttpServletRequest request, HttpSession session, @RequestParam Map params, @PathVariable("index") String index, @RequestParam(value="cart_no", required=true, defaultValue="") String[] cart_no, @RequestParam(value="message", required=false, defaultValue="[]") String[] message) throws Exception{
 		
 		  if(StringUtil.isEmpty(request.getParameter("devTest")) ) {
-		  
-		  request.setAttribute("message", "현재 결제 개발중입니다. 다음으로 그냥 넘어감");
-		  request.setAttribute("redirect",
-		  "/giftcard/mypage/shopping/cart/"+index+".do?mode=pay_result");
-		  
-		  return "message"; 
+			  request.setAttribute("message", "현재 결제 개발중입니다. 다음으로 그냥 넘어감");
+			  request.setAttribute("redirect",
+			  "/giftcard/mypage/shopping/cart/"+index+".do?mode=pay_result");
+			  return "message";
 		 } else if(request.getParameter("devTest").equals("T") ) {
 			  request.setAttribute("message", "현재 결제 개발중입니다. 다음으로 그냥 넘어감");
 			  request.setAttribute("redirect",
 			  "/giftcard/mypage/shopping/cart/"+index+".do?mode=pay_result");
-			  
 			 return "message"; 
 		 }
 		 
@@ -846,4 +856,17 @@ public class GiftCardCartController {
 		return "OK";
 	}
 
+	@ResponseBody
+	@RequestMapping(params = "mode=midChk")
+	@Transactional(rollbackFor = { Exception.class })
+	public Map midChk(ModelMap model, HttpServletRequest request, HttpSession session, @RequestParam Map params)
+			throws Exception {
+		Map<String, Object> res_result = new HashMap<String, Object>();
+		//파라미터 셋팅
+		Map<String, Object> sendParam = new HashMap<String, Object>();
+		sendParam.put("mid", StringUtil.nvl(params.get("mid"),""));
+		res_result = httpApiUtil.vpayApiCall(sendParam, vpay_url_midChk, "");
+		
+		return res_result;
+	}
 }

@@ -21,8 +21,7 @@
 						   http://ehcache-spring-annotations.googlecode.com/svn/schema/ehcache-spring/ehcache-spring-1.2.xsd ">
 
 	<!-- 클래스의 어노테이션을 읽어 설정파일을 만든다. base-package는 경로를 설정 할수 있다.-->
-	<context:component-scan base-package="com.mc.web" />
-	<context:component-scan base-package="com.mc.giftcard" />
+	<context:component-scan base-package="com.mc.**" />
 	<task:annotation-driven/>
 	<ehcache:annotation-driven />	
 	<ehcache:config cache-manager="cacheManager">  

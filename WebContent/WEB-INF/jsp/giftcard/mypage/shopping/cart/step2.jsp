@@ -168,25 +168,11 @@ function setAddr(roadAddrPart1, addrDetail, zipNo, jibunAddr) {
 }
 
 function Check_Common(form){
-	if(!midChk){
+	/*if(!midChk){
 		alert("올바른 추천인 ID를 입력해주세요.");	
-		return false;
-	}
-	if(form.zip1.value == "" || isNaN(form.zip1.value)){
-		alert("우편번호를 정확히 입력해주세요");
-		form.zip1.focus();
-		return false;
-	}
-	/*if(form.zip2.value == "" || isNaN(form.zip2.value)){
-		alert("우편번호를 정확히 입력해주세요");
-		form.zip2.focus();
+		$("#mid").focus();
 		return false;
 	}*/
-	if(form.addr1.value == ""){
-		alert("배송지 주소를 입력해주세요");
-		form.addr1.focus();
-		return false;
-	}
 	if(form.receiver.value == ""){
 		alert("수취인 이름을 입력해주세요");
 		form.receiver.focus();
@@ -207,46 +193,11 @@ function Check_Common(form){
 		form.cell3.focus();
 		return false;
 	}
-	/* if(form.tel1.value == "" || isNaN(form.tel1.value)){
-		alert("연락처를 정확히 입력해주세요");
-		form.tel1.focus();
+	if(form.identity.value == ""){
+		alert("수취인 생년월일을 입력해주세요");
+		form.receiver.focus();
 		return false;
 	}
-	if(form.tel2.value == "" || isNaN(form.tel2.value)){
-		alert("연락처를 정확히 입력해주세요");
-		form.tel2.focus();
-		return false;
-	}
-	if(form.tel3.value == "" || isNaN(form.tel3.value)){
-		alert("연락처를 정확히 입력해주세요");
-		form.tel3.focus();
-		return false;
-	}
-	
-	if(form.StoreId.value == ""){
-		alert("상점아이디를 입력하십시오.");
-		return false;
-	}
-	else if(form.StoreNm.value == ""){
-		alert("상점명을 입력하십시오.");
-		return false;
-	}
-	else if(form.OrdNo.value == ""){
-		alert("주문번호를 입력하십시오.");
-		return false;
-	}
-	else if(form.ProdNm.value == ""){
-		alert("상품명을 입력하십시오.");
-		return false;
-	}
-	else if(form.Amt.value == ""){
-		alert("금액을 입력하십시오.");
-		return false;
-	}
-	else if(form.MallUrl.value == ""){
-		alert("상점URL을 입력하십시오.");
-		return false;
-	} */
 	
 	return true;
 }
@@ -462,17 +413,19 @@ var midChk=false;
 function goMidChk(){
 	if($("#mid").val() == ""){
 		alert("추천인ID를 입력해주세요.");
+		$("#mid").focus();
 		return;
 	}
 	$.ajax({
-		url : "http://localhost:8072/credit/pay/midChk", 
+		url : "/giftcard/mypage/shopping/cart/index.do?mode=midChk", 
 		type: "POST", 
 		data : {mid : $("#mid").val()}, 
-		dataType : "json", 
+		dataType : "json",
 		async: false, 
 		cache : false, 
 		success : function(data){
-			if(data.result == "0000"){
+			console.log("data==="+JSON.stringify(data))
+			if(data.resCode == "0000"){
 				midChk=true;
 				alert("추천인 조회 완료.");
 			}else{
@@ -661,7 +614,7 @@ function goMidChk(){
 								<th scope="row"><span style="color:red;">*</span>추천인ID</th>
 								<td class="flex">
 									<input type="text" id="mid" name="mid" class="input_2 ws_3">
-									<button class="check_btn" onclick="goMidChk()" >추천인체크</button>
+									<button type="button"  class="check_btn" onclick="goMidChk()" >추천인체크</button>
 								</td>		
 							</tr>
 							<tr>
