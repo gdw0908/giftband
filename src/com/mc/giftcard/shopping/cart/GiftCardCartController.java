@@ -117,7 +117,7 @@ public class GiftCardCartController {
 			params.put("member_seq", member.get("member_seq"));
 		}
 		Map rstMap = cartService.direct_order(params);
-		if ("-1".equals(rstMap.get("rst"))) {
+		/*if ("-1".equals(rstMap.get("rst"))) {
 			request.setAttribute("message", "상품의 재고수량을 확인하시기 바랍니다.");
 			request.setAttribute("redirect", "/giftcard/mypage/shopping/cart/index.do");
 			return "message";
@@ -125,7 +125,7 @@ public class GiftCardCartController {
 		if ("-2".equals(rstMap.get("rst"))) {
 			request.setAttribute("message", rstMap.get("msg"));
 			return "message";
-		}		
+		}*/		
 		if (member == null) { 
 			if ("Y".equals(StringUtil.nvl((String)session.getAttribute("agree"),""))) {
 				if (!("Y".equals(StringUtil.nvl((String)session.getAttribute("use_chk"),"")) && "Y".equals(StringUtil.nvl((String)session.getAttribute("ps_chk"),"")))) {
@@ -146,11 +146,11 @@ public class GiftCardCartController {
 					session.setAttribute("ps_chk", params.get("ps_chk"));
 					returnurl = "/giftcard/mypage/shopping/cart/nomember";
 				}
-			} else if (member == null) {
+			}/* else if (member == null) {
 				request.setAttribute("params", params);
 				request.setAttribute("redirect", "/giftcard/login/login_2.do?mode=guest");
 				return "message";
-			}
+			}*/
 		}
 		model.addAttribute("data", rstMap);
 		return returnurl;

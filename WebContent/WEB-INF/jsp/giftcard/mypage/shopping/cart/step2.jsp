@@ -24,8 +24,8 @@
 	content="minimum-scale=1.0, width=device-width, maximum-scale=1, user-scalable=yes"
 	name="viewport" />
 <meta name="author" content="31system" />
-<meta name="description" content="안녕하세요  티켓크루 입니다." />
-<meta name="Keywords" content="티켓크루, 상품권, 백화점 상품권, 롯데 백화점, 롯데 상품권, 갤러리아 백화점, 갤러리아 상품권, 신세계 백화점, 신세계 상품권" />
+<meta name="description" content="안녕하세요  기프트밴드 입니다." />
+<meta name="Keywords" content="기프트밴드, 상품권, 백화점 상품권, 롯데 백화점, 롯데 상품권, 갤러리아 백화점, 갤러리아 상품권, 신세계 백화점, 신세계 상품권" />
 <title>나의쇼핑</title>
 
 <!-- <script language=javascript
@@ -532,10 +532,12 @@ function goStep3() {
 					</table>
 				</article>
 				<ul class="sub_list_1">
-					<li><strong>티켓크루</strong>는 통신판매중개자이며 통신판매의 당사자가 아닙니다. 따라서
-						<strong>티켓크루</strong>는 상품ㆍ거래정보 및 거래에 대하여 책임을 지지 않습니다.</li>
+					<li><strong>기프트밴드</strong>는 통신판매중개자이며 통신판매의 당사자가 아닙니다. 따라서
+						<strong>기프트밴드</strong>는 상품ㆍ거래정보 및 거래에 대하여 책임을 지지 않습니다.<br/>
+						<strong>주의!</strong> : 결제는 가상계좌로 결제가 진행되며 정확한 실제입금자 정보를 입력해주세요.	
+					</li>
 				</ul>
-				<p class="pay_type">2. 주문회원 정보</p>
+				<!--  p class="pay_type">2. 주문회원 정보</p>
 				<div class="sub_table_1">
 					<table>
 						<colgroup>
@@ -569,11 +571,11 @@ function goStep3() {
 							</tr>
 						</tbody>
 					</table>
-				</div>
+				</div -->
 				<!--div class="table_text_1">수정내용을 회원정보에 저장합니다. <a href="#"><img src="/images/sub_2/pay_s_btn3.gif" alt="회원정보 저장"></a></div-->
 
 				<p class="pay_type">
-					3. 배송지정보<span>( <i>필수입력사항입니다.)</i></span>
+					1. 결제정보입력 <span>( <span style="color:red;">*</span><i>필수입력사항입니다.)</i></span>
 				</p>
 
 				<div class="sub_table_1">
@@ -583,7 +585,7 @@ function goStep3() {
 							<col width="">
 						</colgroup>
 						<tbody>
-							<tr>
+							<!-- tr>
 								<th scope="row" rowspan="2"><span>배송지 주소</span></th>
 								<td>
 									<span>
@@ -622,28 +624,50 @@ function goStep3() {
 										<input type="text" id="addr2" name="addr2" class="input_2 ws_2">
 									</div>
 								</td>
+							</tr -->
+							<tr>
+								<th scope="row"><span style="color:red;">추천인ID</span></th>
+								<td>
+									<input type="text" id="mid" name="mid" class="input_2 ws_3">
+								</td>		
 							</tr>
 							<tr>
-								<th scope="row"><span>수취인 이름</span></th>
+								<th scope="row"><span style="color:red;">수취인 이름(입금자명)</span></th>
 								<td><input type="text" id="receiver" name="receiver" class="input_2 ws_3"></td>
 							</tr>
 							<tr>
-								<th scope="row"><span>수취인 휴대폰</span></th>
-								<td><input type="text" id="cell1" name="cell1"
-									class="input_2 ws_1" maxlength="3"> - <input
-									type="text" id="cell2" name="cell2" class="input_2 ws_1"
-									maxlength="4"> - <input type="text" id="cell3"
-									name="cell3" class="input_2 ws_1" maxlength="4"></td>
+								<th scope="row"><span style="color:red;">수취인 계좌정보</span></th>
+								<td>
+									<select id="bankCd" name="bankCd" class="select_1">
+										<option value="">선택</option>
+										
+									</select>
+									<input type="text" id="account" name="account" class="input_2 ws_3" maxlength="20">
+								</td>
 							</tr>
 							<tr>
-								<th scope="row"><span>수취인 연락처</span></th>
+								<th scope="row"><span style="color:red;">수취인 휴대폰</span></th>
+								<td>
+								<input type="text" id="cell1" name="cell1" class="input_2 ws_1" maxlength="3"> 
+								- <input	type="text" id="cell2" name="cell2" class="input_2 ws_1"	maxlength="4"> 
+								- <input type="text" id="cell3"	name="cell3" class="input_2 ws_1" maxlength="4">
+								</td>
+							</tr>
+							<!-- tr>
+								<th scope="row"><span>수취인 생년월일</span></th>
 								<td><input type="text" id="tel1" name="tel1"
 									class="input_2 ws_1" maxlength="3"> - <input
 									type="text" id="tel2" name="tel2" class="input_2 ws_1"
 									maxlength="4"> - <input type="text" id="tel3"
 									name="tel3" class="input_2 ws_1" maxlength="4"></td>
-							</tr>
+							</tr -->
 							<tr>
+								<th scope="row"><span style="color:red;">수취인 생년월일</span></th>
+								<td>
+									<input type="text" id="identity" name="identity" class="input_2 ws_3" maxlength="6" placeholder="생년월일 6자리">
+								</td>
+							</tr>
+							<!-- tr>
 								<th scope="row">
 									<p>
 										<span>배송시요청사항</span>
@@ -663,12 +687,12 @@ function goStep3() {
 										</div>
 									</c:forEach>
 								</td>
-							</tr>
+							</tr -->
 						</tbody>
 					</table>
 				</div>
 
-				<p class="pay_type">4. 결제금액 및 구매혜택</p>
+				<p class="pay_type">2. 결제금액 및 구매혜택</p>
 
 				<div class="pricecheck">
 					<div class="p_check1">

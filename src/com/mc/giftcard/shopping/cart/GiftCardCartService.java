@@ -158,12 +158,12 @@ public class GiftCardCartService {
 		}
 		
 		params.put("cart_no", params.get("cart_no"));
-		int stock_num = cartDAO.cart_stock_cartno(params);//재고
+		/*int stock_num = cartDAO.cart_stock_cartno(params);//재고
 		int qty = cartDAO.cart_qty_cartno(params);//수량
 		if(qty > stock_num){
 			rstMap.put("rst", "-1");
 			return rstMap;
-		}
+		}*/
 		
 		if(!StringUtil.isEmptyByParam(params, "member_seq")){
 			rstMap.put("memberInfo", cartDAO.member_info(params));
