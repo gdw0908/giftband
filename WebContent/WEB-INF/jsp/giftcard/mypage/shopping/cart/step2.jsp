@@ -626,17 +626,18 @@ function goStep3() {
 								</td>
 							</tr -->
 							<tr>
-								<th scope="row"><span style="color:red;">추천인ID</span></th>
-								<td>
+								<th scope="row"><span>추천인ID</span></th>
+								<td class="flex">
 									<input type="text" id="mid" name="mid" class="input_2 ws_3">
+									<button class="check_btn">추천인체크</button>
 								</td>		
 							</tr>
 							<tr>
-								<th scope="row"><span style="color:red;">수취인 이름(입금자명)</span></th>
+								<th scope="row"><span>수취인 이름(입금자명)</span></th>
 								<td><input type="text" id="receiver" name="receiver" class="input_2 ws_3"></td>
 							</tr>
 							<tr>
-								<th scope="row"><span style="color:red;">수취인 계좌정보</span></th>
+								<th scope="row"><span>수취인 계좌정보</span></th>
 								<td>
 									<select id="bankCd" name="bankCd" class="select_1">
 										<option value="">선택</option>
@@ -646,7 +647,7 @@ function goStep3() {
 								</td>
 							</tr>
 							<tr>
-								<th scope="row"><span style="color:red;">수취인 휴대폰</span></th>
+								<th scope="row"><span>수취인 휴대폰</span></th>
 								<td>
 								<input type="text" id="cell1" name="cell1" class="input_2 ws_1" maxlength="3"> 
 								- <input	type="text" id="cell2" name="cell2" class="input_2 ws_1"	maxlength="4"> 
@@ -662,7 +663,7 @@ function goStep3() {
 									name="tel3" class="input_2 ws_1" maxlength="4"></td>
 							</tr -->
 							<tr>
-								<th scope="row"><span style="color:red;">수취인 생년월일</span></th>
+								<th scope="row"><span>수취인 생년월일</span></th>
 								<td>
 									<input type="text" id="identity" name="identity" class="input_2 ws_3" maxlength="6" placeholder="생년월일 6자리">
 								</td>
