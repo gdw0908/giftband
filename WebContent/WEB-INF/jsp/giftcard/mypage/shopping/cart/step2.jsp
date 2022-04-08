@@ -168,11 +168,11 @@ function setAddr(roadAddrPart1, addrDetail, zipNo, jibunAddr) {
 }
 
 function Check_Common(form){
-	/*if(!midChk){
+	if(!midChk){
 		alert("올바른 추천인 ID를 입력해주세요.");	
 		$("#mid").focus();
 		return false;
-	}*/
+	}
 	if(form.receiver.value == ""){
 		alert("수취인 이름을 입력해주세요");
 		form.receiver.focus();
@@ -473,6 +473,7 @@ function goMidChk(){
 								<c:set var="prod_price" value="${prod_price + user_price_l }"/>							
 								<c:set var="discount_price_l" value="0" />
 								<c:set var="fee_price_l" value="0" />
+								<input type="hidden" name="cart_no" value="${item.cart_no }"/>
 								<tr>
 									<td class="cart_main">
 										<div class="product_box">
@@ -622,7 +623,7 @@ function goMidChk(){
 								<td><input type="text" id="receiver" name="receiver" class="input_2 ws_3"></td>
 							</tr>
 							<tr>
-								<th scope="row"><span style="color:red;">*</span>수취인 계좌정보</th>
+								<th scope="row"><span style="color:red;">*</span>수취인 입금계좌정보</th>
 								<td>
 									<select id="bankCd" name="bankCd" class="select_1">
 										<option value="">선택</option>
@@ -630,7 +631,7 @@ function goMidChk(){
 											<option value="${item.code }">${item.code_nm }</option>
 										</c:forEach>
 									</select>
-									<input type="text" id="account" name="account" class="input_2 ws_3" maxlength="20">
+									<input type="text" id="account" name="account" class="input_2 ws_3" maxlength="20" placeholder="입금 계좌번호">
 								</td>
 							</tr>
 							<tr>

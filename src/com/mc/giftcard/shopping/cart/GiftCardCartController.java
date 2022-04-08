@@ -61,6 +61,9 @@ public class GiftCardCartController {
 	@Value("#{config['vpay.url.midChk']}")
     String vpay_url_midChk;
     
+	@Value("#{config['vpay.url.acctReq']}")
+    String vpay_url_acctReq;
+	
 	@RequestMapping(params = "!mode")
 	public String index(ModelMap model, HttpServletRequest request, HttpServletResponse response, HttpSession session,
 			@CookieValue(value = "cart_list", required = false, defaultValue = "") String cookie,
@@ -159,11 +162,11 @@ public class GiftCardCartController {
 					session.setAttribute("ps_chk", params.get("ps_chk"));
 					returnurl = "/giftcard/mypage/shopping/cart/nomember";
 				}
-			}/* else if (member == null) {
+			} else if (member == null) {
 				request.setAttribute("params", params);
 				request.setAttribute("redirect", "/giftcard/login/login_2.do?mode=guest");
 				return "message";
-			}*/
+			}
 		}
 		model.addAttribute("data", rstMap);
 		return returnurl;
@@ -549,7 +552,7 @@ public class GiftCardCartController {
 	@Transactional(rollbackFor = { Exception.class })
 	public String pay_int(ModelMap model, HttpServletRequest request, HttpSession session, @RequestParam Map params, @PathVariable("index") String index, @RequestParam(value="cart_no", required=true, defaultValue="") String[] cart_no, @RequestParam(value="message", required=false, defaultValue="[]") String[] message) throws Exception{
 		
-		  if(StringUtil.isEmpty(request.getParameter("devTest")) ) {
+		 /*if(StringUtil.isEmpty(request.getParameter("devTest")) ) {
 			  request.setAttribute("message", "현재 결제 개발중입니다. 다음으로 그냥 넘어감");
 			  request.setAttribute("redirect",
 			  "/giftcard/mypage/shopping/cart/"+index+".do?mode=pay_result");
@@ -559,7 +562,7 @@ public class GiftCardCartController {
 			  request.setAttribute("redirect",
 			  "/giftcard/mypage/shopping/cart/"+index+".do?mode=pay_result");
 			 return "message"; 
-		 }
+		 }*/
 		 
 		
 		request.setCharacterEncoding("UTF-8");
@@ -588,8 +591,32 @@ public class GiftCardCartController {
 		*	가상계좌번호 : agspay.getResult("rVirNo")
 		*
 		****************************************************************************/
+		/** *******가상계좌 발급 API요청 START ******** **/
+		Map<String, Object> res_result = new HashMap<String, Object>();
+		//파라미터 셋팅
+		Map<String, Object> sendParam = new HashMap<String, Object>();
+		sendParam.put("mid", StringUtil.nvl(params.get("mid"),""));
+		sendParam.put("withdrawAccount", StringUtil.nvl(params.get("account"),""));
+		sendParam.put("withdrawBankCd", StringUtil.nvl(params.get("bankCd"),""));
+		sendParam.put("holder", StringUtil.nvl(params.get("receiver"),""));
+		sendParam.put("amount", StringUtil.nvl(params.get("Amt"),""));
+		sendParam.put("identity", StringUtil.nvl(params.get("identity"),""));
+		String phoneNo = (String)params.get("cell1")+(String)params.get("cell2")+(String)params.get("cell3");
+		sendParam.put("phoneNo", phoneNo);
+		sendParam.put("trxType", "0");
+		sendParam.put("reqType", "1");
+		
+		res_result = httpApiUtil.vpayApiCall(sendParam, vpay_url_acctReq, "");
+		String rSuccYn = "";
+		if("0000".equals(res_result.get("resCode"))) {
+			rSuccYn ="y";
+		}else {
+			rSuccYn ="n";	
+		}
+		/** *******가상계좌 발급 API요청 END ******** **/
+		
 		String cancelReq = "false";
-		String rSuccYn = "y";
+		
 		//TODO: 이부분은 실제 데이터 통신으로 처리해야함
 		if(StringUtil.nvl(rSuccYn, "y").equals("y")){ 
 			/*
@@ -598,10 +625,9 @@ public class GiftCardCartController {
 			 * params.put("rinstmt", agspay.getResult("rInstmt"));//할부개월
 			 * params.put("rapprtm", agspay.getResult("rApprTm"));//승인시각
 			 */			
-			params.put("rdealno", "509642");//거래번호
-			params.put("rapprno", "00614925");//승인번호
-			//params.put("rinstmt", "12");//할부개월
-			params.put("rapprtm", "20211227234807");//승인시각
+			params.put("rdealno", res_result.get("issueId"));//거래번호
+			params.put("vir_acctno", res_result.get("account"));//가상계좌번호
+			params.put("vir_bankcd", res_result.get("bankCd"));//가상계좌은행코드
 			
 			params.put("cart_no_arr", cart_no);
 			params.put("msg_arr", message);
@@ -610,8 +636,8 @@ public class GiftCardCartController {
 			params.put("email", params.get("UserEmail"));//이메일
 			params.put("zipcd", params.get("zip1"));//우편번호
 			params.put("receiver", params.get("receiver"));//수취인
-			params.put("cell", params.get("cell1")+"-"+params.get("cell2")+"-"+params.get("cell3"));//받는이 휴대폰
-			params.put("tel", params.get("tel1")+"-"+params.get("tel2")+"-"+params.get("tel3"));//받는이 휴대폰
+			params.put("cell",(String)params.get("cell1")+(String)params.get("cell2")+(String)params.get("cell3"));//받는이 휴대폰
+			params.put("tel", StringUtil.nvl(params.get("tel1"),"")+StringUtil.nvl(params.get("tel2"),"")+StringUtil.nvl(params.get("tel3"),""));//받는이 휴대폰
 			params.put("paytyp", StringUtil.nvl((String)params.get("AuthTy"), "virtual"));//결재타입
 			params.put("subty", params.get("SubTy"));//서브결재형태
 			params.put("payamt", params.get("Amt"));//결재금액
@@ -642,7 +668,7 @@ public class GiftCardCartController {
 			// 결제실패에 따른 상점처리부분
 			//log.error("결제가 실패처리되었습니다. [" + agspay.getResult("rSuccYn") + "]" + agspay.getResult("rResMsg"));
 			log.error("결제가 실패처리되었습니다. ");
-			request.setAttribute("message", "결제가 실패처리되었습니다.");
+			request.setAttribute("message", StringUtil.nvl(res_result.get("resMessage"),"결제가 실패처리되었습니다."));
 			cancelReq = "true";
 			if( cancelReq.equals("true") )
 			{

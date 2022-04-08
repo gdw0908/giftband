@@ -152,7 +152,13 @@
 	}
 
 	function goStep2() {
-		$("#frm").submit();
+		var actPrice = $("#actual_price").text();
+		if(Number(actPrice.replace(/,/gi , "")) > 3000000 ){
+			alert("총 구매금액은 3,000,000원 이하로 제한됩니다.");
+			return;
+		}else{
+			$("#frm").submit();
+		}
 	}
 </script>
 </head>

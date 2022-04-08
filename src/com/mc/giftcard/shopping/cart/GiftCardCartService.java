@@ -43,7 +43,7 @@ public class GiftCardCartService {
 		Map rstMap = new HashMap();
 		cartDAO.orderno_create(params);//주문번호생성
 
-		for (String cart_no : cartno_arr) {//재고수량 체크
+		/*for (String cart_no : cartno_arr) {//재고수량 체크
 			params.put("cart_no", cart_no);
 			int stock_num = cartDAO.cart_stock_cartno(params);//재고
 			int qty = cartDAO.cart_qty_cartno(params);//수량
@@ -51,7 +51,7 @@ public class GiftCardCartService {
 				rstMap.put("rst", "-1");
 				return rstMap;
 			}
-		}
+		}*/
 		
 		if(!StringUtil.isEmptyByParam(params, "member_seq")){
 			rstMap.put("memberInfo", cartDAO.member_info(params));
@@ -63,6 +63,7 @@ public class GiftCardCartService {
 			return rstMap;
 		}
 		rstMap.put("orderno", params.get("orderno"));
+		rstMap.put("bankList", cartDAO.bankList(params));
 		rstMap.put("list", list);
 		return rstMap;
 	}
@@ -83,14 +84,14 @@ public class GiftCardCartService {
 	
 	public Map qtyChange(Map params) throws Exception {
 		Map rstMap = new HashMap();
-		int qty = cartDAO.cart_stock(params);
+		/*int qty = cartDAO.cart_stock(params);
 		if(Integer.parseInt((String) params.get("qty")) > qty){
 			rstMap.put("rst", "-1");
 			rstMap.put("qty", qty);
 			params.put("qty", qty);
 		}else{
 			rstMap.put("rst", "1");
-		}
+		}*/
 		cartDAO.updateQty(params);
 		return rstMap;
 	}
@@ -122,14 +123,14 @@ public class GiftCardCartService {
 		if(cartMap != null){//이미 같은상품이 장바구니에 담겨있을경우 하나 증가
 			params.put("cart_no", cartMap.get("cart_no"));
 			String strQty = StringUtil.nvl((String)cartMap.get("qty"), "0");
-			int qty = Integer.parseInt(strQty)+Integer.parseInt((String)params.get("qty"));
+			int qty = Integer.parseInt(strQty)+Integer.parseInt(StringUtil.nvl((String)params.get("qty"),"0"));
 			params.put("qty", String.valueOf(qty));
 //			cartDAO.add_cartQty(params);
 			rstMap = qtyChange(params);
-			if("-1".equals(rstMap.get("rst"))) {
+			/*if("-1".equals(rstMap.get("rst"))) {
 				rstMap.put("msg","해당 상품의 최대 구매하실수 있는 수량은 " + cartMap.get("qty")+ " 입니다.");
 				return rstMap;
-			}
+			}*/
 		}else{
 			cartDAO.add_cart(params);
 		}
@@ -196,13 +197,13 @@ public class GiftCardCartService {
 
 		String[] cart_no_arr = (String[])params.get("cart_no_arr");
 		logger.info("success cart_no_arr ");
-		String[] msg_arr = (String[])params.get("msg_arr");
-		logger.info("success msg_arr ");
+		//String[] msg_arr = (String[])params.get("msg_arr");
+		//logger.info("success msg_arr ");
 		
 		for (int i = 0; i < cart_no_arr.length; i++) {
 			String no = cart_no_arr[i];
-			String msg = msg_arr[i];
-			logger.info("success no:" + no + ",msg:"+msg);
+			//String msg = msg_arr[i];
+			//logger.info("success no:" + no + ",msg:"+msg);
 			Map map = new HashMap();
 			map.put("orderno", params.get("orderno"));//주문번호
 			map.put("group_seq", params.get("group_seq"));
@@ -213,11 +214,13 @@ public class GiftCardCartService {
 			map.put("addr2", params.get("addr2"));
 			map.put("cell", params.get("cell"));
 			map.put("tel", params.get("tel"));
-			map.put("message", msg);
+			map.put("message", "");
 			map.put("qty", cartDAO.cart_qty_cartno(map));
 			map.put("amt", cartDAO.actual_amount(map));
 			map.put("commission", cartDAO.getCommission(map));
 			map.put("paytyp", paytyp);
+			map.put("bankCd", params.get("bankCd"));
+			map.put("account", params.get("account"));
 			/*
 			 * if(!paytyp.equals("virtual")){ //문자 보내기 map.put("mmsMessage",
 			 * " 상품의 주문 및 결제가 완료 되었습니다."); mmsService.acMMS_cartno(map);
@@ -225,8 +228,8 @@ public class GiftCardCartService {
 			 */		
 			cartDAO.orderCart(map);
 			logger.info("success orderCart");
-			cartDAO.minusStock(map);//수량 빼기
-			logger.info("success minusStock");
+			//cartDAO.minusStock(map);//수량 빼기
+			//logger.info("success minusStock");
 		}
 		if("N".equals(params.get("memberLogin"))){
 			//if(!paytyp.equals("virtual")){

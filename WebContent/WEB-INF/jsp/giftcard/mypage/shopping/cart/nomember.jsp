@@ -127,67 +127,10 @@ function chk_email(value)
 
 
 function Check_Common(form){
-	if(form.m_member_nm.value == ""){
-		alert("주문자명을 입력하시기 바립니다.");
-		form.m_member_nm.focus();
+	if(!midChk){
+		alert("올바른 추천인 ID를 입력해주세요.");	
+		$("#mid").focus();
 		return false;
-	}
-	if(form.m_email.value == ""){
-		alert("이메일을 입력하시기 바립니다.");
-		form.m_email.focus();
-		return false;
-	}
-	if(!chk_email($("#m_email").val())) {
-		alert("입력하신 이메일 형식이 올바르지 않습니다. 다시 입력하세요.");	
-		jQuery("#m_email").val("");
-		jQuery("#m_email").focus();
-		return false;
-	}
-	if(form.m_cell1.value == "" || isNaN(form.m_cell1.value)){
-		alert("주문자 휴대폰 번호를 정확히 입력해주세요");
-		form.m_cell1.focus();
-		return false;
-	}
-	if(form.m_cell2.value == "" || isNaN(form.m_cell2.value)){
-		alert("주문자 휴대폰 번호를 정확히 입력해주세요");
-		form.m_cell2.focus();
-		return false;
-	}
-	if(form.m_cell3.value == "" || isNaN(form.m_cell3.value)){
-		alert("주문자 휴대폰 번호를 정확히 해주세요");
-		form.m_cell3.focus();
-		return false;
-	}
-	if($("#passwd").val().length < 6){
-		alert("주문비밀번호 6자 이상 입력해주시기 바랍니다.");
-		$("#passwd").focus();
-		return false;
-	}
-	if($("#passwd").val() != $("#passwd_confirm").val()){
-		alert("주문비밀번호를 한번더 입력해주시기 바랍니다.");
-		$("#passwd_confirm").focus();
-		return false;
-	}
-	
-	if(form.zip1.value == "" || isNaN(form.zip1.value)){
-		alert("우편번호를 정확히 입력해주세요");
-		form.zip1.focus();
-		return false;
-	}else{
-		$("#m_zip_cd").val(form.zip1.value+"-"+form.zip2.value);
-	}
-	/*if(form.zip2.value == "" || isNaN(form.zip2.value)){
-		alert("우편번호를 정확히 입력해주세요");
-		form.zip2.focus();
-		return false;
-	}*/
-	if(form.addr1.value == ""){
-		alert("배송지 주소를 입력해주세요");
-		form.addr1.focus();
-		return false;
-	}else{
-		$("#m_addr1").val(form.addr1.value);
-		$("#m_addr2").val(form.addr2.value);
 	}
 	if(form.receiver.value == ""){
 		alert("수취인 이름을 입력해주세요");
@@ -209,47 +152,12 @@ function Check_Common(form){
 		form.cell3.focus();
 		return false;
 	}
-	$("#m_cell").val(form.m_cell1.value+"-"+form.m_cell2.value+"-"+form.m_cell3.value);
-	/*if(form.tel1.value == "" || isNaN(form.tel1.value)){
-		alert("휴대폰 번호를 정확히 입력해주세요");
-		form.tel1.focus();
-		return false;
-	}
-	if(form.tel2.value == "" || isNaN(form.tel2.value)){
-		alert("휴대폰 번호를 정확히 입력해주세요");
-		form.tel2.focus();
-		return false;
-	}
-	if(form.tel3.value == "" || isNaN(form.tel3.value)){
-		alert("휴대폰 번호를 정확히 해주세요");
-		form.tel3.focus();
+	if(form.identity.value == ""){
+		alert("수취인 생년월일을 입력해주세요");
+		form.receiver.focus();
 		return false;
 	}
 	
-	if(form.StoreId.value == ""){
-		alert("상점아이디를 입력하십시오.");
-		return false;
-	}
-	else if(form.StoreNm.value == ""){
-		alert("상점명을 입력하십시오.");
-		return false;
-	}
-	else if(form.OrdNo.value == ""){
-		alert("주문번호를 입력하십시오.");
-		return false;
-	}
-	else if(form.ProdNm.value == ""){
-		alert("상품명을 입력하십시오.");
-		return false;
-	}
-	else if(form.Amt.value == ""){
-		alert("금액을 입력하십시오.");
-		return false;
-	}
-	else if(form.MallUrl.value == ""){
-		alert("상점URL을 입력하십시오.");
-		return false;
-	} */
 	return true;
 }
 /* function Pay(form){
@@ -440,6 +348,36 @@ function goStep3() {
 		$("#frm").submit();
 	}
 }
+var midChk=false;
+function goMidChk(){
+	if($("#mid").val() == ""){
+		alert("추천인ID를 입력해주세요.");
+		$("#mid").focus();
+		return;
+	}
+	$.ajax({
+		url : "/giftcard/mypage/shopping/cart/index.do?mode=midChk", 
+		type: "POST", 
+		data : {mid : $("#mid").val()}, 
+		dataType : "json",
+		async: false, 
+		cache : false, 
+		success : function(data){
+			console.log("data==="+JSON.stringify(data))
+			if(data.resCode == "0000"){
+				midChk=true;
+				alert("추천인 조회 완료.");
+			}else{
+				midChk=false;
+				alert("추천인 조회에 실패하였습니다.\n올바른 추천인 ID를 입력해주세요");
+			}
+		},
+		error : function(data){
+			midChk=false;
+			alert("추천인 조회에 실패하였습니다.\n올바른 추천인 ID를 입력해주세요");
+		}
+	});
+}
 </script>
 
 </head>
@@ -468,6 +406,7 @@ function goStep3() {
 			<c:set var="prod_price" value="${prod_price + user_price_l }"/>
 			<c:set var="discount_price_l" value="0"/>
 			<c:set var="fee_price_l" value="0"/>
+			<input type="hidden" name="cart_no" value="${item.cart_no }"/>
           <tr>
             <td class="cart_main">
               <div class="product_box">
@@ -508,8 +447,13 @@ function goStep3() {
           </tbody>
           </table>
 		</article>
-     
-          <h5 class="no_mem_type">2. 주문회원 정보</h5>
+		<ul class="sub_list_1">
+			<li><strong>기프트밴드</strong>는 통신판매중개자이며 통신판매의 당사자가 아닙니다. 따라서
+				<strong>기프트밴드</strong>는 상품ㆍ거래정보 및 거래에 대하여 책임을 지지 않습니다.<br/>
+				<strong>주의!</strong> : 결제는 가상계좌로 결제가 진행되며 정확한 실제입금자 정보를 입력해주세요.	
+			</li>
+		</ul>
+          <!--  h5 class="no_mem_type">2. 주문회원 정보</h5>
           
           <div class="sub_table_1">
             <table>
@@ -521,7 +465,7 @@ function goStep3() {
             <tr>
               <th scope="row"><span>주문자명</span></th>
               <td><input type="text" id="m_member_nm" name="m_member_nm" class="input_2 ws_3" required="required"> <span></span></td>
-<!--               <td><input type="text" id="m_member_nm" name="m_member_nm" class="input_2 ws_3" readonly="readonly" required="required"> <span><a href="javascript:checkReadName();" class="address_btn">본인인증</a></span></td> -->
+<!--               <td><input type="text" id="m_member_nm" name="m_member_nm" class="input_2 ws_3" readonly="readonly" required="required"> <span><a href="javascript:checkReadName();" class="address_btn">본인인증</a></span></td> 
             </tr>
             <tr>
               <th scope="row"><span>이메일</span></th>
@@ -547,76 +491,124 @@ function goStep3() {
             </tr>
             </tbody>
             </table>
-          </div>
+          </div -->
           
-          <h5 class="no_mem_type">3. 배송지정보</h5>
-          
-          <div class="sub_table_1">
-            <table>
-            <colgroup>
-            <col width="20%">
-            <col width="">
-            </colgroup>
-            <tbody>
-            <tr>
-            <th scope="row"><span>배송지 주소</span></th>
-              <td>
-                <div class="input_box_1">
-                  <input type="text" id="zip1" name="zip1" class="input_2 ws_1" maxlength="3"> - <input type="text" id="zip2" name="zip2" class="input_2 ws_1" maxlength="3">
-                  <a href="javascript:openAddr();" class="address_btn">주소찾기</a>
-                </div>
-                <div class="input_box_1">
-                  <input type="text" id="addr1" name="addr1" class="input_2 ws_2">
-                </div>
-                <div class="last">
-                  <input type="text" id="addr2" name="addr2" class="input_2 ws_2">
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row"><span>수취인 이름</span></th>
-              <td><input type="text" id="receiver" name="receiver" class="input_2 ws_3"></td>
-            </tr>
-            <tr>
-              <th scope="row"><span>수취인 휴대폰</span></th>
-              <td>
-                <input type="text" id="cell1" name="cell1" class="input_2 ws_1" maxlength="3">
-                -
-                <input type="text" id="cell2" name="cell2" class="input_2 ws_1" maxlength="4">
-                -
-                <input type="text" id="cell3" name="cell3" class="input_2 ws_1" maxlength="4">
-              </td>
-            </tr>
-            <tr>
-              <th scope="row"><span>수취인 연락처</span></th>
-              <td>
-                <input type="text" id="tel1" name="tel1" class="input_2 ws_1" maxlength="3">
-                -
-                <input type="text" id="tel2" name="tel2" class="input_2 ws_1" maxlength="4">
-                -
-                <input type="text" id="tel3" name="tel3" class="input_2 ws_1" maxlength="4">
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">
-              <p><span>배송시요청사항</span></p>
-              </th>
-              <td>
-                <div class="color_2">주의! : 판매자와 사전에 협의되지 않은 선택정보 변경 기재는 반영되지 않을 수 있습니다.</div>
-                <c:forEach var="item" items="${data.list }" varStatus="status">
-                <div class="middle">
-                  <p class="color_1">상품명 : ${item.MAKERNM } / ${item.PRODUCTNM } </p>
-                  <p><input type="text" name="message" class="input_2 ws_4" maxlength="100"> ( 0/100 bytes )</p>
-                  <input type="hidden" name="cart_no" value="${item.cart_no }"/>
-                </div>
-                </c:forEach>
-              </td>
-            </tr>
-            </tbody>
+          	<p class="pay_type">
+				1. 결제정보입력 <span>(  <span style="color:red;">*</span><i>필수입력사항입니다.)</i></span>
+			</p>
+
+			<div class="sub_table_1">
+				<table>
+					<colgroup>
+						<col width="20%">
+						<col width="">
+					</colgroup>
+					<tbody>
+						<!-- tr>
+							<th scope="row" rowspan="2"><span>배송지 주소</span></th>
+							<td>
+								<span>
+									<label>
+										<input type="radio" name="basongji_gubun" class="radio" value="1" checked="checked"> 기본배송지
+									</label>
+									<label>
+										<input type="radio" name="basongji_gubun" class="radio" value="2">
+										새로운배송지
+									</label>
+									<label>
+										<input type="radio" name="basongji_gubun" class="radio" value="3"> 회원정보주소
+									</label>
+								</span>
+								<span> 최근배송지 : 
+									<label>
+										<input type="radio" name="basongji_gubun" class="radio" value="4"> 기본 주소</label>
+										<a href="javascript:void();" class="btn_img openMask">주소록 보기</a>
+								</span>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="input_box_1">
+									<input type="text" id="zip1" name="zip1" class="input_2 ws_1" maxlength="3">
+									<input type="hidden" id="zip2" name="zip2" class="input_2 ws_1" maxlength="3">
+									<a href="javascript:openAddr();" class="address_btn">주소찾기</a>
+									<label>
+										<input type="checkbox" name="default_yn" value="Y" class="check">주소록에 기본배송지로 저장
+									</label>
+								</div>
+								<div class="input_box_1">
+									<input type="text" id="addr1" name="addr1" class="input_2 ws_2">
+								</div>
+								<div class="last">
+									<input type="text" id="addr2" name="addr2" class="input_2 ws_2">
+								</div>
+							</td>
+						</tr -->
+						<tr>
+							<th scope="row"><span style="color:red;">*</span>추천인ID</th>
+							<td class="flex">
+								<input type="text" id="mid" name="mid" class="input_2 ws_3">
+								<button type="button"  class="check_btn" onclick="goMidChk()" >추천인체크</button>
+							</td>		
+						</tr>
+						<tr>
+							<th scope="row"><span style="color:red;">*</span>수취인 이름(입금자명)</th>
+							<td><input type="text" id="receiver" name="receiver" class="input_2 ws_3"></td>
+						</tr>
+						<tr>
+							<th scope="row"><span style="color:red;">*</span>수취인 입금계좌정보</th>
+							<td>
+								<select id="bankCd" name="bankCd" class="select_1">
+									<option value="">선택</option>
+									<c:forEach var="item" items="${data.bankList}" varStatus="status">
+										<option value="${item.code }">${item.code_nm }</option>
+									</c:forEach>
+								</select>
+								<input type="text" id="account" name="account" class="input_2 ws_3" maxlength="20" placeholder="입금 계좌번호">
+							</td>
+						</tr>
+						<tr>
+							<th scope="row"><span style="color:red;">*</span>수취인 휴대폰</th>
+							<td>
+							<input type="text" id="cell1" name="cell1" class="input_2 ws_1" maxlength="3"> 
+							- <input	type="text" id="cell2" name="cell2" class="input_2 ws_1"	maxlength="4"> 
+							- <input type="text" id="cell3"	name="cell3" class="input_2 ws_1" maxlength="4">
+							</td>
+						</tr>
+						<!-- tr>
+							<th scope="row"><span>수취인 생년월일</span></th>
+							<td><input type="text" id="tel1" name="tel1"
+								class="input_2 ws_1" maxlength="3"> - <input
+								type="text" id="tel2" name="tel2" class="input_2 ws_1"
+								maxlength="4"> - <input type="text" id="tel3"
+								name="tel3" class="input_2 ws_1" maxlength="4"></td>
+						</tr -->
+						<tr>
+							<th scope="row"><span style="color:red;">*</span>수취인 생년월일</th>
+							<td>
+								<input type="text" id="identity" name="identity" class="input_2 ws_3" maxlength="6" placeholder="생년월일 6자리">
+							</td>
+						</tr>
+	            <!-- tr>
+	              <th scope="row">
+	              <p><span>배송시요청사항</span></p>
+	              </th>
+	              <td>
+	                <div class="color_2">주의! : 판매자와 사전에 협의되지 않은 선택정보 변경 기재는 반영되지 않을 수 있습니다.</div>
+	                <c:forEach var="item" items="${data.list }" varStatus="status">
+	                <div class="middle">
+	                  <p class="color_1">상품명 : ${item.MAKERNM } / ${item.PRODUCTNM } </p>
+	                  <p><input type="text" name="message" class="input_2 ws_4" maxlength="100"> ( 0/100 bytes )</p>
+	                  <input type="hidden" name="cart_no" value="${item.cart_no }"/>
+	                </div>
+	                </c:forEach>
+	              </td>
+	            </tr -->
+	            </tbody>
             </table>
           </div>
           
-          <h5 class="no_mem_type">4. 결제금액 및 구매혜택</h5>
+          <h5 class="no_mem_type">2. 결제금액 및 구매혜택</h5>
           
           <div class="pricecheck">
             <div class="p_check1">

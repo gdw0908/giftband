@@ -182,7 +182,7 @@ function show_receipt() {
             			</tr>
 						<tr  class="border"> 
 							<th scope="row" rowspan="1">납부방식</th>
-              				<td>납부방식 : <%-- ${param.rCardNm } --%>가상계좌결제 계좌번호&nbsp;<b class="b_num">110-176-113-299</b></td>
+              				<td>가상계좌결제&nbsp;<b class="b_num">${data.resultInfo.vir_banknm } ${data.resultInfo.vir_acctno }</b></td>
            			 	</tr>
             		</tbody>
             	</table>
@@ -199,7 +199,7 @@ function show_receipt() {
             				<th>수량</th>
             				<th>가격</th>
             				<th>할인</th>
-            				<th>배송비</th>
+            				<!-- th>배송비</th -->
             				<th>합계</th>
             				<th>주문번호</th>
           				</tr>
@@ -236,7 +236,7 @@ function show_receipt() {
 	              					</c:choose> 원 
 	              					<c:if test="${item.qty>1 }"> x ${item.qty}</c:if>
 	            				</td>
-	            				<td>
+	            				<!-- td>
 	            					<p class="first">
 	              						<c:choose>
 	              							<c:when test="${(sessionScope.member.group_seq eq '3' or sessionScope.member.group_seq eq '9') && item.supplier_pricing_yn eq 'Y'}">
@@ -253,7 +253,7 @@ function show_receipt() {
 	              					</c:choose> 원 
 	              					<c:if test="${item.qty>1 }"> x ${item.qty}</c:if>
 	              				</p>
-	            			</td>
+	            			</td  -->
 	            			<td>${fee_price_l } 원</td>
 	            			<td>${suf:getThousand(user_price_l - discount_price_l + fee_price_l) } 원</td>
 	            			<c:if test="${status.first }">
@@ -284,7 +284,7 @@ function show_receipt() {
               </div>
               <div class="bottom">
                 <p><b>${suf:getThousand(user_price) }</b>원</p>
-                <p class="pb_type"><span class="pb_l">선결제배송비</span><span class="pb_r"><b> ${suf:getThousand(fee_price) }</b>원</span></p>
+                <!--  p class="pb_type"><span class="pb_l">선결제배송비</span><span class="pb_r"><b> ${suf:getThousand(fee_price) }</b>원</span></p -->
               </div>
             </div>
             <div class="p_check2">
@@ -323,12 +323,12 @@ function show_receipt() {
                 </colgroup>
                  <tbody>
 	                <tr>
-	                  <th scope="row">주문자</th>
+	                  <th scope="row">주문자(입금자명)</th>
 	                  <td>${data.resultInfo.order_nm }</td>
 	                </tr>
 	                <tr>
-	                  <th scope="row">이메일</th>
-	                  <td>${data.resultInfo.email }</td>
+	                  <th scope="row">입금계좌정보</th>
+	                  <td>${data.resultInfo.banknm } ${data.resultInfo.accountno }</td>
 	                </tr>
 	                <tr>
 	                  <th scope="row">주문자 휴대폰</th>
@@ -340,7 +340,7 @@ function show_receipt() {
 
             </div>
 
-            <div class="info_r">
+            <!-- div class="info_r">
 
               <p class="pay_type">배송정보 내역</p>
 
@@ -374,11 +374,11 @@ function show_receipt() {
                 </table>
               </div>
 
-            </div>
+            </div -->
 
           </div>
           
-          <p class="pay_type">배송시 요청사항</p>
+          <!-- p class="pay_type">배송시 요청사항</p>
           
           <div class="sub_table_1">
             <table>
@@ -400,9 +400,9 @@ function show_receipt() {
             </tr>
             </tbody>
             </table>
-          </div>
+          </div -->
           
-          <p class="no_mem_t1">※ 주의! : 주문·배송조회 등에 필요하므로 반드시 <strong>주문 비밀번호와 주문번호</strong>를 기억해 두시기 바랍니다.</p>
+          <p class="no_mem_t1">※ 주의! : 주문·배송조회 등에 필요하므로 반드시 <strong>주문번호</strong>를 기억해 두시기 바랍니다.</p>
           
           <div class="pay_btn"> <a href="/giftcard/index.do">메인화면</a> </div>
 

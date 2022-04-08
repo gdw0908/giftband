@@ -136,13 +136,13 @@ function view(opt) {
                <article class="product_info">
                   <ul class="info_list">
                      <li>
-                        <a href="javascript:void();"> <span>정상가</span> <span><img src="/images/common/dollar.png" style="margin-right: 5px;"> ${suf:getThousand(view.FEE_AMOUNT) }원 </span></a>
+                        <a href="javascript:void();"> <span>정상가</span> <span><img src="/images/common/dollar.png" style="margin-right: 5px;"> ${suf:getThousand(view.USER_PRICE) }원 </span></a>
                      </li>
                      <li>
-                        <a href="javascript:void();"> <span>판매가</span> <span><img src="/images/common/dollar.png" style="margin-right: 5px;" > ${suf:getThousand(view.FEE_AMOUNT) }원 </span></a>
+                        <a href="javascript:void();"> <span>판매가</span> <span><img src="/images/common/dollar.png" style="margin-right: 5px;" > ${suf:getThousand(view.USER_PRICE) }원 </span></a>
                      </li>
                      <li>
-                        <a href="javascript:void();"> <span>교환처</span> <span>편의점 모바일 상품권</span></a>
+                        <a href="javascript:void();"> <span>교환처</span> <span>모바일 상품권</span></a>
                      </li>
                      <li>
                         <a href="javascript:void();"> <span>유효기간</span> <span>30일</span></a>
@@ -274,7 +274,8 @@ function view(opt) {
 
              if(confirm("선택한 제품을 장바구니에 추가하시겠습니까?")){
                 var seq =  $("input[name='seq']").eq(item_seq);
-                 var qty = $("#count").val();
+                //var qty = $("#count").val();
+                var qty = "1";
                  
                 $.getJSON("/giftcard/mypage/shopping/cart/index.do?mode=add_cartAjax", {
                    seq : item_seq,

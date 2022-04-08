@@ -185,7 +185,7 @@ function show_receipt()
               			<td>결제금액 : <b class="b_num">${suf:getThousand(data.resultInfo.payamt) }<%-- <%=StringUtil.getThousand(rAmt) %> --%></b>원</td>
            			 </tr>
            		 	<tr> 
-              			<td>납부방식 : <%-- ${param.rCardNm } --%>가상계좌결제 계좌번호&nbsp;<b class="b_num">110-176-113-299</b></td>
+              			<td>가상계좌결제&nbsp;<b class="b_num">${data.resultInfo.vir_banknm } ${data.resultInfo.vir_acctno }</b></td>
            			 </tr>
             	</tbody>
             </table>
@@ -289,7 +289,7 @@ function show_receipt()
               </div>
               <div class="bottom">
                 <p><b>${suf:getThousand(user_price) }</b>원</p>
-                <p class="pb_type"><span class="pb_l">선결제배송비</span><span class="pb_r"><b>${suf:getThousand(fee_price) }</b>원</span></p>
+                <!--  p class="pb_type"><span class="pb_l">선결제배송비</span><span class="pb_r"><b>${suf:getThousand(fee_price) }</b>원</span></p -->
               </div>
             </div>
             <div class="p_check2">
@@ -322,30 +322,19 @@ function show_receipt()
               <div class="sub_table_1">
                 <table>
                 	<tbody>
-                		<tr>
-                  			<th scope="row">주문자</th>
-                  			<td>${data.resultInfo.order_nm }</td>
-                		</tr>
-                		<tr>
-                  			<th scope="row">주소</th>
-                  			<td>
-                    			<p>(${data.resultInfo.zipcd }) ${data.resultInfo.addr }</p>
-                    			<p>${data.resultInfo.addrdetail }</p>
-                  			</td>
-                		</tr>
-                		<tr>
-                  			<th scope="row">이메일</th>
-                  			<td>${data.resultInfo.email }</td>
-                		</tr>
-                		<tr>
-                  			<th scope="row">주문자 휴대폰</th>
-                  			<td>${data.resultInfo.rehp }</td>
-                		</tr>
-                		<tr>
-                  			<th scope="row">주문자 연락처</th>
-                  			<td>${data.resultInfo.retel }</td>
-                		</tr>
-                	</tbody>
+		                <tr>
+		                  <th scope="row">주문자(입금자명)</th>
+		                  <td>${data.resultInfo.order_nm }</td>
+		                </tr>
+		                <tr>
+		                  <th scope="row">입금계좌정보</th>
+		                  <td>${data.resultInfo.banknm } ${data.resultInfo.accountno }</td>
+		                </tr>
+		                <tr>
+		                  <th scope="row">주문자 휴대폰</th>
+		                  <td>${data.resultInfo.rehp }</td>
+		                </tr>
+	                </tbody>
                 </table>
               </div>
             </div>

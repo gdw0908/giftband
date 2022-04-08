@@ -27,7 +27,7 @@
             ON a.CARMAKERSEQ=d.CARMAKERSEQ
             JOIN (SELECT ITEM_SEQ, QTY, CART_NO, COD_YN, FEE_AMT FROM NSH_CART WHERE STATUS='0' and (SESSIONID = #{sessionid} or user_id = #{session_member_id})) e
             ON a.ITEM_SEQ = e.ITEM_SEQ
-            WHERE a.STOCK_NUM > 0
+           <!-- WHERE a.STOCK_NUM > 0 -->
 		) PT1
 	</select>
 	
@@ -247,9 +247,9 @@
 	
 	<update id="order_insert" parameterType="Map">
 		INSERT INTO NSH_ORDERMST(
-			ORDERNO, ZIPCD, RECEIVER, ADDR, ADDRDETAIL, REHP, MESSAGE, PAYTYP, SUBTY, PAYAMT, USERID, ORDERDATE, REG_DT, RETEL, EMAIL, PASSWD, RDEALNO, RAPPRNO, RINSTMT, RAPPRTM, TRANS, TRANS_ID, PG_COMMISSION
+			ORDERNO, ZIPCD, RECEIVER, ADDR, ADDRDETAIL, REHP, MESSAGE, PAYTYP, SUBTY, PAYAMT, USERID, ORDERDATE, REG_DT, RETEL, EMAIL, PASSWD, RDEALNO, RAPPRNO, RINSTMT, RAPPRTM, TRANS, TRANS_ID, PG_COMMISSION, VIR_ACCTNO, VIR_BANKCD, MID
 		)VALUES(
-			#{orderno}, #{m_zip_cd}, #{m_member_nm}, #{m_addr1}, #{m_addr2}, #{m_cell}, #{message}, #{paytyp}, #{subty}, #{payamt}, #{userid}, sysdate, sysdate, #{m_tel}, #{m_email}, #{passwd}, #{rdealno}, #{rapprno}, #{rinstmt}, #{rapprtm}, #{trans}, #{trans_id}, #{pg_commission}
+			#{orderno}, #{m_zip_cd}, #{receiver}, #{m_addr1}, #{m_addr2}, #{cell}, #{message}, #{paytyp}, #{subty}, #{payamt}, #{userid}, sysdate, sysdate, #{m_tel}, #{m_email}, #{passwd}, #{rdealno}, #{rapprno}, #{rinstmt}, #{rapprtm}, #{trans}, #{trans_id}, #{pg_commission}, #{vir_acctno}, #{vir_bankcd}, #{mid}
 		)
 	</update>
 	
@@ -270,7 +270,8 @@
 			</if>
 			BANK_SEQ = #{bankCd},
 			ACCOUNTNO = #{account},
-			M_COMMISSION = TRUNC((${amt} + DECODE(COD_YN, 'Y', FEE_AMT, 0)) * ${commission} / 100)
+			M_COMMISSION = TRUNC((${amt} + DECODE(COD_YN, 'Y', FEE_AMT, 0)) * ${commission} / 100),
+			MOD_DT = sysdate
 		WHERE CART_NO = #{cart_no}		
 	</update>
 	
@@ -316,7 +317,11 @@
         SELECT
             distinct
             a.ORDERNO, a.ZIPCD, a.RECEIVER AS ORDER_NM, a.ADDR, a.ADDRDETAIL, a.REHP, a.MESSAGE, a.PAYTYP, a.PAYAMT, a.USERID, a.ORDERDATE, a.RETEL, a.EMAIL,
-            b.ZIP_CD AS RE_ZIPCD, b.ADDR1 AS RE_ADDR1, b.ADDR2 AS RE_ADDR2, b.RECEIVER, b.CELL AS RE_CELL, b.TEL AS RE_TEL
+            b.ZIP_CD AS RE_ZIPCD, b.ADDR1 AS RE_ADDR1, b.ADDR2 AS RE_ADDR2, b.RECEIVER, b.CELL AS RE_CELL, b.TEL AS RE_TEL,
+            a.VIR_ACCTNO, a.VIR_BANKCD,
+    		(SELECT CODE_NM FROM MC_COMMON_CODE WHERE CODE_GROUP_SEQ = 47 AND CODE=a.VIR_BANKCD) AS VIR_BANKNM,
+    		 b.ACCOUNTNO,
+    		(SELECT CODE_NM FROM MC_COMMON_CODE WHERE CODE_GROUP_SEQ = 47 AND CODE=b.BANK_SEQ) AS BANKNM 
         FROM NSH_ORDERMST a JOIN NSH_CART b
         ON a.ORDERNO = b.ORDERNO              
         WHERE a.ORDERNO = #{orderno}
