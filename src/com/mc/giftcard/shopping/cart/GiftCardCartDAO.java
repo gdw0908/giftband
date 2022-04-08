@@ -100,4 +100,7 @@ public class GiftCardCartDAO extends EgovAbstractMapper {
 	public List bankList(Map params) {
 		return list("cart.bankList", params);
 	}
+	public List<Map<String, Object>> orderWaitList(Map params) {
+		return list("cart.orderWaitList", params);
+	}
 }

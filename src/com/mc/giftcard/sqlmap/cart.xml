@@ -276,15 +276,18 @@
 	</update>
 	
 	<update id="virAcctResult1" parameterType="Map">
-		UPDATE NSH_ORDERMST SET
-			RAPPRTM = #{rapprtm}
-		WHERE ORDERNO = #{orderno}
-	</update>
-	<update id="virAcctResult2" parameterType="Map">
 		UPDATE NSH_CART SET
-			STATUS = '1',
+			STATUS = #{status},
 			PAY_DT = sysdate
-		WHERE ORDERNO = #{orderno}
+		WHERE CART_NO = #{cart_no}		
+	</update>
+	
+	<update id="virAcctResult2" parameterType="Map">
+		UPDATE NSH_ORDERMST SET
+			RAPPRNO = #{rapprno}
+			,RAPPRTM =	TO_CHAR(TO_DATE( #{rapprtm}, 'YYYY-MM-DD HH24:MI:SS'),'YYYYMMDDHH24MISS')
+			,MOD_DT = SYSDATE
+		WHERE RDEALNO = #{rdealno}	
 	</update>
 	
 	<delete id="cartCleaning">
@@ -375,9 +378,24 @@
 	</select>
 	
 	<select id="bankList" parameterType="Map" resultType="mcmap">
-		SELECT CODE, CODE_NM 
-		FROM MC_COMMON_CODE
-		WHERE CODE_GROUP_SEQ = 47
+		SELECT 
+			CODE, CODE_NM 
+		FROM 
+			MC_COMMON_CODE
+		WHERE 
+			CODE_GROUP_SEQ = 47
 		ORDER BY ORDER_SEQ  ASC
+	</select>
+	
+	<select id="orderWaitList" parameterType="Map" resultType="mcmap">
+        SELECT
+		    A.CART_NO,
+		    B.RDEALNO,
+		    A.STATUS
+		FROM NSH_CART A 
+		LEFT OUTER JOIN NSH_ORDERMST B
+		ON 			A.ORDERNO=B.ORDERNO
+		WHERE  	B.RDEALNO = #{rdealno}
+	 <!-- 	AND 			A.STATUS = '99'  -->
 	</select>
 </mapper>

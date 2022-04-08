@@ -9,11 +9,11 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.mc.common.util.BarCodeUtil;
 import com.mc.common.util.Encryption;
 import com.mc.common.util.StringUtil;
 import com.mc.web.Globals;
 import com.mc.web.MCMap;
-import com.mc.web.mms.MmsInfoDAO;
 import com.mc.web.mms.MmsService;
 
 @Service
@@ -32,6 +32,9 @@ public class GiftCardCartService {
 	
 	@Autowired
 	private MmsService mmsService;
+	
+	@Autowired
+	private BarCodeUtil barCodeUtil;
 	
 	public Map list(Map params) throws Exception {
 		Map rstMap = new HashMap();
@@ -296,8 +299,22 @@ public class GiftCardCartService {
 	}
 
 	public void virAcctResult(Map params) {
-		cartDAO.virAcctResult1(params);
+		
+		List<Map<String, Object>> list = cartDAO.orderWaitList(params);
+		for(int i=0; i<list.size(); i++){
+			params.put("cart_no", (String)list.get(i).get("cart_no"));
+			cartDAO.virAcctResult1(params);
+			if("1".equals((params.get("status")))) {
+				String text = (String)list.get(i).get("cart_no")+(String)list.get(i).get("rdealno"); 
+				int width = 448;
+				int height = 80;
+				String file_path = "D:/work/workspace/giftband/WebContent/upload/barcode/"; 
+				String file_name = "bc_"+text+".png"; 
+				barCodeUtil.getBarCodeImage(text, width, height, file_path, file_name);
+			}
+		}
 		cartDAO.virAcctResult2(params);
+		
 		//문자 보내기
 		/*params.put("mmsMessage", " 상품의 주문 및 결제가 완료 되었습니다.");
 		mmsService.acMMS_orderno(params);

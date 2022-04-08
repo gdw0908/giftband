@@ -564,7 +564,7 @@ public class GiftCardCartController {
 			 return "message"; 
 		 }*/
 		request.setCharacterEncoding("UTF-8");
-		String vpay_url_acctReq = (globals.DEVELOPE == "dev"  ?  vpay_dev_url_acctReq : vpay_prod_url_acctReq);	
+		String vpay_url_acctReq = (globals.DEVELOPE.equals("dev")  ?  vpay_dev_url_acctReq : vpay_prod_url_acctReq);	
 		/*공통사용*/
 		/****************************************************************************
 		*
@@ -887,7 +887,7 @@ public class GiftCardCartController {
 	public Map midChk(ModelMap model, HttpServletRequest request, HttpSession session, @RequestParam Map params)
 			throws Exception {
 		Map<String, Object> res_result = new HashMap<String, Object>();
-		String vpay_url_midChk = (globals.DEVELOPE == "dev"  ?  vpay_dev_url_midChk : vpay_prod_url_midChk);
+		String vpay_url_midChk = (globals.DEVELOPE.equals("dev")  ?  vpay_dev_url_midChk : vpay_prod_url_midChk);
 		//파라미터 셋팅
 		Map<String, Object> sendParam = new HashMap<String, Object>();
 		sendParam.put("mid", StringUtil.nvl(params.get("mid"),""));
