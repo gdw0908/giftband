@@ -1,9 +1,7 @@
 package com.mc.giftcard.shopping.cart;
 
-import java.nio.charset.Charset;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,9 +13,6 @@ import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.ModelMap;
@@ -26,7 +21,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.client.RestTemplate;
 
 import com.mc.common.util.HttpApiUtil;
 import com.mc.common.util.StringUtil;
@@ -58,11 +52,17 @@ public class GiftCardCartController {
     @Autowired
     private HttpApiUtil httpApiUtil;   
     
-	@Value("#{config['vpay.url.midChk']}")
-    String vpay_url_midChk;
+	@Value("#{config['vpay.dev.url.midChk']}")
+    String vpay_dev_url_midChk;
     
-	@Value("#{config['vpay.url.acctReq']}")
-    String vpay_url_acctReq;
+	@Value("#{config['vpay.dev.url.acctReq']}")
+    String vpay_dev_url_acctReq;
+	
+	@Value("#{config['vpay.prod.url.midChk']}")
+    String vpay_prod_url_midChk;
+    
+	@Value("#{config['vpay.prod.url.acctReq']}")
+    String vpay_prod_url_acctReq;
 	
 	@RequestMapping(params = "!mode")
 	public String index(ModelMap model, HttpServletRequest request, HttpServletResponse response, HttpSession session,
@@ -563,9 +563,8 @@ public class GiftCardCartController {
 			  "/giftcard/mypage/shopping/cart/"+index+".do?mode=pay_result");
 			 return "message"; 
 		 }*/
-		 
-		
 		request.setCharacterEncoding("UTF-8");
+		String vpay_url_acctReq = (globals.DEVELOPE == "dev"  ?  vpay_dev_url_acctReq : vpay_prod_url_acctReq);	
 		/*공통사용*/
 		/****************************************************************************
 		*
@@ -888,6 +887,7 @@ public class GiftCardCartController {
 	public Map midChk(ModelMap model, HttpServletRequest request, HttpSession session, @RequestParam Map params)
 			throws Exception {
 		Map<String, Object> res_result = new HashMap<String, Object>();
+		String vpay_url_midChk = (globals.DEVELOPE == "dev"  ?  vpay_dev_url_midChk : vpay_prod_url_midChk);
 		//파라미터 셋팅
 		Map<String, Object> sendParam = new HashMap<String, Object>();
 		sendParam.put("mid", StringUtil.nvl(params.get("mid"),""));
