@@ -336,6 +336,12 @@ public class GiftCardCartService {
 				smsMap.put("msg", msg);	
 				smsMap.put("target_seq", (String)list.get(i).get("cart_no"));	
 				Map<String, Object> smsRstMap = smsService.send(smsMap, imagePath2);
+				
+				title="[기프트밴드]기프트콘 사용완료";
+				msg="해당 상품의 기프트콘 사용 완료 되었습니다. 주문번호 : "+(String)list.get(i).get("orderno");
+				smsMap.put("title", title);
+				smsMap.put("msg", msg);
+				smsRstMap = smsService.send(smsMap, imagePath2);
 			}
 		}
 		cartDAO.virAcctResult2(params);

@@ -10,6 +10,7 @@ import java.util.Iterator;
 import java.util.Map;
 
 import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.ContentType;
@@ -89,9 +90,9 @@ public class AligoSmsUtil {
 			HttpPost post = new HttpPost(sms_url);
 			post.setEntity(entity);
 			
-			//HttpResponse res = client.execute(post); TODO : 주석제거 
-			String result = "{\"result_code\":-101,\"message\":\"\\\\uc778\\\\uc99d\\\\uc624\\\\ub958\\\\uc785\\\\ub2c8\\\\ub2e4.-IP\"}";
-			/*String result = ""; //{"result_code":-101,"message":"\\uc778\\uc99d\\uc624\\ub958\\uc785\\ub2c8\\ub2e4.-IP"} TODO : 주석제거 
+			HttpResponse res = client.execute(post);
+			//String result = "{\"result_code\":-101,\"message\":\"\\\\uc778\\\\uc99d\\\\uc624\\\\ub958\\\\uc785\\\\ub2c8\\\\ub2e4.-IP\"}";
+			String result = ""; 
 			if(res != null){
 				BufferedReader in = new BufferedReader(new InputStreamReader(res.getEntity().getContent(), encodingType));
 				String buffer = null;
@@ -99,7 +100,7 @@ public class AligoSmsUtil {
 					result += buffer;
 				}
 				in.close();
-			} TODO : 주석제거  */ 
+			}
 			
 			resultJson = StringUtil.convertStringToJson(result);
 			if("1".equals(resultJson.get("result_code"))) {
