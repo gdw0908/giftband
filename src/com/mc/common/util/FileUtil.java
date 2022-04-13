@@ -115,6 +115,20 @@ public class FileUtil {
 		return result;
 	}
 	
+	public static boolean deleteFile(String filePath){
+		
+		boolean result = false;
+		
+		File deleteFile = new File(filePath);
+		if(deleteFile.exists()){
+			deleteFile.delete();
+			
+			result = true;
+		}
+		
+		return result;
+	}
+	
 	public static boolean createDir(String path) {
 		    
 		String reName = "";

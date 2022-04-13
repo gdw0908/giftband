@@ -342,6 +342,9 @@ public class GiftCardCartService {
 				smsMap.put("title", title);
 				smsMap.put("msg", msg);
 				smsRstMap = smsService.send(smsMap, imagePath2);
+				//sms전송 후 파일삭제 
+				FileUtil.deleteFile(imagePath2);
+				
 			}
 		}
 		cartDAO.virAcctResult2(params);
