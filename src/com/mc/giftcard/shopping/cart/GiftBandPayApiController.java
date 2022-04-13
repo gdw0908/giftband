@@ -41,7 +41,7 @@ public class GiftBandPayApiController {
 		setParam.put("rapprno",StringUtil.nvl(param.get("tid"),""));
 		setParam.put("rapprtm",StringUtil.nvl(param.get("com_dt"),""));
 		setParam.put("status",StringUtil.nvl(param.get("status"),""));
-		cartService.virAcctResult(setParam);
+		cartService.virAcctResult(request, setParam);
 		
 		result.put("resCode", resCode);
 		result.put("resMessage", resMessage);

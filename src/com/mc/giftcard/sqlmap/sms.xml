@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sms">
+	
+	<update id="insert" parameterType="Map">
+		INSERT INTO GC_SMS(SMS_SEQ, MID, TITLE, TO_NUMBER, MSG, RESULT_CODE, RESULT_MSG
+		<if test="!(send_type == null or send_type == '')" >
+		, SEND_TYPE
+        </if>
+		<if test="!(msg_id == null or msg_id == '')" >
+		, MSG_ID
+		</if>
+		<if test="!(sms_type == null or sms_type == '')" >
+		, SMS_TYPE
+		</if>
+		<if test="!(moid == null or moid == '')" >
+		, MOID
+		</if>
+		<if test="!(target_seq == null or target_seq == '')" >
+		, TARGET_SEQ
+		</if>
+		)
+		VALUES(SEQ_GC_SMS.NEXTVAL, #{mid}, #{title}, #{to_number}, #{msg}, #{result_code}, #{result_msg}
+		<if test="!(send_type == null or send_type == '')" >
+		, #{send_type}
+        </if>
+		<if test="!(msg_id == null or msg_id == '')" >
+		, #{msg_id}
+		</if>
+		<if test="!(sms_type == null or sms_type == '')" >
+		, #{sms_type}
+		</if>
+		<if test="!(moid == null or moid == '')" >
+		, #{moid}
+		</if>
+		<if test="!(target_seq == null or target_seq == '')" >
+		, #{target_seq}
+		</if>
+		)
+	</update>
+    
+</mapper>

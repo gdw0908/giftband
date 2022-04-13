@@ -30,6 +30,7 @@
 		<mapper resource="com/mc/giftcard/sqlmap/state.xml" />
 		<mapper resource="com/mc/giftcard/sqlmap/spell.xml" />
 		<mapper resource="com/mc/giftcard/sqlmap/calculate.xml" />
-		 
+		<mapper resource="com/mc/giftcard/sqlmap/sms.xml" />
+		
 	</mappers>
 </configuration>

@@ -763,7 +763,7 @@ public class GiftCardCartController {
 		log.info("무통장 계좌이체 승인시각 : " + params.get("orderdt"));
 		/* 무통장주문 문자 */
 
-		cartService.virAcctResult(params);
+		cartService.virAcctResult(request, params);
 		//cartService.erp_order(params);
 		/***************************************************************************************************************
 		 * 상점에서 해당 거래에 대한 처리 db 처리 등....
@@ -813,7 +813,7 @@ public class GiftCardCartController {
 		log.info("무통장 계좌이체 승인시각 : " + params.get("orderdt"));
 		/* 무통장주문 문자 */
 
-		cartService.virAcctResult(params);
+		cartService.virAcctResult(request, params);
 		cartService.erp_order(params);
 
 		/***********************************

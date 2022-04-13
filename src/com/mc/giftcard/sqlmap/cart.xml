@@ -389,12 +389,13 @@
 	
 	<select id="orderWaitList" parameterType="Map" resultType="mcmap">
         SELECT
-		    A.CART_NO,
-		    B.RDEALNO,
-		    A.STATUS
+		    A.CART_NO,B.RDEALNO,A.STATUS,A.ORDERNO,A.CELL,
+            C.ATTACH_NM, C.UUID, C.YYYY, C.MM, C.ORDER_SEQ
 		FROM NSH_CART A 
 		LEFT OUTER JOIN NSH_ORDERMST B
-		ON 			A.ORDERNO=B.ORDERNO
+		ON 		A.ORDERNO=B.ORDERNO
+		LEFT OUTER JOIN NSH_ATTACH C
+        ON  	A.ITEM_SEQ=C.TABLE_SEQ AND C.TABLE_NM='GC_GOODS'
 		WHERE  	B.RDEALNO = #{rdealno}
 	 <!-- 	AND 			A.STATUS = '99'  -->
 	</select>

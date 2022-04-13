@@ -5,13 +5,17 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mc.common.util.BarCodeUtil;
 import com.mc.common.util.Encryption;
+import com.mc.common.util.FileUtil;
 import com.mc.common.util.StringUtil;
+import com.mc.giftcard.sms.SmsService;
 import com.mc.web.Globals;
 import com.mc.web.MCMap;
 import com.mc.web.mms.MmsService;
@@ -35,6 +39,10 @@ public class GiftCardCartService {
 	
 	@Autowired
 	private BarCodeUtil barCodeUtil;
+	
+	@Autowired
+	private SmsService smsService;
+
 	
 	public Map list(Map params) throws Exception {
 		Map rstMap = new HashMap();
@@ -298,8 +306,8 @@ public class GiftCardCartService {
 		return rstMap;
 	}
 
-	public void virAcctResult(Map params) {
-		
+	public void virAcctResult(HttpServletRequest req, Map params) {
+		try {
 		List<Map<String, Object>> list = cartDAO.orderWaitList(params);
 		for(int i=0; i<list.size(); i++){
 			params.put("cart_no", (String)list.get(i).get("cart_no"));
@@ -308,18 +316,39 @@ public class GiftCardCartService {
 				String text = (String)list.get(i).get("cart_no")+(String)list.get(i).get("rdealno"); 
 				int width = 448;
 				int height = 80;
-				String file_path = "D:/work/workspace/giftband/WebContent/upload/barcode/"; 
+				//String file_path = "D:/work/workspace/giftband/WebContent/upload/barcode/";
+				String root = req.getSession().getServletContext().getRealPath("/"); // /WebContent/
+				String file_path = root+"upload/barcode/";
 				String file_name = "bc_"+text+".png"; 
+				FileUtil.createDir(file_path);
 				barCodeUtil.getBarCodeImage(text, width, height, file_path, file_name);
+				String imagePath1 = root+"upload/board/";
+				imagePath1 += (String)list.get(i).get("yyyy")+"/"+(String)list.get(i).get("mm")+"/"+(String)list.get(i).get("uuid");
+				String imagePath2 = file_path+file_name;
+				barCodeUtil.getImageMerge(imagePath1,imagePath2);
+				
+				Map<String, Object> smsMap = new HashMap();
+				String title="[기프트밴드]결제완료_기프트콘발송";
+				String to_number=(String)list.get(i).get("cell");
+				String msg="상품의 주문 및 결제가 완료 되었습니다. 주문번호 : "+(String)list.get(i).get("orderno");
+				smsMap.put("title", title);
+				smsMap.put("to_number", to_number);
+				smsMap.put("msg", msg);	
+				smsMap.put("target_seq", (String)list.get(i).get("cart_no"));	
+				Map<String, Object> smsRstMap = smsService.send(smsMap, imagePath2);
 			}
 		}
 		cartDAO.virAcctResult2(params);
 		
 		//문자 보내기
-		/*params.put("mmsMessage", " 상품의 주문 및 결제가 완료 되었습니다.");
-		mmsService.acMMS_orderno(params);
-		params.put("mmsMessage", "상품의 주문 및 결제가 완료 되었습니다. 주문번호 : "+params.get("orderno"));
-		mmsService.guestVirMMS(params);*/
+		//params.put("mmsMessage", " 상품의 주문 및 결제가 완료 되었습니다.");
+		//mmsService.acMMS_orderno(params);
+		//params.put("mmsMessage", "상품의 주문 및 결제가 완료 되었습니다. 주문번호 : "+params.get("orderno"));
+		//mmsService.guestVirMMS(params);
+	    } catch (Exception e) {
+	    	e.printStackTrace();
+	    }
+		
 		
 	}
 

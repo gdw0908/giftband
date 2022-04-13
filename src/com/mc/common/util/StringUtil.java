@@ -24,6 +24,9 @@ import javax.swing.text.html.HTMLEditorKit;
 
 import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang.StringUtils;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 /**
  * 1. class 명   : StringUtil.java<br>
@@ -1190,5 +1193,40 @@ public class StringUtil {
 			}
 		}
 		return str;
+	}
+	
+	/**
+	 * @param String
+	 * @apiNote String를 JSONObject형식으로 변환처리.
+	 * @return JSONObject
+	 * @throws ParseException 
+	 * @throws Exception 
+	 * **/
+	public static JSONObject convertStringToJson(String json) throws ParseException{
+		JSONObject jsonObj = new JSONObject();
+    	if(!StringUtil.isBlank(json)) {
+	    	JSONParser parser = new JSONParser();
+			Object obj = parser.parse(json);
+			jsonObj = (JSONObject) obj;
+    	}	  
+	    return jsonObj;
+	}
+
+	/**
+	 * @param Map<String, Object>
+	 * @apiNote Map<String, Object>를 JSONObject로 변환처리.
+	 * @return JSONObject
+	 * **/
+	public static JSONObject convertMapToJson(Map<String, Object> map) {
+	    
+	    JSONObject json = new JSONObject();
+	    String key = "";
+	    Object value = null;
+	    for(Map.Entry<String, Object> entry : map.entrySet()) {
+	        key = entry.getKey();
+	        value = entry.getValue();
+	        json.put(key, value);
+	    }
+	    return json;
 	}
 }
