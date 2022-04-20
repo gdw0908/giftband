@@ -345,6 +345,7 @@ $(function(){
 });
 function goStep3() {
 	if(Check_Common(frm) == true){
+		$('.wrap-loading').removeClass('display-none');
 		$("#frm").submit();
 	}
 }
@@ -360,9 +361,10 @@ function goMidChk(){
 		type: "POST", 
 		data : {mid : $("#mid").val()}, 
 		dataType : "json",
-		async: false, 
+		async: true, 
 		cache : false, 
 		success : function(data){
+			$('.wrap-loading').addClass('display-none');
 			console.log("data==="+JSON.stringify(data))
 			if(data.resCode == "0000"){
 				midChk=true;
@@ -372,7 +374,11 @@ function goMidChk(){
 				alert("추천인 조회에 실패하였습니다.\n올바른 추천인 ID를 입력해주세요");
 			}
 		},
+		beforeSend:function(){
+	        $('.wrap-loading').removeClass('display-none');
+	    },
 		error : function(data){
+			$('.wrap-loading').addClass('display-none');
 			midChk=false;
 			alert("추천인 조회에 실패하였습니다.\n올바른 추천인 ID를 입력해주세요");
 		}
@@ -796,6 +802,31 @@ function goMidChk(){
 <input type=hidden name=ICHEARS_HPNO value="">		<!-- 텔레뱅킹계좌이체 휴대폰번호 -->
 
 <!-- 스크립트 및 플러그인에서 값을 설정하는 Hidden 필드  !!수정을 하시거나 삭제하지 마십시오-->
+<div class="wrap-loading display-none">
+    <div><img src="/images/common/loading.gif" /></div>
+</div>
+
+<style type="text/css" >
+	.wrap-loading{ /*화면 전체를 어둡게 합니다.*/
+	    position: fixed;
+	    left:0;
+	    right:0;
+	    top:0;
+	    bottom:0;
+	    background: rgba(0,0,0,0.2); /*not in ie */
+	    filter: progid:DXImageTransform.Microsoft.Gradient(startColorstr='#20000000', endColorstr='#20000000');    /* ie */
+	}
+    .wrap-loading div{ /*로딩 이미지*/
+        position: fixed;
+        top:50%;
+        left:50%;
+        margin-left: -21px;
+        margin-top: -21px;
+    }
+    .display-none{ /*감추기*/
+        display:none;
+    }
+</style>
 
 </form>
 

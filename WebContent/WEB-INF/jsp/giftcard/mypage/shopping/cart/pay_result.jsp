@@ -213,6 +213,7 @@ function show_receipt()
 						<c:set var="discount_price_l" value="0"/>
 						<c:set var="fee_price_l" value="0"/>
           				<c:set var="user_price" value="${user_price + (item.user_price * item.qty) }"/>
+          				<c:set var="user_price_l" value="${item.user_price * item.qty }"/>
        					<c:if test="${item.cod_yn eq 'Y' }">
             				<c:set var="fee_price" value="${fee_price + item.fee_amt }"/>
             				<c:set var="fee_price_l" value="${item.fee_amt }"/>
@@ -240,7 +241,7 @@ function show_receipt()
               				</c:choose> 원 
               				<c:if test="${item.qty>1 }"> x ${item.qty}</c:if>
             			</td>
-            			<td>
+            			<!-- td>
             				<p class="first">
               					<c:choose>
               						<c:when test="${(sessionScope.member.group_seq eq '3' or sessionScope.member.group_seq eq '9') && item.supplier_pricing_yn eq 'Y'}">
@@ -257,7 +258,7 @@ function show_receipt()
               					</c:choose> 원 
               					<c:if test="${item.qty>1 }"> x ${item.qty}</c:if>
               				</p>
-            			</td>
+            			</td -->
             			<td>${fee_price_l } 원</td>
             			<td>
             				${suf:getThousand(user_price_l - discount_price_l + fee_price_l) } 원

@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -103,7 +104,7 @@ public class GiftCardCartService {
 		}else{
 			rstMap.put("rst", "1");
 		}*/
-		cartDAO.updateQty(params);
+		rstMap.put("rst", cartDAO.updateQty(params));
 		return rstMap;
 	}
 	
@@ -309,10 +310,13 @@ public class GiftCardCartService {
 	public void virAcctResult(HttpServletRequest req, Map params) {
 		try {
 		List<Map<String, Object>> list = cartDAO.orderWaitList(params);
+		String orderNo = null;
+		String phoneNo = null;
 		for(int i=0; i<list.size(); i++){
 			params.put("cart_no", (String)list.get(i).get("cart_no"));
 			cartDAO.virAcctResult1(params);
 			if("1".equals((params.get("status")))) {
+				orderNo = (String)list.get(i).get("orderno");
 				String text = (String)list.get(i).get("cart_no")+(String)list.get(i).get("rdealno"); 
 				int width = 448;
 				int height = 80;
@@ -330,22 +334,31 @@ public class GiftCardCartService {
 				Map<String, Object> smsMap = new HashMap();
 				String title="[기프트밴드]결제완료_기프트콘발송";
 				String to_number=(String)list.get(i).get("cell");
-				String msg="상품의 주문 및 결제가 완료 되었습니다. 주문번호 : "+(String)list.get(i).get("orderno");
+				phoneNo=(String)list.get(i).get("cell");
+				String msg="상품의 주문 및 결제가 완료 되었습니다.\n주문번호 : "+(String)list.get(i).get("orderno")+"\n";
+				msg +="상품명 : "+(String)list.get(i).get("productnm")+"\n";
+				msg +="구매수량 : "+(String)list.get(i).get("qty")+"\n";
+				msg +="총구매금액 : "+StringUtil.getThousand((String)list.get(i).get("total_amt"))+"원\n";
 				smsMap.put("title", title);
 				smsMap.put("to_number", to_number);
 				smsMap.put("msg", msg);	
-				smsMap.put("target_seq", (String)list.get(i).get("cart_no"));	
+				smsMap.put("target_seq",orderNo);	
 				Map<String, Object> smsRstMap = smsService.send(smsMap, imagePath2);
 				
-				title="[기프트밴드]기프트콘 사용완료";
-				msg="해당 상품의 기프트콘 사용 완료 되었습니다. 주문번호 : "+(String)list.get(i).get("orderno");
-				smsMap.put("title", title);
-				smsMap.put("msg", msg);
-				smsRstMap = smsService.send(smsMap, imagePath2);
 				//sms전송 후 파일삭제 
-				FileUtil.deleteFile(imagePath2);
-				
+				FileUtil.deleteFile(imagePath2);				
 			}
+		}
+		if( !StringUtil.isBlank(orderNo)) {
+			String title="[기프트밴드]기프트콘 사용완료";
+			String msg="해당 상품의 기프트콘 사용 완료 되었습니다. 주문번호 : "+orderNo;
+			Map<String, Object> smsMap = new HashMap(); 
+			smsMap.put("title", title);
+			smsMap.put("to_number", phoneNo);
+			smsMap.put("msg", msg);
+			smsMap.put("target_seq",orderNo);	
+			TimeUnit.SECONDS.sleep(5);
+			Map<String, Object> smsRstMap = smsService.send(smsMap, "");
 		}
 		cartDAO.virAcctResult2(params);
 		
