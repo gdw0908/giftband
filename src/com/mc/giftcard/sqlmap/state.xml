@@ -3,7 +3,19 @@
 <mapper namespace="state">
 	
 	<sql id="listWhere">
-		WHERE a.USERID = #{session_member_id}
+		WHERE  1=1 
+		<if test="!(session_member_id == null or session_member_id == '')" >
+			AND a.USERID = #{session_member_id}
+		</if>
+		<if test="(subSel == null or subSel == '')" >
+			AND a.USERID = #{session_member_id}
+		</if>
+		<if test="(subSel == 'orderno')" >
+			AND a.ORDERNO = #{subtext}
+		</if>
+		<if test="(subSel == 'cell')" >
+			AND b.CELL = #{subtext}
+		</if>
         <if test="!(receiver == null or receiver == '')" >
         	AND a.RECEIVER LIKE '%${receiver}%'
         </if>
@@ -55,6 +67,7 @@
             ) e
             ON c.ITEM_SEQ = e.TABLE_SEQ  
 			<include refid="listWhere"/>
+			ORDER BY a.ORDERNO DESC
 		) PT1
 		WHERE CEIL(RN/NVL(#{rows},10))=NVL(#{cpage},1)
 	</select>

@@ -29,6 +29,7 @@ $(function(){
 			$('.mo_menu_wrap').toggleClass('active');
 			$('.mo_bg').toggleClass('active');
 		});
+		week();
 	});
 	
 
@@ -220,8 +221,17 @@ function goSubmit(){
               		<input type="text" id="sdate" name="sdate" value ="${param.sdate }">
               			~
               		<input type="text" id="edate" name="edate" value ="${param.edate }">
+              		<select id="subSel" name="subSel" class="select_1">
+						<option value="">선택</option>
+						<option value="orderno" <c:if test="${params.subSel eq 'orderno' }">selected</c:if>>주문번호</option>
+						<option value="cell" <c:if test="${params.subSel eq 'cell' }">selected</c:if>>휴대폰</option>
+					</select>
+              		<input type="text" id="subtext" name="subtext"  value ="${params.subtext }" style="background:url('') no-repeat 10px 8px;text-align: left;width:120px;padding-left: 5px;">
+              		
               		<a href="javascript:goSubmit();" class="lockup_btn">조회</a>
             	</div>
+            	
+            	
 		  	</form>
           </div>
 
@@ -232,7 +242,7 @@ function goSubmit(){
             			<th style="width: 150px;">주문번호/날짜</th>
             			<th>주문상품</th>
             			<th style="width: 150px;">상태</th>
-            			<th>확인</th>
+            			<!-- <th>확인</th> -->
           			</tr>
           		</thead>
 
@@ -277,12 +287,19 @@ function goSubmit(){
 		              					</div>
 		            				</td>
 	    	        				<td>
-	        	      					<p class="status_back status_${item.status }">${item.status_nm }</p>
-	            	  					<c:if test="${item.status eq '7' || item.status eq '8' }">
+	        	      					<p class="btn_m1">
+		        	      					<c:if test="${item.status eq '99' }">
+		             							<span style="color:blue;">주문접수</span>	
+		            						</c:if>
+			            					<c:if test="${item.status eq '1' }">
+			            						<span style="color:red;">결제완료</span>
+		    	        					</c:if>
+	        	      					</p>
+	            	  					<%-- <c:if test="${item.status eq '7' || item.status eq '8' }">
 	              							<p class="btn_m2"><a href="#" onclick="track('${item.cart_no}')">배송추적</a></p>
-	              						</c:if>
+	              						</c:if> --%>
 	            					</td>
-	            					<td>
+	            					<%-- <td>
 	            						<c:if test="${item.status eq '99' }">
 	            	 						<p class="btn_m1"><a href="#" class="order_btn" onclick="alert('관계자에게 문의해주세요.');">주문취소</a></p>
 	            						</c:if>
@@ -301,7 +318,7 @@ function goSubmit(){
 	            						<c:if test="${item.status eq '12' }">
 	             							<p class="btn_m1"><a href="#" class="order_btn" onclick="refunds_popup('${item.cart_no}');">환불신청</a></p>
 	            						</c:if>
-	            					</td>
+	            					</td> --%>
 	          					</tr>
 			 				</c:forEach>
       					</c:otherwise>

@@ -69,6 +69,7 @@ public class GiftCardStateController {
 		}
 		params.put("status_arr", "'99', '1', '6', '7', '8'");
 		model.addAttribute("data", stateService.list(params));
+		model.addAttribute("params", params);
 		return "/giftcard/mypage/shopping/state/list";
 	}
 	

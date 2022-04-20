@@ -21,6 +21,7 @@
 	  	<li><a href="/giftcard/mypage/annc/annc2.do">전자금융거래약관</a></li>
 	  	<li><a href="/giftcard/mypage/annc/annc4.do">E-mail 무단수집거부</a></li>
 	  	<li><a href="/giftcard/mypage/annc/annc3.do">개인정보 취급방침</a></li>
+	  	<li><a href="/giftcard/mypage/shopping/state/index.do?mode=list1">주문조회</a></li>
 	  <!-- <li><a href="/mypage/mantoman/index.do">1:1문의</a></li> -->
 	  </ul>
 	</div>
