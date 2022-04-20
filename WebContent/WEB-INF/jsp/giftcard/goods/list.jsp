@@ -42,8 +42,8 @@
 <script type="text/javascript">
 
 $(document).ready(function(){
-   $(window).scrollTop($("#content_view").offset().top);
-   
+  // $(window).scrollTop($("#content_view").offset().top);
+});
    
 //#submenu
 $("#submenu_open").toggle(function(){
@@ -54,9 +54,6 @@ $("#submenu_open").toggle(function(){
    this.src = "/images/sub/sub_menu_close.gif";
 });
 
-<c:if test="${param.menu eq 'menu5' || param.menu eq 'menu6'}">
-$("#submenu_open").attr("src","/images/sub/sub_menu_close.gif");
-</c:if>
  
 function changeMenu(){
    var upcodenoNumber = '';
@@ -173,9 +170,7 @@ function directOrder(item_seq){
    $("#cartFrm").submit();
    return false;
 }
-<c:if test="${empty data.list}">
-   replaceApplication();
-</c:if>
+
 </script>
 </head>
 
