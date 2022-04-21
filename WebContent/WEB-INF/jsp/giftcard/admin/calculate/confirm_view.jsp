@@ -93,16 +93,16 @@ function exceldown(order_comseq, selecttype, order_date){
       
       <table class="style_6">
         <colgroup>
+          <col width="15%" />
           <col width="10%" />
-          <col width="7%" />
+          <col width="10%" />
+          <col width="10%" />
+          <col width="10%" />
+          <col width="10%" />
+          <col width="10%" />
+<%--           <col width="6%" />
           <col width="6%" />
-          <col width="6%" />
-          <col width="6%" />
-          <col width="6%" />
-          <col width="6%" />
-          <col width="6%" />
-          <col width="6%" />
-          <col width="6%" />
+          <col width="6%" /> --%>
           <col width="12%" />
           <col width="*" />
         </colgroup>
@@ -112,18 +112,18 @@ function exceldown(order_comseq, selecttype, order_date){
           <th colspan="2">취소/환불 총액</th>
           <th rowspan="2">판매총액</th>
           <th rowspan="2">주문총액</th>
-          <th colspan="3">공제내역</th>
-          <th rowspan="2">총정산액<br/>( 판매금액 - 취소/환불액 - 본사수수료 )</th>
-          <th rowspan="2">송금액<br/>( 판매금액 - 취소/환불액 - 본사수수료 )</th>
+          <!-- <th colspan="3">공제내역</th> -->
+          <th rowspan="2">총정산액<br/>( 판매금액 - 취소/환불액 )</th>
+          <th rowspan="2">송금액<br/>( 판매금액 - 취소/환불액 )</th>
         </tr>
         <tr>
           <th>카드</th>
           <th>현금</th>
           <th>카드</th>
           <th>현금</th>
-          <th>카드</th>
+          <!-- <th>카드</th>
           <th>현금</th>
-          <th>본사수수료</th>
+          <th>본사수수료</th> -->
         </tr>
         
         <c:forEach items = "${list }" var = "vo">
@@ -135,11 +135,13 @@ function exceldown(order_comseq, selecttype, order_date){
           <td><fmt:formatNumber type="number" pattern="###,###" value="${vo.cancel_cash_sum + refund_cash_sum}" /></td>
           <td><fmt:formatNumber type="number" pattern="###,###" value="${vo.total}" /></td>
           <td><fmt:formatNumber type="number" pattern="###,###" value="${vo.order_sum}" /></td>
-          <td><fmt:formatNumber type="number" pattern="###,###" value="${vo.card_pg_commission}" /></td>
+          <%-- <td><fmt:formatNumber type="number" pattern="###,###" value="${vo.card_pg_commission}" /></td>
           <td><fmt:formatNumber type="number" pattern="###,###" value="${vo.iche_pg_commission + vo.virtual_pg_commission}" /> </td>
-          <td><fmt:formatNumber type="number" pattern="###,###" value="${vo.u_m_commission + vo.c_m_commission}" /></td>
+          <td><fmt:formatNumber type="number" pattern="###,###" value="${vo.u_m_commission + vo.c_m_commission}" /></td> 
           <td><fmt:formatNumber type="number" pattern="###,###" value="${vo.total}" /> - <fmt:formatNumber type="number" pattern="###,###" value="${vo.cancel_card_sum + vo.refund_card_sum + vo.cancel_cash_sum + refund_cash_sum}" /> - <fmt:formatNumber type="number" pattern="###,###" value="${vo.u_m_commission + vo.c_m_commission}" /></td>
-          <td><fmt:formatNumber type="number" pattern="###,###" value="${vo.total - (vo.u_m_commission + vo.c_m_commission)}" /></td>
+          <td><fmt:formatNumber type="number" pattern="###,###" value="${vo.total - (vo.u_m_commission + vo.c_m_commission)}" /></td> --%>
+          <td><fmt:formatNumber type="number" pattern="###,###" value="${vo.total}" /> - <fmt:formatNumber type="number" pattern="###,###" value="${vo.cancel_card_sum + vo.refund_card_sum + vo.cancel_cash_sum + refund_cash_sum}" /></td>
+          <td><fmt:formatNumber type="number" pattern="###,###" value="${vo.total - (vo.cancel_card_sum + vo.refund_card_sum + vo.cancel_cash_sum + refund_cash_sum)}" /></td>
         </tr>
         </c:forEach>
       </table>

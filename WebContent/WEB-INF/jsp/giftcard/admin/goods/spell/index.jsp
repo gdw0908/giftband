@@ -265,7 +265,7 @@ app.controller("listCtrl", function($scope, $window, $routeParams, $compile, aja
 app.controller("modifyCtrl", function($scope, $window, $routeParams, ajaxService, dialogService, $filter, $timeout) {
 	$scope.form = {};
 	var angularDateFilter = $filter('myDate');
-	ajaxService.getJSON("/admin/goods/spell/index.do?mode=view", {cart_no : $routeParams.cart_no}, function(data){
+	ajaxService.getJSON("/giftcard/admin/goods/spell/index.do?mode=view", {cart_no : $routeParams.cart_no}, function(data){
 		$scope.view = data.view;
 		$scope.form = {
 			cart_no : 	data.view.cart_no,
@@ -361,7 +361,7 @@ app.controller("modifyCtrl", function($scope, $window, $routeParams, ajaxService
 			return rst;
 		})($scope.form.status);
 		if(confirm("주문상태를 ("+ txt +")로 변경 하시겠습니까?")){
-			ajaxService.getJSON("/admin/goods/spell/index.do?mode=modify", {jData : JSON.stringify($scope.form)}, function(data){
+			ajaxService.getJSON("/giftcard/admin/goods/spell/index.do?mode=modify", {jData : JSON.stringify($scope.form)}, function(data){
 				alert("처리되었습니다.");
 				$scope.list();
 			});

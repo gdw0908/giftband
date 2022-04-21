@@ -30,7 +30,7 @@
         <tr>
 <!--           <th>업체명</th>
           <td>{{view.com_nm}}</td> -->
-          <th>유통사</th>
+          <th>카테고리</th>
           <td colspan="3">{{view.makernm}}</td>
         </tr>
 <!--         <tr>
@@ -69,25 +69,27 @@
         <tr>
           <th>주문자</th>
           <td>{{view.order_nm}}</td>
-          <th>이메일</th>
-          <td>{{view.email}}</td>
+          <th>휴대폰번호</th>
+          <td>{{view.rehp}}</td>
+<!--           <th>이메일</th>
+          <td>{{view.email}}</td> -->
         </tr>
-        <tr>
+       <!--  <tr>
           <th>전화번호</th>
           <td>{{view.retel}}</td>
           <th>휴대폰번호</th>
           <td>{{view.rehp}}</td>
-        </tr>
+        </tr> -->
         <tr>
           <th>주문날짜</th>
           <td>{{view.orderdate|myDate:'yyyy-MM-dd'}}</td>
           <th>거래완료일</th>
-          <td></td>
+          <td>{{view.rapprtm|myDate:'yyyy-MM-dd'}}</td>
         </tr>
-        <tr>
+<!--         <tr>
           <th>주소</th>
           <td colspan="3">({{view.zipcd}}) {{view.addr}} {{view.addrdetail}}</td>
-        </tr>
+        </tr> -->
       </table>    
       <h3 style="margin-top:15px;">배송정보</h3>
        <table class="style_1" style="table-layout:fixed; margin-top:10px;">
@@ -103,7 +105,7 @@
           <th>연락처</th>
           <td>{{view.re_cell}}</td>
         </tr>
-        <tr>
+        <!-- <tr>
           <th>배송일</th>
           <td></td>
           <th>송장번호</th>
@@ -116,7 +118,7 @@
         <tr>
           <th>주소</th>
           <td colspan="3">({{view.re_zip_cd}}) {{view.re_addr1}} {{view.re_addr2}}</td>
-        </tr>
+        </tr> -->
       </table> 
       <!-- <h3 style="margin-top:15px;">교환/환불/주문취소 정보</h3>
       <table class="style_1" style="table-layout:fixed; margin-top:10px;">
@@ -181,7 +183,7 @@
           <td colspan="3">{{view.sayu}}</td>
         </tr>
       </table> -->
-      <h3 style="margin-top:15px;">주문상태 변경</h3>
+      <h3 style="margin-top:15px;">주문상태</h3>
 		<form id="wFrm" name="frm" method="post" novalidate="novalidate">
       	<table class="style_1" style="table-layout:fixed; margin-top:10px;">
         <colgroup>
@@ -193,17 +195,17 @@
         <tr>
           <th>주문상태</th>
           <td colspan="3">
-			<select title="주문상태 선택" data-ng-model="form.status" data-ng-options="item.code as item.code_nm for item in main.status">
+			<select title="주문상태 선택"  disabled="disabled" data-ng-model="form.status" data-ng-options="item.code as item.code_nm for item in main.status">
 				<option value="">전체</option>
             </select>
           </td>
         </tr>
         <tr>
           <th>일자</th>
-          <td>
-            <input type="text" class="input_1" data-ng-model="form.change_dt" datepicker readonly="readonly"/>
+          <td colspan="3">
+            <input type="text" class="input_1" disabled="disabled" data-ng-model="form.change_dt" readonly="readonly"/>
           </td>
-          <th>송장번호</th>
+          <!-- <th>송장번호</th>
           <td>
           	<div data-ng-if="isSongjang()">
           	<select title="택배사 선택" data-ng-model="form.delivery" data-ng-options="item.code as item.code_nm for item in main.delivery" required="required">
@@ -217,24 +219,24 @@
           	</select>
           	<input type="text" class="input_1" data-ng-model="form.ch_c_no" required="required" data-ng-if="form.delivery!='99' && isSongjang()"/>
             </div>
-          </td>
+          </td> -->
         </tr>
-        <tr>
+        <!-- <tr>
           <th>사유</th>
           <td colspan="3">
             <textarea rows="" cols="" style="width: 95%; height: 80px;" data-ng-model="form.sayu"></textarea>
           </td>
-        </tr>
+        </tr> -->
       	</table>   
       
 		<div class="btn_bottom">
 			<div class="r_btn">
-			    <span class="bt_all">
+			    <!-- <span class="bt_all">
 			    	<span><input type="button" value="거래명세서" class="btall" data-ng-click = "open_specification(view.cart_no);"/></span>
-			    </span> 
+			    </span>  
 			    <span class="bt_all">
 			    	<span><input type="button" value="저장" class="btall" data-ng-click="save()"/></span>
-			    </span> 
+			    </span> -->
 			    <span class="bt_all">
 			    	<span><input type="button" value="목록" class="btall" data-ng-click="list()"/></span>
 			    </span> 

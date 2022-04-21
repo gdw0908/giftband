@@ -122,18 +122,18 @@
         <colgroup>
 <%--             <col width="5%" /> --%>
             <col width="8%" />
-            <col width="13%" />
-            <col width="5%" />
             <col width="10%" />
+            <col width="5%" />
+            <col width="8%" />
             <col width="10%" />
             <col width="*%" />
             <%-- <col width="10%" /> --%>
             <col width="10%" />
-            <col width="12%" />
-            <%-- <col width="12%" />
-            <col width="7%" /> --%>
+            <col width="8%" />
+            <col width="10%" />
             <col width="7%" />
-            <col width="7%" />
+            <col width="5%" />
+            <col width="5%" />
         </colgroup>
         <tr>
 <!--           <th> -->
@@ -148,12 +148,12 @@
           <!-- <th>상품위치</th> -->
           <th>결제금액</th>
           <th>주문번호</th>
-          <!-- <th>상품ERP코드</th> -->
-          <!-- <th>공급업체</th> -->
+          <th>승인번호</th>
+          <th>휴대전화</th>
           <th>결제유형</th>
           <th>결제방법</th>
         </tr>
-        <tr data-ng-if="board.list.length==0"><td colspan="10">결과가 없습니다.</td></tr>
+        <tr data-ng-if="board.list.length==0"><td colspan="12">결과가 없습니다.</td></tr>
         <tr data-ng-repeat="item in board.list" data-my-href="/modify/{{item.cart_no}}">
 <!--           <td onclick="event.cancelBubble = true"> -->
 <!--             <input type="checkbox" data-ng-model="item.check" data-ng-true-value="Y" data-ng-false-value="N" data-ng-init="item.check='N'"/> -->
@@ -171,8 +171,8 @@
           <!-- <td>{{item.part_location}}</td> -->
           <td>{{item.actual_price|number}} 원</td>
           <td>{{item.orderno}}</td>
-          <!-- <td>{{item.erp_code}}</td>
-          <td>{{item.com_nm}}</td> -->
+          <td>{{item.rdealno}}</td>
+          <td>{{item.cell}}</td>
           <td>{{item.paytyp_nm}}</td>
           <td data-ng-if="!item.trans_id">PC</td>
           <td data-ng-if="!!item.trans_id">MOBILE</td>
