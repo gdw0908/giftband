@@ -43,6 +43,12 @@
 
 $(document).ready(function(){
   // $(window).scrollTop($("#content_view").offset().top);
+	$('.ham_wrap').click(function(){
+		$(this).toggleClass('open');
+		$('.mo_menu_wrap').toggleClass('active');
+		$('.mo_bg').toggleClass('active');
+		$('body').toggleClass('active');
+	});
 });
    
 //#submenu
