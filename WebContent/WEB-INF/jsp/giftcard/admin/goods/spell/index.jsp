@@ -431,7 +431,7 @@ app.controller("imgPopupListCtrl", function($scope, $timeout, ajaxService, dialo
         </div>
 	</div>
   </script>
-  <form id="excelFrm" action="/admin/goods/spell/index.do?mode=excelDown" method="post">
+  <form id="excelFrm" action="/giftcard/admin/goods/spell/index.do?mode=excelDown" method="post">
   </form>
 </body>
 </html>

@@ -127,7 +127,7 @@ public class POIExcelDownloadService {
 			for(int i=0;i<header[1].length;i++){
 				cell = row.createCell(i);
 				if("img".equals(header[2][i])){//이미지
-					drawImage(sheet1, xlsxWb, sheet1.getLastRowNum(), "http://www.partsmoa.co.kr" + mp.getStrNull(header[1][i]));
+					drawImage(sheet1, xlsxWb, sheet1.getLastRowNum(), "http://www.giftband.co.kr" + mp.getStrNull(header[1][i]));
 //					drawImage(sheet1, xlsxWb, sheet1.getLastRowNum(), HOME_URL + mp.getStrNull(header[1][i]));
 					row.setHeight((short)1500);
 				}else if("date".equals(header[2][i])){//날짜

@@ -174,8 +174,8 @@
           <td>{{item.rdealno}}</td>
           <td>{{item.cell}}</td>
           <td>{{item.paytyp_nm}}</td>
-          <td data-ng-if="!item.trans_id">PC</td>
-          <td data-ng-if="!!item.trans_id">MOBILE</td>
+          <td data-ng-if="!item.trans_id">계좌이체</td>
+          <td data-ng-if="!!item.trans_id">PC</td>
         </tr>
         <tr>
         <tr>

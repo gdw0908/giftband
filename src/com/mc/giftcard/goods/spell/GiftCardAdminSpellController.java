@@ -1,7 +1,6 @@
 package com.mc.giftcard.goods.spell;
 
 import java.io.OutputStream;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -20,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.mc.common.util.ExcelUtil;
+import com.mc.common.util.StringUtil;
 import com.mc.web.MCMap;
 import com.mc.web.common.POIExcelDownloadService;
 /**
@@ -70,8 +69,8 @@ public class GiftCardAdminSpellController {
 	public void excelDown(ModelMap model, HttpServletRequest request, HttpServletResponse response, HttpSession session, @RequestParam Map<String, String> params) throws Exception{
 		List<MCMap> list = spellService.excelDown(params);
 		for(MCMap m : list){
-			if(m.containsKey("trans_id")){
-				m.put("trans_id", "모바일");
+			if(StringUtil.isBlank(StringUtil.nvl(m.get("trans_id"),""))){
+				m.put("trans_id", "계좌이체");
 			}else{
 				m.put("trans_id", "PC");
 			}
@@ -81,10 +80,10 @@ public class GiftCardAdminSpellController {
 		response.setContentType("application/xls");
 		response.setHeader("Content-Disposition","attachment; filename="+filename+".xls");
 		String[][] header = {
-				{"주문상태", "주문일", "주문자", "상품명", "상품위치", "결제금액", "주문번호", "상품ERP코드", "공급업체", "결제유형","결제방법"}, 
-				{"status_nm","orderdate","receiver","productnm","part_location","actual_price","orderno","erp_code","com_nm","paytyp_nm","trans_id"},
+				{"주문일", "수정일", "주문상태", "주문자", "상품명", "결제금액", "주문번호", "승인번호", "휴대전화", "결제유형","결제방법"}, 
+				{"orderdate","mod_dt","status_nm","receiver","productnm","actual_price","orderno","rdealno","cell","paytyp_nm","trans_id"},
 				{"", "date", "", "", "", "bill", "", "", "","",""},
-				{"3000", "5000", "2500", "8000", "6000", "3000", "4000", "5000", "5000","3000","3000"}
+				{"5000", "5000", "3000", "3000", "8000", "3000", "4000", "5000", "5000","3000","3000"}
 			};
 		
 		excelDownloadService.excelDownload(output, list, "주문내역", header);
