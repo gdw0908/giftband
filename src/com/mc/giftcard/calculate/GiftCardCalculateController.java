@@ -132,11 +132,11 @@ public class GiftCardCalculateController {
 		writeSheet.setColumnView(4, 18); 
 		writeSheet.setColumnView(5, 18); 
 		writeSheet.setColumnView(6, 18); 
-		writeSheet.setColumnView(7, 18); 
+		/*writeSheet.setColumnView(7, 18); 
 		writeSheet.setColumnView(8, 18); 
-		writeSheet.setColumnView(9, 18); 
-		writeSheet.setColumnView(10, 30); 
-		writeSheet.setColumnView(11, 18); 
+		writeSheet.setColumnView(9, 18);*/ 
+		writeSheet.setColumnView(7, 30); 
+		writeSheet.setColumnView(8, 18); 
 		
 		CellView cv = new CellView();
 		cv.setAutosize(true);
@@ -147,7 +147,7 @@ public class GiftCardCalculateController {
 		
 		int i = 1;
 		
-		String[] header = {"업체명", "판매금액(카드)", "판매금액(현금)", "반품/취소/환불(카드)", "반품/취소/환불(현금)", "판매총액", "주문총액", "공제내역(카드)", "공제내역(현금)", "공제내역(본사수수료)", "총정산액", "송금액"};
+		String[] header = {"업체명", "판매금액(카드)", "판매금액(현금)", "반품/취소/환불(카드)", "반품/취소/환불(현금)", "판매총액", "주문총액", "총정산액", "송금액"};
 		if (header != null && header.length > 0)
 		{
 			for(int x=0;x<header.length;x++){
@@ -181,12 +181,13 @@ public class GiftCardCalculateController {
 				writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(cancel_cash_sum + refund_cash_sum), dataFormat));
 				writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(total), dataFormat));
 				writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(order_sum), dataFormat));
-				writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(card_pg_commission), dataFormat));
+				/*writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(card_pg_commission), dataFormat));
 				writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(iche_pg_commission + virtual_pg_commission), dataFormat));
 				writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(u_m_commission + c_m_commission), dataFormat));
 				writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(total) + "-" + StringUtil.getThousand(card_pg_commission + iche_pg_commission + virtual_pg_commission + u_m_commission + c_m_commission), dataFormat));
-				writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(total - (card_pg_commission + iche_pg_commission + virtual_pg_commission + u_m_commission + c_m_commission)), dataFormat));
-				
+				writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(total - (card_pg_commission + iche_pg_commission + virtual_pg_commission + u_m_commission + c_m_commission)), dataFormat));*/
+				writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(total) + "-" + StringUtil.getThousand(cancel_cash_sum + refund_cash_sum), dataFormat));
+				writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(total - (cancel_cash_sum + refund_cash_sum)), dataFormat));
 				i++;
 			}
 			
@@ -513,11 +514,11 @@ public class GiftCardCalculateController {
 		writeSheet.setColumnView(4, 18); 
 		writeSheet.setColumnView(5, 18); 
 		writeSheet.setColumnView(6, 18); 
-		writeSheet.setColumnView(7, 18); 
+		/*writeSheet.setColumnView(7, 18); 
 		writeSheet.setColumnView(8, 18); 
-		writeSheet.setColumnView(9, 18); 
-		writeSheet.setColumnView(10, 30); 
-		writeSheet.setColumnView(11, 18); 
+		writeSheet.setColumnView(9, 18);*/ 
+		writeSheet.setColumnView(7, 30); 
+		writeSheet.setColumnView(8, 18); 
 		
 		CellView cv = new CellView();
 		cv.setAutosize(true);
@@ -529,7 +530,7 @@ public class GiftCardCalculateController {
 		
 		int i = 1;
 		
-		String[] header = {"업체명", "판매금액(카드)", "판매금액(현금)", "반품/취소/환불(카드)", "반품/취소/환불(현금)", "판매총액", "주문총액", "공제내역(카드)", "공제내역(현금)", "공제내역(본사수수료)", "총정산액", "송금액"};
+		String[] header = {"업체명", "판매금액(카드)", "판매금액(현금)", "반품/취소/환불(카드)", "반품/취소/환불(현금)", "판매총액", "주문총액", "총정산액", "송금액"};
 		if (header != null && header.length > 0)
 		{
 			for(int x=0;x<header.length;x++){
@@ -563,11 +564,13 @@ public class GiftCardCalculateController {
 				writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(cancel_cash_sum + refund_cash_sum), dataFormat));
 				writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(total), dataFormat));
 				writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(order_sum), dataFormat));
-				writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(card_pg_commission), dataFormat));
+				/*writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(card_pg_commission), dataFormat));
 				writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(iche_pg_commission + virtual_pg_commission), dataFormat));
 				writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(u_m_commission + c_m_commission), dataFormat));
 				writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(total) + "-" + StringUtil.getThousand(card_pg_commission + iche_pg_commission + virtual_pg_commission + u_m_commission + c_m_commission), dataFormat));
-				writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(total - (card_pg_commission + iche_pg_commission + virtual_pg_commission + u_m_commission + c_m_commission)), dataFormat));
+				writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(total - (card_pg_commission + iche_pg_commission + virtual_pg_commission + u_m_commission + c_m_commission)), dataFormat));*/
+				writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(total) + "-" + StringUtil.getThousand(cancel_cash_sum + refund_cash_sum), dataFormat));
+				writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(total - (cancel_cash_sum + refund_cash_sum)), dataFormat));
 				
 				i++;
 			}
@@ -632,18 +635,15 @@ public class GiftCardCalculateController {
 		writeSheet.setColumnView(4, 18); 
 		writeSheet.setColumnView(5, 18); 
 		writeSheet.setColumnView(6, 18); 
-		writeSheet.setColumnView(7, 18); 
+		writeSheet.setColumnView(7, 30); 
 		writeSheet.setColumnView(8, 18); 
-		writeSheet.setColumnView(9, 18); 
-		writeSheet.setColumnView(10, 30); 
-		writeSheet.setColumnView(11, 18); 
 		
 		CellView cv = new CellView();
 		cv.setAutosize(true);	
 		
 		int i = 0;
 		
-		String[] header = {"업체명", "판매금액(카드)", "판매금액(현금)", "반품/취소/환불(카드)", "반품/취소/환불(현금)", "판매총액", "주문총액", "공제내역(카드)", "공제내역(현금)", "공제내역(본사수수료)", "총정산액", "송금액"};
+		String[] header = {"업체명", "판매금액(카드)", "판매금액(현금)", "반품/취소/환불(카드)", "반품/취소/환불(현금)", "판매총액", "주문총액", "총정산액", "송금액"};
 		if (header != null && header.length > 0)
 		{
 			for(int x=0;x<header.length;x++){
@@ -677,12 +677,13 @@ public class GiftCardCalculateController {
 				writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(cancel_cash_sum + refund_cash_sum), dataFormat));
 				writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(total), dataFormat));
 				writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(order_sum), dataFormat));
-				writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(card_pg_commission), dataFormat));
+				/*writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(card_pg_commission), dataFormat));
 				writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(iche_pg_commission + virtual_pg_commission), dataFormat));
 				writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(u_m_commission + c_m_commission), dataFormat));
 				writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(total) + "-" + StringUtil.getThousand(card_pg_commission + iche_pg_commission + virtual_pg_commission + u_m_commission + c_m_commission), dataFormat));
-				writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(total - (card_pg_commission + iche_pg_commission + virtual_pg_commission + u_m_commission + c_m_commission)), dataFormat));
-				
+				writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(total - (card_pg_commission + iche_pg_commission + virtual_pg_commission + u_m_commission + c_m_commission)), dataFormat));*/
+				writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(total) + "-" + StringUtil.getThousand(cancel_cash_sum + refund_cash_sum), dataFormat));
+				writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(total - (cancel_cash_sum + refund_cash_sum)), dataFormat));
 				i++;
 			}
 			
@@ -711,11 +712,13 @@ public class GiftCardCalculateController {
 				writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(cancel_cash_sum + refund_cash_sum), dataFormat));
 				writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(total), dataFormat));
 				writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(order_sum), dataFormat));
-				writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(card_pg_commission), dataFormat));
+				/*writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(card_pg_commission), dataFormat));
 				writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(iche_pg_commission + virtual_pg_commission), dataFormat));
 				writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(u_m_commission + c_m_commission), dataFormat));
 				writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(total) + "-" + StringUtil.getThousand(card_pg_commission + iche_pg_commission + virtual_pg_commission + u_m_commission + c_m_commission), dataFormat));
-				writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(total - (card_pg_commission + iche_pg_commission + virtual_pg_commission + u_m_commission + c_m_commission)), dataFormat));
+				writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(total - (card_pg_commission + iche_pg_commission + virtual_pg_commission + u_m_commission + c_m_commission)), dataFormat));*/
+				writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(total) + "-" + StringUtil.getThousand(cancel_cash_sum + refund_cash_sum), dataFormat));
+				writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(total - (cancel_cash_sum + refund_cash_sum)), dataFormat));
 			}
 			
 		} catch (Exception e) {
@@ -811,18 +814,18 @@ public class GiftCardCalculateController {
 		writeSheet.setColumnView(4, 18); 
 		writeSheet.setColumnView(5, 18); 
 		writeSheet.setColumnView(6, 18); 
-		writeSheet.setColumnView(7, 18); 
+		/*writeSheet.setColumnView(7, 18); 
 		writeSheet.setColumnView(8, 18); 
-		writeSheet.setColumnView(9, 18); 
-		writeSheet.setColumnView(10, 30); 
-		writeSheet.setColumnView(11, 18); 
+		writeSheet.setColumnView(9, 18);*/ 
+		writeSheet.setColumnView(7, 30); 
+		writeSheet.setColumnView(8, 18); 
 		
 		CellView cv = new CellView();
 		cv.setAutosize(true);	
 		
 		int i = 0;
 		
-		String[] header = {"업체명", "판매금액(카드)", "판매금액(현금)", "반품/취소/환불(카드)", "반품/취소/환불(현금)", "판매총액", "주문총액", "공제내역(카드)", "공제내역(현금)", "공제내역(본사수수료)", "총정산액", "송금액"};
+		String[] header = {"업체명", "판매금액(카드)", "판매금액(현금)", "반품/취소/환불(카드)", "반품/취소/환불(현금)", "판매총액", "주문총액", "총정산액", "송금액"};
 		if (header != null && header.length > 0)
 		{
 			for(int x=0;x<header.length;x++){
@@ -856,12 +859,13 @@ public class GiftCardCalculateController {
 				writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(cancel_cash_sum + refund_cash_sum), dataFormat));
 				writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(total), dataFormat));
 				writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(order_sum), dataFormat));
-				writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(card_pg_commission), dataFormat));
+				/*writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(card_pg_commission), dataFormat));
 				writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(iche_pg_commission + virtual_pg_commission), dataFormat));
 				writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(u_m_commission + c_m_commission), dataFormat));
 				writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(total) + "-" + StringUtil.getThousand(card_pg_commission + iche_pg_commission + virtual_pg_commission + u_m_commission + c_m_commission), dataFormat));
-				writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(total - (card_pg_commission + iche_pg_commission + virtual_pg_commission + u_m_commission + c_m_commission)), dataFormat));
-				
+				writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(total - (card_pg_commission + iche_pg_commission + virtual_pg_commission + u_m_commission + c_m_commission)), dataFormat));*/
+				writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(total) + "-" + StringUtil.getThousand(cancel_cash_sum + refund_cash_sum), dataFormat));
+				writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(total - (cancel_cash_sum + refund_cash_sum)), dataFormat));
 				i++;
 			}
 			
@@ -932,18 +936,18 @@ public class GiftCardCalculateController {
 		writeSheet.setColumnView(4, 18); 
 		writeSheet.setColumnView(5, 18); 
 		writeSheet.setColumnView(6, 18); 
-		writeSheet.setColumnView(7, 18); 
+		/*writeSheet.setColumnView(7, 18); 
 		writeSheet.setColumnView(8, 18); 
-		writeSheet.setColumnView(9, 18); 
-		writeSheet.setColumnView(10, 30); 
-		writeSheet.setColumnView(11, 18); 
+		writeSheet.setColumnView(9, 18);*/ 
+		writeSheet.setColumnView(7, 30); 
+		writeSheet.setColumnView(8, 18); 
 		
 		CellView cv = new CellView();
 		cv.setAutosize(true);	
 		
 		int i = 0;
 		
-		String[] header = {"업체명", "판매금액(카드)", "판매금액(현금)", "반품/취소/환불(카드)", "반품/취소/환불(현금)", "판매총액", "주문총액", "공제내역(카드)", "공제내역(현금)", "공제내역(본사수수료)", "총정산액", "송금액"};
+		String[] header = {"업체명", "판매금액(카드)", "판매금액(현금)", "반품/취소/환불(카드)", "반품/취소/환불(현금)", "판매총액", "주문총액", "총정산액", "송금액"};
 		if (header != null && header.length > 0)
 		{
 			for(int x=0;x<header.length;x++){
@@ -977,12 +981,13 @@ public class GiftCardCalculateController {
 				writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(cancel_cash_sum + refund_cash_sum), dataFormat));
 				writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(total), dataFormat));
 				writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(order_sum), dataFormat));
-				writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(card_pg_commission), dataFormat));
+				/*writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(card_pg_commission), dataFormat));
 				writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(iche_pg_commission + virtual_pg_commission), dataFormat));
 				writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(u_m_commission + c_m_commission), dataFormat));
 				writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(total) + "-" + StringUtil.getThousand(card_pg_commission + iche_pg_commission + virtual_pg_commission + u_m_commission + c_m_commission), dataFormat));
-				writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(total - (card_pg_commission + iche_pg_commission + virtual_pg_commission + u_m_commission + c_m_commission)), dataFormat));
-				
+				writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(total - (card_pg_commission + iche_pg_commission + virtual_pg_commission + u_m_commission + c_m_commission)), dataFormat));*/
+				writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(total) + "-" + StringUtil.getThousand(cancel_cash_sum + refund_cash_sum), dataFormat));
+				writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(total - (cancel_cash_sum + refund_cash_sum)), dataFormat));
 				i++;
 			}
 			
@@ -1105,18 +1110,18 @@ public class GiftCardCalculateController {
 		writeSheet.setColumnView(4, 18); 
 		writeSheet.setColumnView(5, 18); 
 		writeSheet.setColumnView(6, 18); 
-		writeSheet.setColumnView(7, 18); 
+		/*writeSheet.setColumnView(7, 18); 
 		writeSheet.setColumnView(8, 18); 
-		writeSheet.setColumnView(9, 18); 
-		writeSheet.setColumnView(10, 30); 
-		writeSheet.setColumnView(11, 18); 
+		writeSheet.setColumnView(9, 18);*/ 
+		writeSheet.setColumnView(7, 30); 
+		writeSheet.setColumnView(8, 18); 
 		
 		CellView cv = new CellView();
 		cv.setAutosize(true);	
 		
 		int i = 0;
 		
-		String[] header = {"업체명", "판매금액(카드)", "판매금액(현금)", "반품/취소/환불(카드)", "반품/취소/환불(현금)", "판매총액", "주문총액", "공제내역(카드)", "공제내역(현금)", "공제내역(본사수수료)", "총정산액", "송금액"};
+		String[] header = {"업체명", "판매금액(카드)", "판매금액(현금)", "반품/취소/환불(카드)", "반품/취소/환불(현금)", "판매총액", "주문총액", "총정산액", "송금액"};
 		if (header != null && header.length > 0)
 		{
 			for(int x=0;x<header.length;x++){
@@ -1150,11 +1155,13 @@ public class GiftCardCalculateController {
 				writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(cancel_cash_sum + refund_cash_sum), dataFormat));
 				writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(total), dataFormat));
 				writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(order_sum), dataFormat));
-				writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(card_pg_commission), dataFormat));
+				/*writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(card_pg_commission), dataFormat));
 				writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(iche_pg_commission + virtual_pg_commission), dataFormat));
 				writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(u_m_commission + c_m_commission), dataFormat));
 				writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(total) + "-" + StringUtil.getThousand(card_pg_commission + iche_pg_commission + virtual_pg_commission + u_m_commission + c_m_commission), dataFormat));
-				writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(total - (card_pg_commission + iche_pg_commission + virtual_pg_commission + u_m_commission + c_m_commission)), dataFormat));
+				writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(total - (card_pg_commission + iche_pg_commission + virtual_pg_commission + u_m_commission + c_m_commission)), dataFormat));*/
+				writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(total) + "-" + StringUtil.getThousand(cancel_cash_sum + refund_cash_sum), dataFormat));
+				writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(total - (cancel_cash_sum + refund_cash_sum)), dataFormat));
 				
 				i++;
 			}
@@ -1222,18 +1229,18 @@ public class GiftCardCalculateController {
 		writeSheet.setColumnView(4, 18); 
 		writeSheet.setColumnView(5, 18); 
 		writeSheet.setColumnView(6, 18); 
-		writeSheet.setColumnView(7, 18); 
+		/*writeSheet.setColumnView(7, 18); 
 		writeSheet.setColumnView(8, 18); 
-		writeSheet.setColumnView(9, 18); 
-		writeSheet.setColumnView(10, 30); 
-		writeSheet.setColumnView(11, 18); 
+		writeSheet.setColumnView(9, 18);*/ 
+		writeSheet.setColumnView(7, 30); 
+		writeSheet.setColumnView(8, 18); 
 		
 		CellView cv = new CellView();
 		cv.setAutosize(true);	
 		
 		int i = 0;
 		
-		String[] header = {"업체명", "판매금액(카드)", "판매금액(현금)", "반품/취소/환불(카드)", "반품/취소/환불(현금)", "판매총액", "주문총액", "공제내역(카드)", "공제내역(현금)", "공제내역(본사수수료)", "총정산액", "송금액"};
+		String[] header = {"업체명", "판매금액(카드)", "판매금액(현금)", "반품/취소/환불(카드)", "반품/취소/환불(현금)", "판매총액", "주문총액", "총정산액", "송금액"};
 		if (header != null && header.length > 0)
 		{
 			for(int x=0;x<header.length;x++){
@@ -1267,11 +1274,13 @@ public class GiftCardCalculateController {
 				writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(cancel_cash_sum + refund_cash_sum), dataFormat));
 				writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(total), dataFormat));
 				writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(order_sum), dataFormat));
-				writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(card_pg_commission), dataFormat));
+				/*writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(card_pg_commission), dataFormat));
 				writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(iche_pg_commission + virtual_pg_commission), dataFormat));
 				writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(u_m_commission + c_m_commission), dataFormat));
 				writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(total) + "-" + StringUtil.getThousand(card_pg_commission + iche_pg_commission + virtual_pg_commission + u_m_commission + c_m_commission), dataFormat));
-				writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(total - (card_pg_commission + iche_pg_commission + virtual_pg_commission + u_m_commission + c_m_commission)), dataFormat));
+				writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(total - (card_pg_commission + iche_pg_commission + virtual_pg_commission + u_m_commission + c_m_commission)), dataFormat));*/
+				writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(total) + "-" + StringUtil.getThousand(cancel_cash_sum + refund_cash_sum), dataFormat));
+				writeSheet.addCell(new Label(cell++, i, StringUtil.getThousand(total - (cancel_cash_sum + refund_cash_sum)), dataFormat));
 				
 				i++;
 			}
