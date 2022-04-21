@@ -24,6 +24,7 @@
 <script type="text/javascript" src="/lib/js/gnb.js"></script>
 <script type="text/javascript" src="/lib/js/roll.js"></script>
 <script type="text/javascript" src="/lib/js/common_sc.js"></script>
+<script type="text/javascript" src="/lib/js/common.js"></script>
 <script type="text/javascript" src="/smarteditor/js/HuskyEZCreator.js"></script>
 <script type="text/javascript">
 $(function(){
