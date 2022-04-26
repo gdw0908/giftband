@@ -428,7 +428,7 @@ function goMidChk(){
 		return;
 	}
 	$.ajax({
-		url : "/giftband/vpay/midChk.do",
+		url : "/vpay/midChk.do",
 		type: "POST", 
 		data : {mid : $("#mid").val()}, 
 		dataType : "json",

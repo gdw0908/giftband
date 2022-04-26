@@ -80,10 +80,10 @@ public class GiftBandPayApiController {
     
     //외부에서 URL로 접근하는 페이지
     //상품권 구매하기 금액입력
-    @RequestMapping("/giftband/payEnter.do")	
+    @RequestMapping("/direct/payEnter.do")	
 	public String payEnter(HttpServletRequest request, HttpSession session, @RequestParam Map<String, Object> params) throws Exception {
     	log.error("");
-		log.error("=======/giftband/payEnter.do====param:"+params.toString()+"==========");
+		log.error("=======/direct/payEnter.do====param:"+params.toString()+"==========");
 		log.error("");
 		/*String returnurl = "/giftcard/directPay/payEnter";
 		MCMap member = (MCMap) session.getAttribute("member");
@@ -96,10 +96,10 @@ public class GiftBandPayApiController {
     
     //외부에서 URL로 접근하는 페이지
     //상품권 구매하기 계좌정보입력
-    @RequestMapping("/giftband/payAcctInfo.do")	
+    @RequestMapping("/direct/payAcctInfo.do")	
 	public String payAcctInfo(HttpServletRequest request, HttpSession session, @RequestParam Map<String, Object> params) throws Exception {
     	log.error("");
-		log.error("=======/giftband/payAcctInfo.do====param:"+params.toString()+"==========");
+		log.error("=======/direct/payAcctInfo.do====param:"+params.toString()+"==========");
 		log.error("");
 		params.put("sessionid", session.getId());// 비회원용 세션아이디
 		params.put("mid", session.getAttribute("mid"));
@@ -131,10 +131,10 @@ public class GiftBandPayApiController {
     
     //외부에서 URL로 접근하는 페이지
     //상품권 구매하기 주문완료
-    @RequestMapping("/giftband/payOrder.do")	
+    @RequestMapping("/direct/payOrder.do")	
 	public String payOrder(HttpServletRequest request, HttpSession session, @RequestParam Map<String, Object> params) throws Exception {
     	log.error("");
-		log.error("=======/giftband/payOrder.do====param:"+params.toString()+"==========");
+		log.error("=======/direct/payOrder.do====param:"+params.toString()+"==========");
 		log.error("");
 		if(StringUtil.isBlank(StringUtil.nvl(session.getAttribute("mid"),""))) {
 			request.setAttribute("message", "필수 파라미터 가맹점 mid가 존재하지 않습니다.");
@@ -175,7 +175,7 @@ public class GiftBandPayApiController {
     
     //vpay에 mid존재여부 체크
 	@ResponseBody
-	@RequestMapping("/giftband/vpay/midChk.do")
+	@RequestMapping("/vpay/midChk.do")
 	@Transactional(rollbackFor = { Exception.class })
 	public Map midChk(ModelMap model, HttpServletRequest request, HttpSession session, @RequestParam Map params)
 			throws Exception {
@@ -190,7 +190,7 @@ public class GiftBandPayApiController {
 	}
 	
 	//vpay에 입금결과 노티받는 API
-    @RequestMapping(value = {"/giftband/api/payResult.do"}, method = RequestMethod.POST)
+    @RequestMapping(value = {"/api/payResult.do"}, method = RequestMethod.POST)
 	public @ResponseBody Map<String, Object> payResultApi(HttpServletRequest request, @RequestBody Map<String, Object> param) throws Exception {
     	log.error("");
 		log.error("=======/giftband/api/payResult.do====param:"+param.toString()+"==========");
