@@ -32,7 +32,7 @@
 <body>
   <header>
     <h1>
-      <a href="/giftband/payInfo.do"><img src="/images/directPay/logo.svg" alt="기프트밴드"></a>
+      <a href="/direct/payInfo.do"><img src="/images/directPay/logo.svg" alt="기프트밴드"></a>
     </h1>
   </header>
 
@@ -65,7 +65,7 @@
             <img src="/images/directPay/check_icon.png" />
             <span>
               현재 이용 중이신 사이트와 동일한 정보<br>
-              (이름, 휴대폰번호, 계좌정보 등)로 가입하시기 바랍니다.
+              (이름, 휴대폰번호, 계좌정보 등)로 입력하시기 바랍니다.
             </span>
           </li>
           <li>
@@ -82,7 +82,7 @@
       <article class="tab_box">
         <ul class="tab_tit_wrap">
           <li class="tab_tit active" data-id="0">상품구매</li>
-          <!-- <li class="tab_tit" data-id="1"><a href="/giftband/paySignup.do">회원가입</a></li> -->
+          <!-- <li class="tab_tit" data-id="1"><a href="/direct/paySignup.do">회원가입</a></li> -->
         </ul>
 
         <section class="tab_content_wrap">
@@ -90,7 +90,7 @@
             <div class="img_wrap">
               <img src="/images/directPay/barcode_img.png" alt="기프트밴드 포인트 상품권">
             </div>
-            <button class="price_btn" onclick="location.href='/giftband/payEnter.do'">결제하기</button>
+            <button class="price_btn" onclick="location.href='/direct/payEnter.do'">결제하기</button>
           </article>
 
           <!-- <article class="tab_content" data-id="1">

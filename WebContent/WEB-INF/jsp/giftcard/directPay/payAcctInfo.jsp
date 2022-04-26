@@ -122,7 +122,7 @@ function frm_chk() {
       <img src="/images/directPay/logo.svg" alt="기프트밴드">
     </h1>
   </header>
-<form name="frm"  id="frm" method="post" action="/giftband/payOrder.do">
+<form name="frm"  id="frm" method="post" action="/direct/payOrder.do">
 	<input type="hidden" name="mid" value="${params.mid}"/>
 	<input type="hidden" name="amt" value="${params.amt}"/>
 	<div class="container">
@@ -166,7 +166,7 @@ function frm_chk() {
 	                 <option value="${item.code }">${item.code_nm }</option>
 	                </c:forEach>
 	              </select>
-	              <input type="text" name="account" id="account" class="info_input" placeholder="입금 계좌를 입력해주세요.">
+	              <input type="tel" name="account" id="account" class="info_input" placeholder="입금 계좌를 입력해주세요.">
 	            </div>
 	          </li>
 	        </ul>
@@ -177,8 +177,8 @@ function frm_chk() {
 	          <li id="cellLi">
 	          	<!-- <input type="tel" name="cell" id="cell" class="info_input" placeholder="핸드폰 번호를 입력해주세요." maxlength="11"> -->
 	          	<input type="tel" id="cell1" name="cell1" class="info_input" maxlength="3" style="width:15%;">  
-				&nbsp;-&nbsp;<input type="tel" id="cell2" name="cell2" class="info_input"	maxlength="4" style="width:15%;"> 
-				&nbsp;-&nbsp;<input type="tel" id="cell3"	name="cell3" class="info_input" maxlength="4" style="width:15%;">
+				&nbsp;-&nbsp;<input type="tel" id="cell2" name="cell2" class="info_input"	maxlength="4" style="width:25%;"> 
+				&nbsp;-&nbsp;<input type="tel" id="cell3"	name="cell3" class="info_input" maxlength="4" style="width:25%;">
 	          </li>
 	        </ul>
 	      </li>

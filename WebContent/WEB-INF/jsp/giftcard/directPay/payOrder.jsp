@@ -101,7 +101,7 @@
         </li>
         <li class="history_list">
           <ul>
-            <li>구매 신청<br>(주문번호:${resultInfo.orderno })</li>
+            <li>구매 신청</li>
             <li>${resultInfo.paydate }</li>
           </ul>
         </li>

@@ -69,7 +69,7 @@ function frm_chk() {
 			    <p class="price"></p><span>만원</span>
 			  </div>
 			</div>
-			<form class="pay_form" method="post" name="frm" id="frm" action="/giftband/payAcctInfo.do" >
+			<form class="pay_form" method="post" name="frm" id="frm" action="/direct/payAcctInfo.do" >
 				<article>
 				  <h5 class="title">금액 입력</h5>
 				  <div class="price_input">
