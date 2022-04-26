@@ -612,11 +612,9 @@ public class GiftCardCartController {
 		}else {
 			rSuccYn ="n";	
 		}
-		/** *******가상계좌 발급 API요청 END ******** **/
-		
-		String cancelReq = "false";
-		
-		//TODO: 이부분은 실제 데이터 통신으로 처리해야함
+		/** *******가상계좌 발급 API요청 END ******** **/		
+		String cancelReq = "false";		
+
 		if(StringUtil.nvl(rSuccYn, "y").equals("y")){ 
 			/*
 			 * params.put("rdealno", agspay.getResult("rDealNo"));//거래번호
@@ -719,8 +717,10 @@ public class GiftCardCartController {
 		*/
 		
 		//model.addAttribute("agspay", agspay);
-		model.addAttribute("pathIndex", index);
-		model.addAttribute("params", params);
+		if(!"Y".equals(StringUtil.nvl(params.get("isDirectOdr"), "N"))){ //바로구매인지 체크(문자를 통한 구매인지)
+			model.addAttribute("pathIndex", StringUtil.nvl(index,""));
+			model.addAttribute("params", params);
+		}
 		return "/giftcard/mypage/shopping/cart/pay_ing";
 	}
 	
@@ -881,18 +881,5 @@ public class GiftCardCartController {
 		return "OK";
 	}
 
-	@ResponseBody
-	@RequestMapping(params = "mode=midChk")
-	@Transactional(rollbackFor = { Exception.class })
-	public Map midChk(ModelMap model, HttpServletRequest request, HttpSession session, @RequestParam Map params)
-			throws Exception {
-		Map<String, Object> res_result = new HashMap<String, Object>();
-		String vpay_url_midChk = (globals.DEVELOPE.equals("dev")  ?  vpay_dev_url_midChk : vpay_prod_url_midChk);
-		//파라미터 셋팅
-		Map<String, Object> sendParam = new HashMap<String, Object>();
-		sendParam.put("mid", StringUtil.nvl(params.get("mid"),""));
-		res_result = httpApiUtil.vpayApiCall(sendParam, vpay_url_midChk, "");
-		
-		return res_result;
-	}
+
 }

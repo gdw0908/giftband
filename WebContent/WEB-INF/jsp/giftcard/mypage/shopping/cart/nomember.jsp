@@ -152,9 +152,19 @@ function Check_Common(form){
 		form.cell3.focus();
 		return false;
 	}
+	if(form.bankCd.value == ""){
+		alert("입금계좌 은행을 선택해주세요");
+		form.bankCd.focus();
+		return false;
+	}
+	if(form.account.value == ""){
+		alert("계좌번호를 입력해주세요");
+		form.account.focus();
+		return false;
+	}
 	if(form.identity.value == ""){
 		alert("수취인 생년월일을 입력해주세요");
-		form.receiver.focus();
+		form.identity.focus();
 		return false;
 	}
 	
@@ -357,7 +367,7 @@ function goMidChk(){
 		return;
 	}
 	$.ajax({
-		url : "/giftcard/mypage/shopping/cart/index.do?mode=midChk", 
+		url : "/giftband/vpay/midChk.do", 
 		type: "POST", 
 		data : {mid : $("#mid").val()}, 
 		dataType : "json",

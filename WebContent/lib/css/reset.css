@@ -1,0 +1,340 @@
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap');
+
+/*━━━━━━━━━━━━━━━━━CSS초기화 (Eric Meyer's css reset)━━━━━━━━━━━━━━━━━━━━━━━*/
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+:root {
+  --main-color: #F47400;
+  --sub-color: #F6F6F6;
+  --text-color: #161616;
+  --hover-color: #F46200;
+  --border-color: #DBDBDB;
+  --white: #fff;
+  --shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+/* input 기본 스타일 초기화 */
+input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: none;
+  padding: .5rem;
+  color: var(--text-color);
+  box-sizing: border-box;
+  border: 1px solid #E5E5E5;
+  box-sizing: border-box;
+}
+
+input::placeholder,
+::-webkit-input-placeholder {
+  font-size: 14px;
+  font-weight: 400;
+  color: #B4B4B4;
+}
+
+input:disabled {
+  -webkit-text-fill-color: var(--text-color);
+  opacity: 1;
+}
+
+
+input[type="checkbox"] {
+  -webkit-appearance: none;
+  -webkit-border-radius: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+::-webkit-clear-button,
+::-webkit-inner-spin-button {
+  display: none;
+}
+
+::-webkit-calendar-picker-indicator {
+  position: absolute;
+  width: 2.5rem;
+  height: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  color: var(--main-color);
+  background: var(--main-color);
+  opacity: 0;
+  cursor: pointer;
+}
+
+input[type="date"]:hover::-webkit-calendar-picker-indicator {
+  opacity: 0.05;
+}
+
+input[type="date"]:hover::-webkit-calendar-picker-indicator:hover {
+  opacity: 0.15;
+}
+
+
+/* input type number 에서 화살표 제거 */
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+select {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 400;
+  padding: 5px 30px 5px 5px;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -o-border-radius: 0;
+  border-radius: 0;
+  background-image: url("../../images/directPay/select_icon.png");
+  background-repeat: no-repeat;
+  background-position: right 5px center;
+  border: 1px solid #E5E5E5;
+  cursor: pointer;
+  background-color: #fff;
+  box-sizing: border-box;
+}
+
+select:focus {
+  outline: none;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+}
+
+html {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 62.5%;
+  -webkit-text-size-adjust: none;
+  text-align: center;
+  color: var(--text-color);
+  overflow-x: hidden;
+}
+
+
+body {
+  font-size: 1.6rem;
+  line-height: 1;
+  font-family: 'Noto Sans KR', sans-serif;
+  margin: 0 auto;
+  color: var(--text-color);
+  background: #fff;
+  overflow-x: hidden;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--main-color);
+  color: #fff;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: none !important;
+  background-color: #fff;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--main-color);
+}
+
+ol,
+ul,
+li {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+
+
+textarea {
+  padding: 1rem;
+  color: var(--text-color);
+  resize: none;
+  border: 1px solid #E5E5E5;
+  box-sizing: border-box;
+}
+
+input::placeholder,
+textarea::placeholder {
+  font-size: 14px;
+  color: #B4B4B4;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: 1px solid var(--main-color);
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+a {
+  display: block;
+  text-decoration: none;
+  color: var(--text-color);
+  cursor: pointer;
+}
+
+a:hover,
+a:active,
+a:focus,
+a {
+  text-decoration: none;
+}
+
+.clearfix {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+/* article title hide */
+.h_hide {
+  text-align: center;
+  visibility: hidden;
+}
+
+
+@media screen and (max-width: 786px) {
+  html {
+    font-size: 60%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  html {
+    font-size: 55%;
+  }
+}

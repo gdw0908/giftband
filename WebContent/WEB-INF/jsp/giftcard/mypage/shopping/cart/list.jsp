@@ -122,13 +122,16 @@
 		var user_price_sum = 0;
 		var sale_price_sum = 0;
 		var fee_price_sum = 0;
+		var selCnt=0;
 		$("input[name='chk']:checked").each(function() {
 			var qty = $(this).attr("qty");
-
+			if(qty==1) selCnt++;
+			
 			user_price_sum += Number($(this).attr("prod_price")) * qty;
 			sale_price_sum += Number($(this).attr("prod_price")) * qty;
-		});
-		$("#select_cnt").text($("input[name='chk']:checked").size());
+			
+		}); 
+		$("#select_cnt").text(selCnt);
 		$("#user_price").text($.addComma(user_price_sum));
 		$("#discount_price").text($.addComma(user_price_sum - sale_price_sum));
 		$("#fee_price").text($.addComma(fee_price_sum));//배송비
@@ -274,7 +277,7 @@
 				<div class="p_check1">
 					<div class="top">
 						<span class="pt_l">정상가격</span> <span class="pt_r">선택상품
-							: 0개
+							: <span id="select_cnt">0</span>개
 						</span>
 					</div>
 					<div class="bottom">

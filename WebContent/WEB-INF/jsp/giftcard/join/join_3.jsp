@@ -66,8 +66,8 @@
 
    function join_form_chk() {
       if (jQuery("#member_id").val() == ""
-            || jQuery("#member_id").val().length < 6) {
-         alert("아이디를 입력하지 않았거나 6자리 이상 등록해야합니다.");
+            || jQuery("#member_id").val().length < 5) {
+         alert("아이디를 입력하지 않았거나 5자리 이상 등록해야합니다.");
          jQuery("#member_id").val("");
          jQuery("#member_id").focus();
          return false;
@@ -350,7 +350,7 @@
                               <p class="id_wrap">
                                  <input type="text" id="member_id" name="member_id" class="input_j1 ws_1" placeholder="아이디를 입력해 주세요.">
                                  <button type="button" onclick="chk_member_id();" class="overlap_btn" style="color: #fff;">중복확인</button>
-                              	<span class="info_text"> 6 ~15자의 영문과 숫자만 사용 가능합니다.</span>
+                              	<span class="info_text"> 5 ~15자의 영문과 숫자만 사용 가능합니다.</span>
                               </p>
                               <div id="check_member_id"></div>
                               <input  type="hidden" name="member_id_chk" id="member_id_chk" value="" />
@@ -497,8 +497,8 @@
                   </table>
                </div>
                <div class="j_btn1">
-               	  <input type="button" value="이전" class="prev_btn btn" onclick = "location.replace('/giftcard/join/join_2.do');">
-                  <input type="submit" value="다음" class="next_btn btn">
+               	  <input type="button" value="이전" class="prev_btn" onclick = "location.replace('/giftcard/join/join_2.do');">
+                  <input type="submit" value="다음" class="next_btn">
                </div>
             </form>
          </div>
