@@ -54,10 +54,10 @@ public class GiftBandPayApiController {
 	private final String millionSeq = "56432"; //기프티콘 10만원권 상품번호
 	
 	//외부에서 URL로 접근하는 페이지 초기화면
-    @RequestMapping("/giftband/payInfo.do")	
+    @RequestMapping("/direct/payInfo.do")	
 	public String payInfo(HttpServletRequest request, HttpSession session, @RequestParam Map<String, Object> params) throws Exception {
     	log.error("");
-		log.error("=======/giftband/payInfo.do====param:"+params.toString()+"==========");
+		log.error("=======/direct/payInfo.do====param:"+params.toString()+"==========");
 		log.error("");
 		
 		if(StringUtil.isBlank(StringUtil.nvl(params.get("mid")))) {
