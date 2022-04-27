@@ -85,11 +85,7 @@ public class GiftBandPayApiController {
     	log.error("");
 		log.error("=======/direct/payEnter.do====param:"+params.toString()+"==========");
 		log.error("");
-		/*String returnurl = "/giftcard/directPay/payEnter";
-		MCMap member = (MCMap) session.getAttribute("member");
-		if (member == null) {
-			returnurl = "/giftcard/directPay/payLogin";
-		}*/
+		
 		request.setAttribute("params", params);
     	return "/giftcard/directPay/payEnter";
     }

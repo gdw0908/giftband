@@ -31,7 +31,11 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
 </head>
-
+<script type="text/javascript">
+function on_close(){
+	window.open('about:blank','_self').self.close();
+}
+</script>
 <body>
   <header>
     <h1>
@@ -120,8 +124,8 @@
       </ul>
 
       <article class="btn_wrap">
-        <button  type="button" onclick="window.close()" >¥›±‚</button>
-        <button class="gray"  type="button" onclick="window.close()" >»Æ¿Œ</button>
+        <!-- <button  type="button" onclick="on_close()" >¥›±‚</button> -->
+        <button class="gray"  type="button" onclick="on_close()" >»Æ¿Œ</button>
       </article>
     </div>
   </div>
